@@ -49,7 +49,8 @@
   // 注册 Service Worker（仅 https 或 localhost 生效）
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js').catch(err => console.warn('SW 注册失败:', err));
+      const scope = new URL('./', location.href).pathname;
+      navigator.serviceWorker.register(`./sw.js?v=${Date.now()}`, { scope }).catch(err => console.warn('SW 注册失败:', err));
     });
   }
   // iOS standalone 模式下禁止双击缩放

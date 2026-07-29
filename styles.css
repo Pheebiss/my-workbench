@@ -431,6 +431,7 @@ a { color: var(--primary-deep); text-decoration: none; }
 
 /* ========== 今日头条 ========== */
 .news-list { display: flex; flex-direction: column; gap: 8px; }
+a.news-item { color: inherit; text-decoration: none; }
 .news-item {
   padding: 13px 15px;
   border-radius: var(--radius-sm);

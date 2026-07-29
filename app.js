@@ -428,19 +428,20 @@ function WordsAdd() {
  * 模块 2：今日头条
  * ========================================================================= */
 const NEWS = [
-  { tag: '国内', cls: 'tag-domestic', title: '国务院发布新一轮稳就业稳经济政策举措' },
-  { tag: '国际', cls: 'tag-intl', title: '多国央行行长就全球通胀形势展开磋商' },
-  { tag: '财经', cls: 'tag-finance', title: 'A股三大指数集体收涨，科技板块领涨' },
-  { tag: '科技', cls: 'tag-tech', title: '国产大模型迭代升级，多模态能力提升' },
-  { tag: '体育', cls: 'tag-sports', title: '中国女排备战世界锦标赛集训名单公布' },
-  { tag: '娱乐', cls: 'tag-entertain', title: '暑期档电影票房持续走高，多部新片定档' },
+  { tag: '国内', cls: 'tag-domestic', title: '国务院发布新一轮稳就业稳经济政策举措', url: 'https://www.gov.cn/zhengce/content/202507/content_7031215.htm' },
+  { tag: '国际', cls: 'tag-intl', title: '多国央行行长就全球通胀形势展开磋商', url: 'https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/2026041710335851816/index.html' },
+  { tag: '财经', cls: 'tag-finance', title: 'A股三大指数集体收涨，科技板块领涨', url: 'https://www.cs.com.cn/gppd/gsyj/202303/t20230303_6326834.html' },
+  { tag: '科技', cls: 'tag-tech', title: '国产大模型迭代升级，多模态能力提升', url: 'https://news.cctv.com/2026/05/17/ARTIUUekaDVugGawlh5fLIjH260517.shtml' },
+  { tag: '体育', cls: 'tag-sports', title: '中国女排备战世界锦标赛集训名单公布', url: 'https://www.peopleapp.com/column/30051793293-500007424021' },
+  { tag: '娱乐', cls: 'tag-entertain', title: '暑期档电影票房持续走高，多部新片定档', url: 'http://www.xinhuanet.com/ent/20260707/362a0203ee804cd59a2041955a972075/c.html' },
 ];
 
-const MARKETS = [
-  { name: '上证指数', value: '3,187.42', change: '+1.23%', up: true },
-  { name: '深证成指', value: '10,526.18', change: '+1.56%', up: true },
-  { name: '黄金价格', value: '568.30 元/克', change: '-0.42%', up: false },
-  { name: '美元/人民币', value: '7.1985', change: '-0.18%', up: false },
+// 实时行情配置（腾讯财经接口，支持浏览器 CORS）
+const MARKET_CODES = [
+  { name: '上证指数', code: 'sh000001' },
+  { name: '深证成指', code: 'sz399001' },
+  { name: '创业板指', code: 'sz399006' },
+  { name: '沪深300', code: 'sh000300' },
 ];
 
 function renderHeadline() {
@@ -449,29 +450,70 @@ function renderHeadline() {
       <div class="card-title"><span class="ico">☰</span>新闻速览</div>
       <div class="news-list">
         ${NEWS.map(n => `
-          <div class="news-item" onclick="alert('示例新闻：${n.title}')">
+          <a class="news-item" href="${n.url}" target="_blank" rel="noopener">
             <span class="news-tag ${n.cls}">${n.tag}</span>
             <span class="news-title">${n.title}</span>
-          </div>
+          </a>
         `).join('')}
       </div>
-      <div style="margin-top:10px;font-size:12px;color:var(--text-lighter);">* 数据为示例，可在 app.js 中修改</div>
     </div>
 
     <div class="card">
-      <div class="card-title"><span class="ico">▲</span>金价 & 股市</div>
-      <div class="market-grid">
-        ${MARKETS.map(m => `
-          <div class="market-card ${m.up?'up':'down'}">
+      <div class="card-title"><span class="ico">▲</span>股市行情</div>
+      <div class="market-grid" id="marketGrid">
+        ${MARKET_CODES.map(m => `
+          <div class="market-card" data-code="${m.code}">
             <div class="market-name">${m.name}</div>
-            <div class="market-value">${m.value}</div>
-            <div class="market-change">${m.up?'▲':'▼'} ${m.change}</div>
+            <div class="market-value">加载中…</div>
+            <div class="market-change">—</div>
           </div>
         `).join('')}
       </div>
-      <div style="margin-top:10px;font-size:12px;color:var(--text-lighter);">* 示例数据，涨为绿，跌为红</div>
+      <div style="margin-top:10px;font-size:12px;color:var(--text-mute);">数据实时更新，仅供参考</div>
     </div>
   `;
+}
+
+afterRender.headline = fetchMarkets;
+
+// 拉取实时行情
+function fetchMarkets() {
+  MARKET_CODES.forEach(m => {
+    const url = `https://qt.gtimg.cn/q=${m.code}`;
+    fetch(url)
+      .then(r => r.text())
+      .then(text => {
+        const card = document.querySelector(`[data-code="${m.code}"]`);
+        if (!card) return;
+        const parsed = parseQuote(text, m);
+        if (!parsed) { card.querySelector('.market-value').textContent = '暂无数据'; return; }
+        card.classList.add(parsed.up ? 'up' : 'down');
+        card.querySelector('.market-value').textContent = parsed.value;
+        const chg = card.querySelector('.market-change');
+        chg.textContent = (parsed.up ? '▲ ' : '▼ ') + parsed.change;
+      })
+      .catch(() => {
+        const card = document.querySelector(`[data-code="${m.code}"]`);
+        if (card) card.querySelector('.market-value').textContent = '获取失败';
+      });
+  });
+}
+
+// 解析腾讯行情数据
+function parseQuote(text, m) {
+  // 腾讯格式: v_sh000001="1~上证指数~000001~3828.47~3813.31~..."
+  // 字段用 ~ 分隔：[3]=当前价 [4]=昨收价
+  const match = text.match(/"([^"]+)"/);
+  if (!match) return null;
+  const fields = match[1].split('~');
+  if (fields.length < 5) return null;
+
+  const price = parseFloat(fields[3]);
+  const prev = parseFloat(fields[4]);
+  if (isNaN(price)) return null;
+  const diff = price - prev;
+  const pct = prev ? (diff / prev * 100) : 0;
+  return { value: price.toLocaleString('zh-CN', {maximumFractionDigits: 2}), change: pct.toFixed(2) + '%', up: diff >= 0 };
 }
 
 /* =========================================================================
