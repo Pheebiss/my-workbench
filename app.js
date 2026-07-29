@@ -928,7 +928,46 @@ function renderMatchTab() {
 
 function afterMatchTab() { updateMatchPreview(); }
 
-function matchFilterChange() { /* 仅用于 surprise 时读取 */ }
+function getMatchFilters() {
+  return {
+    style: $('#matchFilterStyle')?.value || '',
+    season: $('#matchFilterSeason')?.value || ''
+  };
+}
+
+// 筛选变化时重新渲染上下装列表
+function matchFilterChange() {
+  const { style, season } = getMatchFilters();
+  const tops = filterClothes('top', style, season);
+  const bottoms = filterClothes('bottom', style, season);
+  const topsEl = $('#wdMatchTops');
+  const bottomsEl = $('#wdMatchBottoms');
+  if (topsEl) {
+    topsEl.innerHTML = tops.length === 0 ? '<div class="wd-empty-sm">该筛选下暂无上装</div>' : tops.map(c => `
+      <div class="wd-match-item ${wdMatchState.topId===c.id?'selected':''}" onclick="matchSelect('top','${c.id}')">
+        <div class="wd-match-item-img" style="background-image:url('${c.img}')"></div>
+      </div>`).join('');
+  }
+  if (bottomsEl) {
+    bottomsEl.innerHTML = bottoms.length === 0 ? '<div class="wd-empty-sm">该筛选下暂无下装</div>' : bottoms.map(c => `
+      <div class="wd-match-item ${wdMatchState.bottomId===c.id?'selected':''}" onclick="matchSelect('bottom','${c.id}')">
+        <div class="wd-match-item-img" style="background-image:url('${c.img}')"></div>
+      </div>`).join('');
+  }
+  // 更新标题数量
+  const topTitle = $('.wd-match-col:nth-child(1) .wd-match-col-title');
+  const bottomTitle = $('.wd-match-col:nth-child(2) .wd-match-col-title');
+  if (topTitle) topTitle.textContent = `选择上装（${tops.length}）`;
+  if (bottomTitle) bottomTitle.textContent = `选择下装（${bottoms.length}）`;
+  // 如果当前选中的衣物不在筛选结果中，清除选中
+  if (wdMatchState.topId && !tops.find(c => c.id === wdMatchState.topId)) {
+    wdMatchState.topId = null;
+  }
+  if (wdMatchState.bottomId && !bottoms.find(c => c.id === wdMatchState.bottomId)) {
+    wdMatchState.bottomId = null;
+  }
+  updateMatchPreview();
+}
 function matchSelect(type, id) {
   if (type === 'top') wdMatchState.topId = (wdMatchState.topId === id ? null : id);
   else wdMatchState.bottomId = (wdMatchState.bottomId === id ? null : id);
@@ -947,28 +986,20 @@ function filterClothes(category, style, season) {
   });
 }
 function matchRandom() {
-  const style = $('#matchFilterStyle')?.value || '';
-  const season = $('#matchFilterSeason')?.value || '';
+  const { style, season } = getMatchFilters();
   let tops = filterClothes('top', style, season);
   let bottoms = filterClothes('bottom', style, season);
-  if (!tops.length) tops = filterClothes('top', '', '');
-  if (!bottoms.length) bottoms = filterClothes('bottom', '', '');
-  if (!tops.length || !bottoms.length) { wdToast('衣物不足，请先添加'); return; }
+  if (!tops.length || !bottoms.length) { wdToast('当前筛选下衣物不足，请先添加或调整筛选'); return; }
   wdMatchState.topId = tops[Math.floor(Math.random()*tops.length)].id;
   wdMatchState.bottomId = bottoms[Math.floor(Math.random()*bottoms.length)].id;
-  // 更新 UI
-  $$('#wdMatchTops .wd-match-item').forEach(el => el.classList.toggle('selected', el.getAttribute('onclick')?.includes(wdMatchState.topId)));
-  $$('#wdMatchBottoms .wd-match-item').forEach(el => el.classList.toggle('selected', el.getAttribute('onclick')?.includes(wdMatchState.bottomId)));
+  syncMatchSelection();
   updateMatchPreview();
 }
 function matchSurprise() {
-  const style = $('#matchFilterStyle')?.value || '';
-  const season = $('#matchFilterSeason')?.value || '';
+  const { style, season } = getMatchFilters();
   let tops = filterClothes('top', style, season);
   let bottoms = filterClothes('bottom', style, season);
-  if (!tops.length) tops = filterClothes('top', '', '');
-  if (!bottoms.length) bottoms = filterClothes('bottom', '', '');
-  if (!tops.length || !bottoms.length) { wdToast('衣物不足，请先添加'); return; }
+  if (!tops.length || !bottoms.length) { wdToast('当前筛选下衣物不足，请先添加或调整筛选'); return; }
   // 生成10组取最高分
   let best = null, bestScore = -1;
   for (let i = 0; i < 10; i++) {
@@ -978,9 +1009,12 @@ function matchSurprise() {
     if (score > bestScore) { bestScore = score; best = { topId: t.id, bottomId: b.id }; }
   }
   wdMatchState = best;
+  syncMatchSelection();
+  updateMatchPreview(bestScore);
+}
+function syncMatchSelection() {
   $$('#wdMatchTops .wd-match-item').forEach(el => el.classList.toggle('selected', el.getAttribute('onclick')?.includes(wdMatchState.topId)));
   $$('#wdMatchBottoms .wd-match-item').forEach(el => el.classList.toggle('selected', el.getAttribute('onclick')?.includes(wdMatchState.bottomId)));
-  updateMatchPreview(bestScore);
 }
 function matchClear() {
   wdMatchState = { topId: null, bottomId: null };
