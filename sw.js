@@ -1,16 +1,15 @@
 /* Service Worker - 工作台离线缓存 */
-const CACHE = 'workbench-v21';
+const CACHE = 'workbench-v22';
 const ASSETS = [
   './',
   './index.html',
   './styles.css',
   './app.js',
   './manifest.json',
-  './icon-192.png',
-  './icon-512.png',
-  './icon-180.png',
-  './apple-touch-icon.png',
-  './icon-maskable-512.png'
+  './icon-app-192.png',
+  './icon-app-512.png',
+  './icon-app-180.png',
+  './icon-app-maskable.png'
 ];
 
 // 安装：预缓存核心资源
