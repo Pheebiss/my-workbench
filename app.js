@@ -1204,7 +1204,7 @@ let mealShuffle = 0;
 function refreshMeal() {
   mealShuffle++;
   window._mealOverride = dateKey(new Date()) + '-s' + mealShuffle;
-  const content = $('#moduleContent');
+  const content = $('#content');
   content.innerHTML = renderMeal();
   // 注意：不调用 afterRender.meal，否则会重置 _mealOverride
 }
