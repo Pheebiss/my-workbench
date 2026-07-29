@@ -35,7 +35,7 @@ const MODULES = [
   { id: 'period',   icon: '●', label: '经期记录' },
   { id: 'piano',    icon: '♫', label: '钢琴学习' },
   { id: 'chess',    icon: '♞', label: '象棋学习' },
-  { id: 'calli',    icon: '✍', label: '行楷书法' },
+  { id: 'calli',    icon: '书', label: '行楷书法' },
   { id: 'sketch',   icon: '✐', label: '素描学习' },
   { id: 'dance',    icon: '✦', label: '舞蹈学习' },
   { id: 'sew',      icon: '✂', label: '裁剪学习' },
