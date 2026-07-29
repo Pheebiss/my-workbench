@@ -30,15 +30,15 @@ const dateKey = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate(
 const MODULES = [
   { id: 'daily',    icon: '✓', label: '每日打卡' },
   { id: 'headline', icon: '☰', label: '今日头条' },
-  { id: 'wardrobe', icon: '♦', label: '电子衣橱' },
-  { id: 'meal',     icon: '♥', label: '均衡膳食' },
+  { id: 'wardrobe', icon: '◇', label: '电子衣橱' },
+  { id: 'meal',     icon: '○', label: '均衡膳食' },
   { id: 'period',   icon: '●', label: '经期记录' },
-  { id: 'piano',    icon: '♫', label: '钢琴' },
-  { id: 'chess',    icon: '♞', label: '象棋' },
+  { id: 'piano',    icon: '♫', label: '钢琴学习' },
+  { id: 'chess',    icon: '♞', label: '象棋学习' },
   { id: 'calli',    icon: '✍', label: '行楷书法' },
-  { id: 'sketch',   icon: '✐', label: '素描' },
-  { id: 'dance',    icon: '✦', label: '中国舞' },
-  { id: 'sew',      icon: '✂', label: '裁缝' },
+  { id: 'sketch',   icon: '✐', label: '素描学习' },
+  { id: 'dance',    icon: '✦', label: '舞蹈学习' },
+  { id: 'sew',      icon: '✂', label: '裁剪学习' },
 ];
 
 const LEARN_DATA = {
