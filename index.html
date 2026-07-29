@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#5B7CFA">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="工作台">
+<title>我的工作台</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* 适配 iOS 安全区域（刘海屏/底部横条）*/
+  :root { --safe-top: env(safe-area-inset-top, 0px); --safe-bottom: env(safe-area-inset-bottom, 0px); }
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- 左侧导航 -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="logo-icon">⚙</span>
+      <span class="logo-text">工作台</span>
+    </div>
+    <nav class="nav-list" id="navList"></nav>
+  </aside>
+
+  <!-- 右侧主区 -->
+  <main class="main">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="切换菜单">☰</button>
+        <h1 class="module-title" id="moduleTitle">每日打卡</h1>
+      </div>
+      <div class="topbar-right">
+        <span class="today-date" id="todayDate"></span>
+      </div>
+    </header>
+    <div class="content" id="content"></div>
+  </main>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<script src="app.js"></script>
+<script>
+  // 注册 Service Worker（仅 https 或 localhost 生效）
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').catch(err => console.warn('SW 注册失败:', err));
+    });
+  }
+  // iOS standalone 模式下禁止双击缩放
+  document.addEventListener('gesturestart', e => e.preventDefault());
+</script>
+</body>
+</html>
