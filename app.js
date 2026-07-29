@@ -187,13 +187,47 @@ const COLOR_HARMONY = {
 };
 
 const MEALS = [
-  { name: '鸡胸肉蔬菜沙拉', cal: '约 280 千卡', desc: '高蛋白低脂，搭配时令蔬菜，清爽饱腹。', grad: ['#ffd6a5','#caffbf'] },
-  { name: '番茄豆腐汤', cal: '约 150 千卡', desc: '酸甜开胃，豆腐补钙，低卡暖胃。', grad: ['#ff9a9e','#fad0c4'] },
-  { name: '糙米三文鱼饭', cal: '约 420 千卡', desc: '优质碳水加Omega-3，营养均衡。', grad: ['#a18cd1','#fbc2eb'] },
-  { name: '清炒西兰花', cal: '约 90 千卡', desc: '高纤维维C丰富，简单快炒保留营养。', grad: ['#84fab0','#8fd3f4'] },
-  { name: '荞麦冷面', cal: '约 320 千卡', desc: '低GI主食，搭配蛋丝黄瓜，夏日清爽。', grad: ['#e0c3fc','#8ec5fc'] },
-  { name: '清蒸鲈鱼', cal: '约 200 千卡', desc: '优质蛋白，原汁原味，低脂健康。', grad: ['#fccb90','#d57eeb'] },
+  // 早餐
+  { name: '燕麦牛奶杯', cal: '约 250 千卡', desc: '高纤维燕麦搭配牛奶，饱腹持久。', grad: ['#ffd6a5','#caffbf'], meal: 'breakfast' },
+  { name: '全麦三明治', cal: '约 320 千卡', desc: '全麦面包夹蛋生菜，营养均衡。', grad: ['#ff9a9e','#fad0c4'], meal: 'breakfast' },
+  { name: '小米南瓜粥', cal: '约 180 千卡', desc: '暖胃养胃，低卡好消化。', grad: ['#fccb90','#d57eeb'], meal: 'breakfast' },
+  { name: '紫薯豆浆', cal: '约 220 千卡', desc: '花青素加植物蛋白，抗氧化。', grad: ['#a18cd1','#fbc2eb'], meal: 'breakfast' },
+  { name: '鸡蛋蔬菜卷饼', cal: '约 280 千卡', desc: '蛋白质加膳食纤维，方便快手。', grad: ['#84fab0','#8fd3f4'], meal: 'breakfast' },
+  { name: '玉米虾仁粥', cal: '约 240 千卡', desc: '鲜虾优质蛋白，玉米甜香。', grad: ['#e0c3fc','#8ec5fc'], meal: 'breakfast' },
+  { name: '酸奶水果碗', cal: '约 200 千卡', desc: '益生菌加维生素，清爽开胃。', grad: ['#ffecd2','#fcb69f'], meal: 'breakfast' },
+  // 午餐
+  { name: '鸡胸肉蔬菜沙拉', cal: '约 280 千卡', desc: '高蛋白低脂，搭配时令蔬菜，清爽饱腹。', grad: ['#ffd6a5','#caffbf'], meal: 'lunch' },
+  { name: '糙米三文鱼饭', cal: '约 420 千卡', desc: '优质碳水加Omega-3，营养均衡。', grad: ['#a18cd1','#fbc2eb'], meal: 'lunch' },
+  { name: '荞麦冷面', cal: '约 320 千卡', desc: '低GI主食，搭配蛋丝黄瓜，夏日清爽。', grad: ['#e0c3fc','#8ec5fc'], meal: 'lunch' },
+  { name: '清蒸鲈鱼', cal: '约 200 千卡', desc: '优质蛋白，原汁原味，低脂健康。', grad: ['#fccb90','#d57eeb'], meal: 'lunch' },
+  { name: '番茄牛腩饭', cal: '约 480 千卡', desc: '番茄酸甜开胃，牛腩补铁。', grad: ['#ff9a9e','#fad0c4'], meal: 'lunch' },
+  { name: '藜麦鸡肉碗', cal: '约 380 千卡', desc: '超级谷物搭配嫩滑鸡胸。', grad: ['#84fab0','#8fd3f4'], meal: 'lunch' },
+  { name: '日式照烧鸡饭', cal: '约 450 千卡', desc: '甜咸酱汁配米饭，满足不腻。', grad: ['#ffecd2','#fcb69f'], meal: 'lunch' },
+  // 晚餐
+  { name: '番茄豆腐汤', cal: '约 150 千卡', desc: '酸甜开胃，豆腐补钙，低卡暖胃。', grad: ['#ff9a9e','#fad0c4'], meal: 'dinner' },
+  { name: '清炒西兰花', cal: '约 90 千卡', desc: '高纤维维C丰富，简单快炒保留营养。', grad: ['#84fab0','#8fd3f4'], meal: 'dinner' },
+  { name: '蒜蓉菠菜', cal: '约 80 千卡', desc: '补铁绿叶菜，清淡少油。', grad: ['#84fab0','#8fd3f4'], meal: 'dinner' },
+  { name: '冬瓜虾仁汤', cal: '约 120 千卡', desc: '消水肿低热量，鲜美暖身。', grad: ['#a18cd1','#fbc2eb'], meal: 'dinner' },
+  { name: '凉拌木耳', cal: '约 70 千卡', desc: '清肠排毒，脆爽可口。', grad: ['#e0c3fc','#8ec5fc'], meal: 'dinner' },
+  { name: '蒸蛋羹', cal: '约 130 千卡', desc: '嫩滑易消化，老少皆宜。', grad: ['#ffd6a5','#caffbf'], meal: 'dinner' },
+  { name: '紫菜蛋花汤', cal: '约 100 千卡', desc: '补碘低卡，简单快手。', grad: ['#fccb90','#d57eeb'], meal: 'dinner' },
 ];
+
+// 根据日期种子选取每日推荐
+function getDailyMeals() {
+  const key = window._mealOverride || dateKey(new Date());
+  let seed = 0;
+  for (let i = 0; i < key.length; i++) seed += key.charCodeAt(i) * (i + 1);
+  const pick = (mealType, offset) => {
+    const pool = MEALS.filter(m => m.meal === mealType);
+    return pool[(seed + offset) % pool.length];
+  };
+  return [
+    { ...pick('breakfast', 0), mealLabel: '早餐' },
+    { ...pick('lunch', 3), mealLabel: '午餐' },
+    { ...pick('dinner', 7), mealLabel: '晚餐' },
+  ];
+}
 
 /* ---------- 应用状态 ---------- */
 let currentModule = 'daily';
@@ -1138,12 +1172,19 @@ function wdCalDeleteOutfit() {
  * 模块 4：均衡膳食
  * ========================================================================= */
 function renderMeal() {
+  const daily = getDailyMeals();
+  const totalCal = daily.reduce((sum, m) => {
+    const n = parseInt((m.cal.match(/\d+/) || [0])[0]);
+    return sum + n;
+  }, 0);
   return `
     <div class="card">
-      <div class="card-title"><span class="ico">♥</span>低卡菜式推荐</div>
+      <div class="card-title"><span class="ico">♥</span>今日三餐推荐</div>
+      <div class="meal-day-info">每日根据日期自动更换 · 今日合计约 ${totalCal} 千卡</div>
       <div class="meal-grid">
-        ${MEALS.map(m => `
+        ${daily.map(m => `
           <div class="meal-card">
+            <div class="meal-tag">${m.mealLabel}</div>
             <div class="meal-img" style="background:linear-gradient(135deg, ${m.grad[0]}, ${m.grad[1]});"><span style="font-size:20px;color:rgba(255,255,255,0.9);font-weight:700;">${m.name[0]}</span></div>
             <div class="meal-body">
               <div class="meal-name">${m.name}</div>
@@ -1153,9 +1194,25 @@ function renderMeal() {
           </div>
         `).join('')}
       </div>
+      <button class="btn wd-refresh-meal" onclick="refreshMeal()">换一批推荐</button>
     </div>
   `;
 }
+
+// 手动换一批：用随机种子重新渲染
+let mealShuffle = 0;
+function refreshMeal() {
+  mealShuffle++;
+  window._mealOverride = dateKey(new Date()) + '-s' + mealShuffle;
+  const content = $('#moduleContent');
+  content.innerHTML = renderMeal();
+  if (afterRender.meal) afterRender.meal();
+}
+
+afterRender.meal = () => {
+  // 每次进入模块时重置为当天推荐
+  window._mealOverride = null;
+};
 
 /* =========================================================================
  * 模块 5：经期记录
