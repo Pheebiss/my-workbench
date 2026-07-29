@@ -167,8 +167,8 @@ const LEARN_DATA = {
 
 const WARDROBE = {
   tops: [
-    { emoji: '▤', name: '白衬衫' },
-    { emoji: '▫', name: '条纹T恤' },
+    { emoji: '▨', name: '白衬衫' },
+    { emoji: '▢', name: '条纹T恤' },
     { emoji: '◇', name: '雪纺衫' },
     { emoji: '▥', name: '针织毛衣' },
     { emoji: '▦', name: '风衣外套' },
@@ -180,7 +180,7 @@ const WARDROBE = {
     { emoji: '▭', name: '短裤' },
     { emoji: '△', name: '半身裙' },
     { emoji: '▣', name: '连衣裙' },
-    { emoji: '▨', name: '阔腿裤' },
+    { emoji: '▬', name: '阔腿裤' },
   ],
 };
 
