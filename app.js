@@ -784,8 +784,8 @@ function showClothForm(title) {
   showModal(title, `
     <div class="wd-form">
       <div class="wd-upload-area ${wdPendingImage?'has-image':''}" id="wdUploadArea" onclick="$('#wdFileInput').click()">
-        ${wdPendingImage ? `<img id="wdUploadPreview" src="${wdPendingImage}" />` : `<img id="wdUploadPreview" style="display:none" /><div class="wd-upload-placeholder" id="wdUploadPlaceholder">点击拍照或选择照片</div>`}
-        <input type="file" id="wdFileInput" accept="image/*" capture="environment" hidden />
+        ${wdPendingImage ? `<img id="wdUploadPreview" src="${wdPendingImage}" />` : `<img id="wdUploadPreview" style="display:none" /><div class="wd-upload-placeholder" id="wdUploadPlaceholder">点击拍照或从相册选择</div>`}
+        <input type="file" id="wdFileInput" accept="image/*" hidden />
       </div>
       <div class="wd-form-row"><label>类别 <span class="wd-required">*</span></label><div class="wd-chip-group">${catChips}</div></div>
       <div class="wd-form-row"><label>颜色</label><div class="wd-chip-group">${colorChips}</div></div>
