@@ -509,7 +509,7 @@ function setWater(v) { Store.set(todayKey() + '_water', v); }
 function renderWater() {
   const n = getWater();
   $('#waterCount').textContent = n;
-  $('#waterCups').innerHTML = Array.from({length: 8}, (_, i) =>
+  $('#waterCups').innerHTML = Array.from({length: 6}, (_, i) =>
     `<div class="cup ${i < n ? 'filled' : ''}" title="${i+1}杯" onclick="WaterSet(${i+1})"></div>`
   ).join('');
 }
