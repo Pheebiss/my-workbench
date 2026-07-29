@@ -165,23 +165,25 @@ const LEARN_DATA = {
   },
 };
 
-const WARDROBE = {
-  tops: [
-    { emoji: '▣', name: '白衬衫' },
-    { emoji: '▢', name: '条纹T恤' },
-    { emoji: '◇', name: '雪纺衫' },
-    { emoji: '▤', name: '针织毛衣' },
-    { emoji: '▦', name: '风衣外套' },
-    { emoji: '▪', name: '背心' },
-  ],
-  bottoms: [
-    { emoji: '▩', name: '牛仔裤' },
-    { emoji: '▧', name: '黑色西裤' },
-    { emoji: '▭', name: '短裤' },
-    { emoji: '△', name: '半身裙' },
-    { emoji: '▰', name: '连衣裙' },
-    { emoji: '▬', name: '阔腿裤' },
-  ],
+/* ========== 电子衣橱枚举常量 ========== */
+const CAT_LABELS = { top:'上装', bottom:'下装', onesie:'连身装', outerwear:'外套', shoes:'鞋履', accessory:'配饰' };
+const COLOR_LABELS = { white:'白色', black:'黑色', gray:'灰色', red:'红色', pink:'粉色', orange:'橙色', yellow:'黄色', green:'绿色', blue:'蓝色', purple:'紫色', brown:'棕色', multicolor:'花色' };
+const COLOR_SWATCHES = { white:'#ffffff', black:'#3a3a3a', gray:'#b0b0b0', red:'#d68a8a', pink:'#f0bfc4', orange:'#e8b89d', yellow:'#e6d08a', green:'#b8c6a8', blue:'#9ab8c8', purple:'#b8a0c8', brown:'#b89878', multicolor:'linear-gradient(135deg,#f0bfc4,#e8b89d,#b8c6a8,#9ab8c8)' };
+const SEASON_LABELS = { spring:'春', summer:'夏', autumn:'秋', winter:'冬' };
+const STYLE_LABELS = { casual:'休闲', formal:'正式', sporty:'运动', sweet:'甜美', vintage:'复古', minimal:'极简' };
+const COLOR_HARMONY = {
+  white:['white','black','gray','red','pink','orange','yellow','green','blue','purple','brown','multicolor'],
+  black:['white','black','gray','red','pink','orange','yellow','green','blue','purple','brown','multicolor'],
+  gray:['white','black','gray','red','pink','orange','yellow','green','blue','purple','brown','multicolor'],
+  red:['white','black','gray','red','orange','brown','pink'],
+  orange:['white','black','gray','orange','yellow','brown','green'],
+  yellow:['white','black','gray','yellow','orange','green','blue'],
+  pink:['white','black','gray','pink','red','purple'],
+  brown:['white','black','gray','brown','orange','yellow','green'],
+  blue:['white','black','gray','blue','green','purple','yellow'],
+  green:['white','black','gray','green','blue','yellow','brown','orange'],
+  purple:['white','black','gray','purple','pink','blue'],
+  multicolor:['white','black','gray'],
 };
 
 const MEALS = [
@@ -517,79 +519,585 @@ function parseQuote(text, m) {
 }
 
 /* =========================================================================
- * 模块 3：电子衣橱
+ * 模块 3：电子衣橱（虚拟试衣间）
  * ========================================================================= */
+
+/* --- 数据操作 --- */
+function getClothes() { return Store.get('wardrobe_items', []); }
+function getCloth(id) { return getClothes().find(c => c.id === id); }
+function safeSetClothes(arr) {
+  try { localStorage.setItem('wardrobe_items', JSON.stringify(arr)); return true; }
+  catch(e) { wdToast('存储空间不足，请删除一些旧衣物'); return false; }
+}
+function addCloth(item) {
+  const arr = getClothes(); arr.push(item);
+  if (safeSetClothes(arr)) return true; return false;
+}
+function updateCloth(id, patch) {
+  const arr = getClothes();
+  const i = arr.findIndex(c => c.id === id);
+  if (i >= 0) { arr[i] = { ...arr[i], ...patch }; safeSetClothes(arr); }
+}
+function deleteCloth(id) {
+  const arr = getClothes().filter(c => c.id !== id);
+  safeSetClothes(arr);
+  // 清理穿搭记录中的引用
+  const outfits = getOutfits();
+  for (let d in outfits) {
+    const o = outfits[d];
+    let mainDeleted = false;
+    ['topId','bottomId','onesieId'].forEach(k => { if (o[k] === id) { mainDeleted = true; } });
+    if (mainDeleted) { delete outfits[d]; }
+    else { ['outerwearId','shoesId','accessoryId'].forEach(k => { if (o[k] === id) o[k] = null; }); }
+  }
+  Store.set('wardrobe_outfits', outfits);
+}
+function getOutfits() { return Store.get('wardrobe_outfits', {}); }
+function getOutfit(dateK) { return getOutfits()[dateK] || null; }
+function saveOutfit(record) { const o = getOutfits(); o[record.date] = record; Store.set('wardrobe_outfits', o); }
+function deleteOutfit(dateK) { const o = getOutfits(); delete o[dateK]; Store.set('wardrobe_outfits', o); }
+
+/* --- 存储用量 --- */
+function getStorageUsage() {
+  let total = 0;
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    total += (localStorage.getItem(k) || '').length;
+  }
+  return Math.round(total / 1024); // KB
+}
+function getStorageRatio() { return Math.min(1, getStorageUsage() / 5120); }
+
+/* --- 图片压缩 --- */
+function estimateBase64Size(b64) { return Math.round(b64.length * 3 / 4 / 1024); }
+function compressImage(dataUrl, maxDim, quality) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => {
+      const scale = Math.min(1, maxDim / Math.max(img.width, img.height));
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.round(img.width * scale);
+      canvas.height = Math.round(img.height * scale);
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      resolve(canvas.toDataURL('image/jpeg', quality));
+    };
+    img.onerror = () => resolve(null);
+    img.src = dataUrl;
+  });
+}
+async function handleFileUpload(file) {
+  if (!file || !file.type.startsWith('image/')) { wdToast('请选择图片文件'); return; }
+  const reader = new FileReader();
+  reader.onload = async () => {
+    const ratio = getStorageRatio();
+    let maxDim = 600, quality = 0.7;
+    if (ratio > 0.85) { maxDim = 400; quality = 0.3; }
+    else if (ratio > 0.7) { maxDim = 500; quality = 0.5; }
+    let result = await compressImage(reader.result, maxDim, quality);
+    if (!result) { wdToast('图片处理失败'); return; }
+    // 逐级降级
+    while (estimateBase64Size(result) > 50) {
+      if (quality > 0.4) { quality -= 0.2; }
+      else if (maxDim > 300) { maxDim -= 100; quality = 0.5; }
+      else break;
+      result = await compressImage(reader.result, maxDim, quality);
+      if (!result) break;
+    }
+    wdPendingImage = result;
+    const prev = $('#wdUploadPreview');
+    if (prev) { prev.src = result; prev.style.display = 'block'; }
+    const ph = $('#wdUploadPlaceholder');
+    if (ph) ph.style.display = 'none';
+    const area = $('#wdUploadArea');
+    if (area) area.classList.add('has-image');
+  };
+  reader.readAsDataURL(file);
+}
+
+/* --- 模态框 --- */
+let wdPendingImage = null;
+let wdFormState = { cat: null, color: null, season: [], style: null, editId: null };
+let wdMatchState = { topId: null, bottomId: null };
+let wdCalCursor = new Date();
+let wdCalSelected = dateKey(new Date());
+
+function showModal(title, contentHtml) {
+  closeModal();
+  const overlay = document.createElement('div');
+  overlay.className = 'wd-modal-overlay';
+  overlay.id = 'wdModalOverlay';
+  overlay.innerHTML = `
+    <div class="wd-modal">
+      <div class="wd-modal-header">
+        <span class="wd-modal-title">${title}</span>
+        <span class="wd-modal-close" onclick="closeModal()">✕</span>
+      </div>
+      <div class="wd-modal-body">${contentHtml}</div>
+    </div>`;
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.body.appendChild(overlay);
+  return overlay;
+}
+function closeModal() { const o = $('#wdModalOverlay'); if (o) o.remove(); }
+
+function wdToast(msg) {
+  const t = document.createElement('div');
+  t.className = 'wd-toast';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 2500);
+}
+
+/* --- Tab 渲染 --- */
 function renderWardrobe() {
+  // 清理旧键
+  if (localStorage.getItem('wardrobe_top') !== null) { localStorage.removeItem('wardrobe_top'); localStorage.removeItem('wardrobe_bottom'); }
   return `
-    <div class="card">
-      <div class="card-title"><span class="ico">♦</span>今日穿搭</div>
-      <div class="outfit-result" id="outfitResult">请选择上衣和下装～</div>
-      <div class="outfit-actions" style="margin-bottom:16px;">
-        <button class="btn" onclick="ClothRandom()">随机搭配</button>
-        <button class="btn btn-ghost" onclick="ClothClear()">清空选择</button>
+    <div class="wardrobe-page">
+      <div class="wd-tabs" id="wdTabs">
+        <button class="wd-tab active" data-tab="closet" onclick="wdSwitchTab('closet')">我的衣橱</button>
+        <button class="wd-tab" data-tab="match" onclick="wdSwitchTab('match')">智能搭配</button>
+        <button class="wd-tab" data-tab="calendar" onclick="wdSwitchTab('calendar')">穿搭日历</button>
       </div>
-      <div class="wardrobe-layout">
-        <div>
-          <div style="font-size:13px;color:var(--text-light);margin-bottom:8px;font-weight:500;">上衣</div>
-          <div class="clothes-list" id="topsList">
-            ${WARDROBE.tops.map((c,i) => `
-              <div class="clothing-item" data-type="top" data-i="${i}" onclick="ClothToggle('top',${i})">
-                <span class="clothing-emoji">${c.emoji}</span><span>${c.name}</span>
-              </div>`).join('')}
-          </div>
-        </div>
-        <div>
-          <div style="font-size:13px;color:var(--text-light);margin-bottom:8px;font-weight:500;">下装</div>
-          <div class="clothes-list" id="bottomsList">
-            ${WARDROBE.bottoms.map((c,i) => `
-              <div class="clothing-item" data-type="bottom" data-i="${i}" onclick="ClothToggle('bottom',${i})">
-                <span class="clothing-emoji">${c.emoji}</span><span>${c.name}</span>
-              </div>`).join('')}
-          </div>
-        </div>
-      </div>
+      <div class="wd-tab-content" id="wdTabContent"></div>
     </div>
   `;
 }
 
-let selTop = null, selBottom = null;
-
 afterRender.wardrobe = () => {
-  selTop = Store.get('wardrobe_top', null);
-  selBottom = Store.get('wardrobe_bottom', null);
-  updateClothUI();
+  wdSwitchTab(Store.get('wardrobe_tab', 'closet'));
 };
 
-function ClothToggle(type, i) {
-  if (type === 'top') selTop = (selTop === i ? null : i);
-  else selBottom = (selBottom === i ? null : i);
-  Store.set('wardrobe_top', selTop);
-  Store.set('wardrobe_bottom', selBottom);
-  updateClothUI();
+function wdSwitchTab(tab) {
+  Store.set('wardrobe_tab', tab);
+  $$('#wdTabs .wd-tab').forEach(el => el.classList.toggle('active', el.dataset.tab === tab));
+  const content = $('#wdTabContent');
+  if (!content) return;
+  content.classList.remove('fade');
+  void content.offsetWidth;
+  content.classList.add('fade');
+  if (tab === 'closet') content.innerHTML = renderClosetTab();
+  else if (tab === 'match') content.innerHTML = renderMatchTab();
+  else if (tab === 'calendar') content.innerHTML = renderCalendarTab();
+  // 子绑定
+  if (tab === 'closet') afterClosetTab();
+  else if (tab === 'match') afterMatchTab();
+  else if (tab === 'calendar') afterCalendarTab();
 }
-function ClothClear() {
-  selTop = null; selBottom = null;
-  Store.set('wardrobe_top', null);
-  Store.set('wardrobe_bottom', null);
-  updateClothUI();
+
+/* === Tab 1: 我的衣橱 === */
+function renderClosetTab() {
+  const clothes = getClothes();
+  const filter = Store.get('wardrobe_filter', { category: 'all', color: 'all' });
+  // 统计
+  const stats = { total: clothes.length, cats: {}, colors: {} };
+  clothes.forEach(c => {
+    stats.cats[c.category] = (stats.cats[c.category] || 0) + 1;
+    stats.colors[c.color] = (stats.colors[c.color] || 0) + 1;
+  });
+  const topColor = Object.entries(stats.colors).sort((a,b) => b[1]-a[1])[0];
+  // 筛选标签
+  const catChips = ['all', ...Object.keys(CAT_LABELS)].map(k =>
+    `<button class="wd-filter-chip ${filter.category===k?'active':''}" onclick="wdFilterSet('category','${k}')">${k==='all'?'全部':CAT_LABELS[k]}</button>`
+  ).join('');
+  const colorChips = ['all', ...Object.keys(COLOR_LABELS)].map(k =>
+    `<button class="wd-filter-chip wd-filter-color-chip ${filter.color===k?'active':''}" onclick="wdFilterSet('color','${k}')" title="${k==='all'?'全部':COLOR_LABELS[k]}">
+      ${k==='all' ? '全' : `<span class="wd-color-dot" style="background:${COLOR_SWATCHES[k]}"></span>`}
+    </button>`
+  ).join('');
+  // 筛选衣物
+  const filtered = clothes.filter(c =>
+    (filter.category === 'all' || c.category === filter.category) &&
+    (filter.color === 'all' || c.color === filter.color)
+  );
+  // 存储用量
+  const usageKB = getStorageUsage();
+  const usagePct = Math.round(usageKB / 5120 * 100);
+  const usageMB = (usageKB / 1024).toFixed(1);
+
+  return `
+    <div class="wd-stats">
+      <div class="wd-stat-item"><span class="wd-stat-num">${stats.total}</span><span class="wd-stat-label">件单品</span></div>
+      ${Object.entries(stats.cats).map(([k,v]) => `<div class="wd-stat-item"><span class="wd-stat-num">${v}</span><span class="wd-stat-label">${CAT_LABELS[k]}</span></div>`).join('')}
+      ${topColor ? `<div class="wd-stat-item"><span class="wd-stat-label">主色</span><span class="wd-stat-num" style="font-size:14px;">${COLOR_LABELS[topColor[0]]}</span></div>` : ''}
+    </div>
+    <div class="wd-storage-bar ${usagePct>85?'danger':usagePct>70?'warn':''}">
+      <span>存储 ${usageMB}MB / 5MB</span>
+      <div class="wd-storage-track"><div class="wd-storage-fill" style="width:${usagePct}%"></div></div>
+    </div>
+    <div class="wd-toolbar">
+      <button class="btn wd-add-btn" onclick="openAddForm()">+ 添加衣物</button>
+    </div>
+    <div class="wd-filters">
+      <div class="wd-filter-group">${catChips}</div>
+      <div class="wd-filter-group">${colorChips}</div>
+    </div>
+    <div class="wd-grid" id="wdGrid">
+      ${filtered.length === 0
+        ? `<div class="wd-empty"><div class="wd-empty-icon">👗</div><p>${clothes.length===0?'衣橱还是空的，添加第一件衣物吧～':'没有符合条件的衣物'}</p>${clothes.length===0?'<button class="btn" onclick="openAddForm()">+ 添加衣物</button>':''}</div>`
+        : filtered.map(c => `
+          <div class="wd-card" onclick="openClothDetail('${c.id}')">
+            <div class="wd-card-img" style="background-image:url('${c.img}')"></div>
+            <div class="wd-card-info">
+              <span class="wd-card-cat">${CAT_LABELS[c.category]}</span>
+              <span class="wd-card-color" style="background:${COLOR_SWATCHES[c.color]}"></span>
+            </div>
+          </div>`).join('')
+      }
+    </div>
+  `;
 }
-function ClothRandom() {
-  selTop = Math.floor(Math.random() * WARDROBE.tops.length);
-  selBottom = Math.floor(Math.random() * WARDROBE.bottoms.length);
-  Store.set('wardrobe_top', selTop);
-  Store.set('wardrobe_bottom', selBottom);
-  updateClothUI();
+
+function afterClosetTab() {}
+
+function wdFilterSet(type, val) {
+  const filter = Store.get('wardrobe_filter', { category: 'all', color: 'all' });
+  filter[type] = val;
+  Store.set('wardrobe_filter', filter);
+  wdSwitchTab('closet');
 }
-function updateClothUI() {
-  $$('#topsList .clothing-item').forEach(el => el.classList.toggle('selected', +el.dataset.i === selTop));
-  $$('#bottomsList .clothing-item').forEach(el => el.classList.toggle('selected', +el.dataset.i === selBottom));
-  const r = $('#outfitResult');
-  if (selTop !== null && selBottom !== null) {
-    const t = WARDROBE.tops[selTop], b = WARDROBE.bottoms[selBottom];
-    r.innerHTML = `今日穿搭：<b>${t.emoji} ${t.name}</b> + <b>${b.emoji} ${b.name}</b>`;
+
+/* === 添加/编辑表单 === */
+function openAddForm() {
+  if (getStorageRatio() > 0.95) { wdToast('存储空间已满，请先删除旧衣物'); return; }
+  wdPendingImage = null;
+  wdFormState = { cat: null, color: null, season: [], style: null, editId: null };
+  showClothForm('添加衣物');
+}
+function openEditForm(id) {
+  const c = getCloth(id); if (!c) return;
+  wdPendingImage = c.img;
+  wdFormState = { cat: c.category, color: c.color, season: c.season || [], style: c.style, editId: id };
+  showClothForm('编辑衣物');
+}
+function showClothForm(title) {
+  const catChips = Object.entries(CAT_LABELS).map(([k,v]) =>
+    `<button class="wd-chip ${wdFormState.cat===k?'active':''}" onclick="wdChipSelect('cat','${k}')">${v}</button>`).join('');
+  const colorChips = Object.entries(COLOR_LABELS).map(([k,v]) =>
+    `<button class="wd-chip wd-chip-color ${wdFormState.color===k?'active':''}" onclick="wdChipSelect('color','${k}')"><span class="wd-color-dot" style="background:${COLOR_SWATCHES[k]}"></span>${v}</button>`).join('');
+  const seasonChips = Object.entries(SEASON_LABELS).map(([k,v]) =>
+    `<button class="wd-chip ${wdFormState.season.includes(k)?'active':''}" onclick="wdChipSelect('season','${k}')">${v}</button>`).join('');
+  const styleChips = Object.entries(STYLE_LABELS).map(([k,v]) =>
+    `<button class="wd-chip ${wdFormState.style===k?'active':''}" onclick="wdChipSelect('style','${k}')">${v}</button>`).join('');
+
+  showModal(title, `
+    <div class="wd-form">
+      <div class="wd-upload-area ${wdPendingImage?'has-image':''}" id="wdUploadArea" onclick="$('#wdFileInput').click()">
+        ${wdPendingImage ? `<img id="wdUploadPreview" src="${wdPendingImage}" />` : `<img id="wdUploadPreview" style="display:none" /><div class="wd-upload-placeholder" id="wdUploadPlaceholder">点击拍照或选择照片</div>`}
+        <input type="file" id="wdFileInput" accept="image/*" capture="environment" hidden />
+      </div>
+      <div class="wd-form-row"><label>类别 <span class="wd-required">*</span></label><div class="wd-chip-group">${catChips}</div></div>
+      <div class="wd-form-row"><label>颜色</label><div class="wd-chip-group">${colorChips}</div></div>
+      <div class="wd-form-row"><label>季节</label><div class="wd-chip-group">${seasonChips}</div></div>
+      <div class="wd-form-row"><label>风格</label><div class="wd-chip-group">${styleChips}</div></div>
+      <div class="wd-form-row"><label>备注</label><textarea class="textarea" id="wdFormNote" placeholder="如：适合约会、面料很舒服">${wdFormState.editId ? (getCloth(wdFormState.editId)?.note || '') : ''}</textarea></div>
+      <div class="wd-form-actions"><button class="btn btn-ghost" onclick="closeModal()">取消</button><button class="btn" onclick="submitClothForm()">保存</button></div>
+    </div>
+  `);
+  // 绑定文件上传
+  const fi = $('#wdFileInput');
+  if (fi) fi.addEventListener('change', e => { if (e.target.files[0]) handleFileUpload(e.target.files[0]); });
+}
+
+function wdChipSelect(type, val) {
+  if (type === 'season') {
+    const i = wdFormState.season.indexOf(val);
+    if (i >= 0) wdFormState.season.splice(i, 1);
+    else wdFormState.season.push(val);
   } else {
-    r.textContent = '请选择上衣和下装～';
+    wdFormState[type] = wdFormState[type] === val ? null : val;
   }
+  // 更新 UI
+  $$('.wd-chip-group').forEach((group, gi) => {
+    const typeMap = ['cat','color','season','style'];
+    const t = typeMap[gi];
+    if (!t) return;
+    $$('.wd-chip', group).forEach((chip, ci) => {
+      const keys = t === 'season' ? Object.keys(SEASON_LABELS) : t === 'cat' ? Object.keys(CAT_LABELS) : t === 'color' ? Object.keys(COLOR_LABELS) : Object.keys(STYLE_LABELS);
+      const k = keys[ci];
+      if (!k) return;
+      const active = t === 'season' ? wdFormState.season.includes(k) : wdFormState[t] === k;
+      chip.classList.toggle('active', active);
+    });
+  });
+}
+
+function submitClothForm() {
+  if (!wdPendingImage) { wdToast('请先上传衣物照片'); return; }
+  if (!wdFormState.cat) { wdToast('请选择类别'); return; }
+  const note = $('#wdFormNote')?.value.trim() || '';
+  if (wdFormState.editId) {
+    updateCloth(wdFormState.editId, { img: wdPendingImage, category: wdFormState.cat, color: wdFormState.color || 'white', season: wdFormState.season, style: wdFormState.style, note });
+    wdToast('已更新');
+  } else {
+    const item = { id: 'c_' + Date.now() + '_' + Math.floor(Math.random()*1000), img: wdPendingImage, category: wdFormState.cat, color: wdFormState.color || 'white', season: wdFormState.season, style: wdFormState.style, note, createdAt: Date.now() };
+    if (!addCloth(item)) { return; }
+    wdToast('已添加');
+  }
+  closeModal();
+  wdSwitchTab(Store.get('wardrobe_tab', 'closet'));
+}
+
+/* === 衣物详情 === */
+function openClothDetail(id) {
+  const c = getCloth(id); if (!c) return;
+  const tags = [];
+  tags.push(`<span class="wd-detail-tag">${CAT_LABELS[c.category]}</span>`);
+  if (c.color) tags.push(`<span class="wd-detail-tag"><span class="wd-color-dot" style="background:${COLOR_SWATCHES[c.color]}"></span>${COLOR_LABELS[c.color]}</span>`);
+  (c.season || []).forEach(s => tags.push(`<span class="wd-detail-tag">${SEASON_LABELS[s]}</span>`));
+  if (c.style) tags.push(`<span class="wd-detail-tag">${STYLE_LABELS[c.style]}</span>`);
+  showModal('衣物详情', `
+    <div class="wd-detail">
+      <div class="wd-detail-img" style="background-image:url('${c.img}')"></div>
+      <div class="wd-detail-tags">${tags.join('')}</div>
+      ${c.note ? `<div class="wd-detail-note">${escapeHtml(c.note)}</div>` : ''}
+      <div class="wd-detail-actions">
+        <button class="btn btn-soft" onclick="closeModal();openEditForm('${id}')">编辑</button>
+        <button class="btn btn-ghost" onclick="confirmDeleteCloth('${id}')">删除</button>
+      </div>
+    </div>
+  `);
+}
+function confirmDeleteCloth(id) {
+  showModal('确认删除', `
+    <div class="wd-confirm">
+      <p>确定删除这件衣物吗？关联的穿搭记录也会一并清理。</p>
+      <div class="wd-form-actions">
+        <button class="btn btn-ghost" onclick="closeModal();openClothDetail('${id}')">取消</button>
+        <button class="btn" style="background:var(--red)" onclick="doDeleteCloth('${id}')">确认删除</button>
+      </div>
+    </div>
+  `);
+}
+function doDeleteCloth(id) {
+  deleteCloth(id);
+  closeModal();
+  wdToast('已删除');
+  wdSwitchTab(Store.get('wardrobe_tab', 'closet'));
+}
+
+/* === Tab 2: 智能搭配 === */
+function renderMatchTab() {
+  const clothes = getClothes();
+  const tops = clothes.filter(c => c.category === 'top' || c.category === 'onesie');
+  const bottoms = clothes.filter(c => c.category === 'bottom');
+  const styleOpts = `<option value="">全部风格</option>` + Object.entries(STYLE_LABELS).map(([k,v]) => `<option value="${k}">${v}</option>`).join('');
+  const seasonOpts = `<option value="">全部季节</option>` + Object.entries(SEASON_LABELS).map(([k,v]) => `<option value="${k}">${v}</option>`).join('');
+  return `
+    <div class="wd-match-page">
+      <div class="wd-preview" id="wdPreview">
+        <div class="wd-preview-slot" id="wdPreviewTop"><div class="wd-preview-empty">上装</div></div>
+        <div class="wd-preview-plus">+</div>
+        <div class="wd-preview-slot" id="wdPreviewBottom"><div class="wd-preview-empty">下装</div></div>
+      </div>
+      <div class="wd-match-hint" id="wdMatchHint"></div>
+      <div class="wd-match-actions">
+        <button class="btn" onclick="matchRandom()">换一套</button>
+        <button class="btn btn-soft" onclick="matchSurprise()">没灵感，帮帮我</button>
+        <button class="btn btn-ghost" onclick="matchClear()">清空</button>
+      </div>
+      <div class="wd-match-filters">
+        <select class="input" id="matchFilterStyle" onchange="matchFilterChange()">${styleOpts}</select>
+        <select class="input" id="matchFilterSeason" onchange="matchFilterChange()">${seasonOpts}</select>
+      </div>
+      <div class="wd-match-select">
+        <div class="wd-match-col">
+          <div class="wd-match-col-title">选择上装（${tops.length}）</div>
+          <div class="wd-match-list" id="wdMatchTops">
+            ${tops.length === 0 ? '<div class="wd-empty-sm">暂无上装</div>' : tops.map(c => `
+              <div class="wd-match-item ${wdMatchState.topId===c.id?'selected':''}" onclick="matchSelect('top','${c.id}')">
+                <div class="wd-match-item-img" style="background-image:url('${c.img}')"></div>
+              </div>`).join('')}
+          </div>
+        </div>
+        <div class="wd-match-col">
+          <div class="wd-match-col-title">选择下装（${bottoms.length}）</div>
+          <div class="wd-match-list" id="wdMatchBottoms">
+            ${bottoms.length === 0 ? '<div class="wd-empty-sm">暂无下装</div>' : bottoms.map(c => `
+              <div class="wd-match-item ${wdMatchState.bottomId===c.id?'selected':''}" onclick="matchSelect('bottom','${c.id}')">
+                <div class="wd-match-item-img" style="background-image:url('${c.img}')"></div>
+              </div>`).join('')}
+          </div>
+        </div>
+      </div>
+      <button class="btn wd-save-outfit" onclick="saveTodayOutfit()">今天穿这套</button>
+    </div>
+  `;
+}
+
+function afterMatchTab() { updateMatchPreview(); }
+
+function matchFilterChange() { /* 仅用于 surprise 时读取 */ }
+function matchSelect(type, id) {
+  if (type === 'top') wdMatchState.topId = (wdMatchState.topId === id ? null : id);
+  else wdMatchState.bottomId = (wdMatchState.bottomId === id ? null : id);
+  // 更新选中态
+  $$('#wdMatchTops .wd-match-item').forEach(el => el.classList.remove('selected'));
+  $$('#wdMatchBottoms .wd-match-item').forEach(el => el.classList.remove('selected'));
+  updateMatchPreview();
+}
+function filterClothes(category, style, season) {
+  return getClothes().filter(c => {
+    if (category === 'top' && !(c.category === 'top' || c.category === 'onesie')) return false;
+    if (category === 'bottom' && c.category !== 'bottom') return false;
+    if (style && c.style !== style) return false;
+    if (season && !(c.season || []).includes(season)) return false;
+    return true;
+  });
+}
+function matchRandom() {
+  const style = $('#matchFilterStyle')?.value || '';
+  const season = $('#matchFilterSeason')?.value || '';
+  let tops = filterClothes('top', style, season);
+  let bottoms = filterClothes('bottom', style, season);
+  if (!tops.length) tops = filterClothes('top', '', '');
+  if (!bottoms.length) bottoms = filterClothes('bottom', '', '');
+  if (!tops.length || !bottoms.length) { wdToast('衣物不足，请先添加'); return; }
+  wdMatchState.topId = tops[Math.floor(Math.random()*tops.length)].id;
+  wdMatchState.bottomId = bottoms[Math.floor(Math.random()*bottoms.length)].id;
+  // 更新 UI
+  $$('#wdMatchTops .wd-match-item').forEach(el => el.classList.toggle('selected', el.getAttribute('onclick')?.includes(wdMatchState.topId)));
+  $$('#wdMatchBottoms .wd-match-item').forEach(el => el.classList.toggle('selected', el.getAttribute('onclick')?.includes(wdMatchState.bottomId)));
+  updateMatchPreview();
+}
+function matchSurprise() {
+  const style = $('#matchFilterStyle')?.value || '';
+  const season = $('#matchFilterSeason')?.value || '';
+  let tops = filterClothes('top', style, season);
+  let bottoms = filterClothes('bottom', style, season);
+  if (!tops.length) tops = filterClothes('top', '', '');
+  if (!bottoms.length) bottoms = filterClothes('bottom', '', '');
+  if (!tops.length || !bottoms.length) { wdToast('衣物不足，请先添加'); return; }
+  // 生成10组取最高分
+  let best = null, bestScore = -1;
+  for (let i = 0; i < 10; i++) {
+    const t = tops[Math.floor(Math.random()*tops.length)];
+    const b = bottoms[Math.floor(Math.random()*bottoms.length)];
+    const score = colorHarmony(t.color, b.color);
+    if (score > bestScore) { bestScore = score; best = { topId: t.id, bottomId: b.id }; }
+  }
+  wdMatchState = best;
+  $$('#wdMatchTops .wd-match-item').forEach(el => el.classList.toggle('selected', el.getAttribute('onclick')?.includes(wdMatchState.topId)));
+  $$('#wdMatchBottoms .wd-match-item').forEach(el => el.classList.toggle('selected', el.getAttribute('onclick')?.includes(wdMatchState.bottomId)));
+  updateMatchPreview(bestScore);
+}
+function matchClear() {
+  wdMatchState = { topId: null, bottomId: null };
+  $$('#wdMatchTops .wd-match-item, #wdMatchBottoms .wd-match-item').forEach(el => el.classList.remove('selected'));
+  updateMatchPreview();
+}
+function colorHarmony(tc, bc) {
+  if (tc === 'multicolor' && bc === 'multicolor') return 20;
+  if (tc === bc) return 60;
+  if (COLOR_HARMONY[tc]?.includes(bc)) return 80;
+  return 30;
+}
+function updateMatchPreview(score) {
+  const slotTop = $('#wdPreviewTop');
+  const slotBot = $('#wdPreviewBottom');
+  const hint = $('#wdMatchHint');
+  if (!slotTop) return;
+  const t = wdMatchState.topId ? getCloth(wdMatchState.topId) : null;
+  const b = wdMatchState.bottomId ? getCloth(wdMatchState.bottomId) : null;
+  slotTop.innerHTML = t ? `<img src="${t.img}" />` : `<div class="wd-preview-empty">上装</div>`;
+  slotTop.classList.toggle('has-item', !!t);
+  slotBot.innerHTML = b ? `<img src="${b.img}" />` : `<div class="wd-preview-empty">下装</div>`;
+  slotBot.classList.toggle('has-item', !!b);
+  if (hint) {
+    if (score !== undefined && score < 50 && t && b) hint.textContent = '这个组合可能不太搭，仅供参考～';
+    else hint.textContent = '';
+  }
+}
+function saveTodayOutfit() {
+  if (!wdMatchState.topId && !wdMatchState.bottomId) { wdToast('请先选择搭配'); return; }
+  const today = dateKey(new Date());
+  saveOutfit({ date: today, topId: wdMatchState.topId, bottomId: wdMatchState.bottomId, onesieId: null, outerwearId: null, shoesId: null, accessoryId: null, note: '', savedAt: Date.now() });
+  wdToast('已记录今天穿的搭配');
+}
+
+/* === Tab 3: 穿搭日历 === */
+function renderCalendarTab() {
+  return `
+    <div class="wd-cal-wrap">
+      <div class="wd-cal-main">
+        <div class="cal-header">
+          <div class="cal-month" id="wdCalMonth"></div>
+          <div class="cal-nav">
+            <button onclick="wdCalMove(-1)">‹</button>
+            <button onclick="wdCalToday()">·</button>
+            <button onclick="wdCalMove(1)">›</button>
+          </div>
+        </div>
+        <div class="cal-grid" id="wdCalGrid"></div>
+      </div>
+      <div class="wd-cal-detail" id="wdCalDetail"></div>
+    </div>
+  `;
+}
+function afterCalendarTab() {
+  wdCalCursor = new Date();
+  wdCalSelected = dateKey(new Date());
+  drawWdCalendar();
+  loadWdCalDetail();
+}
+function drawWdCalendar() {
+  const y = wdCalCursor.getFullYear(), m = wdCalCursor.getMonth();
+  $('#wdCalMonth').textContent = `${y}年${m+1}月`;
+  const first = new Date(y, m, 1);
+  const startDay = first.getDay();
+  const daysInMonth = new Date(y, m+1, 0).getDate();
+  const prevDays = new Date(y, m, 0).getDate();
+  const outfits = getOutfits();
+  const todayK = dateKey(new Date());
+  const cells = [];
+  ['日','一','二','三','四','五','六'].forEach(w => cells.push(`<div class="cal-weekday">${w}</div>`));
+  for (let i = startDay - 1; i >= 0; i--) cells.push(`<div class="cal-day other-month">${prevDays - i}</div>`);
+  for (let d = 1; d <= daysInMonth; d++) {
+    const k = `${y}-${pad(m+1)}-${pad(d)}`;
+    const cls = ['cal-day'];
+    if (k === todayK) cls.push('today');
+    if (k === wdCalSelected) cls.push('selected');
+    if (outfits[k]) cls.push('has-outfit');
+    cells.push(`<div class="${cls.join(' ')}" onclick="wdCalSelect('${k}')">${d}</div>`);
+  }
+  const total = startDay + daysInMonth;
+  const fill = (7 - total % 7) % 7;
+  for (let i = 1; i <= fill; i++) cells.push(`<div class="cal-day other-month">${i}</div>`);
+  $('#wdCalGrid').innerHTML = cells.join('');
+}
+function wdCalSelect(k) { wdCalSelected = k; drawWdCalendar(); loadWdCalDetail(); }
+function wdCalMove(dir) { wdCalCursor.setMonth(wdCalCursor.getMonth() + dir); drawWdCalendar(); }
+function wdCalToday() { wdCalCursor = new Date(); wdCalSelected = dateKey(new Date()); drawWdCalendar(); loadWdCalDetail(); }
+function loadWdCalDetail() {
+  const o = getOutfit(wdCalSelected);
+  const el = $('#wdCalDetail');
+  if (!el) return;
+  const [y, m, d] = wdCalSelected.split('-');
+  if (!o) {
+    el.innerHTML = `<div class="note-date">${parseInt(m)}月${parseInt(d)}日</div><div class="note-empty">这天没有穿搭记录</div>`;
+    return;
+  }
+  const items = [];
+  [['topId','上装'],['bottomId','下装'],['onesieId','连身装'],['outerwearId','外套'],['shoesId','鞋履'],['accessoryId','配饰']].forEach(([k,label]) => {
+    if (o[k]) { const c = getCloth(o[k]); if (c) items.push({ label, c }); }
+  });
+  el.innerHTML = `
+    <div class="note-date">${parseInt(m)}月${parseInt(d)}日穿搭</div>
+    ${items.map(it => `
+      <div class="wd-cal-outfit-item">
+        <div class="wd-cal-outfit-img" style="background-image:url('${it.c.img}')"></div>
+        <div class="wd-cal-outfit-label">${it.label}</div>
+      </div>`).join('')}
+    ${o.note ? `<div class="wd-detail-note">${escapeHtml(o.note)}</div>` : ''}
+    <button class="btn btn-ghost btn-sm" style="margin-top:10px;" onclick="wdCalDeleteOutfit()">删除记录</button>
+  `;
+}
+function wdCalDeleteOutfit() {
+  deleteOutfit(wdCalSelected);
+  drawWdCalendar();
+  loadWdCalDetail();
+  wdToast('已删除穿搭记录');
 }
 
 /* =========================================================================
