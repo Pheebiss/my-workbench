@@ -1206,11 +1206,11 @@ function refreshMeal() {
   window._mealOverride = dateKey(new Date()) + '-s' + mealShuffle;
   const content = $('#moduleContent');
   content.innerHTML = renderMeal();
-  if (afterRender.meal) afterRender.meal();
+  // 注意：不调用 afterRender.meal，否则会重置 _mealOverride
 }
 
 afterRender.meal = () => {
-  // 每次进入模块时重置为当天推荐
+  // 每次切换进入模块时重置为当天推荐
   window._mealOverride = null;
 };
 

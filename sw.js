@@ -1,5 +1,5 @@
 /* Service Worker - 工作台离线缓存 */
-const CACHE = 'workbench-v9';
+const CACHE = 'workbench-v10';
 const ASSETS = [
   './',
   './index.html',
