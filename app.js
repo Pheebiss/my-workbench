@@ -761,38 +761,48 @@ function WordsAdd() {
   renderWords();
 }
 
-/* --- 古诗一首（在线获取） --- */
+/* --- 古诗一首（从本地 poems.json 加载，500 首每日轮换） --- */
+let _poemsCache = null;
+
+async function loadPoems() {
+  if (_poemsCache) return _poemsCache;
+  try {
+    const res = await fetch('poems.json');
+    if (!res.ok) throw new Error('fetch failed');
+    _poemsCache = await res.json();
+    return _poemsCache;
+  } catch (e) {
+    return null;
+  }
+}
+
 async function fetchDailyPoem() {
   const el = $('#dailyPoem');
   if (!el) return;
-  // 同一天显示同一首：用日期做种子缓存
-  const cacheKey = 'poem_' + dateKey(new Date());
-  const cached = Store.get(cacheKey);
-  if (cached) { renderDailyPoem(cached); return; }
-  // 主源：一言诗词分类（稳定、返回结构化 JSON：hitokoto/from/from_who）
-  try {
-    const res = await fetch('https://v1.hitokoto.cn/?c=i');
-    const data = await res.json();
-    const poem = {
-      content: data.hitokoto || '明月几时有，把酒问青天。',
-      origin: data.from || '水调歌头',
-      author: data.from_who || '苏轼',
-      category: '古诗文',
-    };
-    Store.set(cacheKey, poem);
-    renderDailyPoem(poem);
-  } catch (e) {
-    el.innerHTML = '<div class="daily-loading">诗词获取失败，请稍后刷新重试</div>';
+  el.innerHTML = '<div class="daily-loading">正在为你寻一首诗…</div>';
+
+  const poems = await loadPoems();
+  if (!poems || !poems.length) {
+    el.innerHTML = '<div class="daily-loading">诗词库加载失败，请刷新重试</div>';
+    return;
   }
+
+  // 用日期做种子选诗，同一天同一首
+  const key = dateKey(new Date());
+  let seed = 0;
+  for (let i = 0; i < key.length; i++) seed += key.charCodeAt(i) * (i + 1);
+  const poem = poems[seed % poems.length];
+  renderDailyPoem(poem);
 }
+
 function renderDailyPoem(p) {
   const el = $('#dailyPoem');
   if (!el) return;
   el.innerHTML = `
-    <div class="poem-origin">${escapeHtml(p.origin)}</div>
-    <div class="poem-author">〔${escapeHtml(p.author || '佚名')}〕</div>
+    <div class="poem-origin">${escapeHtml(p.title)}</div>
+    <div class="poem-author">〔${escapeHtml(p.dynasty || '')}〕${escapeHtml(p.author || '佚名')}</div>
     <div class="poem-content">${escapeHtml(p.content)}</div>
-    ${p.category ? `<div class="poem-category">${escapeHtml(p.category)}</div>` : ''}
+    ${p.note ? `<div class="poem-category">注：${escapeHtml(p.note)}</div>` : ''}
   `;
 }
 
