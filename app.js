@@ -1,6 +1,6 @@
 /* =========================================================================
  * 我的工作台 - 主应用脚本
- * 数据持久化：localStorage
+ * 数据持久化：localStorage + IndexedDB（衣橱图片）
  * ========================================================================= */
 
 /* ---------- 工具函数 ---------- */
@@ -26,11 +26,108 @@ const fmtDate = d => {
 const pad = n => String(n).padStart(2, '0');
 const dateKey = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
 
+/* ---------- IndexedDB 封装（衣橱图片存储，突破 5MB 限制） ---------- */
+const ImageDB = {
+  _db: null,
+  async init() {
+    if (this._db) return this._db;
+    return new Promise((resolve, reject) => {
+      const req = indexedDB.open('workbench_images', 1);
+      req.onupgradeneeded = e => {
+        const db = e.target.result;
+        if (!db.objectStoreNames.contains('images')) {
+          db.createObjectStore('images');
+        }
+      };
+      req.onsuccess = e => { this._db = e.target.result; resolve(this._db); };
+      req.onerror = e => reject(e.target.error);
+    });
+  },
+  async set(key, dataUrl) {
+    const db = await this.init();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction('images', 'readwrite');
+      tx.objectStore('images').put(dataUrl, key);
+      tx.oncomplete = () => resolve(true);
+      tx.onerror = e => reject(e.target.error);
+    });
+  },
+  async get(key) {
+    const db = await this.init();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction('images', 'readonly');
+      const req = tx.objectStore('images').get(key);
+      req.onsuccess = () => resolve(req.result || null);
+      req.onerror = e => reject(e.target.error);
+    });
+  },
+  async del(key) {
+    const db = await this.init();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction('images', 'readwrite');
+      tx.objectStore('images').delete(key);
+      tx.oncomplete = () => resolve(true);
+      tx.onerror = e => reject(e.target.error);
+    });
+  },
+};
+
+// 将图片存入 IndexedDB，返回引用 key（img:xxx）
+async function saveImgToIDB(clothId, dataUrl) {
+  await ImageDB.set(clothId, dataUrl);
+  return 'img:' + clothId;
+}
+
+// 解析图片引用：idb key → dataURL；旧数据 base64 → 原样返回
+async function resolveImg(src) {
+  if (!src) return '';
+  if (src.startsWith('img:')) {
+    const key = src.slice(4);
+    const data = await ImageDB.get(key);
+    return data || ''; // 取不到返回空
+  }
+  return src; // 旧的 base64 直接返回
+}
+
+// 批量异步填充图片到 DOM 元素
+async function fillImgs(entries) {
+  // entries: [{ el, src }] —— el 是 DOM 元素，src 是原始引用
+  await Promise.all(entries.map(async ({ el, src }) => {
+    if (!el) return;
+    const url = await resolveImg(src);
+    if (url) {
+      if (el.tagName === 'IMG') el.src = url;
+      else el.style.backgroundImage = `url('${url}')`;
+    }
+  }));
+}
+
+// 迁移旧数据：把 localStorage 中衣物的 base64 图片迁移到 IndexedDB
+async function migrateClothesImagesIfNeeded() {
+  const arr = getClothesRaw();
+  let migrated = false;
+  for (const c of arr) {
+    if (c.img && !c.img.startsWith('img:')) {
+      // 旧 base64 数据，迁移
+      try {
+        const newImg = await saveImgToIDB(c.id, c.img);
+        c.img = newImg;
+        migrated = true;
+      } catch (e) { /* 迁移失败保留旧数据 */ }
+    }
+  }
+  if (migrated) {
+    try { localStorage.setItem('wardrobe_items', JSON.stringify(arr)); } catch {}
+  }
+}
+
 /* ---------- 模块配置 ---------- */
 const MODULES = [
+  { id: 'home',     icon: '🏠', label: '首页' },
   { id: 'daily',    icon: '✓', label: '每日打卡' },
   { id: 'headline', icon: '☰', label: '今日头条' },
   { id: 'wardrobe', icon: '◇', label: '电子衣橱' },
+  { id: 'fun',      icon: '🎮', label: '休闲娱乐' },
   { id: 'meal',     icon: '○', label: '均衡膳食' },
   { id: 'period',   icon: '●', label: '经期记录' },
   { id: 'piano',    icon: '♫', label: '钢琴学习' },
@@ -335,7 +432,7 @@ function getDailyMeals() {
 }
 
 /* ---------- 应用状态 ---------- */
-let currentModule = 'daily';
+let currentModule = 'home';
 
 /* ---------- 初始化 ---------- */
 document.addEventListener('DOMContentLoaded', () => {
@@ -369,6 +466,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 大屏自动收起（桌面体验）—— 默认不收起，保持完整显示
+  // 迁移旧 localStorage 图片到 IndexedDB（异步执行，不阻塞渲染）
+  migrateClothesImagesIfNeeded().then(() => {
+    // 如果当前在衣橱页，迁移后刷新
+    if (currentModule === 'wardrobe') renderModule('wardrobe');
+  });
   renderModule(currentModule);
 });
 
@@ -393,9 +495,11 @@ function renderModule(id) {
   content.classList.add('fade');
 
   const map = {
+    home: renderHome,
     daily: renderDaily,
     headline: renderHeadline,
     wardrobe: renderWardrobe,
+    fun: renderFun,
     meal: renderMeal,
     period: renderPeriod,
     piano: () => renderLearn('piano'),
@@ -413,8 +517,82 @@ function renderModule(id) {
 const afterRender = {};
 
 /* =========================================================================
- * 模块 1：每日打卡
+ * 模块 0：首页（Hi OnePiece + 日期 + 天气 + 每日金句）
  * ========================================================================= */
+function renderHome() {
+  return `
+    <div class="home-page">
+      <div class="home-card">
+        <div class="home-greeting">Hi, OnePiece</div>
+        <div class="home-date" id="homeDate"></div>
+        <div class="home-weather" id="homeWeather">
+          <span class="home-weather-loading">天气加载中…</span>
+        </div>
+        <div class="home-divider"></div>
+        <div class="home-quote" id="homeQuote">
+          <span class="home-quote-loading">正在获取今日金句…</span>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+afterRender.home = () => {
+  const d = new Date();
+  $('#homeDate').textContent = fmtDate(d);
+  fetchHomeWeather();
+  fetchHomeQuote();
+};
+
+// WMO 天气码 → 中文描述 + emoji
+const WMO_WEATHER = {
+  0:['晴','☀️'], 1:['大部晴','🌤️'], 2:['多云','⛅'], 3:['阴天','☁️'],
+  45:['有雾','🌫️'], 48:['雾凇','🌫️'],
+  51:['小毛毛雨','🌦️'], 53:['毛毛雨','🌦️'], 55:['大毛毛雨','🌧️'],
+  56:['冻毛毛雨','🌧️'], 57:['强冻毛毛雨','🌧️'],
+  61:['小雨','🌦️'], 63:['中雨','🌧️'], 65:['大雨','🌧️'],
+  66:['冻雨','🌧️'], 67:['强冻雨','🌧️'],
+  71:['小雪','🌨️'], 73:['中雪','🌨️'], 75:['大雪','❄️'], 77:['米雪','🌨️'],
+  80:['阵雨','🌦️'], 81:['强阵雨','🌧️'], 82:['暴阵雨','⛈️'],
+  85:['阵雪','🌨️'], 86:['强阵雪','❄️'],
+  95:['雷暴','⛈️'], 96:['雷暴冰雹','⛈️'], 99:['强雷暴冰雹','⛈️'],
+};
+
+async function fetchHomeWeather() {
+  const el = $('#homeWeather');
+  if (!el) return;
+  try {
+    // 上海经纬度，取当前天气
+    const url = 'https://api.open-meteo.com/v1/forecast?latitude=31.23&longitude=121.47&current=temperature_2m,weather_code&timezone=Asia/Shanghai';
+    const res = await fetch(url);
+    const data = await res.json();
+    const temp = Math.round(data.current.temperature_2m);
+    const code = data.current.weather_code;
+    const desc = WMO_WEATHER[code] || ['未知','🌡️'];
+    el.innerHTML = `<span class="home-weather-icon">${desc[1]}</span><span>上海 · ${desc[0]} ${temp}°C</span>`;
+  } catch (e) {
+    el.innerHTML = `<span class="home-weather-icon">🌡️</span><span>上海 · 天气获取失败</span>`;
+  }
+}
+
+async function fetchHomeQuote() {
+  const el = $('#homeQuote');
+  if (!el) return;
+  try {
+    // 一言接口：c=i 诗词, c=k 哲理，随机取
+    const res = await fetch('https://v1.hitokoto.cn/?c=i&c=k');
+    const data = await res.json();
+    const text = data.hitokoto || '今天永远是昨天死去的人所期待的明天';
+    const from = data.from ? `—— ${data.from_who ? data.from_who + '·' : ''}${data.from}` : '';
+    el.innerHTML = `<div class="home-quote-text">「${text}」</div>${from ? `<div class="home-quote-from">${from}</div>` : ''}`;
+  } catch (e) {
+    // 降级金句
+    const fallback = '今天永远是昨天死去的人所期待的明天';
+    el.innerHTML = `<div class="home-quote-text">「${fallback}」</div><div class="home-quote-from">—— 每日金句</div>`;
+  }
+}
+
+
 function renderDaily() {
   return `
     <div class="grid grid-2">
@@ -452,6 +630,22 @@ function renderDaily() {
         <div class="stat-display" id="wordsDisplay">今日已码 <b id="wordsTotal">0</b> 字</div>
       </div>
     </div>
+
+    <div class="grid grid-2">
+      <div class="card daily-poem-card">
+        <div class="card-title"><span class="ico">📜</span>古诗一首</div>
+        <div id="dailyPoem">
+          <div class="daily-loading">正在为你寻一首诗…</div>
+        </div>
+      </div>
+
+      <div class="card daily-book-card">
+        <div class="card-title"><span class="ico">📚</span>经典诵读</div>
+        <div id="dailyBook">
+          <div class="daily-loading">今日好书推荐加载中…</div>
+        </div>
+      </div>
+    </div>
   `;
 }
 
@@ -462,6 +656,8 @@ afterRender.daily = () => {
   renderWater();
   renderSports();
   renderWords();
+  fetchDailyPoem();
+  fetchDailyBook();
 };
 
 /* --- 待办 --- */
@@ -565,17 +761,106 @@ function WordsAdd() {
   renderWords();
 }
 
+/* --- 古诗一首（在线获取） --- */
+async function fetchDailyPoem() {
+  const el = $('#dailyPoem');
+  if (!el) return;
+  // 同一天显示同一首：用日期做种子缓存
+  const cacheKey = 'poem_' + dateKey(new Date());
+  const cached = Store.get(cacheKey);
+  if (cached) { renderDailyPoem(cached); return; }
+  // 主源：一言诗词分类（稳定、返回结构化 JSON：hitokoto/from/from_who）
+  try {
+    const res = await fetch('https://v1.hitokoto.cn/?c=i');
+    const data = await res.json();
+    const poem = {
+      content: data.hitokoto || '明月几时有，把酒问青天。',
+      origin: data.from || '水调歌头',
+      author: data.from_who || '苏轼',
+      category: '古诗文',
+    };
+    Store.set(cacheKey, poem);
+    renderDailyPoem(poem);
+  } catch (e) {
+    el.innerHTML = '<div class="daily-loading">诗词获取失败，请稍后刷新重试</div>';
+  }
+}
+function renderDailyPoem(p) {
+  const el = $('#dailyPoem');
+  if (!el) return;
+  el.innerHTML = `
+    <div class="poem-origin">${escapeHtml(p.origin)}</div>
+    <div class="poem-author">〔${escapeHtml(p.author || '佚名')}〕</div>
+    <div class="poem-content">${escapeHtml(p.content)}</div>
+    ${p.category ? `<div class="poem-category">${escapeHtml(p.category)}</div>` : ''}
+  `;
+}
+
+/* --- 经典诵读（每日推荐一本书） --- */
+const CLASSIC_BOOKS = [
+  { title: '红楼梦', author: '曹雪芹', wiki: '红楼梦', desc: '中国古典四大名著之首，以贾宝玉、林黛玉、薛宝钗的爱情婚姻悲剧为主线，深刻描写了贾府由盛转衰的过程。全书塑造了数百个栩栩如生的人物形象，是中国封建社会的百科全书，被誉为中国文学的巅峰之作。' },
+  { title: '百年孤独', author: '加西亚·马尔克斯', wiki: '百年孤独', desc: '魔幻现实主义文学的代表作，讲述了布恩迪亚家族七代人的传奇故事和马孔多小镇的百年兴衰。作品融合神话、民间故事与现实主义，展现了拉丁美洲的历史文化与孤独宿命。1982年诺贝尔文学奖获奖作品。' },
+  { title: '活着', author: '余华', wiki: '活着_(小说)', desc: '一部讲述苦难与生命韧性的当代经典。主人公福贵经历了从地主少爷到普通农民的人生巨变，亲人相继离世，却始终坚强地活着。小说以平实的笔触揭示了生命的本质——活着本身就是意义。' },
+  { title: '小王子', author: '安托万·德·圣埃克苏佩里', wiki: '小王子', desc: '一部写给大人的童话。小王子从自己的星球出发，游历各星球，最终来到地球。通过与飞行员的对话，揭示了爱、责任与生命的真谛。"真正重要的东西，用眼睛是看不见的"成为经典名言。' },
+  { title: '三国演义', author: '罗贯中', wiki: '三国演义', desc: '中国第一部长篇章回体历史演义小说，描写了东汉末年至西晋初年间近百年的历史风云。塑造了曹操、刘备、诸葛亮、关羽等鲜明人物形象，智谋交锋、忠义精神影响深远，是了解中国传统文化的必读之作。' },
+  { title: '简·爱', author: '夏洛蒂·勃朗特', wiki: '简·爱', desc: '一部具有自传色彩的女性成长小说。简·爱自幼寄人篱下，历经磨难却始终保持独立人格与尊严。她与罗切斯特的爱情故事，传递了女性追求平等、自由与真爱的精神，是英国文学史上的经典之作。' },
+  { title: '水浒传', author: '施耐庵', wiki: '水浒传', desc: '中国四大名著之一，讲述了北宋末年以宋江为首的一百零八位好汉被逼上梁山、替天行道的故事。塑造了武松、林冲、鲁智深等英雄形象，展现了"官逼民反"的社会现实，侠义精神深入人心。' },
+  { title: '骆驼祥子', author: '老舍', wiki: '骆驼祥子', desc: '老舍代表作，讲述北平人力车夫祥子从满怀希望到最终堕落的人生历程。祥子三起三落的买车梦，折射出旧社会底层劳动人民的苦难命运。语言京味浓郁，是中国现代文学的现实主义杰作。' },
+  { title: '平凡的世界', author: '路遥', wiki: '平凡的世界', desc: '以陕北农村为背景，描绘了孙少安、孙少平兄弟为代表的青年在时代变革中的奋斗历程。全景式展现了中国七八十年代城乡社会变迁，讴歌了普通人在困境中不屈不挠的精神，获茅盾文学奖。' },
+  { title: '西游记', author: '吴承恩', wiki: '西游记', desc: '中国四大名著之一，讲述唐僧师徒四人西天取经、历经九九八十一难的故事。孙悟空的形象深入人心，全书想象力丰富、语言幽默，融神话、寓言与哲理于一体，是中国浪漫主义文学的瑰宝。' },
+  { title: '围城', author: '钱钟书', wiki: '围城_(小说)', desc: '一部讽刺小说经典。以方鸿渐留学归国后的爱情与事业经历为主线，描绘了抗战时期知识分子的众生相。"婚姻是一座围城，城外的人想进去，城里的人想出来"成为传世名言，语言机智幽默、比喻精妙。' },
+  { title: '老人与海', author: '海明威', wiki: '老人与海', desc: '海明威获诺贝尔奖的代表作。老渔夫圣地亚哥在海上与大马林鱼搏斗数日，最终拖回一副鱼骨架。故事简练有力，诠释了"人可以被毁灭，但不能被打败"的硬汉精神，是20世纪最伟大的中篇小说之一。' },
+  { title: '城南旧事', author: '林海音', wiki: '城南旧事', desc: '以小女孩英子的视角，回忆上世纪二十年代北京城南的童年往事。透过英子纯真的眼光，呈现了成人世界的悲欢离合。文笔温柔细腻，乡愁弥漫，是台湾文学的经典之作，也是了解老北京的风情画卷。' },
+  { title: '了不起的盖茨比', author: '菲茨杰拉德', wiki: '了不起的盖茨比', desc: '美国"爵士时代"的挽歌。盖茨比致富后苦恋旧爱黛西，最终梦想破灭。小说以唯美笔调揭示了"美国梦"的虚幻与物质时代的空虚，被公认为美国文学经典，多次被改编为电影。' },
+];
+
+async function fetchDailyBook() {
+  const el = $('#dailyBook');
+  if (!el) return;
+  // 用日期种子选书，同一天同一本
+  const key = dateKey(new Date());
+  let seed = 0;
+  for (let i = 0; i < key.length; i++) seed += key.charCodeAt(i) * (i + 1);
+  const book = CLASSIC_BOOKS[seed % CLASSIC_BOOKS.length];
+  renderDailyBook(book);
+}
+function renderDailyBook(b) {
+  const el = $('#dailyBook');
+  if (!el) return;
+  el.innerHTML = `
+    <div class="book-title">${escapeHtml(b.title)}</div>
+    <div class="book-author">作者：${escapeHtml(b.author)}</div>
+    <div class="book-desc">${escapeHtml(b.desc)}</div>
+  `;
+}
+
 /* =========================================================================
  * 模块 2：今日头条
  * ========================================================================= */
-const NEWS = [
-  { tag: '国内', cls: 'tag-domestic', title: '国务院发布新一轮稳就业稳经济政策举措', url: 'https://www.gov.cn/zhengce/content/202507/content_7031215.htm' },
-  { tag: '国际', cls: 'tag-intl', title: '多国央行行长就全球通胀形势展开磋商', url: 'https://www.pbc.gov.cn/goutongjiaoliu/113456/113469/2026041710335851816/index.html' },
-  { tag: '财经', cls: 'tag-finance', title: 'A股三大指数集体收涨，科技板块领涨', url: 'https://www.cs.com.cn/gppd/gsyj/202303/t20230303_6326834.html' },
-  { tag: '科技', cls: 'tag-tech', title: '国产大模型迭代升级，多模态能力提升', url: 'https://news.cctv.com/2026/05/17/ARTIUUekaDVugGawlh5fLIjH260517.shtml' },
-  { tag: '体育', cls: 'tag-sports', title: '中国女排备战世界锦标赛集训名单公布', url: 'https://www.peopleapp.com/column/30051793293-500007424021' },
-  { tag: '娱乐', cls: 'tag-entertain', title: '暑期档电影票房持续走高，多部新片定档', url: 'http://www.xinhuanet.com/ent/20260707/362a0203ee804cd59a2041955a972075/c.html' },
+
+// 降级新闻（API 失败时显示）
+const FALLBACK_NEWS = [
+  { tag: '国内', cls: 'tag-domestic', title: '国务院发布新一轮稳就业稳经济政策举措', url: 'https://www.gov.cn/' },
+  { tag: '国际', cls: 'tag-intl', title: '多国央行行长就全球通胀形势展开磋商', url: 'https://www.bbc.com/zhongwen/simp' },
+  { tag: '财经', cls: 'tag-finance', title: 'A股三大指数集体收涨，科技板块领涨', url: 'https://www.cs.com.cn/' },
+  { tag: '科技', cls: 'tag-tech', title: '国产大模型迭代升级，多模态能力提升', url: 'https://news.cctv.com/' },
+  { tag: '体育', cls: 'tag-sports', title: '中国女排备战世界锦标赛集训名单公布', url: 'https://www.people.com.cn/' },
+  { tag: '娱乐', cls: 'tag-entertain', title: '暑期档电影票房持续走高，多部新片定档', url: 'http://www.xinhuanet.com/ent/' },
 ];
+
+// RSS 源配置（通过 rss2json 代理转为 JSON，支持 CORS）
+const NEWS_FEEDS = [
+  { rss: 'https://feeds.bbci.co.uk/zhongwen/simp/rss.xml', tag: '国际', cls: 'tag-intl' },
+  { rss: 'https://feedx.net/rss/wsj.xml', tag: '财经', cls: 'tag-finance' },
+];
+
+// 关键词分类规则
+const NEWS_KEYWORDS = {
+  'tag-domestic': { tag: '国内', cls: 'tag-domestic', words: ['中国','国内','北京','上海','国务院','两会','政策','改革','民生','教育','医疗'] },
+  'tag-tech':     { tag: '科技', cls: 'tag-tech', words: ['科技','AI','人工智能','芯片','互联网','大模型','算法','数字','华为','腾讯','百度','字节'] },
+  'tag-sports':   { tag: '体育', cls: 'tag-sports', words: ['体育','奥运','冠军','联赛','足球','篮球','排球','网球','世界杯','NBA','CBA'] },
+  'tag-entertain':{ tag: '娱乐', cls: 'tag-entertain', words: ['电影','票房','明星','娱乐','音乐','综艺','演唱会','剧集','演员','导演'] },
+};
 
 // 实时行情配置（腾讯财经接口，支持浏览器 CORS）
 const MARKET_CODES = [
@@ -588,9 +873,9 @@ const MARKET_CODES = [
 function renderHeadline() {
   return `
     <div class="card">
-      <div class="card-title"><span class="ico">☰</span>新闻速览</div>
-      <div class="news-list">
-        ${NEWS.map(n => `
+      <div class="card-title"><span class="ico">☰</span>新闻速览 <span style="font-size:11px;color:var(--text-mute);font-weight:400;margin-left:6px;" id="newsStatus">加载中…</span></div>
+      <div class="news-list" id="newsList">
+        ${FALLBACK_NEWS.map(n => `
           <a class="news-item" href="${n.url}" target="_blank" rel="noopener">
             <span class="news-tag ${n.cls}">${n.tag}</span>
             <span class="news-title">${n.title}</span>
@@ -615,7 +900,86 @@ function renderHeadline() {
   `;
 }
 
-afterRender.headline = fetchMarkets;
+afterRender.headline = () => { fetchMarkets(); fetchNews(); };
+
+// RSS 代理列表（按优先级轮换，某个 502/超时自动切下一个）
+const RSS_PROXIES = [
+  rss => 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rss),
+  rss => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(rss),
+];
+
+// 拉取实时新闻
+async function fetchNews() {
+  const list = $('#newsList');
+  const status = $('#newsStatus');
+  if (!list) return;
+  try {
+    // 并行获取多个 RSS 源，每个源尝试多个代理
+    const results = await Promise.allSettled(
+      NEWS_FEEDS.map(async feed => {
+        for (const proxy of RSS_PROXIES) {
+          try {
+            const url = proxy(feed.rss);
+            const res = await fetch(url);
+            if (!res.ok) continue; // 502/503 等，试下一个代理
+            const data = await res.json();
+            // allorigins 返回的是 { contents: "..." }，需解析 XML；rss2json 返回结构化 JSON
+            let items = [];
+            if (data.items) {
+              items = data.items;
+            } else if (data.contents) {
+              items = parseRSSXML(data.contents);
+            }
+            if (!items.length) continue;
+            return items.slice(0, 5).map(item => ({
+              title: item.title,
+              url: item.link,
+              tag: feed.tag,
+              cls: feed.cls,
+            }));
+          } catch (e) { continue; /* 试下一个代理 */ }
+        }
+        throw new Error('all proxies failed for ' + feed.rss);
+      })
+    );
+    // 合并所有成功的新闻
+    let allNews = [];
+    results.forEach(r => { if (r.status === 'fulfilled') allNews = allNews.concat(r.value); });
+    if (allNews.length < 3) throw new Error('not enough news');
+    // 按关键词重新分类
+    allNews = allNews.map(n => {
+      for (const [key, rule] of Object.entries(NEWS_KEYWORDS)) {
+        if (rule.words.some(w => n.title.includes(w))) {
+          return { ...n, tag: rule.tag, cls: rule.cls };
+        }
+      }
+      return n; // 保留原分类
+    });
+    // 取前6条
+    allNews = allNews.slice(0, 6);
+    list.innerHTML = allNews.map(n => `
+      <a class="news-item" href="${n.url}" target="_blank" rel="noopener">
+        <span class="news-tag ${n.cls}">${n.tag}</span>
+        <span class="news-title">${escapeHtml(n.title)}</span>
+      </a>
+    `).join('');
+    if (status) status.textContent = '· 实时更新';
+  } catch (e) {
+    // 降级：保留 FALLBACK_NEWS
+    if (status) status.textContent = '· 暂时使用离线新闻';
+  }
+}
+
+// 解析 RSS XML（allorigins 代理返回原始 XML 时用）
+function parseRSSXML(xmlText) {
+  try {
+    const doc = new DOMParser().parseFromString(xmlText, 'text/xml');
+    return [...doc.querySelectorAll('item')].map(item => ({
+      title: item.querySelector('title')?.textContent || '',
+      link: item.querySelector('link')?.textContent || '',
+    }));
+  } catch { return []; }
+}
 
 // 拉取实时行情
 function fetchMarkets() {
@@ -664,6 +1028,8 @@ function parseQuote(text, m) {
 /* --- 数据操作 --- */
 function getClothes() { return Store.get('wardrobe_items', []); }
 function getCloth(id) { return getClothes().find(c => c.id === id); }
+// getClothesRaw 是 getClothes 的别名，供迁移函数使用
+const getClothesRaw = getClothes;
 function safeSetClothes(arr) {
   try { localStorage.setItem('wardrobe_items', JSON.stringify(arr)); return true; }
   catch(e) { wdToast('存储空间不足，请删除一些旧衣物'); return false; }
@@ -677,7 +1043,9 @@ function updateCloth(id, patch) {
   const i = arr.findIndex(c => c.id === id);
   if (i >= 0) { arr[i] = { ...arr[i], ...patch }; safeSetClothes(arr); }
 }
-function deleteCloth(id) {
+async function deleteCloth(id) {
+  // 删除 IndexedDB 中的图片
+  try { await ImageDB.del(id); } catch {}
   const arr = getClothes().filter(c => c.id !== id);
   safeSetClothes(arr);
   // 清理穿搭记录中的引用
@@ -707,6 +1075,29 @@ function getStorageUsage() {
 }
 function getStorageRatio() { return Math.min(1, getStorageUsage() / 5120); }
 
+// IndexedDB 图片存储用量估算（异步）
+async function getImageStorageUsageKB() {
+  try {
+    const db = await ImageDB.init();
+    return new Promise(resolve => {
+      const tx = db.transaction('images', 'readonly');
+      const store = tx.objectStore('images');
+      const req = store.openCursor();
+      let total = 0;
+      req.onsuccess = e => {
+        const cursor = e.target.result;
+        if (cursor) {
+          total += (cursor.value || '').length;
+          cursor.continue();
+        } else {
+          resolve(Math.round(total * 3 / 4 / 1024)); // base64 → 实际 KB
+        }
+      };
+      req.onerror = () => resolve(0);
+    });
+  } catch { return 0; }
+}
+
 /* --- 图片压缩 --- */
 function estimateBase64Size(b64) { return Math.round(b64.length * 3 / 4 / 1024); }
 function compressImage(dataUrl, maxDim, quality) {
@@ -729,16 +1120,14 @@ async function handleFileUpload(file) {
   if (!file || !file.type.startsWith('image/')) { wdToast('请选择图片文件'); return; }
   const reader = new FileReader();
   reader.onload = async () => {
-    const ratio = getStorageRatio();
-    let maxDim = 600, quality = 0.7;
-    if (ratio > 0.85) { maxDim = 400; quality = 0.3; }
-    else if (ratio > 0.7) { maxDim = 500; quality = 0.5; }
+    // IndexedDB 无 5MB 限制，但仍压缩以保证性能（统一 800px / 0.75 质量）
+    let maxDim = 800, quality = 0.75;
     let result = await compressImage(reader.result, maxDim, quality);
     if (!result) { wdToast('图片处理失败'); return; }
-    // 逐级降级
-    while (estimateBase64Size(result) > 50) {
-      if (quality > 0.4) { quality -= 0.2; }
-      else if (maxDim > 300) { maxDim -= 100; quality = 0.5; }
+    // 适度压缩：如果仍超过 200KB，逐级降级
+    while (estimateBase64Size(result) > 200) {
+      if (quality > 0.4) { quality -= 0.15; }
+      else if (maxDim > 400) { maxDim -= 100; quality = 0.55; }
       else break;
       result = await compressImage(reader.result, maxDim, quality);
       if (!result) break;
@@ -850,10 +1239,9 @@ function renderClosetTab() {
     (filter.category === 'all' || c.category === filter.category) &&
     (filter.color === 'all' || c.color === filter.color)
   );
-  // 存储用量
-  const usageKB = getStorageUsage();
-  const usagePct = Math.round(usageKB / 5120 * 100);
-  const usageMB = (usageKB / 1024).toFixed(1);
+  // 存储用量（localStorage 元数据 + IndexedDB 图片）
+  const lsUsageKB = getStorageUsage();
+  const lsMB = (lsUsageKB / 1024).toFixed(1);
 
   return `
     <div class="wd-stats">
@@ -861,9 +1249,8 @@ function renderClosetTab() {
       ${Object.entries(stats.cats).map(([k,v]) => `<div class="wd-stat-item"><span class="wd-stat-num">${v}</span><span class="wd-stat-label">${CAT_LABELS[k]}</span></div>`).join('')}
       ${topColor ? `<div class="wd-stat-item"><span class="wd-stat-label">主色</span><span class="wd-stat-num" style="font-size:14px;">${COLOR_LABELS[topColor[0]]}</span></div>` : ''}
     </div>
-    <div class="wd-storage-bar ${usagePct>85?'danger':usagePct>70?'warn':''}">
-      <span>存储 ${usageMB}MB / 5MB</span>
-      <div class="wd-storage-track"><div class="wd-storage-fill" style="width:${usagePct}%"></div></div>
+    <div class="wd-storage-info" id="wdStorageInfo">
+      <span>存储：元数据 ${lsMB}MB · 图片 <span id="wdImgUsage">计算中…</span></span>
     </div>
     <div class="wd-toolbar">
       <button class="btn wd-add-btn" onclick="openAddForm()">+ 添加衣物</button>
@@ -877,7 +1264,7 @@ function renderClosetTab() {
         ? `<div class="wd-empty"><div class="wd-empty-icon">👗</div><p>${clothes.length===0?'衣橱还是空的，添加第一件衣物吧～':'没有符合条件的衣物'}</p>${clothes.length===0?'<button class="btn" onclick="openAddForm()">+ 添加衣物</button>':''}</div>`
         : filtered.map(c => `
           <div class="wd-card" onclick="openClothDetail('${c.id}')">
-            <div class="wd-card-img" style="background-image:url('${c.img}')"></div>
+            <div class="wd-card-img" data-img="${c.img}"></div>
             <div class="wd-card-info">
               <span class="wd-card-cat">${CAT_LABELS[c.category]}</span>
               <span class="wd-card-color" style="background:${COLOR_SWATCHES[c.color]}"></span>
@@ -888,7 +1275,14 @@ function renderClosetTab() {
   `;
 }
 
-function afterClosetTab() {}
+async function afterClosetTab() {
+  // 异步加载所有衣物图片 + 存储用量
+  const entries = $$('#wdGrid .wd-card-img[data-img]').map(el => ({ el, src: el.dataset.img }));
+  fillImgs(entries);
+  const imgKB = await getImageStorageUsageKB();
+  const el = $('#wdImgUsage');
+  if (el) el.textContent = (imgKB / 1024).toFixed(1) + 'MB（IndexedDB）';
+}
 
 function wdFilterSet(type, val) {
   const filter = Store.get('wardrobe_filter', { category: 'all', color: 'all' });
@@ -899,14 +1293,14 @@ function wdFilterSet(type, val) {
 
 /* === 添加/编辑表单 === */
 function openAddForm() {
-  if (getStorageRatio() > 0.95) { wdToast('存储空间已满，请先删除旧衣物'); return; }
   wdPendingImage = null;
   wdFormState = { cat: null, color: null, season: [], style: null, editId: null };
   showClothForm('添加衣物');
 }
-function openEditForm(id) {
+async function openEditForm(id) {
   const c = getCloth(id); if (!c) return;
-  wdPendingImage = c.img;
+  // 从 IndexedDB 加载真实图片数据用于预览
+  wdPendingImage = await resolveImg(c.img);
   wdFormState = { cat: c.category, color: c.color, season: c.season || [], style: c.style, editId: id };
   showClothForm('编辑衣物');
 }
@@ -962,15 +1356,19 @@ function wdChipSelect(type, val) {
   });
 }
 
-function submitClothForm() {
+async function submitClothForm() {
   if (!wdPendingImage) { wdToast('请先上传衣物照片'); return; }
   if (!wdFormState.cat) { wdToast('请选择类别'); return; }
   const note = $('#wdFormNote')?.value.trim() || '';
   if (wdFormState.editId) {
-    updateCloth(wdFormState.editId, { img: wdPendingImage, category: wdFormState.cat, color: wdFormState.color || 'white', season: wdFormState.season, style: wdFormState.style, note });
+    // 更新：图片存入 IndexedDB，衣物对象存引用 key
+    const imgRef = await saveImgToIDB(wdFormState.editId, wdPendingImage);
+    updateCloth(wdFormState.editId, { img: imgRef, category: wdFormState.cat, color: wdFormState.color || 'white', season: wdFormState.season, style: wdFormState.style, note });
     wdToast('已更新');
   } else {
-    const item = { id: 'c_' + Date.now() + '_' + Math.floor(Math.random()*1000), img: wdPendingImage, category: wdFormState.cat, color: wdFormState.color || 'white', season: wdFormState.season, style: wdFormState.style, note, createdAt: Date.now() };
+    const clothId = 'c_' + Date.now() + '_' + Math.floor(Math.random()*1000);
+    const imgRef = await saveImgToIDB(clothId, wdPendingImage);
+    const item = { id: clothId, img: imgRef, category: wdFormState.cat, color: wdFormState.color || 'white', season: wdFormState.season, style: wdFormState.style, note, createdAt: Date.now() };
     if (!addCloth(item)) { return; }
     wdToast('已添加');
   }
@@ -988,7 +1386,7 @@ function openClothDetail(id) {
   if (c.style) tags.push(`<span class="wd-detail-tag">${STYLE_LABELS[c.style]}</span>`);
   showModal('衣物详情', `
     <div class="wd-detail">
-      <div class="wd-detail-img" style="background-image:url('${c.img}')"></div>
+      <div class="wd-detail-img" data-img="${c.img}"></div>
       <div class="wd-detail-tags">${tags.join('')}</div>
       ${c.note ? `<div class="wd-detail-note">${escapeHtml(c.note)}</div>` : ''}
       <div class="wd-detail-actions">
@@ -997,6 +1395,8 @@ function openClothDetail(id) {
       </div>
     </div>
   `);
+  // 异步加载详情图片
+  fillImgs([{ el: $('.wd-detail-img[data-img]'), src: c.img }]);
 }
 function confirmDeleteCloth(id) {
   showModal('确认删除', `
@@ -1009,8 +1409,8 @@ function confirmDeleteCloth(id) {
     </div>
   `);
 }
-function doDeleteCloth(id) {
-  deleteCloth(id);
+async function doDeleteCloth(id) {
+  await deleteCloth(id);
   closeModal();
   wdToast('已删除');
   wdSwitchTab(Store.get('wardrobe_tab', 'closet'));
@@ -1046,7 +1446,7 @@ function renderMatchTab() {
           <div class="wd-match-list" id="wdMatchTops">
             ${tops.length === 0 ? '<div class="wd-empty-sm">暂无上装</div>' : tops.map(c => `
               <div class="wd-match-item ${wdMatchState.topId===c.id?'selected':''}" onclick="matchSelect('top','${c.id}')">
-                <div class="wd-match-item-img" style="background-image:url('${c.img}')"></div>
+                <div class="wd-match-item-img" data-img="${c.img}"></div>
               </div>`).join('')}
           </div>
         </div>
@@ -1055,7 +1455,7 @@ function renderMatchTab() {
           <div class="wd-match-list" id="wdMatchBottoms">
             ${bottoms.length === 0 ? '<div class="wd-empty-sm">暂无下装</div>' : bottoms.map(c => `
               <div class="wd-match-item ${wdMatchState.bottomId===c.id?'selected':''}" onclick="matchSelect('bottom','${c.id}')">
-                <div class="wd-match-item-img" style="background-image:url('${c.img}')"></div>
+                <div class="wd-match-item-img" data-img="${c.img}"></div>
               </div>`).join('')}
           </div>
         </div>
@@ -1065,7 +1465,15 @@ function renderMatchTab() {
   `;
 }
 
-function afterMatchTab() { updateMatchPreview(); }
+function afterMatchTab() {
+  loadMatchListImgs();
+  updateMatchPreview();
+}
+
+function loadMatchListImgs() {
+  const entries = $$('#wdTabContent .wd-match-item-img[data-img]').map(el => ({ el, src: el.dataset.img }));
+  fillImgs(entries);
+}
 
 function getMatchFilters() {
   return {
@@ -1084,15 +1492,17 @@ function matchFilterChange() {
   if (topsEl) {
     topsEl.innerHTML = tops.length === 0 ? '<div class="wd-empty-sm">该筛选下暂无上装</div>' : tops.map(c => `
       <div class="wd-match-item ${wdMatchState.topId===c.id?'selected':''}" onclick="matchSelect('top','${c.id}')">
-        <div class="wd-match-item-img" style="background-image:url('${c.img}')"></div>
+        <div class="wd-match-item-img" data-img="${c.img}"></div>
       </div>`).join('');
   }
   if (bottomsEl) {
     bottomsEl.innerHTML = bottoms.length === 0 ? '<div class="wd-empty-sm">该筛选下暂无下装</div>' : bottoms.map(c => `
       <div class="wd-match-item ${wdMatchState.bottomId===c.id?'selected':''}" onclick="matchSelect('bottom','${c.id}')">
-        <div class="wd-match-item-img" style="background-image:url('${c.img}')"></div>
+        <div class="wd-match-item-img" data-img="${c.img}"></div>
       </div>`).join('');
   }
+  // 异步加载新列表图片
+  loadMatchListImgs();
   // 更新标题数量
   const topTitle = $('.wd-match-col:nth-child(1) .wd-match-col-title');
   const bottomTitle = $('.wd-match-col:nth-child(2) .wd-match-col-title');
@@ -1166,17 +1576,22 @@ function colorHarmony(tc, bc) {
   if (COLOR_HARMONY[tc]?.includes(bc)) return 80;
   return 30;
 }
-function updateMatchPreview(score) {
+async function updateMatchPreview(score) {
   const slotTop = $('#wdPreviewTop');
   const slotBot = $('#wdPreviewBottom');
   const hint = $('#wdMatchHint');
   if (!slotTop) return;
   const t = wdMatchState.topId ? getCloth(wdMatchState.topId) : null;
   const b = wdMatchState.bottomId ? getCloth(wdMatchState.bottomId) : null;
-  slotTop.innerHTML = t ? `<img src="${t.img}" />` : `<div class="wd-preview-empty">上装</div>`;
+  slotTop.innerHTML = t ? `<img data-img="${t.img}" />` : `<div class="wd-preview-empty">上装</div>`;
   slotTop.classList.toggle('has-item', !!t);
-  slotBot.innerHTML = b ? `<img src="${b.img}" />` : `<div class="wd-preview-empty">下装</div>`;
+  slotBot.innerHTML = b ? `<img data-img="${b.img}" />` : `<div class="wd-preview-empty">下装</div>`;
   slotBot.classList.toggle('has-item', !!b);
+  // 异步加载预览图
+  const entries = [];
+  if (t) entries.push({ el: slotTop.querySelector('img'), src: t.img });
+  if (b) entries.push({ el: slotBot.querySelector('img'), src: b.img });
+  if (entries.length) fillImgs(entries);
   if (hint) {
     if (score !== undefined && score < 50 && t && b) hint.textContent = '这个组合可能不太搭，仅供参考～';
     else hint.textContent = '';
@@ -1259,18 +1674,100 @@ function loadWdCalDetail() {
     <div class="note-date">${parseInt(m)}月${parseInt(d)}日穿搭</div>
     ${items.map(it => `
       <div class="wd-cal-outfit-item">
-        <div class="wd-cal-outfit-img" style="background-image:url('${it.c.img}')"></div>
+        <div class="wd-cal-outfit-img" data-img="${it.c.img}"></div>
         <div class="wd-cal-outfit-label">${it.label}</div>
       </div>`).join('')}
     ${o.note ? `<div class="wd-detail-note">${escapeHtml(o.note)}</div>` : ''}
     <button class="btn btn-ghost btn-sm" style="margin-top:10px;" onclick="wdCalDeleteOutfit()">删除记录</button>
   `;
+  // 异步加载日历详情图片
+  fillImgs($$('#wdCalDetail .wd-cal-outfit-img[data-img]').map(el => ({ el, src: el.dataset.img })));
 }
 function wdCalDeleteOutfit() {
   deleteOutfit(wdCalSelected);
   drawWdCalendar();
   loadWdCalDetail();
   wdToast('已删除穿搭记录');
+}
+
+/* =========================================================================
+ * 模块 3.5：休闲娱乐（折扣游戏）
+ * ========================================================================= */
+
+// 本地降级数据：6 款经典 2D 游戏（API 异常时显示）
+const FALLBACK_GAMES = [
+  { title: 'Hollow Knight', normalPrice: '14.99', salePrice: '7.49', savings: 50, thumb: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/367520/capsule_236x167.jpg', desc: '一款极具深度的 2D 动作冒险游戏，探索广阔的虫族王国，挑战凶猛的Boss，揭开古老的秘密。' },
+  { title: 'Stardew Valley', normalPrice: '14.99', salePrice: '9.99', savings: 33, thumb: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/413150/capsule_236x167.jpg', desc: '继承爷爷的农场，开始全新的乡村生活。种植作物、养殖动物、钓鱼挖矿、结交村民，体验放松治愈的农场模拟。' },
+  { title: 'Celeste', normalPrice: '19.99', salePrice: '4.99', savings: 75, thumb: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/504230/capsule_236x167.jpg', desc: '帮助玛德琳攀登塞莱斯特山，克服内心恐惧。一款关于自我挑战的精品 2D 平台跳跃游戏，关卡设计精妙绝伦。' },
+  { title: 'Dead Cells', normalPrice: '24.99', salePrice: '12.49', savings: 50, thumb: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/588650/capsule_236x167.jpg', desc: 'Roguelite + 银河恶魔城玩法，快节奏 2D 战斗，每次死亡后重新探索不断变化的城堡，武器丰富、打击感极佳。' },
+  { title: 'Undertale', normalPrice: '9.99', salePrice: '4.99', savings: 50, thumb: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/391540/capsule_236x167.jpg', desc: '一款颠覆传统的 RPG 游戏，你可以选择不战斗而用对话化解冲突。幽默感人的剧情、经典像素风格、神级配乐。' },
+  { title: 'Ori and the Blind Forest', normalPrice: '19.99', salePrice: '4.99', savings: 75, thumb: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/261570/capsule_236x167.jpg', desc: '一款画面绝美的 2D 平台冒险游戏，操控白色精灵奥里拯救濒死的森林。视觉效果震撼，配乐催泪，关卡精巧。' },
+];
+
+function renderFun() {
+  return `
+    <div class="fun-page">
+      <div class="fun-header">
+        <div class="fun-header-title">🎮 折扣游戏推荐</div>
+        <div class="fun-header-sub">实时获取热门折扣游戏，每日精选 · 价格单位：美元</div>
+        <button class="btn btn-soft btn-sm fun-refresh" onclick="fetchFunGames()">🔄 刷新</button>
+      </div>
+      <div class="fun-grid" id="funGrid">
+        <div class="fun-loading">正在获取折扣信息…</div>
+      </div>
+    </div>
+  `;
+}
+
+afterRender.fun = () => { fetchFunGames(); };
+
+async function fetchFunGames() {
+  const grid = $('#funGrid');
+  if (!grid) return;
+  grid.innerHTML = '<div class="fun-loading">正在获取折扣信息…</div>';
+  try {
+    // CheapShark 全平台折扣游戏，按折扣幅度排序
+    const url = 'https://www.cheapshark.com/api/1.0/deals?pageSize=24&sortBy=Savings&desc=1&onSale=1';
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('API error');
+    let deals = await res.json();
+    // 过滤掉折扣为0或太小的，取前6款折扣最大的
+    deals = deals.filter(d => parseFloat(d.savings) > 0).slice(0, 6);
+    if (deals.length < 6) throw new Error('not enough');
+    const games = deals.map(d => ({
+      title: d.title,
+      normalPrice: parseFloat(d.normalPrice).toFixed(2),
+      salePrice: parseFloat(d.salePrice).toFixed(2),
+      savings: Math.round(parseFloat(d.savings)),
+      thumb: d.thumb || '',
+      desc: d.steamRatingText ? `Steam 评价：${d.steamRatingText}（${d.steamRatingPercent || 'N/A'}%）` : '热门折扣游戏，限时优惠中',
+    }));
+    renderFunGames(games);
+  } catch (e) {
+    // 降级为本地预设数据
+    renderFunGames(FALLBACK_GAMES);
+  }
+}
+
+function renderFunGames(games) {
+  const grid = $('#funGrid');
+  if (!grid) return;
+  grid.innerHTML = games.map(g => `
+    <div class="fun-card">
+      <div class="fun-card-img" style="background-image:url('${g.thumb}')" onerror="this.style.background='linear-gradient(135deg,var(--primary-soft),var(--accent-soft))';this.innerHTML='<span class=\\'fun-img-fallback\\'>🎮</span>'">
+        ${g.savings >= 70 ? '<span class="fun-badge-hot">🔥超值</span>' : ''}
+      </div>
+      <div class="fun-card-body">
+        <div class="fun-card-title">${escapeHtml(g.title)}</div>
+        <div class="fun-card-prices">
+          <span class="fun-price-old">$${g.normalPrice}</span>
+          <span class="fun-price-new">$${g.salePrice}</span>
+          <span class="fun-price-off">-${g.savings}%</span>
+        </div>
+        <div class="fun-card-desc">${escapeHtml(g.desc)}</div>
+      </div>
+    </div>
+  `).join('');
 }
 
 /* =========================================================================

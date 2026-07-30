@@ -1,5 +1,5 @@
 /* Service Worker - 工作台离线缓存 */
-const CACHE = 'workbench-v22';
+const CACHE = 'workbench-v23';
 const ASSETS = [
   './',
   './index.html',
@@ -28,19 +28,23 @@ self.addEventListener('activate', e => {
   );
 });
 
-// 请求拦截：缓存优先，回退网络
+// 请求拦截：同源资源网络优先（保证最新代码），跨域 API 直接放行不缓存
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
+  const url = new URL(e.request.url);
+  // 跨域请求（天气/新闻/行情等 API）直接走网络，不缓存
+  if (url.origin !== location.origin) {
+    e.respondWith(fetch(e.request).catch(() => new Response('', { status: 503 })));
+    return;
+  }
+  // 同源资源：网络优先，失败回退缓存
   e.respondWith(
-    caches.match(e.request).then(hit =>
-      hit || fetch(e.request).then(res => {
-        // 同源资源缓存一份
-        if (res.ok && new URL(e.request.url).origin === location.origin) {
-          const clone = res.clone();
-          caches.open(CACHE).then(c => c.put(e.request, clone));
-        }
-        return res;
-      }).catch(() => caches.match('./index.html'))
-    )
+    fetch(e.request).then(res => {
+      if (res.ok) {
+        const clone = res.clone();
+        caches.open(CACHE).then(c => c.put(e.request, clone));
+      }
+      return res;
+    }).catch(() => caches.match(e.request).then(hit => hit || caches.match('./index.html')))
   );
 });

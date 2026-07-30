@@ -1,7 +1,7 @@
 {
   "name": "我的工作台",
   "short_name": "工作台",
-  "description": "个人日常管理工作台：打卡、头条、衣橱、膳食、经期记录与六项学习模块",
+  "description": "个人日常管理工作台：首页、打卡、头条、衣橱、休闲娱乐、膳食、经期记录与六项学习模块",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",
