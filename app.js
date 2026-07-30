@@ -896,66 +896,129 @@ function renderHeadline() {
   `;
 }
 
+// RSS 源配置（中新网各分类，链接中国可访问）
+const NEWS_RSS_FEEDS = [
+  { rss: 'https://www.chinanews.com.cn/rss/world.xml',   tag: '国际', cls: 'tag-intl' },
+  { rss: 'https://www.chinanews.com.cn/rss/sports.xml',  tag: '体育', cls: 'tag-sports' },
+  { rss: 'https://www.chinanews.com.cn/rss/finance.xml', tag: '财经', cls: 'tag-finance' },
+  { rss: 'https://www.chinanews.com.cn/rss/edu.xml',     tag: '教育', cls: 'tag-edu' },
+  { rss: 'https://www.chinanews.com.cn/rss/scroll-news.xml', tag: '综合', cls: 'tag-domestic' },
+];
+
+// RSS 代理列表（按优先级轮换）
+const NEWS_RSS_PROXIES = [
+  rss => 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rss),
+  rss => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(rss),
+];
+
+// 缓存：避免频繁请求触发限流
+let _newsCache = null;
+let _newsCacheTime = 0;
+const NEWS_CACHE_TTL = 30 * 60 * 1000; // 30 分钟
+
 afterRender.headline = () => { fetchMarkets(); fetchNews(); };
 
-// 拉取实时新闻：优先读取同源 news.json（由 GitHub Actions 每小时更新）
+// 拉取实时新闻：2条国际 + 4条国内分类（体育/财经/教育/娱乐）
 async function fetchNews() {
   const list = $('#newsList');
   const status = $('#newsStatus');
   if (!list) return;
+
+  // 先用缓存快速渲染
+  if (_newsCache && Date.now() - _newsCacheTime < NEWS_CACHE_TTL) {
+    renderNews(list, status, _newsCache, '· 已缓存');
+    return;
+  }
+
   try {
-    const res = await fetch('news.json?t=' + Date.now());
-    if (!res.ok) throw new Error('news.json fetch failed');
-    const data = await res.json();
-    const news = data.news || [];
-    if (news.length < 3) throw new Error('not enough news');
-    list.innerHTML = news.map(n => `
-      <a class="news-item" href="${n.url}" target="_blank" rel="noopener">
-        <span class="news-tag ${n.cls}">${n.tag}</span>
-        <span class="news-title">${escapeHtml(n.title)}</span>
-      </a>
-    `).join('');
-    if (status) status.textContent = '· 更新于 ' + (data.updated || '未知');
-  } catch (e) {
-    // 降级：尝试通过 rss2json 在线获取（备选方案）
-    try {
-      const news = await fetchNewsViaRSS();
-      if (news.length >= 3) {
-        list.innerHTML = news.map(n => `
-          <a class="news-item" href="${n.url}" target="_blank" rel="noopener">
-            <span class="news-tag ${n.cls}">${n.tag}</span>
-            <span class="news-title">${escapeHtml(n.title)}</span>
-          </a>
-        `).join('');
-        if (status) status.textContent = '· 在线获取';
-        return;
+    const result = [];
+    // 1. 国际新闻：取前2条
+    const worldItems = await fetchRSSItems(NEWS_RSS_FEEDS[0].rss);
+    worldItems.slice(0, 2).forEach(item => {
+      result.push({
+        title: item.title,
+        url: item.link,
+        tag: '国际', cls: 'tag-intl',
+      });
+    });
+
+    // 2. 国内分类：体育/财经/教育 各1条
+    const sportsItems = await fetchRSSItems(NEWS_RSS_FEEDS[1].rss);
+    if (sportsItems[0]) result.push({ title: sportsItems[0].title, url: sportsItems[0].link, tag: '体育', cls: 'tag-sports' });
+
+    const financeItems = await fetchRSSItems(NEWS_RSS_FEEDS[2].rss);
+    if (financeItems[0]) result.push({ title: financeItems[0].title, url: financeItems[0].link, tag: '财经', cls: 'tag-finance' });
+
+    const eduItems = await fetchRSSItems(NEWS_RSS_FEEDS[3].rss);
+    if (eduItems[0]) result.push({ title: eduItems[0].title, url: eduItems[0].link, tag: '教育', cls: 'tag-edu' });
+
+    // 3. 娱乐：从综合滚动新闻中筛选（标题含娱乐关键词）
+    const ENTERTAIN_WORDS = ['电影','票房','明星','娱乐','音乐','综艺','演唱会','剧集','电视剧','演员','导演','歌手','出道','专辑','颁奖','影帝','影后','电影节','首映','定档','开播','收官','真人秀','偶像','选秀'];
+    const scrollItems = await fetchRSSItems(NEWS_RSS_FEEDS[4].rss);
+    let entertainFound = false;
+    for (const item of scrollItems) {
+      if (ENTERTAIN_WORDS.some(w => item.title.includes(w))) {
+        result.push({ title: item.title, url: item.link, tag: '娱乐', cls: 'tag-entertain' });
+        entertainFound = true;
+        break;
       }
-    } catch (e2) {}
+    }
+    // 兜底：从滚动新闻取一条
+    if (!entertainFound && scrollItems[0]) {
+      result.push({ title: scrollItems[0].title, url: scrollItems[0].link, tag: '国内', cls: 'tag-domestic' });
+    }
+
+    if (result.length < 3) throw new Error('not enough news: ' + result.length);
+
+    // 缓存
+    _newsCache = result;
+    _newsCacheTime = Date.now();
+    renderNews(list, status, result, '· 已更新');
+  } catch (e) {
     // 最终降级：保留 FALLBACK_NEWS
     if (status) status.textContent = '· 请稍后刷新';
   }
 }
 
-// 备选方案：通过 rss2json 代理获取中新网 RSS
-async function fetchNewsViaRSS() {
-  const feeds = [
-    { rss: 'https://www.chinanews.com.cn/rss/world.xml', tag: '国际', cls: 'tag-intl' },
-  ];
-  let allNews = [];
-  for (const feed of feeds) {
+function renderNews(list, status, news, msg) {
+  list.innerHTML = news.map(n => `
+    <a class="news-item" href="${n.url}" target="_blank" rel="noopener">
+      <span class="news-tag ${n.cls}">${n.tag}</span>
+      <span class="news-title">${escapeHtml(n.title)}</span>
+    </a>
+  `).join('');
+  if (status) status.textContent = msg;
+}
+
+// 通过代理获取 RSS items
+async function fetchRSSItems(rss) {
+  for (const proxy of NEWS_RSS_PROXIES) {
     try {
-      const url = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feed.rss);
+      const url = proxy(rss);
       const res = await fetch(url);
       if (!res.ok) continue;
       const data = await res.json();
-      if (data.items) {
-        allNews = allNews.concat(data.items.slice(0, 4).map(item => ({
-          title: item.title, url: item.link, tag: feed.tag, cls: feed.cls,
-        })));
+      // rss2json 返回 {items: [...]}，allorigins 返回原始 XML
+      if (data.items && Array.isArray(data.items)) {
+        return data.items;
+      }
+      if (data.contents) {
+        return parseRSSXML(data.contents);
       }
     } catch (e) { continue; }
   }
-  return allNews;
+  return [];
+}
+
+// 解析 RSS XML（allorigins 返回原始 XML 时用）
+function parseRSSXML(xmlText) {
+  try {
+    const doc = new DOMParser().parseFromString(xmlText, 'text/xml');
+    return [...doc.querySelectorAll('item')].map(item => ({
+      title: item.querySelector('title')?.textContent || '',
+      link: item.querySelector('link')?.textContent || '',
+    }));
+  } catch { return []; }
 }
 
 // 拉取实时行情
