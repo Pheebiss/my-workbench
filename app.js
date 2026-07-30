@@ -124,18 +124,18 @@ async function migrateClothesImagesIfNeeded() {
 /* ---------- 模块配置 ---------- */
 const MODULES = [
   { id: 'home',     icon: '🏠', label: '首页' },
-  { id: 'daily',    icon: '✓', label: '每日打卡' },
-  { id: 'headline', icon: '☰', label: '今日头条' },
-  { id: 'wardrobe', icon: '◇', label: '电子衣橱' },
+  { id: 'daily',    icon: '✅', label: '每日打卡' },
+  { id: 'headline', icon: '📰', label: '今日头条' },
+  { id: 'wardrobe', icon: '👗', label: '电子衣橱' },
   { id: 'fun',      icon: '🎮', label: '休闲娱乐' },
-  { id: 'meal',     icon: '○', label: '均衡膳食' },
-  { id: 'period',   icon: '●', label: '经期记录' },
-  { id: 'piano',    icon: '♫', label: '钢琴学习' },
-  { id: 'chess',    icon: '♞', label: '象棋学习' },
-  { id: 'calli',    icon: '书', label: '行楷书法' },
-  { id: 'sketch',   icon: '✐', label: '素描学习' },
-  { id: 'dance',    icon: '✦', label: '舞蹈学习' },
-  { id: 'sew',      icon: '✂', label: '裁剪学习' },
+  { id: 'meal',     icon: '🍱', label: '均衡膳食' },
+  { id: 'period',   icon: '🌸', label: '经期记录' },
+  { id: 'piano',    icon: '🎹', label: '钢琴学习' },
+  { id: 'chess',    icon: '♟️', label: '象棋学习' },
+  { id: 'calli',    icon: '✒️', label: '行楷书法' },
+  { id: 'sketch',   icon: '✏️', label: '素描学习' },
+  { id: 'dance',    icon: '💃', label: '舞蹈学习' },
+  { id: 'sew',      icon: '✂️', label: '裁剪学习' },
 ];
 
 const LEARN_DATA = {
@@ -848,29 +848,15 @@ function renderDailyBook(b) {
  * 模块 2：今日头条
  * ========================================================================= */
 
-// 降级新闻（API 失败时显示）
+// 降级新闻（news.json 加载失败时显示）
 const FALLBACK_NEWS = [
-  { tag: '国内', cls: 'tag-domestic', title: '国务院发布新一轮稳就业稳经济政策举措', url: 'https://www.gov.cn/' },
-  { tag: '国际', cls: 'tag-intl', title: '多国央行行长就全球通胀形势展开磋商', url: 'https://www.bbc.com/zhongwen/simp' },
-  { tag: '财经', cls: 'tag-finance', title: 'A股三大指数集体收涨，科技板块领涨', url: 'https://www.cs.com.cn/' },
-  { tag: '科技', cls: 'tag-tech', title: '国产大模型迭代升级，多模态能力提升', url: 'https://news.cctv.com/' },
-  { tag: '体育', cls: 'tag-sports', title: '中国女排备战世界锦标赛集训名单公布', url: 'https://www.people.com.cn/' },
-  { tag: '娱乐', cls: 'tag-entertain', title: '暑期档电影票房持续走高，多部新片定档', url: 'http://www.xinhuanet.com/ent/' },
+  { tag: '国际', cls: 'tag-intl', title: '国际新闻加载中，请稍后刷新', url: 'https://www.chinanews.com.cn/gj/' },
+  { tag: '体育', cls: 'tag-sports', title: '体育新闻加载中，请稍后刷新', url: 'https://www.chinanews.com.cn/ty/' },
+  { tag: '财经', cls: 'tag-finance', title: '财经新闻加载中，请稍后刷新', url: 'https://www.chinanews.com.cn/cj/' },
+  { tag: '教育', cls: 'tag-edu', title: '教育新闻加载中，请稍后刷新', url: 'https://www.chinanews.com.cn/edu/' },
+  { tag: '娱乐', cls: 'tag-entertain', title: '娱乐新闻加载中，请稍后刷新', url: 'https://www.chinanews.com.cn/cul/' },
+  { tag: '国内', cls: 'tag-domestic', title: '国内新闻加载中，请稍后刷新', url: 'https://www.chinanews.com.cn/gn/' },
 ];
-
-// RSS 源配置（通过 rss2json 代理转为 JSON，支持 CORS）
-const NEWS_FEEDS = [
-  { rss: 'https://feeds.bbci.co.uk/zhongwen/simp/rss.xml', tag: '国际', cls: 'tag-intl' },
-  { rss: 'https://feedx.net/rss/wsj.xml', tag: '财经', cls: 'tag-finance' },
-];
-
-// 关键词分类规则
-const NEWS_KEYWORDS = {
-  'tag-domestic': { tag: '国内', cls: 'tag-domestic', words: ['中国','国内','北京','上海','国务院','两会','政策','改革','民生','教育','医疗'] },
-  'tag-tech':     { tag: '科技', cls: 'tag-tech', words: ['科技','AI','人工智能','芯片','互联网','大模型','算法','数字','华为','腾讯','百度','字节'] },
-  'tag-sports':   { tag: '体育', cls: 'tag-sports', words: ['体育','奥运','冠军','联赛','足球','篮球','排球','网球','世界杯','NBA','CBA'] },
-  'tag-entertain':{ tag: '娱乐', cls: 'tag-entertain', words: ['电影','票房','明星','娱乐','音乐','综艺','演唱会','剧集','演员','导演'] },
-};
 
 // 实时行情配置（腾讯财经接口，支持浏览器 CORS）
 const MARKET_CODES = [
@@ -883,7 +869,7 @@ const MARKET_CODES = [
 function renderHeadline() {
   return `
     <div class="card">
-      <div class="card-title"><span class="ico">☰</span>新闻速览 <span style="font-size:11px;color:var(--text-mute);font-weight:400;margin-left:6px;" id="newsStatus">加载中…</span></div>
+      <div class="card-title"><span class="ico">📰</span>新闻速览 <span style="font-size:11px;color:var(--text-mute);font-weight:400;margin-left:6px;" id="newsStatus">加载中…</span></div>
       <div class="news-list" id="newsList">
         ${FALLBACK_NEWS.map(n => `
           <a class="news-item" href="${n.url}" target="_blank" rel="noopener">
@@ -895,7 +881,7 @@ function renderHeadline() {
     </div>
 
     <div class="card">
-      <div class="card-title"><span class="ico">▲</span>股市行情</div>
+      <div class="card-title"><span class="ico">📈</span>股市行情</div>
       <div class="market-grid" id="marketGrid">
         ${MARKET_CODES.map(m => `
           <div class="market-card" data-code="${m.code}">
@@ -912,83 +898,64 @@ function renderHeadline() {
 
 afterRender.headline = () => { fetchMarkets(); fetchNews(); };
 
-// RSS 代理列表（按优先级轮换，某个 502/超时自动切下一个）
-const RSS_PROXIES = [
-  rss => 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rss),
-  rss => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(rss),
-];
-
-// 拉取实时新闻
+// 拉取实时新闻：优先读取同源 news.json（由 GitHub Actions 每小时更新）
 async function fetchNews() {
   const list = $('#newsList');
   const status = $('#newsStatus');
   if (!list) return;
   try {
-    // 并行获取多个 RSS 源，每个源尝试多个代理
-    const results = await Promise.allSettled(
-      NEWS_FEEDS.map(async feed => {
-        for (const proxy of RSS_PROXIES) {
-          try {
-            const url = proxy(feed.rss);
-            const res = await fetch(url);
-            if (!res.ok) continue; // 502/503 等，试下一个代理
-            const data = await res.json();
-            // allorigins 返回的是 { contents: "..." }，需解析 XML；rss2json 返回结构化 JSON
-            let items = [];
-            if (data.items) {
-              items = data.items;
-            } else if (data.contents) {
-              items = parseRSSXML(data.contents);
-            }
-            if (!items.length) continue;
-            return items.slice(0, 5).map(item => ({
-              title: item.title,
-              url: item.link,
-              tag: feed.tag,
-              cls: feed.cls,
-            }));
-          } catch (e) { continue; /* 试下一个代理 */ }
-        }
-        throw new Error('all proxies failed for ' + feed.rss);
-      })
-    );
-    // 合并所有成功的新闻
-    let allNews = [];
-    results.forEach(r => { if (r.status === 'fulfilled') allNews = allNews.concat(r.value); });
-    if (allNews.length < 3) throw new Error('not enough news');
-    // 按关键词重新分类
-    allNews = allNews.map(n => {
-      for (const [key, rule] of Object.entries(NEWS_KEYWORDS)) {
-        if (rule.words.some(w => n.title.includes(w))) {
-          return { ...n, tag: rule.tag, cls: rule.cls };
-        }
-      }
-      return n; // 保留原分类
-    });
-    // 取前6条
-    allNews = allNews.slice(0, 6);
-    list.innerHTML = allNews.map(n => `
+    const res = await fetch('news.json?t=' + Date.now());
+    if (!res.ok) throw new Error('news.json fetch failed');
+    const data = await res.json();
+    const news = data.news || [];
+    if (news.length < 3) throw new Error('not enough news');
+    list.innerHTML = news.map(n => `
       <a class="news-item" href="${n.url}" target="_blank" rel="noopener">
         <span class="news-tag ${n.cls}">${n.tag}</span>
         <span class="news-title">${escapeHtml(n.title)}</span>
       </a>
     `).join('');
-    if (status) status.textContent = '· 实时更新';
+    if (status) status.textContent = '· 更新于 ' + (data.updated || '未知');
   } catch (e) {
-    // 降级：保留 FALLBACK_NEWS
-    if (status) status.textContent = '· 暂时使用离线新闻';
+    // 降级：尝试通过 rss2json 在线获取（备选方案）
+    try {
+      const news = await fetchNewsViaRSS();
+      if (news.length >= 3) {
+        list.innerHTML = news.map(n => `
+          <a class="news-item" href="${n.url}" target="_blank" rel="noopener">
+            <span class="news-tag ${n.cls}">${n.tag}</span>
+            <span class="news-title">${escapeHtml(n.title)}</span>
+          </a>
+        `).join('');
+        if (status) status.textContent = '· 在线获取';
+        return;
+      }
+    } catch (e2) {}
+    // 最终降级：保留 FALLBACK_NEWS
+    if (status) status.textContent = '· 请稍后刷新';
   }
 }
 
-// 解析 RSS XML（allorigins 代理返回原始 XML 时用）
-function parseRSSXML(xmlText) {
-  try {
-    const doc = new DOMParser().parseFromString(xmlText, 'text/xml');
-    return [...doc.querySelectorAll('item')].map(item => ({
-      title: item.querySelector('title')?.textContent || '',
-      link: item.querySelector('link')?.textContent || '',
-    }));
-  } catch { return []; }
+// 备选方案：通过 rss2json 代理获取中新网 RSS
+async function fetchNewsViaRSS() {
+  const feeds = [
+    { rss: 'https://www.chinanews.com.cn/rss/world.xml', tag: '国际', cls: 'tag-intl' },
+  ];
+  let allNews = [];
+  for (const feed of feeds) {
+    try {
+      const url = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(feed.rss);
+      const res = await fetch(url);
+      if (!res.ok) continue;
+      const data = await res.json();
+      if (data.items) {
+        allNews = allNews.concat(data.items.slice(0, 4).map(item => ({
+          title: item.title, url: item.link, tag: feed.tag, cls: feed.cls,
+        })));
+      }
+    } catch (e) { continue; }
+  }
+  return allNews;
 }
 
 // 拉取实时行情

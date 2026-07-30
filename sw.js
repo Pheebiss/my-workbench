@@ -1,11 +1,12 @@
 /* Service Worker - 工作台离线缓存 */
-const CACHE = 'workbench-v24';
+const CACHE = 'workbench-v25';
 const ASSETS = [
   './',
   './index.html',
   './styles.css',
   './app.js',
   './poems.json',
+  './news.json',
   './manifest.json',
   './icon-app-192.png',
   './icon-app-512.png',
