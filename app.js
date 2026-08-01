@@ -1926,56 +1926,59 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-08-01 12:33:08
+// 最后更新: 2026-08-01 12:38:32
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382212, reply: 1023, favorite: 39938 } },
+    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382213, reply: 1023, favorite: 39938 } },
     { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290293, reply: 800, favorite: 65018 } },
     { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267246, reply: 2325, favorite: 9392 } },
   ],
   fashion: [
-    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 221969, reply: 469, favorite: 33293 } },
+    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 221970, reply: 469, favorite: 33294 } },
     { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 90879, reply: 476, favorite: 26021 } },
     { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87301, reply: 304, favorite: 22608 } },
   ],
   game: [
-    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 350789, reply: 2789, favorite: 755641 } },
+    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 350790, reply: 2789, favorite: 755643 } },
     { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693887, reply: 4406, favorite: 130471 } },
     { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 516365, reply: 29104, favorite: 182858 } },
   ],
   travel: [
-    { bvid: 'BV1c4326hEkj', title: '挑战从东北徒步到西藏( 十倍速1小时5分版）', author: '阿丑徒步', pic: 'https://i2.hdslb.com/bfs/archive/41e4da2b1d369a0a7f5e4e976c1a4b2664b80de5.jpg', stats: { like: 440687, reply: 8763, favorite: 172442 } },
-    { bvid: 'BV1iAKb6xEEV', title: '古罗马离谱习俗——两千年前的古罗马，开放程度与市井智慧，完全颠覆现代人的认知。', author: '庞贝老丁', pic: 'https://i1.hdslb.com/bfs/archive/3bc19422fd9156b2a0f3cebf9d6afd98c697f045.jpg', stats: { like: 450874, reply: 10589, favorite: 98222 } },
-    { bvid: 'BV1V1GF6dE3z', title: '为什么5天涨粉170万？探索印度鸡佬“成吉思鸡”，让他做一份1000元豪华中国大盘鸡，真有那么美味吗？', author: '猛男阿凯奇幻之旅_kay', pic: 'https://i1.hdslb.com/bfs/archive/8a1c4e90df3c2b2f18d0b8ef7f313921c4f6a08e.jpg', stats: { like: 95765, reply: 2430, favorite: 13709 } },
+    { bvid: 'BV1c4326hEkj', title: '挑战从东北徒步到西藏( 十倍速1小时5分版）', author: '阿丑徒步', pic: 'https://i2.hdslb.com/bfs/archive/41e4da2b1d369a0a7f5e4e976c1a4b2664b80de5.jpg', stats: { like: 440919, reply: 8764, favorite: 172631 } },
+    { bvid: 'BV1iAKb6xEEV', title: '古罗马离谱习俗——两千年前的古罗马，开放程度与市井智慧，完全颠覆现代人的认知。', author: '庞贝老丁', pic: 'https://i1.hdslb.com/bfs/archive/3bc19422fd9156b2a0f3cebf9d6afd98c697f045.jpg', stats: { like: 451205, reply: 10603, favorite: 98292 } },
+    { bvid: 'BV1V1GF6dE3z', title: '为什么5天涨粉170万？探索印度鸡佬“成吉思鸡”，让他做一份1000元豪华中国大盘鸡，真有那么美味吗？', author: '猛男阿凯奇幻之旅_kay', pic: 'https://i1.hdslb.com/bfs/archive/8a1c4e90df3c2b2f18d0b8ef7f313921c4f6a08e.jpg', stats: { like: 95988, reply: 2437, favorite: 13751 } },
   ],
   general: [
-    { bvid: 'BV1Dx3i6nEm8', title: '【苏新皓｜4K直拍】囍 直拍｜梦寐以求·演唱会', author: 'JUSTSU_苏新皓', pic: 'https://i2.hdslb.com/bfs/archive/c9eb3a424e6815a3f0183fcba5705b60d30fc010.jpg', stats: { like: 121889, reply: 855087, favorite: 89881 } },
-    { bvid: 'BV1qh3W6bEqf', title: '小时候看不懂，长大后已是局中人', author: '就叫阿路8', pic: 'https://i1.hdslb.com/bfs/archive/16f75fbff5ec29ab46d6574040b119e68adfa60d.jpg', stats: { like: 619333, reply: 14205, favorite: 155321 } },
-    { bvid: 'BV19m3j6vE1S', title: '一个人清理海浪冲上来的垃圾有人夸吗', author: '哥们马喽', pic: 'https://i0.hdslb.com/bfs/archive/4328eb224aa9d73c7487cdd3db680dd949ec33af.jpg', stats: { like: 613447, reply: 3751, favorite: 60573 } },
+    { bvid: 'BV1Dx3i6nEm8', title: '【苏新皓｜4K直拍】囍 直拍｜梦寐以求·演唱会', author: 'JUSTSU_苏新皓', pic: 'https://i2.hdslb.com/bfs/archive/c9eb3a424e6815a3f0183fcba5705b60d30fc010.jpg', stats: { like: 121905, reply: 855737, favorite: 89889 } },
+    { bvid: 'BV1qh3W6bEqf', title: '小时候看不懂，长大后已是局中人', author: '就叫阿路8', pic: 'https://i1.hdslb.com/bfs/archive/16f75fbff5ec29ab46d6574040b119e68adfa60d.jpg', stats: { like: 619749, reply: 14223, favorite: 155435 } },
+    { bvid: 'BV19m3j6vE1S', title: '一个人清理海浪冲上来的垃圾有人夸吗', author: '哥们马喽', pic: 'https://i0.hdslb.com/bfs/archive/4328eb224aa9d73c7487cdd3db680dd949ec33af.jpg', stats: { like: 613675, reply: 3751, favorite: 60614 } },
   ],
 };
 
-// 抖音兜底数据（精选视频，每类2个，随机展示1个）
+// 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
+// 最后更新: 2026-08-01 12:38:51
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
-    { vid: '7544007594021719353', title: '日常妆教程 手残党也能学会', author: '抖音美妆达人', stats: { like: 520000, reply: 8900, favorite: 45000 } },
-    { vid: '7595888055229065396', title: '2025年度爱用彩妆大分享', author: '抖音美妆达人', stats: { like: 380000, reply: 5600, favorite: 32000 } },
+    { vid: '7663257459040996646', title: '贝林厄姆这波可惜了，但是应援小曲走起来屁股扭起来🏖️ 夏天就得是AFRO，依旧半个小时长set辣妹化妆chilling音', author: 'mattoon', stats: { like: 14547, reply: 73, favorite: 1392 } },
   ],
   fashion: [
     { vid: '7497859681856064820', title: '出游穿搭攻略 7件搭10套', author: '抖音穿搭达人', stats: { like: 610000, reply: 12000, favorite: 56000 } },
     { vid: '7554716213160774922', title: '9套旅行穿搭公式 超实穿', author: '抖音穿搭达人', stats: { like: 450000, reply: 7800, favorite: 39000 } },
   ],
   game: [
-    { vid: '7518423841267010875', title: '游戏开始了 精彩集锦', author: '抖音游戏达人', stats: { like: 890000, reply: 23000, favorite: 78000 } },
-    { vid: '7511259970482998580', title: '六月热门新游汇总', author: '抖音游戏达人', stats: { like: 720000, reply: 18000, favorite: 65000 } },
+    { vid: '7665290600635305268', title: '全面解读云天明的三个童话，渊龙，墓岛，黑曜石分别隐喻了什么？ #文脉里的中国  #抖音全民写作大赛 #创作阶梯计划#用a', author: '游戏小说家', stats: { like: 63139, reply: 871, favorite: 6938 } },
+    { vid: '7660764322218379770', title: '联力vision要显卡支架吗？ 如果你一定要显卡支架就买这个吧带屏幕还好看#电脑配置 #海景房主机 #diy电脑 #电竞', author: '木木的电竞房', stats: { like: 3085, reply: 2622, favorite: 352 } },
+    { vid: '7658507399338331419', title: '《电锯惊魂》冒充竖锯幸存者捞金？他把吹过的牛，全都变成了死局 他明明没经历过任何机关，却靠编造“竖锯幸存者”的故事出书、', author: '影界Mr', stats: { like: 2263, reply: 139, favorite: 386 } },
   ],
   travel: [
-    { vid: '7477899866577046834', title: '旅行vlog 记录美好旅途', author: '抖音旅游达人', stats: { like: 950000, reply: 15000, favorite: 88000 } },
-    { vid: '7444456739178548489', title: '非沉浸式出差vlog 纽约到洛杉矶', author: '抖音旅游达人', stats: { like: 680000, reply: 11000, favorite: 52000 } },
+    { vid: '7658666921017520123', title: '看老登得意的嘴脸～🙄 #爸爸的小棉袄 #日常vlog #骗你生女儿 #夏若的碎碎念 #亲子互动', author: '夏若的碎碎念', stats: { like: 64002, reply: 1787, favorite: 8596 } },
+    { vid: '7664546174658306762', title: '麻将高手的8大必胜口诀 #麻将麻将抖起来 #麻将技巧 #麻将思维 #麻将攻略 #打麻将', author: '手艺人徐飞', stats: { like: 11444, reply: 2761, favorite: 1431 } },
+    { vid: '7663371191785134803', title: '你一定想不到这么简单的动作，竟真能练好你82年的老颈椎。#颈椎锻炼 #颈椎操 #低头族颈椎的锻炼方法 #颈椎放松 #体态', author: '兰州恒道Vlog', stats: { like: 5740, reply: 80, favorite: 4243 } },
   ],
   general: [
-    { vid: '7498597670618008842', title: '近期爆款经验分享', author: '抖音热门达人', stats: { like: 1200000, reply: 35000, favorite: 98000 } },
-    { vid: '7592231286551498024', title: '2025的71个妆容年度总结', author: '抖音热门达人', stats: { like: 980000, reply: 28000, favorite: 82000 } },
+    { vid: '7660823718877317466', title: '没法带他们去北京，只能画画弥补一下了！#15万内超能打的大六座 #星光L', author: '爱画画的子衿', stats: { like: 4333905, reply: 269109, favorite: 359045 } },
+    { vid: '7667209098403876136', title: '这个属于你的夏天才刚刚开始', author: '觉罗', stats: { like: 2488767, reply: 13297, favorite: 332342 } },
+    { vid: '7664188082753377186', title: '老妈说我三天不打就能上房揭瓦#萌娃 #萌娃跳舞 #人类幼崽', author: '齐宝', stats: { like: 336387, reply: 10305, favorite: 510435 } },
   ],
 };
 
