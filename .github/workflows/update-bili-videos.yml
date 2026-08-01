@@ -1,0 +1,48 @@
+name: 每日更新B站热门视频
+
+on:
+  schedule:
+    # 每天北京时间 6:00 执行 (UTC 22:00)
+    - cron: '0 22 * * *'
+  workflow_dispatch: # 支持手动触发
+
+permissions:
+  contents: write # 允许 push commit
+
+jobs:
+  update-videos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install requests
+        run: pip install requests
+
+      - name: Fetch & update Bilibili videos
+        run: python scripts/update_bili_videos.py
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet app.js; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No changes detected."
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Changes detected, will commit."
+          fi
+
+      - name: Commit & push
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add app.js
+          git commit -m "自动更新B站热门视频数据 ($(date -u -d '+8 hours' '+%Y-%m-%d'))"
+          git push
