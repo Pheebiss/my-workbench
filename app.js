@@ -3215,34 +3215,6 @@ function renderStats() {
     </div>
 
     <div class="card" style="margin-bottom:16px;">
-      <div class="card-title"><span class="ico">📊</span>近7天待办完成趋势</div>
-      <div class="stats-bar-chart">
-        ${days7.map(d => `
-          <div class="stats-bar-row">
-            <div class="stats-bar-label">${d.label}</div>
-            <div class="stats-bar-track">
-              <div class="stats-bar-fill" style="width:${d.total > 0 ? Math.max(d.done / maxTodos * 100, 8) : 0}%;">${d.total > 0 ? d.done + '/' + d.total : '—'}</div>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-
-    <div class="card" style="margin-bottom:16px;">
-      <div class="card-title"><span class="ico">💧</span>近7天喝水趋势</div>
-      <div class="stats-bar-chart">
-        ${days7.map(d => `
-          <div class="stats-bar-row">
-            <div class="stats-bar-label">${d.label}</div>
-            <div class="stats-bar-track">
-              <div class="stats-bar-fill ${d.water >= waterGoal ? 'sage' : ''}" style="width:${d.water > 0 ? Math.max(d.water / maxWater * 100, 8) : 0}%;">${d.water} 杯</div>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-
-    <div class="card" style="margin-bottom:16px;">
       <div class="card-title"><span class="ico">📚</span>学习进度</div>
       ${learnTotalAll > 0 ? `
         <div class="stats-progress-ring" style="margin-bottom:16px;">
