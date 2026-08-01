@@ -45,13 +45,33 @@ function safeUrl(url) {
   return ''; // 其他协议（javascript:, data: 等）一律拒绝
 }
 
-/* ---------- API 超时工具 ---------- */
+/* ---------- API 超时/重试工具 ---------- */
 // 带超时的 fetch
 function fetchWithTimeout(url, options = {}, timeout = 5000) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeout);
   return fetch(url, { ...options, signal: controller.signal })
     .finally(() => clearTimeout(timer));
+}
+
+// 带重试的 fetch：默认最多 3 次，指数退避（0s, 1s, 2s）
+async function fetchWithRetry(url, options = {}, { retries = 3, timeout = 5000, backoff = 1000 } = {}) {
+  let lastError;
+  for (let i = 0; i < retries; i++) {
+    try {
+      const res = await fetchWithTimeout(url, options, timeout);
+      if (res.ok) return res;
+      // 4xx 客户端错误不重试
+      if (res.status >= 400 && res.status < 500) return res;
+      throw new Error(`HTTP ${res.status}`);
+    } catch (e) {
+      lastError = e;
+      if (i < retries - 1) {
+        await new Promise(r => setTimeout(r, backoff * i));
+      }
+    }
+  }
+  throw lastError;
 }
 
 /* ---------- 日期种子（公共函数，消除重复） ---------- */
@@ -174,8 +194,18 @@ async function importData(file) {
 
 /* ---------- 设置面板 ---------- */
 function openSettings() {
+  const currentTheme = Store.get('theme', 'auto');
   showModal('设置', `
     <div class="settings-panel">
+      <div class="settings-section">
+        <div class="settings-section-title">🎨 外观主题</div>
+        <div class="settings-section-desc">选择浅色/深色/跟随系统主题。</div>
+        <div class="settings-actions theme-switcher">
+          <button class="theme-btn ${currentTheme==='light'?'active':''}" onclick="setTheme('light')">☀️ 浅色</button>
+          <button class="theme-btn ${currentTheme==='dark'?'active':''}" onclick="setTheme('dark')">🌙 深色</button>
+          <button class="theme-btn ${currentTheme==='auto'?'active':''}" onclick="setTheme('auto')">🖥️ 跟随系统</button>
+        </div>
+      </div>
       <div class="settings-section">
         <div class="settings-section-title">📦 数据备份</div>
         <div class="settings-section-desc">将所有数据（待办、衣橱、经期记录、学习进度等）导出为 JSON 文件，保存到本地。</div>
@@ -206,6 +236,30 @@ function saveNickname() {
   const v = $('#nicknameInput')?.value.trim() || 'OnePiece';
   Store.set('user_nickname', v);
   wdToast('昵称已保存');
+}
+
+/* ---------- 主题切换 ---------- */
+function applyTheme(theme) {
+  if (theme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else if (theme === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+  } else {
+    // auto: 移除手动设置的 data-theme，交给 CSS @media 处理
+    document.documentElement.removeAttribute('data-theme');
+  }
+}
+function setTheme(theme) {
+  Store.set('theme', theme);
+  applyTheme(theme);
+  // 更新设置面板中的按钮高亮
+  document.querySelectorAll('.theme-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  const map = { light: 0, dark: 1, auto: 2 };
+  const btns = document.querySelectorAll('.theme-btn');
+  if (btns[map[theme]]) btns[map[theme]].classList.add('active');
+  wdToast(theme === 'dark' ? '已切换至深色模式' : theme === 'light' ? '已切换至浅色模式' : '已跟随系统主题');
 }
 
 /* ---------- IndexedDB 封装（衣橱图片存储，突破 5MB 限制） ---------- */
@@ -318,6 +372,7 @@ const MODULES = [
   { id: 'sketch',   icon: '✏️', label: '素描学习' },
   { id: 'dance',    icon: '💃', label: '舞蹈学习' },
   { id: 'sew',      icon: '✂️', label: '裁剪学习' },
+  { id: 'stats',    icon: '📊', label: '数据统计' },
 ];
 
 const LEARN_DATA = {
@@ -618,6 +673,9 @@ let currentModule = 'home';
 
 /* ---------- 初始化 ---------- */
 document.addEventListener('DOMContentLoaded', () => {
+  // 应用主题（在渲染前应用，避免闪屏）
+  applyTheme(Store.get('theme', 'auto'));
+
   // 今日日期
   $('#todayDate').textContent = fmtDate(new Date());
 
@@ -694,6 +752,7 @@ function renderModule(id) {
     sketch: () => renderLearn('sketch'),
     dance: () => renderLearn('dance'),
     sew: () => renderLearn('sew'),
+    stats: renderStats,
   };
   content.innerHTML = (map[id] || (() => '<p>模块开发中…</p>'))();
   // 模块特定绑定
@@ -804,7 +863,7 @@ async function fetchHomeWeather() {
   try {
     // 上海经纬度，取当前天气（5秒超时）
     const url = 'https://api.open-meteo.com/v1/forecast?latitude=31.23&longitude=121.47&current=temperature_2m,weather_code&timezone=Asia/Shanghai';
-    const res = await fetchWithTimeout(url, {}, 5000);
+    const res = await fetchWithRetry(url, {}, { retries: 3, timeout: 5000 });
     const data = await res.json();
     const temp = Math.round(data.current.temperature_2m);
     const code = data.current.weather_code;
@@ -821,7 +880,7 @@ async function fetchHomeQuote() {
   if (!el) return;
   try {
     // 一言接口：c=i 诗词, c=k 哲理，随机取（5秒超时）
-    const res = await fetchWithTimeout('https://v1.hitokoto.cn/?c=i&c=k', {}, 5000);
+    const res = await fetchWithRetry('https://v1.hitokoto.cn/?c=i&c=k', {}, { retries: 3, timeout: 5000 });
     const data = await res.json();
     const text = data.hitokoto || '';
     const from = data.from ? `—— ${data.from_who ? data.from_who + '·' : ''}${data.from}` : '';
@@ -1357,6 +1416,7 @@ const NEWS_CACHE_TTL = 30 * 60 * 1000; // 30 分钟
 afterRender.headline = () => { fetchMarkets(); fetchNews(); };
 
 // 拉取实时新闻：2条国际 + 4条国内分类（体育/财经/教育/娱乐）
+// 优先读取 GitHub Actions 生成的静态 news.json，失败时降级为实时 RSS 抓取
 async function fetchNews(force = false) {
   const list = $('#newsList');
   const status = $('#newsStatus');
@@ -1370,6 +1430,30 @@ async function fetchNews(force = false) {
 
   if (status) status.textContent = '· 加载中…';
 
+  // 1. 优先尝试读取静态 news.json（由 GitHub Actions 定时生成）
+  if (!force) {
+    try {
+      const res = await fetchWithRetry('news.json', {}, { retries: 2, timeout: 3000 });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.news && Array.isArray(data.news) && data.news.length >= 3) {
+          _newsCache = data.news;
+          _newsCacheTime = Date.now();
+          renderNews(list, status, data.news, `· ${data.updated || '静态'}`);
+          // 静态数据加载后，后台静默刷新实时数据（不阻塞渲染）
+          fetchLiveNews(list, status, true);
+          return;
+        }
+      }
+    } catch (e) { /* 静态文件不存在或读取失败，继续走实时抓取 */ }
+  }
+
+  // 2. 实时 RSS 抓取
+  await fetchLiveNews(list, status, force);
+}
+
+// 实时 RSS 抓取
+async function fetchLiveNews(list, status, force) {
   try {
     // 并行请求所有 RSS 源（5秒超时）
     const [worldItems, sportsItems, financeItems, eduItems, scrollItems] = await Promise.all([
@@ -1430,7 +1514,7 @@ async function fetchRSSItems(rss) {
   for (const proxy of NEWS_RSS_PROXIES) {
     try {
       const url = proxy(rss);
-      const res = await fetchWithTimeout(url, {}, 5000);
+      const res = await fetchWithRetry(url, {}, { retries: 3, timeout: 5000 });
       if (!res.ok) continue;
       const data = await res.json();
       if (data.items && Array.isArray(data.items)) {
@@ -1459,7 +1543,7 @@ function parseRSSXML(xmlText) {
 function fetchMarkets() {
   MARKET_CODES.forEach(m => {
     const url = `https://qt.gtimg.cn/q=${m.code}`;
-    fetchWithTimeout(url, {}, 5000)
+    fetchWithRetry(url, {}, { retries: 2, timeout: 5000 })
       .then(r => r.text())
       .then(text => {
         const card = document.querySelector(`[data-code="${m.code}"]`);
@@ -3004,4 +3088,198 @@ function TaskToggle(key, pi, ti) {
   Store.set(k, done);
   // 局部更新：重新渲染该模块
   renderModule(currentModule);
+}
+
+/* =========================================================================
+ * 模块：数据统计（汇总各模块数据，可视化展示）
+ * ========================================================================= */
+function renderStats() {
+  // ===== 1. 收集最近7天打卡数据 =====
+  const today = new Date();
+  const days7 = [];
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(today);
+    d.setDate(d.getDate() - i);
+    const key = dateKey(d);
+    const todos = Store.get('daily_' + key + '_todos', []);
+    const done = todos.filter(t => t.done).length;
+    const total = todos.length;
+    const water = Store.get('daily_' + key + '_water', 0);
+    const words = Store.get('daily_' + key + '_words', 0);
+    const sports = Store.get('daily_' + key + '_sports', []);
+    days7.push({ date: key, label: `${d.getMonth()+1}/${d.getDate()}`, done, total, water, words, sports: sports.length });
+  }
+
+  // ===== 2. 学习进度 =====
+  const learnStats = {};
+  let learnTotalAll = 0, learnDoneAll = 0;
+  Object.keys(LEARN_DATA).forEach(key => {
+    const d = LEARN_DATA[key];
+    const done = Store.get('learn_' + key, {});
+    let total = 0, doneCount = 0;
+    d.phases.forEach((p, pi) => p.tasks.forEach((t, ti) => {
+      total++;
+      if (done[`${pi}_${ti}`]) doneCount++;
+    }));
+    // 加上自定义任务
+    const custom = Store.get('learn_custom_' + key, {});
+    Object.entries(custom).forEach(([pi, arr]) => {
+      if (Array.isArray(arr)) {
+        arr.forEach((_, ci) => {
+          const baseLen = d.phases[pi]?.tasks.length || 0;
+          const ti = baseLen + ci;
+          total++;
+          if (done[`${pi}_${ti}`]) doneCount++;
+        });
+      }
+    });
+    learnStats[key] = { name: d.name, done: doneCount, total, pct: total > 0 ? Math.round(doneCount / total * 100) : 0 };
+    learnTotalAll += total;
+    learnDoneAll += doneCount;
+  });
+
+  // ===== 3. 衣橱统计 =====
+  const clothes = Store.get('wardrobe_items', []);
+  const wardrobeByCategory = {};
+  clothes.forEach(c => {
+    const cat = c.category || '未分类';
+    wardrobeByCategory[cat] = (wardrobeByCategory[cat] || 0) + 1;
+  });
+
+  // ===== 4. 经期统计 =====
+  const periodNotes = Store.get('period_notes', {});
+  const periodDays = Object.keys(periodNotes).filter(k => periodNotes[k] && typeof periodNotes[k] === 'object' && periodNotes[k].flow);
+  const periodPredict = predictPeriod();
+
+  // ===== 5. 待办完成率（近7天） =====
+  const totalTodos7 = days7.reduce((s, d) => s + d.total, 0);
+  const doneTodos7 = days7.reduce((s, d) => s + d.done, 0);
+  const todoRate = totalTodos7 > 0 ? Math.round(doneTodos7 / totalTodos7 * 100) : 0;
+
+  // ===== 6. 总字数 =====
+  const totalWords = days7.reduce((s, d) => s + d.words, 0);
+
+  // ===== 7. 喝水达标天数 =====
+  const waterGoal = Store.get('water_goal', 6);
+  const waterMetDays = days7.filter(d => d.water >= waterGoal).length;
+
+  // ===== 渲染 =====
+  const maxTodos = Math.max(...days7.map(d => d.total), 1);
+  const maxWater = Math.max(...days7.map(d => d.water), waterGoal, 1);
+
+  return `
+    <div class="card" style="margin-bottom:16px;">
+      <div class="card-title"><span class="ico">📈</span>总览</div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-card-icon">✅</div>
+          <div class="stat-card-num">${todoRate}%</div>
+          <div class="stat-card-label">近7天待办完成率</div>
+          <div class="stat-card-sub">${doneTodos7}/${totalTodos7} 件</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon">💧</div>
+          <div class="stat-card-num">${waterMetDays}/7</div>
+          <div class="stat-card-label">喝水达标天数</div>
+          <div class="stat-card-sub">目标 ${waterGoal} 杯/天</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon">📚</div>
+          <div class="stat-card-num">${learnDoneAll}/${learnTotalAll}</div>
+          <div class="stat-card-label">学习任务完成</div>
+          <div class="stat-card-sub">${learnTotalAll > 0 ? Math.round(learnDoneAll/learnTotalAll*100) : 0}%</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon">✍️</div>
+          <div class="stat-card-num">${totalWords}</div>
+          <div class="stat-card-label">近7天码字总数</div>
+          <div class="stat-card-sub">字</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon">👗</div>
+          <div class="stat-card-num">${clothes.length}</div>
+          <div class="stat-card-label">衣橱单品</div>
+          <div class="stat-card-sub">${Object.keys(wardrobeByCategory).length} 个分类</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon">🌸</div>
+          <div class="stat-card-num">${periodDays.length}</div>
+          <div class="stat-card-label">经期记录天数</div>
+          <div class="stat-card-sub">${periodPredict ? `下次约 ${periodPredict.daysUntil > 0 ? periodPredict.daysUntil + '天后' : '已过期'}` : '暂无预测'}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:16px;">
+      <div class="card-title"><span class="ico">📊</span>近7天待办完成趋势</div>
+      <div class="stats-bar-chart">
+        ${days7.map(d => `
+          <div class="stats-bar-row">
+            <div class="stats-bar-label">${d.label}</div>
+            <div class="stats-bar-track">
+              <div class="stats-bar-fill" style="width:${d.total > 0 ? Math.max(d.done / maxTodos * 100, 8) : 0}%;">${d.total > 0 ? d.done + '/' + d.total : '—'}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:16px;">
+      <div class="card-title"><span class="ico">💧</span>近7天喝水趋势</div>
+      <div class="stats-bar-chart">
+        ${days7.map(d => `
+          <div class="stats-bar-row">
+            <div class="stats-bar-label">${d.label}</div>
+            <div class="stats-bar-track">
+              <div class="stats-bar-fill ${d.water >= waterGoal ? 'sage' : ''}" style="width:${d.water > 0 ? Math.max(d.water / maxWater * 100, 8) : 0}%;">${d.water} 杯</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:16px;">
+      <div class="card-title"><span class="ico">📚</span>学习进度</div>
+      ${learnTotalAll > 0 ? `
+        <div class="stats-progress-ring" style="margin-bottom:16px;">
+          ${Object.entries(learnStats).map(([key, s]) => {
+            const r = 38, c = 2 * Math.PI * r;
+            const offset = c - (s.pct / 100) * c;
+            return `
+              <div class="stats-ring-item">
+                <div class="stats-ring">
+                  <svg width="100" height="100">
+                    <circle cx="50" cy="50" r="${r}" fill="none" stroke="var(--card-soft)" stroke-width="6"/>
+                    <circle cx="50" cy="50" r="${r}" fill="none" stroke="var(--primary)" stroke-width="6"
+                      stroke-dasharray="${c}" stroke-dashoffset="${offset}" stroke-linecap="round"/>
+                  </svg>
+                  <div class="stats-ring-text">${s.pct}%</div>
+                </div>
+                <div class="stats-ring-label">${escapeHtml(s.name)}</div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      ` : '<div class="stats-empty">暂无学习数据</div>'}
+    </div>
+
+    ${Object.keys(wardrobeByCategory).length > 0 ? `
+      <div class="card">
+        <div class="card-title"><span class="ico">👗</span>衣橱分类</div>
+        <div class="stats-bar-chart">
+          ${Object.entries(wardrobeByCategory).sort((a,b) => b[1] - a[1]).map(([cat, count]) => {
+            const maxCat = Math.max(...Object.values(wardrobeByCategory), 1);
+            return `
+              <div class="stats-bar-row">
+                <div class="stats-bar-label">${escapeHtml(cat)}</div>
+                <div class="stats-bar-track">
+                  <div class="stats-bar-fill accent" style="width:${Math.max(count / maxCat * 100, 8)}%;">${count}</div>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    ` : ''}
+  `;
 }
