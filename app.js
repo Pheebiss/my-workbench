@@ -1925,13 +1925,33 @@ const VIDEO_CATEGORIES = [
   { key: 'general',  label: '综合', icon: '🔥', bili: { rid: 0,   filterTname: null } },
 ];
 
-// B站兜底数据（JSONP失败时显示，无播放功能）
+// B站兜底数据（真实排行榜视频，每类3个，随机展示1个，均可播放）
 const FALLBACK_BILI_VIDEOS = {
-  beauty:   { title: '【美妆】日常通勤妆教程 5分钟快速出门', author: '美妆达人', stats: { like: 520000, reply: 8900, favorite: 45000 } },
-  fashion:  { title: '【穿搭】微胖女生显瘦穿搭技巧分享', author: '穿搭达人', stats: { like: 610000, reply: 12000, favorite: 56000 } },
-  game:     { title: '【游戏】精彩操作高光集锦', author: '游戏达人', stats: { like: 890000, reply: 23000, favorite: 78000 } },
-  travel:   { title: '【旅游】新疆独库公路自驾游vlog', author: '旅游达人', stats: { like: 950000, reply: 15000, favorite: 88000 } },
-  general:  { title: '【综合】全网热门视频精选', author: '热门达人', stats: { like: 1200000, reply: 35000, favorite: 98000 } },
+  beauty: [
+    { bvid: 'BV1EjoXYwECL', title: '"请宿主做好准备"', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382212, reply: 1023, favorite: 39938 } },
+    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290293, reply: 800, favorite: 65018 } },
+    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267246, reply: 2325, favorite: 9392 } },
+  ],
+  fashion: [
+    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 221969, reply: 469, favorite: 33293 } },
+    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 90878, reply: 476, favorite: 26021 } },
+    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87301, reply: 304, favorite: 22608 } },
+  ],
+  game: [
+    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 350785, reply: 2789, favorite: 755636 } },
+    { bvid: 'BV1eqZJYaESc', title: '我花了5年一个人做的独立像素游戏', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693887, reply: 4406, favorite: 130471 } },
+    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：那安息的长夜', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 516363, reply: 29104, favorite: 182857 } },
+  ],
+  travel: [
+    { bvid: 'BV1c4326hEkj', title: '挑战从东北徒步到西藏(十倍速1小时5分版）', author: '阿丑徒步', pic: 'https://i2.hdslb.com/bfs/archive/41e4da2b1d369a0a7f5e4e976c1a4b2664b80de5.jpg', stats: { like: 439963, reply: 8760, favorite: 171854 } },
+    { bvid: 'BV1iAKb6xEEV', title: '古罗马离谱习俗——两千年前的古罗马', author: '庞贝老丁', pic: 'https://i1.hdslb.com/bfs/archive/3bc19422fd9156b2a0f3cebf9d6afd98c697f045.jpg', stats: { like: 449417, reply: 10557, favorite: 97836 } },
+    { bvid: 'BV1V1GF6dE3z', title: '探索印度鸡佬 成吉思鸡做中国大盘鸡', author: '猛男阿凯奇幻之旅', pic: 'https://i1.hdslb.com/bfs/archive/8a1c4e90df3c2b2f18d0b8ef7f313921c4f6a08e.jpg', stats: { like: 94800, reply: 2415, favorite: 13565 } },
+  ],
+  general: [
+    { bvid: 'BV1Dx3i6nEm8', title: '【苏新皓｜4K直拍】囍 直拍｜梦寐以求·演唱会', author: 'JUSTSU_苏新皓', pic: 'https://i2.hdslb.com/bfs/archive/c9eb3a424e6815a3f0183fcba5705b60d30fc010.jpg', stats: { like: 121822, reply: 852270, favorite: 89824 } },
+    { bvid: 'BV1qh3W6bEqf', title: '小时候看不懂，长大后已是局中人', author: '就叫阿路8', pic: 'https://i1.hdslb.com/bfs/archive/16f75fbff5ec29ab46d6574040b119e68adfa60d.jpg', stats: { like: 617653, reply: 14160, favorite: 154889 } },
+    { bvid: 'BV19m3j6vE1S', title: '一个人清理海浪冲上来的垃圾有人夸吗', author: '哥们马喽', pic: 'https://i0.hdslb.com/bfs/archive/4328eb224aa9d73c7487cdd3db680dd949ec33af.jpg', stats: { like: 612597, reply: 3736, favorite: 60398 } },
+  ],
 };
 
 // 抖音兜底数据（精选视频，每类2个，随机展示1个）
@@ -2010,17 +2030,18 @@ function formatNum(n) {
 
 /* --- 兜底数据获取 --- */
 function getBiliFallbackVideo(catKey) {
-  const f = FALLBACK_BILI_VIDEOS[catKey];
-  if (!f) return null;
+  const pool = FALLBACK_BILI_VIDEOS[catKey];
+  if (!pool || pool.length === 0) return null;
+  const pick = pool[Math.floor(Math.random() * pool.length)];
   return {
     platform: 'bilibili',
-    title: f.title,
-    author: f.author,
-    cover: '',
-    playUrl: '',
-    embedSrc: '',  // 兜底数据无bvid，不支持播放
-    stats: f.stats,
-    heatScore: f.stats.like + f.stats.reply + f.stats.favorite,
+    title: pick.title,
+    author: pick.author,
+    cover: pick.pic || '',
+    playUrl: `https://www.bilibili.com/video/${pick.bvid}`,
+    embedSrc: `https://player.bilibili.com/player.html?bvid=${pick.bvid}&autoplay=0&high_quality=1&danmaku=1`,
+    stats: pick.stats,
+    heatScore: pick.stats.like + pick.stats.reply + pick.stats.favorite,
     category: catKey,
   };
 }
@@ -2042,7 +2063,32 @@ function getDouyinVideo(catKey) {
   };
 }
 
-/* --- B站排行榜获取（带缓存） --- */
+/* --- B站排行榜获取（带缓存，多CORS代理轮询） --- */
+const CORS_PROXIES = [
+  url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
+  url => `https://api.codetabs.com/v1/proxy/?quest=${url}`,
+  url => `https://corsproxy.io/?url=${encodeURIComponent(url)}`,
+];
+
+async function fetchViaProxy(apiUrl) {
+  for (const makeProxyUrl of CORS_PROXIES) {
+    try {
+      const proxyUrl = makeProxyUrl(apiUrl);
+      const resp = await fetch(proxyUrl, { signal: AbortSignal.timeout(8000) });
+      if (!resp.ok) continue;
+      const data = await resp.json();
+      if (data && data.code === 0 && data.data && data.data.list) return data;
+    } catch (e) { /* 尝试下一个代理 */ }
+  }
+  // 所有代理失败，尝试 JSONP
+  try {
+    const jsonpUrl = apiUrl + '&jsonp=jsonp';
+    return await jsonpLoad(jsonpUrl);
+  } catch (e) {
+    return null;
+  }
+}
+
 async function fetchBiliRankByRid(rid) {
   const cacheKey = `bili_rank_${rid}`;
   const cached = Store.get(cacheKey);
@@ -2050,9 +2096,12 @@ async function fetchBiliRankByRid(rid) {
     return cached.list;
   }
 
-  const url = `${BILI_API_BASE}?rid=${rid}&type=all&jsonp=jsonp`;
-  const data = await jsonpLoad(url);
-  if (data.code !== 0 || !data.data || !data.data.list) throw new Error('Bili API error');
+  const apiUrl = `${BILI_API_BASE}?rid=${rid}&type=all`;
+  const data = await fetchViaProxy(apiUrl);
+
+  if (!data || data.code !== 0 || !data.data || !data.data.list) {
+    throw new Error('Bili API error: ' + (data ? data.code : 'no data'));
+  }
 
   const list = data.data.list.map(v => ({
     bvid: v.bvid,
@@ -2215,7 +2264,7 @@ async function loadFunVideos() {
       }
     }
   } catch (e) {
-    console.warn('B站视频获取失败，使用兜底数据:', e);
+    console.warn('B站实时数据获取失败，使用预置数据:', e);
   }
 }
 
