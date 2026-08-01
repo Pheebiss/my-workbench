@@ -955,7 +955,7 @@ a.news-item { color: inherit; text-decoration: none; }
 /* ========== 古诗 & 经典诵读卡片 ========== */
 .daily-loading { color: var(--text-mute); text-align: center; padding: 20px; font-size: 13px; }
 
-.daily-poem-card { background: linear-gradient(160deg, #fffaf9, #fdf6f0); }
+.daily-poem-card { background: linear-gradient(160deg, #fffaf9, #fdf6f0); grid-column: 1 / -1; }
 .poem-origin {
   font-size: 16px;
   font-weight: 600;
