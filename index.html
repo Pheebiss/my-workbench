@@ -2,20 +2,24 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
 <meta name="theme-color" content="#e8d5d0">
+<meta name="description" content="个人日常管理工作台：打卡、新闻、衣橱、膳食、学习等一站式管理">
+<meta property="og:title" content="我的工作台">
+<meta property="og:description" content="个人日常管理工作台：打卡、新闻、衣橱、膳食、学习等一站式管理">
+<meta property="og:type" content="website">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="工作台">
 <title>我的工作台</title>
-<link rel="manifest" href="manifest.json?v=22">
-<link rel="apple-touch-icon" href="icon-app-180.png?v=22">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-app-180.png?v=22">
-<link rel="apple-touch-icon" sizes="192x192" href="icon-app-192.png?v=22">
-<link rel="apple-touch-icon" sizes="512x512" href="icon-app-512.png?v=22">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-app-192.png?v=22">
-<link rel="icon" type="image/png" sizes="512x512" href="icon-app-512.png?v=22">
-<link rel="shortcut icon" type="image/png" href="icon-app-192.png?v=22">
+<link rel="manifest" href="manifest.json?v=26">
+<link rel="apple-touch-icon" href="icon-app-180.png?v=26">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-app-180.png?v=26">
+<link rel="apple-touch-icon" sizes="192x192" href="icon-app-192.png?v=26">
+<link rel="apple-touch-icon" sizes="512x512" href="icon-app-512.png?v=26">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-app-192.png?v=26">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-app-512.png?v=26">
+<link rel="shortcut icon" type="image/png" href="icon-app-192.png?v=26">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%23f5e6e0'/><stop offset='1' stop-color='%23e8d5d0'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='url(%23g)'/><text x='50' y='72' font-size='62' font-weight='bold' fill='white' text-anchor='middle' font-family='sans-serif' dominant-baseline='middle'>P</text></svg>">
 <link rel="stylesheet" href="styles.css">
 <style>
@@ -42,6 +46,7 @@
         <h1 class="module-title" id="moduleTitle">首页</h1>
       </div>
       <div class="topbar-right">
+        <button class="settings-btn" id="settingsBtn" aria-label="设置">⚙</button>
         <span class="today-date" id="todayDate"></span>
       </div>
     </header>
@@ -50,13 +55,29 @@
 </div>
 
 <div class="overlay" id="overlay"></div>
+<div class="sw-update-toast" id="swUpdateToast" style="display:none;">
+  <span>✨ 工作台已更新，刷新以获取最新版本</span>
+  <button onclick="location.reload()">刷新</button>
+</div>
 <script src="app.js"></script>
 <script>
   // 注册 Service Worker（仅 https 或 localhost 生效）
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       const scope = new URL('./', location.href).pathname;
-      navigator.serviceWorker.register(`./sw.js?v=${Date.now()}`, { scope }).catch(err => console.warn('SW 注册失败:', err));
+      navigator.serviceWorker.register(`./sw.js?v=${Date.now()}`, { scope }).then(reg => {
+        reg.addEventListener('updatefound', () => {
+          const newWorker = reg.installing;
+          if (newWorker) {
+            newWorker.addEventListener('statechange', () => {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                const toast = document.getElementById('swUpdateToast');
+                if (toast) toast.style.display = 'flex';
+              }
+            });
+          }
+        });
+      }).catch(err => console.warn('SW 注册失败:', err));
     });
   }
   // iOS standalone 模式下禁止双击缩放

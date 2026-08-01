@@ -15,7 +15,8 @@ const Store = {
     } catch { return def; }
   },
   set(key, val) {
-    try { localStorage.setItem(key, JSON.stringify(val)); } catch {}
+    try { localStorage.setItem(key, JSON.stringify(val)); }
+    catch (e) { console.warn('localStorage 写入失败:', key, e); }
   },
 };
 
@@ -25,6 +26,187 @@ const fmtDate = d => {
 };
 const pad = n => String(n).padStart(2, '0');
 const dateKey = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+
+/* ---------- 安全工具 ---------- */
+// HTML 转义（防止 XSS）
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+// 属性转义（用于 HTML 属性值）
+function escapeAttr(s) {
+  return String(s).replace(/["'<>]/g, c => ({'"':'&quot;',"'":'&#39;','<':'&lt;','>':'&gt;'}[c]));
+}
+// URL 安全过滤（只允许 http/https 协议，防止 javascript: 注入）
+function safeUrl(url) {
+  if (!url || typeof url !== 'string') return '';
+  const trimmed = url.trim();
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  if (/^\//.test(trimmed)) return trimmed; // 相对路径
+  return ''; // 其他协议（javascript:, data: 等）一律拒绝
+}
+
+/* ---------- API 超时工具 ---------- */
+// 带超时的 fetch
+function fetchWithTimeout(url, options = {}, timeout = 5000) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeout);
+  return fetch(url, { ...options, signal: controller.signal })
+    .finally(() => clearTimeout(timer));
+}
+
+/* ---------- 日期种子（公共函数，消除重复） ---------- */
+function dailySeed(offset = 0) {
+  const key = dateKey(new Date());
+  let seed = 0;
+  for (let i = 0; i < key.length; i++) seed += key.charCodeAt(i) * (i + 1);
+  return seed + offset;
+}
+
+/* ---------- 本地金句缓存池（API 失败时降级） ---------- */
+const LOCAL_QUOTES = [
+  { text: '今天永远是昨天死去的人所期待的明天', from: '每日金句' },
+  { text: '种一棵树最好的时间是十年前，其次是现在', from: '谚语' },
+  { text: '不积跬步，无以至千里；不积小流，无以成江海', from: '荀子·劝学' },
+  { text: '千里之行，始于足下', from: '老子' },
+  { text: '路漫漫其修远兮，吾将上下而求索', from: '屈原·离骚' },
+  { text: '天行健，君子以自强不息', from: '周易' },
+  { text: '宝剑锋从磨砺出，梅花香自苦寒来', from: '警世贤文' },
+  { text: '业精于勤，荒于嬉；行成于思，毁于随', from: '韩愈' },
+  { text: '一寸光阴一寸金，寸金难买寸光阴', from: '增广贤文' },
+  { text: '黑发不知勤学早，白首方悔读书迟', from: '颜真卿' },
+  { text: '勿以恶小而为之，勿以善小而不为', from: '刘备' },
+  { text: '三人行，必有我师焉', from: '论语' },
+  { text: '学而不思则罔，思而不学则殆', from: '论语' },
+  { text: '知之者不如好之者，好之者不如乐之者', from: '论语' },
+  { text: '己所不欲，勿施于人', from: '论语' },
+  { text: '君子坦荡荡，小人长戚戚', from: '论语' },
+  { text: '锲而不舍，金石可镂', from: '荀子·劝学' },
+  { text: '纸上得来终觉浅，绝知此事要躬行', from: '陆游' },
+  { text: '问渠那得清如许，为有源头活水来', from: '朱熹' },
+  { text: '海纳百川，有容乃大；壁立千仞，无欲则刚', from: '林则徐' },
+  { text: '会当凌绝顶，一览众山小', from: '杜甫·望岳' },
+  { text: '长风破浪会有时，直挂云帆济沧海', from: '李白' },
+  { text: '莫等闲，白了少年头，空悲切', from: '岳飞' },
+  { text: '人生自古谁无死，留取丹心照汗青', from: '文天祥' },
+  { text: '天下兴亡，匹夫有责', from: '顾炎武' },
+  { text: '静以修身，俭以养德', from: '诸葛亮' },
+  { text: '非淡泊无以明志，非宁静无以致远', from: '诸葛亮' },
+  { text: '读万卷书，行万里路', from: '刘彝' },
+  { text: '书山有路勤为径，学海无涯苦作舟', from: '韩愈' },
+  { text: '百闻不如一见', from: '汉书' },
+  { text: '失败是成功之母', from: '谚语' },
+  { text: '世上无难事，只怕有心人', from: '谚语' },
+  { text: '只要功夫深，铁杵磨成针', from: '谚语' },
+  { text: '光阴似箭，日月如梭', from: '增广贤文' },
+  { text: '少壮不努力，老大徒伤悲', from: '汉乐府·长歌行' },
+  { text: '路是脚踏出来的，历史是人写出来的', from: '吉鸿昌' },
+  { text: '每一条弯路，其实都是必经之路', from: '佚名' },
+  { text: '你现在的气质里，藏着你走过的路、读过的书和爱过的人', from: '张爱玲' },
+  { text: '生活不止眼前的苟且，还有诗和远方', from: '高晓松' },
+  { text: '愿你历尽千帆，归来仍是少年', from: '苏轼' },
+  { text: '心若向阳，无谓悲伤', from: '佚名' },
+  { text: '所有努力都不会完全白费，你付出的时间和精力都是对未来的积累', from: '佚名' },
+  { text: '世界上只有一种英雄主义，就是看清生活的真相之后依然热爱生活', from: '罗曼·罗兰' },
+  { text: '我们都在阴沟里，但仍有人仰望星空', from: '王尔德' },
+  { text: '当你为错过太阳而哭泣时，你也要再错过群星了', from: '泰戈尔' },
+  { text: '一个人的价值，不在于他拥有什么，而在于他是什么', from: '佚名' },
+  { text: '真正的平静，不是避开车马喧嚣，而是在心中修篱种菊', from: '林徽因' },
+  { text: '每一个不曾起舞的日子，都是对生命的辜负', from: '尼采' },
+  { text: '不管前方的路有多苦，只要走的方向正确，都比站在原地更接近幸福', from: '宫崎骏' },
+  { text: '做你自己，因为别人都有人做了', from: '王尔德' },
+];
+
+/* ---------- 数据导出/导入 ---------- */
+async function exportData() {
+  const data = { _version: 1, _exportDate: new Date().toISOString(), localStorage: {}, indexedDB: {} };
+  // 导出 localStorage
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    data.localStorage[k] = localStorage.getItem(k);
+  }
+  // 导出 IndexedDB 图片
+  try {
+    const db = await ImageDB.init();
+    const tx = db.transaction('images', 'readonly');
+    const store = tx.objectStore('images');
+    const allKeys = await new Promise((res, rej) => {
+      const r = store.getAllKeys(); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);
+    });
+    for (const key of allKeys) {
+      const val = await new Promise((res, rej) => {
+        const r = store.get(key); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);
+      });
+      data.indexedDB[key] = val;
+    }
+  } catch (e) { console.warn('IndexedDB 导出失败:', e); }
+  // 下载
+  const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `workbench-backup-${dateKey(new Date())}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  wdToast('数据已导出');
+}
+
+async function importData(file) {
+  try {
+    const text = await file.text();
+    const data = JSON.parse(text);
+    if (!data._version || !data.localStorage) { wdToast('文件格式不正确'); return; }
+    // 导入 localStorage
+    for (const [k, v] of Object.entries(data.localStorage)) {
+      localStorage.setItem(k, v);
+    }
+    // 导入 IndexedDB
+    if (data.indexedDB) {
+      for (const [k, v] of Object.entries(data.indexedDB)) {
+        await ImageDB.set(k, v);
+      }
+    }
+    wdToast('数据已导入，即将刷新…');
+    setTimeout(() => location.reload(), 1200);
+  } catch (e) {
+    wdToast('导入失败：' + e.message);
+  }
+}
+
+/* ---------- 设置面板 ---------- */
+function openSettings() {
+  showModal('设置', `
+    <div class="settings-panel">
+      <div class="settings-section">
+        <div class="settings-section-title">📦 数据备份</div>
+        <div class="settings-section-desc">将所有数据（待办、衣橱、经期记录、学习进度等）导出为 JSON 文件，保存到本地。</div>
+        <div class="settings-actions">
+          <button class="btn" onclick="exportData()">导出数据</button>
+        </div>
+      </div>
+      <div class="settings-section">
+        <div class="settings-section-title">📥 数据恢复</div>
+        <div class="settings-section-desc">从之前导出的 JSON 文件恢复数据。注意：导入会覆盖当前数据。</div>
+        <div class="settings-actions">
+          <button class="btn btn-soft" onclick="document.getElementById('importFileInput').click()">选择文件导入</button>
+          <input type="file" id="importFileInput" accept=".json" hidden onchange="importData(this.files[0])" />
+        </div>
+      </div>
+      <div class="settings-section">
+        <div class="settings-section-title">👤 个人设置</div>
+        <div class="settings-section-desc">自定义昵称，将显示在首页问候语中。</div>
+        <div class="settings-actions">
+          <input class="input" id="nicknameInput" placeholder="输入昵称" value="${escapeAttr(Store.get('user_nickname', 'OnePiece'))}" style="flex:1;max-width:200px;" />
+          <button class="btn btn-soft" onclick="saveNickname()">保存</button>
+        </div>
+      </div>
+    </div>
+  `);
+}
+function saveNickname() {
+  const v = $('#nicknameInput')?.value.trim() || 'OnePiece';
+  Store.set('user_nickname', v);
+  wdToast('昵称已保存');
+}
 
 /* ---------- IndexedDB 封装（衣橱图片存储，突破 5MB 限制） ---------- */
 const ImageDB = {
@@ -117,7 +299,7 @@ async function migrateClothesImagesIfNeeded() {
     }
   }
   if (migrated) {
-    try { localStorage.setItem('wardrobe_items', JSON.stringify(arr)); } catch {}
+    try { localStorage.setItem('wardrobe_items', JSON.stringify(arr)); } catch (e) { console.warn('衣橱数据保存失败:', e); }
   }
 }
 
@@ -465,6 +647,10 @@ document.addEventListener('DOMContentLoaded', () => {
     $('#overlay').classList.remove('show');
   });
 
+  // 设置按钮
+  const settingsBtn = $('#settingsBtn');
+  if (settingsBtn) settingsBtn.addEventListener('click', () => openSettings());
+
   // 大屏自动收起（桌面体验）—— 默认不收起，保持完整显示
   // 迁移旧 localStorage 图片到 IndexedDB（异步执行，不阻塞渲染）
   migrateClothesImagesIfNeeded().then(() => {
@@ -519,11 +705,43 @@ const afterRender = {};
 /* =========================================================================
  * 模块 0：首页（Hi OnePiece + 日期 + 天气 + 每日金句）
  * ========================================================================= */
+function getGreeting() {
+  const h = new Date().getHours();
+  const name = Store.get('user_nickname', 'OnePiece');
+  if (h < 6) return `夜深了，${name}`;
+  if (h < 9) return `早上好，${name}`;
+  if (h < 12) return `上午好，${name}`;
+  if (h < 14) return `中午好，${name}`;
+  if (h < 18) return `下午好，${name}`;
+  if (h < 22) return `晚上好，${name}`;
+  return `夜深了，${name}`;
+}
+
+// 获取今日打卡概览数据
+function getHomeOverview() {
+  const todos = Store.get('daily_' + dateKey(new Date()) + '_todos', []);
+  const todoDone = todos.filter(t => t.done).length;
+  const todoTotal = todos.length;
+  const water = Store.get('daily_' + dateKey(new Date()) + '_water', 0);
+  const waterGoal = Store.get('water_goal', 6);
+  // 学习总进度
+  let learnTotal = 0, learnDone = 0;
+  Object.keys(LEARN_DATA).forEach(key => {
+    const d = LEARN_DATA[key];
+    const done = Store.get('learn_' + key, {});
+    d.phases.forEach((p, pi) => p.tasks.forEach((t, ti) => {
+      learnTotal++;
+      if (done[`${pi}_${ti}`]) learnDone++;
+    }));
+  });
+  return { todoDone, todoTotal, water, waterGoal, learnDone, learnTotal };
+}
+
 function renderHome() {
   return `
     <div class="home-page">
       <div class="home-card">
-        <div class="home-greeting">Hi, OnePiece</div>
+        <div class="home-greeting">${escapeHtml(getGreeting())}</div>
         <div class="home-date" id="homeDate"></div>
         <div class="home-weather" id="homeWeather">
           <span class="home-weather-loading">天气加载中…</span>
@@ -532,6 +750,7 @@ function renderHome() {
         <div class="home-quote" id="homeQuote">
           <span class="home-quote-loading">正在获取今日金句…</span>
         </div>
+        <div class="home-overview" id="homeOverview"></div>
       </div>
     </div>
   `;
@@ -542,7 +761,28 @@ afterRender.home = () => {
   $('#homeDate').textContent = fmtDate(d);
   fetchHomeWeather();
   fetchHomeQuote();
+  renderHomeOverview();
 };
+
+function renderHomeOverview() {
+  const el = $('#homeOverview');
+  if (!el) return;
+  const ov = getHomeOverview();
+  el.innerHTML = `
+    <div class="home-overview-item">
+      <div class="home-overview-num">${ov.todoDone}/${ov.todoTotal}</div>
+      <div class="home-overview-label">今日待办</div>
+    </div>
+    <div class="home-overview-item">
+      <div class="home-overview-num">${ov.water}/${ov.waterGoal}</div>
+      <div class="home-overview-label">喝水(杯)</div>
+    </div>
+    <div class="home-overview-item">
+      <div class="home-overview-num">${ov.learnDone}/${ov.learnTotal}</div>
+      <div class="home-overview-label">学习进度</div>
+    </div>
+  `;
+}
 
 // WMO 天气码 → 中文描述 + emoji
 const WMO_WEATHER = {
@@ -562,16 +802,17 @@ async function fetchHomeWeather() {
   const el = $('#homeWeather');
   if (!el) return;
   try {
-    // 上海经纬度，取当前天气
+    // 上海经纬度，取当前天气（5秒超时）
     const url = 'https://api.open-meteo.com/v1/forecast?latitude=31.23&longitude=121.47&current=temperature_2m,weather_code&timezone=Asia/Shanghai';
-    const res = await fetch(url);
+    const res = await fetchWithTimeout(url, {}, 5000);
     const data = await res.json();
     const temp = Math.round(data.current.temperature_2m);
     const code = data.current.weather_code;
     const desc = WMO_WEATHER[code] || ['未知','🌡️'];
     el.innerHTML = `<span class="home-weather-icon">${desc[1]}</span><span>上海 · ${desc[0]} ${temp}°C</span>`;
   } catch (e) {
-    el.innerHTML = `<span class="home-weather-icon">🌡️</span><span>上海 · 天气获取失败</span>`;
+    // 降级：显示静态信息
+    el.innerHTML = `<span class="home-weather-icon">🌡️</span><span>上海 · 天气暂不可用</span>`;
   }
 }
 
@@ -579,16 +820,16 @@ async function fetchHomeQuote() {
   const el = $('#homeQuote');
   if (!el) return;
   try {
-    // 一言接口：c=i 诗词, c=k 哲理，随机取
-    const res = await fetch('https://v1.hitokoto.cn/?c=i&c=k');
+    // 一言接口：c=i 诗词, c=k 哲理，随机取（5秒超时）
+    const res = await fetchWithTimeout('https://v1.hitokoto.cn/?c=i&c=k', {}, 5000);
     const data = await res.json();
-    const text = data.hitokoto || '今天永远是昨天死去的人所期待的明天';
+    const text = data.hitokoto || '';
     const from = data.from ? `—— ${data.from_who ? data.from_who + '·' : ''}${data.from}` : '';
-    el.innerHTML = `<div class="home-quote-text">「${text}」</div>${from ? `<div class="home-quote-from">${from}</div>` : ''}`;
+    el.innerHTML = `<div class="home-quote-text">「${escapeHtml(text)}」</div>${from ? `<div class="home-quote-from">${escapeHtml(from)}</div>` : ''}`;
   } catch (e) {
-    // 降级金句
-    const fallback = '今天永远是昨天死去的人所期待的明天';
-    el.innerHTML = `<div class="home-quote-text">「${fallback}」</div><div class="home-quote-from">—— 每日金句</div>`;
+    // 降级：从本地金句池按日期轮换
+    const q = LOCAL_QUOTES[dailySeed() % LOCAL_QUOTES.length];
+    el.innerHTML = `<div class="home-quote-text">「${escapeHtml(q.text)}」</div><div class="home-quote-from">—— ${escapeHtml(q.from)}</div>`;
   }
 }
 
@@ -600,6 +841,11 @@ function renderDaily() {
         <div class="card-title"><span class="ico">☑</span>待办事项</div>
         <div class="input-group" style="margin-bottom:12px;">
           <input class="input" id="todoInput" placeholder="添加任务，如：写周报" onkeydown="if(event.key==='Enter')TodoAdd()">
+          <select class="input" id="todoPriority" style="width:auto;padding:0 10px;">
+            <option value="low">低</option>
+            <option value="mid" selected>中</option>
+            <option value="high">高</option>
+          </select>
           <button class="btn" onclick="TodoAdd()">添加</button>
         </div>
         <div class="todo-list" id="todoList"></div>
@@ -607,6 +853,7 @@ function renderDaily() {
 
       <div class="card">
         <div class="card-title"><span class="ico">≋</span>喝水记录</div>
+        <div class="water-goal-setting">每日目标：<input type="number" id="waterGoalInput" min="1" max="20" value="${Store.get('water_goal', 6)}" onchange="WaterGoalSet(this.value)"> 杯</div>
         <div class="water-summary">今日已喝 <b id="waterCount">0</b> 杯</div>
         <div class="water-cups" id="waterCups"></div>
         <button class="btn btn-soft btn-sm" onclick="WaterReset()">重置</button>
@@ -668,11 +915,19 @@ function renderTodos() {
   const list = $('#todoList');
   const todos = getTodos();
   if (!todos.length) { list.innerHTML = '<div class="empty-hint">还没有任务，添加一个吧～</div>'; return; }
-  list.innerHTML = todos.map((t, i) => `
-    <div class="todo-item ${t.done?'done':''}">
-      <div class="checkbox ${t.done?'checked':''}" onclick="TodoToggle(${i})"></div>
+  // 按优先级排序：高 > 中 > 低
+  const priorityOrder = { high: 0, mid: 1, low: 2 };
+  const sorted = todos.map((t, i) => ({ ...t, _i: i })).sort((a, b) => {
+    if (a.done !== b.done) return a.done ? 1 : -1;
+    return (priorityOrder[a.priority||'mid']||1) - (priorityOrder[b.priority||'mid']||1);
+  });
+  const priorityLabels = { high: '高', mid: '中', low: '低' };
+  list.innerHTML = sorted.map(t => `
+    <div class="todo-item ${t.done?'done':''} priority-${t.priority||'mid'}">
+      <div class="checkbox ${t.done?'checked':''}" role="checkbox" tabindex="0" aria-checked="${t.done}" onclick="TodoToggle(${t._i})" onkeydown="if(event.key===' '||event.key==='Enter'){event.preventDefault();TodoToggle(${t._i})}"></div>
       <span class="todo-text">${escapeHtml(t.text)}</span>
-      <span class="todo-delete" onclick="TodoDel(${i})">✕</span>
+      <span class="todo-priority"><span class="priority-dot ${t.priority||'mid'} active" title="优先级：${priorityLabels[t.priority||'mid']}"></span></span>
+      <span class="todo-delete" onclick="TodoDel(${t._i})">✕</span>
     </div>
   `).join('');
 }
@@ -680,8 +935,9 @@ function TodoAdd() {
   const inp = $('#todoInput');
   const v = inp.value.trim();
   if (!v) return;
+  const priority = $('#todoPriority')?.value || 'mid';
   const todos = getTodos();
-  todos.push({ text: v, done: false });
+  todos.push({ text: v, done: false, priority });
   setTodos(todos);
   inp.value = '';
   renderTodos();
@@ -704,9 +960,10 @@ function getWater() { return Store.get(todayKey() + '_water', 0); }
 function setWater(v) { Store.set(todayKey() + '_water', v); }
 function renderWater() {
   const n = getWater();
+  const goal = Store.get('water_goal', 6);
   $('#waterCount').textContent = n;
-  $('#waterCups').innerHTML = Array.from({length: 6}, (_, i) =>
-    `<div class="cup ${i < n ? 'filled' : ''}" title="${i+1}杯" onclick="WaterSet(${i+1})"></div>`
+  $('#waterCups').innerHTML = Array.from({length: goal}, (_, i) =>
+    `<div class="cup ${i < n ? 'filled' : ''}" title="${i+1}杯" role="button" tabindex="0" aria-label="设置${i+1}杯" onclick="WaterSet(${i+1})" onkeydown="if(event.key===' '||event.key==='Enter'){event.preventDefault();WaterSet(${i+1})}"></div>`
   ).join('');
 }
 function WaterSet(n) {
@@ -715,6 +972,11 @@ function WaterSet(n) {
   renderWater();
 }
 function WaterReset() { setWater(0); renderWater(); }
+function WaterGoalSet(v) {
+  const goal = Math.max(1, Math.min(20, parseInt(v) || 6));
+  Store.set('water_goal', goal);
+  renderWater();
+}
 
 /* --- 运动 --- */
 function getSports() { return Store.get(todayKey() + '_sports', []); }
@@ -788,10 +1050,7 @@ async function fetchDailyPoem() {
   }
 
   // 用日期做种子选诗，同一天同一首
-  const key = dateKey(new Date());
-  let seed = 0;
-  for (let i = 0; i < key.length; i++) seed += key.charCodeAt(i) * (i + 1);
-  const poem = poems[seed % poems.length];
+  const poem = poems[dailySeed() % poems.length];
   renderDailyPoem(poem);
 }
 
@@ -1010,10 +1269,7 @@ async function fetchDailyBook() {
   const el = $('#dailyBook');
   if (!el) return;
   // 用日期种子选书，同一天同一本
-  const key = dateKey(new Date());
-  let seed = 0;
-  for (let i = 0; i < key.length; i++) seed += key.charCodeAt(i) * (i + 1);
-  const book = CLASSIC_BOOKS[seed % CLASSIC_BOOKS.length];
+  const book = CLASSIC_BOOKS[dailySeed() % CLASSIC_BOOKS.length];
   renderDailyBook(book);
 }
 function renderDailyBook(b) {
@@ -1051,12 +1307,12 @@ const MARKET_CODES = [
 function renderHeadline() {
   return `
     <div class="card">
-      <div class="card-title"><span class="ico">📰</span>新闻速览 <span style="font-size:11px;color:var(--text-mute);font-weight:400;margin-left:6px;" id="newsStatus">加载中…</span></div>
+      <div class="card-title"><span class="ico">📰</span>新闻速览 <span style="font-size:11px;color:var(--text-mute);font-weight:400;margin-left:6px;" id="newsStatus">加载中…</span> <button class="btn btn-ghost btn-sm" style="margin-left:6px;padding:3px 10px;font-size:11px;" onclick="fetchNews(true)">🔄 刷新</button></div>
       <div class="news-list" id="newsList">
         ${FALLBACK_NEWS.map(n => `
-          <a class="news-item" href="${n.url}" target="_blank" rel="noopener">
+          <a class="news-item" href="${safeUrl(n.url)}" target="_blank" rel="noopener">
             <span class="news-tag ${n.cls}">${n.tag}</span>
-            <span class="news-title">${n.title}</span>
+            <span class="news-title">${escapeHtml(n.title)}</span>
           </a>
         `).join('')}
       </div>
@@ -1066,8 +1322,8 @@ function renderHeadline() {
       <div class="card-title"><span class="ico">📈</span>股市行情</div>
       <div class="market-grid" id="marketGrid">
         ${MARKET_CODES.map(m => `
-          <div class="market-card" data-code="${m.code}">
-            <div class="market-name">${m.name}</div>
+          <div class="market-card" data-code="${escapeAttr(m.code)}">
+            <div class="market-name">${escapeHtml(m.name)}</div>
             <div class="market-value">加载中…</div>
             <div class="market-change">—</div>
           </div>
@@ -1101,42 +1357,41 @@ const NEWS_CACHE_TTL = 30 * 60 * 1000; // 30 分钟
 afterRender.headline = () => { fetchMarkets(); fetchNews(); };
 
 // 拉取实时新闻：2条国际 + 4条国内分类（体育/财经/教育/娱乐）
-async function fetchNews() {
+async function fetchNews(force = false) {
   const list = $('#newsList');
   const status = $('#newsStatus');
   if (!list) return;
 
-  // 先用缓存快速渲染
-  if (_newsCache && Date.now() - _newsCacheTime < NEWS_CACHE_TTL) {
+  // 先用缓存快速渲染（非强制刷新时）
+  if (!force && _newsCache && Date.now() - _newsCacheTime < NEWS_CACHE_TTL) {
     renderNews(list, status, _newsCache, '· 已缓存');
     return;
   }
 
+  if (status) status.textContent = '· 加载中…';
+
   try {
+    // 并行请求所有 RSS 源（5秒超时）
+    const [worldItems, sportsItems, financeItems, eduItems, scrollItems] = await Promise.all([
+      fetchRSSItems(NEWS_RSS_FEEDS[0].rss),
+      fetchRSSItems(NEWS_RSS_FEEDS[1].rss),
+      fetchRSSItems(NEWS_RSS_FEEDS[2].rss),
+      fetchRSSItems(NEWS_RSS_FEEDS[3].rss),
+      fetchRSSItems(NEWS_RSS_FEEDS[4].rss),
+    ]);
+
     const result = [];
     // 1. 国际新闻：取前2条
-    const worldItems = await fetchRSSItems(NEWS_RSS_FEEDS[0].rss);
     worldItems.slice(0, 2).forEach(item => {
-      result.push({
-        title: item.title,
-        url: item.link,
-        tag: '国际', cls: 'tag-intl',
-      });
+      result.push({ title: item.title, url: item.link, tag: '国际', cls: 'tag-intl' });
     });
-
     // 2. 国内分类：体育/财经/教育 各1条
-    const sportsItems = await fetchRSSItems(NEWS_RSS_FEEDS[1].rss);
     if (sportsItems[0]) result.push({ title: sportsItems[0].title, url: sportsItems[0].link, tag: '体育', cls: 'tag-sports' });
-
-    const financeItems = await fetchRSSItems(NEWS_RSS_FEEDS[2].rss);
     if (financeItems[0]) result.push({ title: financeItems[0].title, url: financeItems[0].link, tag: '财经', cls: 'tag-finance' });
-
-    const eduItems = await fetchRSSItems(NEWS_RSS_FEEDS[3].rss);
     if (eduItems[0]) result.push({ title: eduItems[0].title, url: eduItems[0].link, tag: '教育', cls: 'tag-edu' });
 
-    // 3. 娱乐：从综合滚动新闻中筛选（标题含娱乐关键词）
+    // 3. 娱乐：从综合滚动新闻中筛选
     const ENTERTAIN_WORDS = ['电影','票房','明星','娱乐','音乐','综艺','演唱会','剧集','电视剧','演员','导演','歌手','出道','专辑','颁奖','影帝','影后','电影节','首映','定档','开播','收官','真人秀','偶像','选秀'];
-    const scrollItems = await fetchRSSItems(NEWS_RSS_FEEDS[4].rss);
     let entertainFound = false;
     for (const item of scrollItems) {
       if (ENTERTAIN_WORDS.some(w => item.title.includes(w))) {
@@ -1145,26 +1400,24 @@ async function fetchNews() {
         break;
       }
     }
-    // 兜底：从滚动新闻取一条
     if (!entertainFound && scrollItems[0]) {
       result.push({ title: scrollItems[0].title, url: scrollItems[0].link, tag: '国内', cls: 'tag-domestic' });
     }
 
     if (result.length < 3) throw new Error('not enough news: ' + result.length);
 
-    // 缓存
     _newsCache = result;
     _newsCacheTime = Date.now();
     renderNews(list, status, result, '· 已更新');
   } catch (e) {
-    // 最终降级：保留 FALLBACK_NEWS
+    console.warn('新闻获取失败:', e);
     if (status) status.textContent = '· 请稍后刷新';
   }
 }
 
 function renderNews(list, status, news, msg) {
   list.innerHTML = news.map(n => `
-    <a class="news-item" href="${n.url}" target="_blank" rel="noopener">
+    <a class="news-item" href="${safeUrl(n.url)}" target="_blank" rel="noopener">
       <span class="news-tag ${n.cls}">${n.tag}</span>
       <span class="news-title">${escapeHtml(n.title)}</span>
     </a>
@@ -1172,22 +1425,21 @@ function renderNews(list, status, news, msg) {
   if (status) status.textContent = msg;
 }
 
-// 通过代理获取 RSS items
+// 通过代理获取 RSS items（带超时）
 async function fetchRSSItems(rss) {
   for (const proxy of NEWS_RSS_PROXIES) {
     try {
       const url = proxy(rss);
-      const res = await fetch(url);
+      const res = await fetchWithTimeout(url, {}, 5000);
       if (!res.ok) continue;
       const data = await res.json();
-      // rss2json 返回 {items: [...]}，allorigins 返回原始 XML
       if (data.items && Array.isArray(data.items)) {
         return data.items;
       }
       if (data.contents) {
         return parseRSSXML(data.contents);
       }
-    } catch (e) { continue; }
+    } catch (e) { console.warn('RSS 获取失败:', rss, e); continue; }
   }
   return [];
 }
@@ -1203,11 +1455,11 @@ function parseRSSXML(xmlText) {
   } catch { return []; }
 }
 
-// 拉取实时行情
+// 拉取实时行情（带超时）
 function fetchMarkets() {
   MARKET_CODES.forEach(m => {
     const url = `https://qt.gtimg.cn/q=${m.code}`;
-    fetch(url)
+    fetchWithTimeout(url, {}, 5000)
       .then(r => r.text())
       .then(text => {
         const card = document.querySelector(`[data-code="${m.code}"]`);
@@ -1267,7 +1519,7 @@ function updateCloth(id, patch) {
 }
 async function deleteCloth(id) {
   // 删除 IndexedDB 中的图片
-  try { await ImageDB.del(id); } catch {}
+  try { await ImageDB.del(id); } catch (e) { console.warn('图片删除失败:', e); }
   const arr = getClothes().filter(c => c.id !== id);
   safeSetClothes(arr);
   // 清理穿搭记录中的引用
@@ -2310,19 +2562,49 @@ function renderMeal() {
     const n = parseInt((m.cal.match(/\d+/) || [0])[0]);
     return sum + n;
   }, 0);
+  // 搜索关键词
+  const searchKey = Store.get('meal_search', '');
+  const dislikes = Store.get('meal_dislikes', []); // 不喜欢的菜名列表
+  // 过滤
+  let displayMeals = daily;
+  if (searchKey) {
+    const allMatches = MEALS.filter(m => m.name.includes(searchKey) || m.desc.includes(searchKey));
+    if (allMatches.length > 0) {
+      // 按餐次替换
+      const byType = { breakfast: [], lunch: [], dinner: [] };
+      allMatches.forEach(m => byType[m.meal]?.push(m));
+      displayMeals = [
+        ...(byType.breakfast[0] ? [{ ...byType.breakfast[0], mealLabel: '早餐' }] : []),
+        ...(byType.lunch[0] ? [{ ...byType.lunch[0], mealLabel: '午餐' }] : []),
+        ...(byType.dinner[0] ? [{ ...byType.dinner[0], mealLabel: '晚餐' }] : []),
+      ];
+      if (displayMeals.length === 0) displayMeals = daily;
+    }
+  }
+  // 标记不喜欢
+  const isDisliked = (name) => dislikes.includes(name);
+
   return `
     <div class="card">
       <div class="card-title"><span class="ico">♥</span>今日三餐推荐</div>
       <div class="meal-day-info">每日根据日期自动更换 · 共 ${MEALS.length} 道菜 · 今日合计约 ${totalCal} 千卡</div>
+      <div class="meal-search">
+        <input class="input" id="mealSearchInput" placeholder="搜索菜品名称或关键词…" value="${escapeAttr(searchKey)}" oninput="MealSearch(this.value)" />
+      </div>
+      <div class="meal-pref-chips">
+        ${displayMeals.map(m => `
+          <button class="meal-pref-chip ${isDisliked(m.name)?'dislike':''}" onclick="MealToggleDislike('${escapeAttr(m.name)}')">${isDisliked(m.name) ? '👎' : '👍'} ${escapeHtml(m.name)}</button>
+        `).join('')}
+      </div>
       <div class="meal-grid">
-        ${daily.map(m => `
+        ${displayMeals.map(m => `
           <div class="meal-card">
             <div class="meal-tag">${m.mealLabel}</div>
-            <div class="meal-img" style="background:linear-gradient(135deg, ${m.grad[0]}, ${m.grad[1]});"><span style="font-size:20px;color:rgba(255,255,255,0.9);font-weight:700;">${m.name[0]}</span></div>
+            <div class="meal-img" style="background:linear-gradient(135deg, ${m.grad[0]}, ${m.grad[1]});"><span style="font-size:20px;color:rgba(255,255,255,0.9);font-weight:700;">${escapeHtml(m.name[0])}</span></div>
             <div class="meal-body">
-              <div class="meal-name">${m.name}</div>
-              <div class="meal-cal">${m.cal}</div>
-              <div class="meal-desc">${m.desc}</div>
+              <div class="meal-name">${escapeHtml(m.name)}</div>
+              <div class="meal-cal">${escapeHtml(m.cal)}</div>
+              <div class="meal-desc">${escapeHtml(m.desc)}</div>
             </div>
           </div>
         `).join('')}
@@ -2332,14 +2614,35 @@ function renderMeal() {
   `;
 }
 
+// 搜索菜品
+function MealSearch(v) {
+  Store.set('meal_search', v);
+  // 延迟渲染避免频繁刷新
+  clearTimeout(window._mealSearchTimer);
+  window._mealSearchTimer = setTimeout(() => {
+    const content = $('#content');
+    if (content) content.innerHTML = renderMeal();
+  }, 300);
+}
+// 标记不喜欢
+function MealToggleDislike(name) {
+  const dislikes = Store.get('meal_dislikes', []);
+  const i = dislikes.indexOf(name);
+  if (i >= 0) dislikes.splice(i, 1);
+  else dislikes.push(name);
+  Store.set('meal_dislikes', dislikes);
+  const content = $('#content');
+  if (content) content.innerHTML = renderMeal();
+}
+
 // 手动换一批：用随机种子重新渲染
 let mealShuffle = 0;
 function refreshMeal() {
   mealShuffle++;
   window._mealOverride = dateKey(new Date()) + '-s' + mealShuffle;
+  Store.set('meal_search', ''); // 清除搜索
   const content = $('#content');
   content.innerHTML = renderMeal();
-  // 注意：不调用 afterRender.meal，否则会重置 _mealOverride
 }
 
 afterRender.meal = () => {
@@ -2360,16 +2663,23 @@ function renderPeriod() {
         <div class="cal-header">
           <div class="cal-month" id="calMonth"></div>
           <div class="cal-nav">
-            <button onclick="CalMove(-1)">‹</button>
-            <button onclick="CalMove(1)">›</button>
-            <button onclick="CalToday()" title="回到今天">·</button>
+            <button onclick="CalMove(-1)" aria-label="上个月">‹</button>
+            <button onclick="CalMove(1)" aria-label="下个月">›</button>
+            <button onclick="CalToday()" title="回到今天" aria-label="回到今天">·</button>
           </div>
         </div>
         <div class="cal-grid" id="calGrid"></div>
       </div>
       <div class="calendar-note">
         <div class="note-date" id="noteDateLabel"></div>
-        <textarea class="textarea note-area" id="noteArea" placeholder="记下当天的身体感受或备注…如：量少、腹痛"></textarea>
+        <div class="period-predict" id="periodPredict"></div>
+        <div class="flow-selector" id="flowSelector">
+          <button class="flow-btn" data-flow="light" onclick="FlowSet('light')">量少</button>
+          <button class="flow-btn" data-flow="medium" onclick="FlowSet('medium')">适中</button>
+          <button class="flow-btn" data-flow="heavy" onclick="FlowSet('heavy')">量多</button>
+        </div>
+        <div class="period-symptoms" id="symptomChips"></div>
+        <textarea class="textarea note-area" id="noteArea" placeholder="记下当天的身体感受或备注…"></textarea>
         <div class="note-actions">
           <button class="btn btn-sm" onclick="NoteSave()">保存笔记</button>
           <button class="btn btn-ghost btn-sm" onclick="NoteClear()">清除</button>
@@ -2378,6 +2688,11 @@ function renderPeriod() {
     </div>
   `;
 }
+
+// 经期症状列表
+const PERIOD_SYMPTOMS = ['痛经', '头痛', '腰酸', '情绪波动', '疲劳', '腹胀', '胸部胀痛', '失眠', '食欲变化'];
+// 经期周期计算
+const PERIOD_CYCLE_DEFAULT = 28; // 默认周期天数
 
 afterRender.period = () => {
   calCursor = new Date();
@@ -2388,6 +2703,34 @@ afterRender.period = () => {
 
 function getPeriodNotes() { return Store.get('period_notes', {}); }
 function setPeriodNotes(v) { Store.set('period_notes', v); }
+// 获取经期标记日（有 flow 记录的日期）
+function getPeriodDays() {
+  const notes = getPeriodNotes();
+  return Object.keys(notes).filter(k => notes[k] && typeof notes[k] === 'object' && notes[k].flow).sort();
+}
+// 周期预测
+function predictPeriod() {
+  const days = getPeriodDays();
+  if (days.length < 1) return null;
+  const last = days[days.length - 1];
+  const lastDate = new Date(last);
+  // 计算平均周期
+  let avgCycle = PERIOD_CYCLE_DEFAULT;
+  if (days.length >= 2) {
+    const cycles = [];
+    for (let i = 1; i < days.length; i++) {
+      const diff = (new Date(days[i]) - new Date(days[i-1])) / (1000 * 60 * 60 * 24);
+      if (diff > 15 && diff < 60) cycles.push(diff); // 过滤异常值
+    }
+    if (cycles.length > 0) avgCycle = Math.round(cycles.reduce((a,b) => a+b, 0) / cycles.length);
+  }
+  const nextDate = new Date(lastDate);
+  nextDate.setDate(nextDate.getDate() + avgCycle);
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const daysUntil = Math.round((nextDate - today) / (1000 * 60 * 60 * 24));
+  return { last, next: dateKey(nextDate), avgCycle, daysUntil };
+}
 
 function drawCalendar() {
   const y = calCursor.getFullYear(), m = calCursor.getMonth();
@@ -2398,6 +2741,21 @@ function drawCalendar() {
   const prevDays = new Date(y, m, 0).getDate();
   const notes = getPeriodNotes();
   const todayK = dateKey(new Date());
+  const periodDays = getPeriodDays();
+
+  // 预测下次经期
+  const pred = predictPeriod();
+  let predRange = [];
+  if (pred) {
+    // 预测经期前后5天标记
+    const predStart = new Date(pred.next);
+    predStart.setDate(predStart.getDate() - 2);
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(predStart);
+      d.setDate(d.getDate() + i);
+      predRange.push(dateKey(d));
+    }
+  }
 
   const cells = [];
   // 星期表头
@@ -2412,8 +2770,16 @@ function drawCalendar() {
     const cls = ['cal-day'];
     if (k === todayK) cls.push('today');
     if (k === calSelected) cls.push('selected');
-    if (notes[k]) cls.push('has-note');
-    cells.push(`<div class="${cls.join(' ')}" onclick="CalSelect('${k}')">${d}</div>`);
+    const note = notes[k];
+    if (note) {
+      if (typeof note === 'string') cls.push('has-note');
+      else if (note.flow || note.symptoms?.length || note.text) cls.push('has-note');
+    }
+    // 经期标记日
+    if (periodDays.includes(k)) cls.push('has-period');
+    // 预测经期日
+    if (predRange.includes(k) && !periodDays.includes(k)) cls.push('predicted-period');
+    cells.push(`<div class="${cls.join(' ')}" onclick="CalSelect('${k}')" tabindex="0" role="button" aria-label="${k}">${d}</div>`);
   }
   // 下月填充
   const total = startDay + daysInMonth;
@@ -2440,21 +2806,79 @@ function CalToday() {
 }
 function loadNote() {
   const notes = getPeriodNotes();
-  const v = notes[calSelected] || '';
-  $('#noteArea').value = v;
-  $('#noteDateLabel').textContent = calSelected.replace(/-/g, '年').replace(/年/, '年').replace(/年(.+?)$/, '月$1').replace(/$/, '') ;
-  // 简化格式化
+  const note = notes[calSelected];
+  // 兼容旧数据（纯字符串）和新数据（对象）
+  const noteText = typeof note === 'string' ? note : (note?.text || '');
+  const flow = typeof note === 'object' ? (note?.flow || '') : '';
+  const symptoms = typeof note === 'object' ? (note?.symptoms || []) : [];
+
+  $('#noteArea').value = noteText;
   const [y, m, d] = calSelected.split('-');
   $('#noteDateLabel').textContent = `${y}年${parseInt(m)}月${parseInt(d)}日`;
+
+  // 流量选中
+  $$('#flowSelector .flow-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.flow === flow));
+
+  // 症状标签
+  $('#symptomChips').innerHTML = PERIOD_SYMPTOMS.map(s =>
+    `<button class="symptom-chip ${symptoms.includes(s)?'active':''}" onclick="SymptomToggle('${s}')">${s}</button>`
+  ).join('');
+
+  // 周期预测
+  const pred = predictPeriod();
+  const predEl = $('#periodPredict');
+  if (pred && predEl) {
+    if (pred.daysUntil > 0) {
+      predEl.innerHTML = `🔮 预计下次经期：<b>${pred.next}</b>（约 <b>${pred.daysUntil}</b> 天后）· 平均周期 <b>${pred.avgCycle}</b> 天`;
+    } else if (pred.daysUntil === 0) {
+      predEl.innerHTML = `🔮 预计今天可能开始经期 · 平均周期 <b>${pred.avgCycle}</b> 天`;
+    } else if (pred.daysUntil > -7) {
+      predEl.innerHTML = `🔮 经期可能已开始（已过 <b>${-pred.daysUntil}</b> 天）· 平均周期 <b>${pred.avgCycle}</b> 天`;
+    } else {
+      predEl.innerHTML = `🔮 上次经期：<b>${pred.last}</b> · 平均周期 <b>${pred.avgCycle}</b> 天`;
+    }
+  }
+}
+function FlowSet(flow) {
+  const notes = getPeriodNotes();
+  const note = notes[calSelected];
+  if (typeof note === 'string' || !note) {
+    notes[calSelected] = { text: typeof note === 'string' ? note : '', flow, symptoms: [] };
+  } else {
+    note.flow = note.flow === flow ? '' : flow;
+  }
+  setPeriodNotes(notes);
+  loadNote();
+  drawCalendar();
+}
+function SymptomToggle(symptom) {
+  const notes = getPeriodNotes();
+  let note = notes[calSelected];
+  if (typeof note === 'string' || !note) {
+    note = { text: typeof note === 'string' ? note : '', flow: '', symptoms: [] };
+  }
+  if (!note.symptoms) note.symptoms = [];
+  const i = note.symptoms.indexOf(symptom);
+  if (i >= 0) note.symptoms.splice(i, 1);
+  else note.symptoms.push(symptom);
+  notes[calSelected] = note;
+  setPeriodNotes(notes);
+  loadNote();
+  drawCalendar();
 }
 function NoteSave() {
   const notes = getPeriodNotes();
-  const v = $('#noteArea').value.trim();
-  if (v) notes[calSelected] = v;
-  else delete notes[calSelected];
+  const text = $('#noteArea')?.value.trim() || '';
+  const existing = notes[calSelected];
+  const flow = typeof existing === 'object' ? (existing?.flow || '') : '';
+  const symptoms = typeof existing === 'object' ? (existing?.symptoms || []) : [];
+  if (text || flow || symptoms.length) {
+    notes[calSelected] = { text, flow, symptoms };
+  } else {
+    delete notes[calSelected];
+  }
   setPeriodNotes(notes);
   drawCalendar();
-  // 轻提示
   flashSaved(event.target);
 }
 function NoteClear() {
@@ -2463,6 +2887,7 @@ function NoteClear() {
   setPeriodNotes(notes);
   $('#noteArea').value = '';
   drawCalendar();
+  loadNote();
 }
 function flashSaved(btn) {
   const orig = btn.textContent;
@@ -2476,10 +2901,18 @@ function flashSaved(btn) {
  * ========================================================================= */
 function renderLearn(key) {
   const data = LEARN_DATA[key];
+  // 合并自定义任务
+  const customKey = 'learn_custom_' + key;
+  const customTasks = Store.get(customKey, {}); // { phaseIndex: [{t, v}] }
   const done = Store.get('learn_' + key, {});
+  // 构建合并后的 phases（深拷贝 + 自定义任务）
+  const phases = data.phases.map((p, pi) => ({
+    title: p.title,
+    tasks: [...p.tasks, ...(customTasks[pi] || [])],
+  }));
   // 计算总进度
   let total = 0, completed = 0;
-  data.phases.forEach((p, pi) => {
+  phases.forEach((p, pi) => {
     p.tasks.forEach((t, ti) => {
       total++;
       if (done[`${pi}_${ti}`]) completed++;
@@ -2489,17 +2922,18 @@ function renderLearn(key) {
 
   return `
     <div class="total-progress">
-      <span class="total-progress-label">${data.name}总进度</span>
+      <span class="total-progress-label">${escapeHtml(data.name)}总进度</span>
       <div class="total-progress-bar"><div class="total-progress-fill" style="width:${totalPct}%"></div></div>
       <span class="total-progress-text">${completed}/${total}</span>
     </div>
-    ${data.phases.map((p, pi) => {
+    ${phases.map((p, pi) => {
       let pTotal = p.tasks.length, pDone = p.tasks.filter((t, ti) => done[`${pi}_${ti}`]).length;
       const pct = pTotal ? Math.round(pDone / pTotal * 100) : 0;
+      const isCustom = (ti) => ti >= (data.phases[pi]?.tasks.length || 0);
       return `
         <div class="phase" id="phase_${key}_${pi}">
-          <div class="phase-header" onclick="PhaseToggle('${key}',${pi})">
-            <div class="phase-title"><span class="phase-arrow">▼</span>${p.title}</div>
+          <div class="phase-header" onclick="PhaseToggle('${key}',${pi})" role="button" tabindex="0">
+            <div class="phase-title"><span class="phase-arrow">▼</span>${escapeHtml(p.title)}</div>
             <div class="phase-progress">
               <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
               <span class="progress-text">${pDone}/${pTotal}</span>
@@ -2508,16 +2942,53 @@ function renderLearn(key) {
           <div class="phase-body">
             ${p.tasks.map((t, ti) => `
               <div class="task ${done[`${pi}_${ti}`]?'done':''}">
-                <div class="checkbox ${done[`${pi}_${ti}`]?'checked':''}" onclick="TaskToggle('${key}',${pi},${ti})"></div>
-                <span class="task-text">${t.t}</span>
-                ${t.v ? `<a class="task-video" href="${t.v}" target="_blank">▶ 视频</a>` : ''}
+                <div class="checkbox ${done[`${pi}_${ti}`]?'checked':''}" role="checkbox" tabindex="0" aria-checked="${!!done[`${pi}_${ti}`]}" onclick="TaskToggle('${key}',${pi},${ti})" onkeydown="if(event.key===' '||event.key==='Enter'){event.preventDefault();TaskToggle('${key}',${pi},${ti})}"></div>
+                <span class="task-text">${escapeHtml(t.t)}</span>
+                ${t.v ? `<a class="task-video" href="${safeUrl(t.v)}" target="_blank" rel="noopener">▶ 视频</a>` : ''}
+                ${isCustom(ti) ? `<span class="learn-task-delete" onclick="LearnDelTask('${key}',${pi},${ti})" title="删除">✕</span>` : ''}
               </div>
             `).join('')}
+            <div class="learn-add-task">
+              <input class="input" placeholder="添加自定义任务…" onkeydown="if(event.key==='Enter')LearnAddTask('${key}',${pi},this)" />
+              <button class="btn btn-soft btn-sm" onclick="LearnAddTaskInput('${key}',${pi},this)">+ 添加</button>
+            </div>
           </div>
         </div>
       `;
     }).join('')}
   `;
+}
+
+function LearnAddTask(key, pi, inputEl) {
+  const v = inputEl.value.trim();
+  if (!v) return;
+  const customKey = 'learn_custom_' + key;
+  const custom = Store.get(customKey, {});
+  if (!custom[pi]) custom[pi] = [];
+  custom[pi].push({ t: v, v: '' });
+  Store.set(customKey, custom);
+  renderModule(currentModule);
+}
+function LearnAddTaskInput(key, pi, btnEl) {
+  const input = btnEl.previousElementSibling;
+  if (input) LearnAddTask(key, pi, input);
+}
+function LearnDelTask(key, pi, ti) {
+  const data = LEARN_DATA[key];
+  const customKey = 'learn_custom_' + key;
+  const custom = Store.get(customKey, {});
+  if (!custom[pi]) return;
+  const customIdx = ti - (data.phases[pi]?.tasks.length || 0);
+  if (customIdx >= 0 && customIdx < custom[pi].length) {
+    custom[pi].splice(customIdx, 1);
+    Store.set(customKey, custom);
+    // 清理对应的 done 状态
+    const doneKey = 'learn_' + key;
+    const done = Store.get(doneKey, {});
+    delete done[`${pi}_${ti}`];
+    Store.set(doneKey, done);
+  }
+  renderModule(currentModule);
 }
 
 function PhaseToggle(key, pi) {
@@ -2533,9 +3004,4 @@ function TaskToggle(key, pi, ti) {
   Store.set(k, done);
   // 局部更新：重新渲染该模块
   renderModule(currentModule);
-}
-
-/* ---------- 辅助 ---------- */
-function escapeHtml(s) {
-  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }

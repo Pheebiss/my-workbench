@@ -1219,5 +1219,138 @@ a.news-item { color: inherit; text-decoration: none; }
   .fun-card-stats { font-size: 10px; gap: 8px; }
 }
 
+/* ========== 设置按钮 ========== */
+.settings-btn {
+  font-size: 18px;
+  color: var(--text-sub);
+  padding: 7px 12px;
+  border-radius: 10px;
+  transition: all 0.2s var(--ease);
+  background: rgba(255,255,255,0.6);
+  border: 1px solid var(--line-soft);
+  margin-right: 10px;
+}
+.settings-btn:hover { background: var(--primary-soft); color: var(--primary-deep); }
+
+/* ========== 设置面板 ========== */
+.settings-panel { padding: 20px; }
+.settings-section { margin-bottom: 20px; }
+.settings-section-title { font-size: 15px; font-weight: 600; color: var(--primary-deep); margin-bottom: 12px; }
+.settings-section-desc { font-size: 13px; color: var(--text-sub); margin-bottom: 12px; line-height: 1.6; }
+.settings-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ========== SW 更新提示 ========== */
+.sw-update-toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(90,78,82,0.95);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 22px;
+  font-size: 13px;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+}
+.sw-update-toast button {
+  background: var(--primary);
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* ========== 经期症状标签 ========== */
+.period-symptoms { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.symptom-chip { padding: 5px 12px; border-radius: 14px; font-size: 12px; background: var(--card-soft); color: var(--text-sub); border: 1px solid var(--line); cursor: pointer; transition: all 0.2s var(--ease); }
+.symptom-chip:hover { border-color: var(--primary); color: var(--primary-deep); }
+.symptom-chip.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+.flow-selector { display: flex; gap: 6px; margin-bottom: 12px; }
+.flow-btn { flex: 1; padding: 8px; border-radius: 10px; font-size: 12px; background: var(--card-soft); color: var(--text-sub); border: 1px solid var(--line); cursor: pointer; transition: all 0.2s var(--ease); text-align: center; }
+.flow-btn:hover { border-color: var(--primary); }
+.flow-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+.period-predict { background: linear-gradient(135deg, var(--primary-ghost), var(--accent-soft)); border-radius: var(--radius-sm); padding: 12px 16px; margin-bottom: 12px; font-size: 13px; color: var(--text-sub); line-height: 1.8; }
+.period-predict b { color: var(--primary-deep); }
+
+/* ========== 待办优先级 ========== */
+.todo-priority { display: flex; gap: 4px; margin-right: 6px; }
+.priority-dot { width: 8px; height: 8px; border-radius: 50%; cursor: pointer; opacity: 0.3; transition: opacity 0.2s; }
+.priority-dot:hover { opacity: 0.6; }
+.priority-dot.active { opacity: 1; }
+.priority-dot.high { background: var(--red); }
+.priority-dot.mid { background: var(--amber); }
+.priority-dot.low { background: var(--green); }
+.todo-item.priority-high { border-left: 3px solid var(--red); }
+.todo-item.priority-mid { border-left: 3px solid var(--amber); }
+
+/* ========== 首页概览卡片 ========== */
+.home-overview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; position: relative; z-index: 1; }
+.home-overview-item { background: rgba(255,255,255,0.6); border-radius: 14px; padding: 14px 10px; text-align: center; border: 1px solid rgba(180,160,255,0.12); }
+.home-overview-num { font-size: 22px; font-weight: 700; color: #4a4458; }
+.home-overview-label { font-size: 11px; color: #8a82a0; margin-top: 2px; }
+@media (max-width: 520px) { .home-overview { grid-template-columns: repeat(3, 1fr); gap: 8px; } .home-overview-num { font-size: 18px; } }
+
+/* ========== 学习模块自定义任务 ========== */
+.learn-add-task { display: flex; gap: 8px; margin: 8px 0; }
+.learn-add-task .input { flex: 1; padding: 8px 12px; font-size: 13px; }
+.learn-add-task .btn { padding: 8px 14px; }
+.learn-task-delete { color: var(--text-mute); cursor: pointer; padding: 2px 6px; border-radius: 5px; font-size: 14px; opacity: 0; transition: all 0.2s; }
+.task:hover .learn-task-delete { opacity: 0.6; }
+.learn-task-delete:hover { color: var(--red); background: var(--primary-soft); opacity: 1; }
+
+/* ========== 膳食搜索框 ========== */
+.meal-search { margin-bottom: 16px; }
+.meal-search .input { padding: 10px 14px; }
+.meal-pref-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.meal-pref-chip { padding: 5px 12px; border-radius: 14px; font-size: 12px; background: var(--card-soft); color: var(--text-sub); border: 1px solid var(--line); cursor: pointer; transition: all 0.2s; }
+.meal-pref-chip:hover { border-color: var(--primary); color: var(--primary-deep); }
+.meal-pref-chip.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+.meal-pref-chip.dislike { background: var(--primary-soft); color: var(--red); border-color: var(--red); }
+
+/* ========== 可访问性焦点样式 ========== */
+button:focus-visible, a:focus-visible, .nav-item:focus-visible, .wd-chip:focus-visible, .wd-filter-chip:focus-visible, .cal-day:focus-visible, .cup:focus-visible, .checkbox:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ========== 经期日历增强 ========== */
+.cal-day.has-period {
+  background: linear-gradient(135deg, var(--primary), var(--primary-deep));
+  color: #fff;
+  font-weight: 600;
+}
+.cal-day.has-period::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: #fff;
+}
+.cal-day.predicted-period {
+  background: var(--primary-ghost);
+  color: var(--primary-deep);
+}
+.cal-day.predicted-period::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--primary);
+  opacity: 0.4;
+}
 
 
+/* ========== 喝水目标配置 ========== */
+.water-goal-setting { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; font-size: 12px; color: var(--text-sub); }
+.water-goal-setting input { width: 50px; padding: 4px 8px; border: 1px solid var(--line); border-radius: 8px; text-align: center; font-size: 13px; background: var(--card-soft); }
