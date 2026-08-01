@@ -711,7 +711,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 初始化模块标题
   const initialM = MODULES.find(x => x.id === currentModule);
-  if (initialM) $('#moduleTitle').innerHTML = formatModuleTitle(initialM.label);
+  if (initialM) $('#moduleTitle').textContent = initialM.label;
 
   // 大屏自动收起（桌面体验）—— 默认不收起，保持完整显示
   // 迁移旧 localStorage 图片到 IndexedDB（异步执行，不阻塞渲染）
@@ -726,22 +726,13 @@ function switchModule(id) {
   currentModule = id;
   $$('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.id === id));
   const m = MODULES.find(x => x.id === id);
-  $('#moduleTitle').innerHTML = formatModuleTitle(m.label);
+  $('#moduleTitle').textContent = m.label;
   // 移动端关闭侧边栏
   if (window.innerWidth <= 768) {
     $('#sidebar').classList.remove('open');
     $('#overlay').classList.remove('show');
   }
   renderModule(id);
-}
-
-// 标题前几个字小一号（>=3字时前2字小一号）
-function formatModuleTitle(label) {
-  if (!label || label.length <= 2) return escapeHtml(label);
-  const prefixLen = Math.min(2, Math.floor(label.length / 2));
-  const prefix = label.slice(0, prefixLen);
-  const suffix = label.slice(prefixLen);
-  return `<span class="module-title-prefix">${escapeHtml(prefix)}</span><span class="module-title-suffix">${escapeHtml(suffix)}</span>`;
 }
 
 function renderModule(id) {
