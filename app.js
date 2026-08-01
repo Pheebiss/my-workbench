@@ -127,7 +127,7 @@ const MODULES = [
   { id: 'daily',    icon: '✅', label: '每日打卡' },
   { id: 'headline', icon: '📰', label: '今日头条' },
   { id: 'wardrobe', icon: '👗', label: '电子衣橱' },
-  { id: 'fun',      icon: '🎮', label: '休闲娱乐' },
+  { id: 'fun',      icon: '🎬', label: '休闲娱乐' },
   { id: 'meal',     icon: '🍱', label: '均衡膳食' },
   { id: 'period',   icon: '🌸', label: '经期记录' },
   { id: 'piano',    icon: '🎹', label: '钢琴学习' },
@@ -1913,83 +1913,339 @@ function wdCalDeleteOutfit() {
 }
 
 /* =========================================================================
- * 模块 3.5：休闲娱乐（折扣游戏）
+ * 模块 3.5：休闲娱乐（热门视频）
  * ========================================================================= */
 
-// 本地降级数据：6 款经典 2D 游戏（API 异常时显示）
-const FALLBACK_GAMES = [
-  { title: 'Hollow Knight', normalPrice: '14.99', salePrice: '7.49', savings: 50, thumb: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/367520/capsule_236x167.jpg', desc: '一款极具深度的 2D 动作冒险游戏，探索广阔的虫族王国，挑战凶猛的Boss，揭开古老的秘密。' },
-  { title: 'Stardew Valley', normalPrice: '14.99', salePrice: '9.99', savings: 33, thumb: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/413150/capsule_236x167.jpg', desc: '继承爷爷的农场，开始全新的乡村生活。种植作物、养殖动物、钓鱼挖矿、结交村民，体验放松治愈的农场模拟。' },
-  { title: 'Celeste', normalPrice: '19.99', salePrice: '4.99', savings: 75, thumb: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/504230/capsule_236x167.jpg', desc: '帮助玛德琳攀登塞莱斯特山，克服内心恐惧。一款关于自我挑战的精品 2D 平台跳跃游戏，关卡设计精妙绝伦。' },
-  { title: 'Dead Cells', normalPrice: '24.99', salePrice: '12.49', savings: 50, thumb: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/588650/capsule_236x167.jpg', desc: 'Roguelite + 银河恶魔城玩法，快节奏 2D 战斗，每次死亡后重新探索不断变化的城堡，武器丰富、打击感极佳。' },
-  { title: 'Undertale', normalPrice: '9.99', salePrice: '4.99', savings: 50, thumb: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/391540/capsule_236x167.jpg', desc: '一款颠覆传统的 RPG 游戏，你可以选择不战斗而用对话化解冲突。幽默感人的剧情、经典像素风格、神级配乐。' },
-  { title: 'Ori and the Blind Forest', normalPrice: '19.99', salePrice: '4.99', savings: 75, thumb: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/261570/capsule_236x167.jpg', desc: '一款画面绝美的 2D 平台冒险游戏，操控白色精灵奥里拯救濒死的森林。视觉效果震撼，配乐催泪，关卡精巧。' },
+// 五大分类配置
+const VIDEO_CATEGORIES = [
+  { key: 'beauty',    label: '美妆', icon: '💄', bili: { rid: 155, filterTname: ['美妆护肤', '仿妆cos'] } },
+  { key: 'fashion',  label: '穿搭', icon: '👗', bili: { rid: 155, filterTname: ['穿搭'] } },
+  { key: 'game',     label: '游戏', icon: '🎮', bili: { rid: 4,   filterTname: null } },
+  { key: 'travel',   label: '旅游', icon: '✈️', bili: { rid: 0,   filterTname: ['出行'] } },
+  { key: 'general',  label: '综合', icon: '🔥', bili: { rid: 0,   filterTname: null } },
 ];
 
-function renderFun() {
-  return `
-    <div class="fun-page">
-      <div class="fun-header">
-        <div class="fun-header-title">🎮 折扣游戏推荐</div>
-        <div class="fun-header-sub">实时获取热门折扣游戏，每日精选 · 价格单位：美元</div>
-        <button class="btn btn-soft btn-sm fun-refresh" onclick="fetchFunGames()">🔄 刷新</button>
+// B站兜底数据（JSONP失败时显示，无播放功能）
+const FALLBACK_BILI_VIDEOS = {
+  beauty:   { title: '【美妆】日常通勤妆教程 5分钟快速出门', author: '美妆达人', stats: { like: 520000, reply: 8900, favorite: 45000 } },
+  fashion:  { title: '【穿搭】微胖女生显瘦穿搭技巧分享', author: '穿搭达人', stats: { like: 610000, reply: 12000, favorite: 56000 } },
+  game:     { title: '【游戏】精彩操作高光集锦', author: '游戏达人', stats: { like: 890000, reply: 23000, favorite: 78000 } },
+  travel:   { title: '【旅游】新疆独库公路自驾游vlog', author: '旅游达人', stats: { like: 950000, reply: 15000, favorite: 88000 } },
+  general:  { title: '【综合】全网热门视频精选', author: '热门达人', stats: { like: 1200000, reply: 35000, favorite: 98000 } },
+};
+
+// 抖音兜底数据（精选视频，每类2个，随机展示1个）
+const FALLBACK_DOUYIN_VIDEOS = {
+  beauty: [
+    { vid: '7544007594021719353', title: '日常妆教程 手残党也能学会', author: '抖音美妆达人', stats: { like: 520000, reply: 8900, favorite: 45000 } },
+    { vid: '7595888055229065396', title: '2025年度爱用彩妆大分享', author: '抖音美妆达人', stats: { like: 380000, reply: 5600, favorite: 32000 } },
+  ],
+  fashion: [
+    { vid: '7497859681856064820', title: '出游穿搭攻略 7件搭10套', author: '抖音穿搭达人', stats: { like: 610000, reply: 12000, favorite: 56000 } },
+    { vid: '7554716213160774922', title: '9套旅行穿搭公式 超实穿', author: '抖音穿搭达人', stats: { like: 450000, reply: 7800, favorite: 39000 } },
+  ],
+  game: [
+    { vid: '7518423841267010875', title: '游戏开始了 精彩集锦', author: '抖音游戏达人', stats: { like: 890000, reply: 23000, favorite: 78000 } },
+    { vid: '7511259970482998580', title: '六月热门新游汇总', author: '抖音游戏达人', stats: { like: 720000, reply: 18000, favorite: 65000 } },
+  ],
+  travel: [
+    { vid: '7477899866577046834', title: '旅行vlog 记录美好旅途', author: '抖音旅游达人', stats: { like: 950000, reply: 15000, favorite: 88000 } },
+    { vid: '7444456739178548489', title: '非沉浸式出差vlog 纽约到洛杉矶', author: '抖音旅游达人', stats: { like: 680000, reply: 11000, favorite: 52000 } },
+  ],
+  general: [
+    { vid: '7498597670618008842', title: '近期爆款经验分享', author: '抖音热门达人', stats: { like: 1200000, reply: 35000, favorite: 98000 } },
+    { vid: '7592231286551498024', title: '2025的71个妆容年度总结', author: '抖音热门达人', stats: { like: 980000, reply: 28000, favorite: 82000 } },
+  ],
+};
+
+const BILI_API_BASE = 'https://api.bilibili.com/x/web-interface/ranking/v2';
+const BILI_CACHE_TTL = 6 * 60 * 60 * 1000; // 6小时
+
+/* --- JSONP 加载器（绕过CORS） --- */
+const _jsonpCallbacks = {};
+let _jsonpCounter = 0;
+
+function jsonpLoad(url, timeout = 12000) {
+  return new Promise((resolve, reject) => {
+    const cbName = `__jsonp_cb_${Date.now()}_${_jsonpCounter++}`;
+    const script = document.createElement('script');
+
+    function cleanup() {
+      if (_jsonpCallbacks[cbName]) {
+        clearTimeout(_jsonpCallbacks[cbName].timer);
+        delete _jsonpCallbacks[cbName];
+      }
+      delete window[cbName];
+      if (script.parentNode) script.parentNode.removeChild(script);
+    }
+
+    _jsonpCallbacks[cbName] = {
+      timer: setTimeout(() => {
+        cleanup();
+        reject(new Error('JSONP timeout'));
+      }, timeout),
+    };
+
+    window[cbName] = (data) => {
+      cleanup();
+      resolve(data);
+    };
+
+    script.onerror = () => {
+      cleanup();
+      reject(new Error('JSONP network error'));
+    };
+
+    script.src = url + (url.includes('?') ? '&' : '?') + 'callback=' + cbName;
+    document.head.appendChild(script);
+  });
+}
+
+/* --- 数字格式化 --- */
+function formatNum(n) {
+  if (n >= 100000000) return (n / 100000000).toFixed(1) + '亿';
+  if (n >= 10000) return (n / 10000).toFixed(1) + '万';
+  return String(n);
+}
+
+/* --- 兜底数据获取 --- */
+function getBiliFallbackVideo(catKey) {
+  const f = FALLBACK_BILI_VIDEOS[catKey];
+  if (!f) return null;
+  return {
+    platform: 'bilibili',
+    title: f.title,
+    author: f.author,
+    cover: '',
+    playUrl: '',
+    embedSrc: '',  // 兜底数据无bvid，不支持播放
+    stats: f.stats,
+    heatScore: f.stats.like + f.stats.reply + f.stats.favorite,
+    category: catKey,
+  };
+}
+
+function getDouyinVideo(catKey) {
+  const pool = FALLBACK_DOUYIN_VIDEOS[catKey];
+  if (!pool || pool.length === 0) return null;
+  const pick = pool[Math.floor(Math.random() * pool.length)];
+  return {
+    platform: 'douyin',
+    title: pick.title,
+    author: pick.author,
+    cover: '',
+    playUrl: `https://www.douyin.com/video/${pick.vid}`,
+    embedSrc: `https://open.douyin.com/player/video?vid=${pick.vid}&autoplay=0`,
+    stats: pick.stats,
+    heatScore: pick.stats.like + pick.stats.reply + pick.stats.favorite,
+    category: catKey,
+  };
+}
+
+/* --- B站排行榜获取（带缓存） --- */
+async function fetchBiliRankByRid(rid) {
+  const cacheKey = `bili_rank_${rid}`;
+  const cached = Store.get(cacheKey);
+  if (cached && Date.now() - cached.ts < BILI_CACHE_TTL) {
+    return cached.list;
+  }
+
+  const url = `${BILI_API_BASE}?rid=${rid}&type=all&jsonp=jsonp`;
+  const data = await jsonpLoad(url);
+  if (data.code !== 0 || !data.data || !data.data.list) throw new Error('Bili API error');
+
+  const list = data.data.list.map(v => ({
+    bvid: v.bvid,
+    title: v.title,
+    pic: (v.pic || '').replace(/^http:/, 'https:'),
+    author: v.owner ? v.owner.name : '',
+    tname: v.tname || '',
+    like: v.stat ? v.stat.like : 0,
+    reply: v.stat ? v.stat.reply : 0,
+    favorite: v.stat ? v.stat.favorite : 0,
+    view: v.stat ? v.stat.view : 0,
+  }));
+
+  Store.set(cacheKey, { list, ts: Date.now() });
+  return list;
+}
+
+/* --- 从排行榜中筛选热度最高的视频 --- */
+function pickBiliVideo(list, filterTname, catKey) {
+  let candidates = list;
+  if (filterTname && filterTname.length > 0) {
+    candidates = list.filter(v => filterTname.some(t => v.tname && v.tname.includes(t)));
+  }
+  if (candidates.length === 0) candidates = list;
+
+  const sorted = candidates.map(v => ({
+    ...v,
+    heatScore: (v.like || 0) + (v.reply || 0) + (v.favorite || 0),
+  })).sort((a, b) => b.heatScore - a.heatScore);
+
+  const top = sorted[0];
+  if (!top) return null;
+
+  return {
+    platform: 'bilibili',
+    title: top.title,
+    author: top.author,
+    cover: top.pic || '',
+    playUrl: `https://www.bilibili.com/video/${top.bvid}`,
+    embedSrc: `https://player.bilibili.com/player.html?bvid=${top.bvid}&autoplay=0&high_quality=1&danmaku=1`,
+    stats: { like: top.like, reply: top.reply, favorite: top.favorite, view: top.view },
+    heatScore: top.heatScore,
+    category: catKey,
+  };
+}
+
+/* --- 并行加载3个rid，为5个分类各选1个视频 --- */
+async function fetchAllBiliVideos() {
+  const ridsNeeded = [155, 0, 4];
+  const results = await Promise.allSettled(ridsNeeded.map(rid => fetchBiliRankByRid(rid)));
+
+  const ridData = {};
+  ridsNeeded.forEach((rid, i) => {
+    if (results[i].status === 'fulfilled') ridData[rid] = results[i].value;
+  });
+
+  const biliVideos = {};
+  for (const cat of VIDEO_CATEGORIES) {
+    const list = ridData[cat.bili.rid];
+    if (list) {
+      biliVideos[cat.key] = pickBiliVideo(list, cat.bili.filterTname, cat.key);
+    } else {
+      biliVideos[cat.key] = null;
+    }
+  }
+  return biliVideos;
+}
+
+/* --- 渲染单个视频卡片 --- */
+function renderVideoCard(video, cat, platform) {
+  if (!video) {
+    return `
+      <div class="fun-video-card ${platform}" data-platform="${platform}" data-category="${cat.key}">
+        <div class="fun-card-head">
+          <span class="fun-platform-tag ${platform}">${platform === 'bilibili' ? 'B站' : '抖音'}</span>
+          <span class="fun-category-tag">${cat.icon} ${cat.label}</span>
+        </div>
+        <div class="fun-card-placeholder">暂无数据</div>
       </div>
-      <div class="fun-grid" id="funGrid">
-        <div class="fun-loading">正在获取折扣信息…</div>
+    `;
+  }
+
+  const coverStyle = video.cover
+    ? `background-image:url('${video.cover}')`
+    : `background:linear-gradient(135deg,var(--primary-soft),var(--accent-soft))`;
+
+  const canPlay = video.embedSrc ? 'true' : 'false';
+
+  return `
+    <div class="fun-video-card ${platform}" data-platform="${platform}" data-category="${cat.key}"
+         data-embed="${escapeHtml(video.embedSrc)}" data-play-url="${escapeHtml(video.playUrl)}"
+         data-can-play="${canPlay}" onclick="playFunVideo(this)">
+      <div class="fun-card-head">
+        <span class="fun-platform-tag ${platform}">${platform === 'bilibili' ? 'B站' : '抖音'}</span>
+        <span class="fun-category-tag">${cat.icon} ${cat.label}</span>
+      </div>
+      <div class="fun-card-cover" style="${coverStyle}">
+        <div class="fun-play-overlay">
+          <div class="fun-play-btn">▶</div>
+          <div class="fun-play-text">${canPlay === 'true' ? '点击播放' : '加载中'}</div>
+        </div>
+      </div>
+      <div class="fun-card-info">
+        <div class="fun-card-title">${escapeHtml(video.title)}</div>
+        <div class="fun-card-meta">
+          <span class="fun-author">${escapeHtml(video.author)}</span>
+        </div>
+        <div class="fun-card-stats">
+          <span>👍 ${formatNum(video.stats.like)}</span>
+          <span>💬 ${formatNum(video.stats.reply)}</span>
+          <span>⭐ ${formatNum(video.stats.favorite)}</span>
+        </div>
       </div>
     </div>
   `;
 }
 
-afterRender.fun = () => { fetchFunGames(); };
+/* --- 渲染模块主函数 --- */
+function renderFun() {
+  const rows = VIDEO_CATEGORIES.map(cat => {
+    const biliVideo = getBiliFallbackVideo(cat.key);
+    const douyinVideo = getDouyinVideo(cat.key);
+    return `
+      <div class="fun-video-row" data-category="${cat.key}">
+        ${renderVideoCard(biliVideo, cat, 'bilibili')}
+        ${renderVideoCard(douyinVideo, cat, 'douyin')}
+      </div>
+    `;
+  }).join('');
 
-async function fetchFunGames() {
-  const grid = $('#funGrid');
-  if (!grid) return;
-  grid.innerHTML = '<div class="fun-loading">正在获取折扣信息…</div>';
+  return `
+    <div class="fun-page">
+      <div class="fun-header">
+        <div class="fun-header-title">🎬 热门视频</div>
+        <div class="fun-header-sub">B站 × 抖音 · 五大分类当日最火 · 综合点赞/评论/收藏排序</div>
+        <button class="btn btn-soft btn-sm fun-refresh" onclick="refreshFunVideos()">🔄 刷新</button>
+      </div>
+      <div class="fun-video-table" id="funVideoTable">
+        ${rows}
+      </div>
+      <div class="fun-footer-note">💡 点击视频卡片即可播放 · B站数据来自官方排行榜 · 抖音为精选推荐</div>
+    </div>
+  `;
+}
+
+afterRender.fun = () => { loadFunVideos(); };
+
+/* --- 异步加载B站实时数据，替换初始兜底渲染 --- */
+async function loadFunVideos() {
   try {
-    // CheapShark 全平台折扣游戏，按折扣幅度排序
-    const url = 'https://www.cheapshark.com/api/1.0/deals?pageSize=24&sortBy=Savings&desc=1&onSale=1';
-    const res = await fetch(url);
-    if (!res.ok) throw new Error('API error');
-    let deals = await res.json();
-    // 过滤掉折扣为0或太小的，取前6款折扣最大的
-    deals = deals.filter(d => parseFloat(d.savings) > 0).slice(0, 6);
-    if (deals.length < 6) throw new Error('not enough');
-    const games = deals.map(d => ({
-      title: d.title,
-      normalPrice: parseFloat(d.normalPrice).toFixed(2),
-      salePrice: parseFloat(d.salePrice).toFixed(2),
-      savings: Math.round(parseFloat(d.savings)),
-      thumb: d.thumb || '',
-      desc: d.steamRatingText ? `Steam 评价：${d.steamRatingText}（${d.steamRatingPercent || 'N/A'}%）` : '热门折扣游戏，限时优惠中',
-    }));
-    renderFunGames(games);
+    const biliVideos = await fetchAllBiliVideos();
+    for (const cat of VIDEO_CATEGORIES) {
+      const video = biliVideos[cat.key];
+      if (video) {
+        const card = document.querySelector(`#funVideoTable .fun-video-card[data-platform="bilibili"][data-category="${cat.key}"]`);
+        if (card) {
+          const newHtml = renderVideoCard(video, cat, 'bilibili');
+          card.outerHTML = newHtml;
+        }
+      }
+    }
   } catch (e) {
-    // 降级为本地预设数据
-    renderFunGames(FALLBACK_GAMES);
+    console.warn('B站视频获取失败，使用兜底数据:', e);
   }
 }
 
-function renderFunGames(games) {
-  const grid = $('#funGrid');
-  if (!grid) return;
-  grid.innerHTML = games.map(g => `
-    <div class="fun-card">
-      <div class="fun-card-img" style="background-image:url('${g.thumb}')" onerror="this.style.background='linear-gradient(135deg,var(--primary-soft),var(--accent-soft))';this.innerHTML='<span class=\\'fun-img-fallback\\'>🎮</span>'">
-        ${g.savings >= 70 ? '<span class="fun-badge-hot">🔥超值</span>' : ''}
-      </div>
-      <div class="fun-card-body">
-        <div class="fun-card-title">${escapeHtml(g.title)}</div>
-        <div class="fun-card-prices">
-          <span class="fun-price-old">$${g.normalPrice}</span>
-          <span class="fun-price-new">$${g.salePrice}</span>
-          <span class="fun-price-off">-${g.savings}%</span>
-        </div>
-        <div class="fun-card-desc">${escapeHtml(g.desc)}</div>
-      </div>
+/* --- 点击播放：替换封面为iframe --- */
+function playFunVideo(card) {
+  const embedSrc = card.dataset.embed;
+  if (!embedSrc) return;
+  const cover = card.querySelector('.fun-card-cover');
+  if (!cover || cover.classList.contains('played')) return;
+
+  const platform = card.dataset.platform;
+  const referrerAttr = platform === 'douyin' ? 'referrerpolicy="unsafe-url"' : '';
+  const frameHtml = `
+    <div class="fun-video-frame ${platform}">
+      <iframe src="${escapeHtml(embedSrc)}"
+        scrolling="no" border="0" frameborder="no" framespacing="0"
+        allowfullscreen="true" width="100%" height="100%" ${referrerAttr}>
+      </iframe>
     </div>
-  `).join('');
+  `;
+
+  cover.outerHTML = frameHtml;
+  card.classList.add('played');
+  card.onclick = null;
+}
+
+/* --- 刷新：清除缓存重新渲染 --- */
+function refreshFunVideos() {
+  [0, 4, 155].forEach(rid => localStorage.removeItem(`bili_rank_${rid}`));
+  renderModule('fun');
 }
 
 /* =========================================================================
