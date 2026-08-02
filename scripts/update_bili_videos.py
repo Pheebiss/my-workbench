@@ -265,6 +265,32 @@ def main():
     if bili_ok:
         print('✓ B站数据已更新')
 
+    # 对空分类，从旧 app.js 读取原有数据保留（与抖音逻辑一致）
+    if any(not v for v in bili_data.values()):
+        print('⚠ 部分 B站分类为空，尝试保留旧数据...')
+        with open('app.js', 'r', encoding='utf-8') as f:
+            old_content = f.read()
+        old_bili_match = re.search(r'const FALLBACK_BILI_VIDEOS = \{(.+?)\};', old_content, re.DOTALL)
+        if old_bili_match:
+            for cat in bili_data:
+                if not bili_data[cat]:
+                    cat_pattern = rf"{cat}:\s*\[(.+?)\],"
+                    cat_match = re.search(cat_pattern, old_bili_match.group(1), re.DOTALL)
+                    if cat_match:
+                        old_items = re.findall(r"\{[^}]+bvid: '([^']+)'[^}]+title: '([^']*)'[^}]+author: '([^']*)'[^}]+pic: '([^']*)'[^}]+like: (\d+)[^}]+reply: (\d+)[^}]+favorite: (\d+)[^}]*\}", cat_match.group(1))
+                        bili_data[cat] = [{
+                            'bvid': m[0], 'title': m[1], 'author': m[2], 'pic': m[3],
+                            'stats': {'like': int(m[4]), 'reply': int(m[5]), 'favorite': int(m[6])}
+                        } for m in old_items]
+                        print(f'  B站 {cat}: 保留原有 {len(bili_data[cat])} 个视频')
+                    else:
+                        print(f'  ⚠ B站 {cat} 无匹配且无旧数据')
+            # 重新生成并写入
+            bili_js = generate_bili_js(bili_data)
+            bili_ok = update_appjs_block(bili_js, 'B站兜底数据')
+            if bili_ok:
+                print('✓ B站数据已更新（含保留的旧数据）')
+
     # --- 抖音 ---
     print('\n--- 抖音热门视频 ---')
     dy_videos = fetch_douyin_videos(200)
