@@ -1,14 +1,14 @@
 {
   "news": [
     {
-      "title": "美参议院通过对俄制裁新法案",
-      "url": "https://www.chinanews.com.cn/gj/2026/08-08/10674039.shtml",
+      "title": "西班牙对来自意大利旅客实施临时边检措施",
+      "url": "https://www.chinanews.com.cn/gj/2026/08-08/10674172.shtml",
       "tag": "国际",
       "cls": "tag-intl"
     },
     {
-      "title": "德拉埃斯普列亚宣誓就任哥伦比亚总统",
-      "url": "https://www.chinanews.com.cn/gj/2026/08-08/10674038.shtml",
+      "title": "日媒：中国企业高校研发总投入超美国，居世界第一",
+      "url": "https://www.chinanews.com.cn/gj/2026/08-08/10674179.shtml",
       "tag": "国际",
       "cls": "tag-intl"
     },
@@ -19,8 +19,8 @@
       "cls": "tag-sports"
     },
     {
-      "title": "旅行体验越玩越深！“China Travel”持续升温",
-      "url": "https://www.chinanews.com.cn/cj/2026/08-08/10674033.shtml",
+      "title": "小球赛撬动大消费 体育赛事激活城市发展新动能",
+      "url": "https://www.chinanews.com.cn/cj/2026/08-08/10674185.shtml",
       "tag": "财经",
       "cls": "tag-finance"
     },
@@ -31,24 +31,24 @@
       "cls": "tag-edu"
     },
     {
-      "title": "德拉埃斯普列亚宣誓就任哥伦比亚总统",
-      "url": "https://www.chinanews.com.cn/gj/2026/08-08/10674038.shtml",
+      "title": "“电影+文旅”深度融合 光影经济撬动暑期消费新蓝海",
+      "url": "https://www.chinanews.com.cn/cj/2026/08-08/10674175.shtml",
+      "tag": "娱乐",
+      "cls": "tag-entertain"
+    },
+    {
+      "title": "台风“白海豚” 降雨进程表出炉 后期北方会遭遇强降雨吗",
+      "url": "https://www.chinanews.com.cn/sh/2026/08-08/10674190.shtml",
       "tag": "国内",
       "cls": "tag-domestic"
     },
     {
-      "title": "巴西前7个月汽车产量增长8.3% 新能源汽车销量翻番",
-      "url": "https://www.chinanews.com.cn/gj/2026/08-08/10674037.shtml",
-      "tag": "国内",
-      "cls": "tag-domestic"
-    },
-    {
-      "title": "8月8日新闻早报",
-      "url": "https://www.chinanews.com.cn/iframe/2026/08-08/10674035.shtml",
+      "title": "自然资源部将浙江地质灾害防御响应提升至Ⅲ级，对安徽启动Ⅳ级响应",
+      "url": "https://www.chinanews.com.cn/sh/2026/08-08/10674187.shtml",
       "tag": "国内",
       "cls": "tag-domestic"
     }
   ],
-  "updated": "2026-08-08 08:04",
+  "updated": "2026-08-08 14:04",
   "count": 8
 }
