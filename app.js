@@ -2266,56 +2266,57 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-08-18 22:56:21
+// 最后更新: 2026-08-19 22:56:17
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1hk5k6yE1z', title: '超详细全流程步骤拆解！日常全妆教程（新老手皆宜版）', author: '姜乘澜', pic: '//i1.hdslb.com/bfs/archive/844d18e571fa51fcaf5cbec859530c5d831b9363.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV12Z5v6nEdb', title: '化出韩味！掌握韩妆精髓 速通版', author: '姜乘澜', pic: '//i0.hdslb.com/bfs/archive/35af3d8a97f9032950e0fade5d8eae6ad11492d5.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: '毛戈平的化妆课', author: '大渔大师课', pic: 'https://archive.biliimg.com/bfs/archive/746ddede613a89824efe59abe51c61460de8c3f2.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1rHbY6MEB9', title: '我这一生最大的罪，是把人写成了妖……', author: '青瓜蛋丶', pic: 'https://i0.hdslb.com/bfs/archive/6533ca786585f35bbf352cee7cf74c8df25fcb01.jpg', stats: { like: 703420, reply: 22052, favorite: 335264 } },
+    { bvid: 'BV1Z9gT61EnM', title: '《一切正常｜異常なし》MV：当所有日本人都说没问题 那问题大了', author: '即兴演奏家', pic: 'https://i2.hdslb.com/bfs/archive/20ecb26c085b126975eec231bde50428c19183ec.jpg', stats: { like: 466914, reply: 19461, favorite: 155929 } },
+    { bvid: 'BV18obz6BEiR', title: '一种很“嘉豪”的合成方式', author: '一支聪慧鼠', pic: 'https://i1.hdslb.com/bfs/archive/1d27a78840a99b323dc7d24877ee1e07cae8d788.jpg', stats: { like: 393987, reply: 5992, favorite: 128762 } },
   ],
   fashion: [
-    { bvid: 'BV1iTgA6hENv', title: '我实现了我儿时的梦想', author: '李炮炮儿', pic: 'https://i2.hdslb.com/bfs/archive/42aae873945139230b212a63abd15bf92369e0c9.jpg', stats: { like: 561924, reply: 9771, favorite: 85427 } },
-    { bvid: 'BV1rHbY6MEB9', title: '我这一生最大的罪，是把人写成了妖……', author: '青瓜蛋丶', pic: 'https://i0.hdslb.com/bfs/archive/6533ca786585f35bbf352cee7cf74c8df25fcb01.jpg', stats: { like: 434992, reply: 14038, favorite: 200564 } },
-    { bvid: 'BV1fTb16KEDk', title: '飞机安检模拟器', author: '鲤鱼Ace', pic: 'https://i1.hdslb.com/bfs/archive/820b598a960056cc2c5135b6ac0fb03935aa0406.jpg', stats: { like: 427853, reply: 12796, favorite: 199236 } },
+    { bvid: 'BV1gL836oEbb', title: '原神7.0千星奇域男偶穿搭', author: '茶茶只会喊666', pic: '//i0.hdslb.com/bfs/archive/eaf6388e254286ef0f7b0536db9c7c97e5587885.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1x78u6mE1Y', title: 'CORTIS 马丁穿搭解析：凭什么他能统治潮男审美？？', author: '不时尚Lab', pic: '//i1.hdslb.com/bfs/archive/f3bff919d93a8f6fb3ff6da4d29c3dd433db00e8.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '《高级穿搭配色·精选基础课》：CMB权威配色理论', author: 'KK白生', pic: 'https://archive.biliimg.com/bfs/archive/3b8681c54ba7430f154088932d2ebb8e142e935c.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   game: [
-    { bvid: 'BV1iTgA6hENv', title: '我实现了我儿时的梦想', author: '李炮炮儿', pic: 'https://i2.hdslb.com/bfs/archive/42aae873945139230b212a63abd15bf92369e0c9.jpg', stats: { like: 561924, reply: 9771, favorite: 85427 } },
-    { bvid: 'BV1rHbY6MEB9', title: '我这一生最大的罪，是把人写成了妖……', author: '青瓜蛋丶', pic: 'https://i0.hdslb.com/bfs/archive/6533ca786585f35bbf352cee7cf74c8df25fcb01.jpg', stats: { like: 434992, reply: 14038, favorite: 200564 } },
-    { bvid: 'BV1fTb16KEDk', title: '飞机安检模拟器', author: '鲤鱼Ace', pic: 'https://i1.hdslb.com/bfs/archive/820b598a960056cc2c5135b6ac0fb03935aa0406.jpg', stats: { like: 427853, reply: 12796, favorite: 199236 } },
+    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 352743, reply: 2847, favorite: 757129 } },
+    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693882, reply: 4407, favorite: 130253 } },
+    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 517172, reply: 29146, favorite: 183220 } },
   ],
   travel: [
-    { bvid: 'BV1iTgA6hENv', title: '我实现了我儿时的梦想', author: '李炮炮儿', pic: 'https://i2.hdslb.com/bfs/archive/42aae873945139230b212a63abd15bf92369e0c9.jpg', stats: { like: 561924, reply: 9771, favorite: 85427 } },
-    { bvid: 'BV1rHbY6MEB9', title: '我这一生最大的罪，是把人写成了妖……', author: '青瓜蛋丶', pic: 'https://i0.hdslb.com/bfs/archive/6533ca786585f35bbf352cee7cf74c8df25fcb01.jpg', stats: { like: 434992, reply: 14038, favorite: 200564 } },
-    { bvid: 'BV1fTb16KEDk', title: '飞机安检模拟器', author: '鲤鱼Ace', pic: 'https://i1.hdslb.com/bfs/archive/820b598a960056cc2c5135b6ac0fb03935aa0406.jpg', stats: { like: 427853, reply: 12796, favorite: 199236 } },
+    { bvid: 'BV1rHbY6MEB9', title: '我这一生最大的罪，是把人写成了妖……', author: '青瓜蛋丶', pic: 'https://i0.hdslb.com/bfs/archive/6533ca786585f35bbf352cee7cf74c8df25fcb01.jpg', stats: { like: 703420, reply: 22052, favorite: 335264 } },
+    { bvid: 'BV1Z9gT61EnM', title: '《一切正常｜異常なし》MV：当所有日本人都说没问题 那问题大了', author: '即兴演奏家', pic: 'https://i2.hdslb.com/bfs/archive/20ecb26c085b126975eec231bde50428c19183ec.jpg', stats: { like: 466914, reply: 19461, favorite: 155929 } },
+    { bvid: 'BV18obz6BEiR', title: '一种很“嘉豪”的合成方式', author: '一支聪慧鼠', pic: 'https://i1.hdslb.com/bfs/archive/1d27a78840a99b323dc7d24877ee1e07cae8d788.jpg', stats: { like: 393987, reply: 5992, favorite: 128762 } },
   ],
   general: [
-    { bvid: 'BV1iTgA6hENv', title: '我实现了我儿时的梦想', author: '李炮炮儿', pic: 'https://i2.hdslb.com/bfs/archive/42aae873945139230b212a63abd15bf92369e0c9.jpg', stats: { like: 561924, reply: 9771, favorite: 85427 } },
-    { bvid: 'BV1rHbY6MEB9', title: '我这一生最大的罪，是把人写成了妖……', author: '青瓜蛋丶', pic: 'https://i0.hdslb.com/bfs/archive/6533ca786585f35bbf352cee7cf74c8df25fcb01.jpg', stats: { like: 434992, reply: 14038, favorite: 200564 } },
-    { bvid: 'BV1fTb16KEDk', title: '飞机安检模拟器', author: '鲤鱼Ace', pic: 'https://i1.hdslb.com/bfs/archive/820b598a960056cc2c5135b6ac0fb03935aa0406.jpg', stats: { like: 427853, reply: 12796, favorite: 199236 } },
+    { bvid: 'BV1rHbY6MEB9', title: '我这一生最大的罪，是把人写成了妖……', author: '青瓜蛋丶', pic: 'https://i0.hdslb.com/bfs/archive/6533ca786585f35bbf352cee7cf74c8df25fcb01.jpg', stats: { like: 703420, reply: 22052, favorite: 335264 } },
+    { bvid: 'BV1Z9gT61EnM', title: '《一切正常｜異常なし》MV：当所有日本人都说没问题 那问题大了', author: '即兴演奏家', pic: 'https://i2.hdslb.com/bfs/archive/20ecb26c085b126975eec231bde50428c19183ec.jpg', stats: { like: 466914, reply: 19461, favorite: 155929 } },
+    { bvid: 'BV18obz6BEiR', title: '一种很“嘉豪”的合成方式', author: '一支聪慧鼠', pic: 'https://i1.hdslb.com/bfs/archive/1d27a78840a99b323dc7d24877ee1e07cae8d788.jpg', stats: { like: 393987, reply: 5992, favorite: 128762 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-08-18 22:56:35
+// 最后更新: 2026-08-19 22:56:35
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7671662227880342399', title: '刚逃过了阿那亚的高温 又进入了上海的暴雨圈 这次8月12记得来我直播间#二胎宝妈 #美容仪 #护肤', author: '是静宜（16号hfp&欧佩莱护肤破价专场', stats: { like: 6528, reply: 170, favorite: 189 } },
   ],
   fashion: [
-    { vid: '7663419451510141882', title: '想把衣服穿好看先动起来 #穿搭#情侣日常#CleerARC6#蓝牙耳机#Cleer夏日装备Step', author: '阿丹叔叔', stats: { like: 7589, reply: 211, favorite: 483 } },
+    { vid: '7667405337041095945', title: '唱演合一！声线交织搭配完整故事线，浑然一体！ 第435集：《春泥》张泽禹&张极，和声层次细腻，情绪循序渐进，剧情演绎直击', author: '张大花哥', stats: { like: 40836, reply: 1659, favorite: 3662 } },
   ],
   game: [
-    { vid: '7670537643835070065', title: '#媒体原创 亚运会电竞参赛代表团公布。中国队将参加4个项目：《王者荣耀》、《和平精英》亚运版本、《永劫无间》、《第五人格', author: '封面新闻', stats: { like: 24519, reply: 6629, favorite: 20406 } },
-    { vid: '7664632801181928730', title: '挂玉米钓鲤鱼调漂，只需两步，简单有效 #原来钓鱼才是抖音运动顶流 #当钓鱼的想法达到了顶峰 #沃鼎产品体验官 #沃鼎王者', author: '辛涛钓鱼', stats: { like: 13724, reply: 445, favorite: 1721 } },
-    { vid: '7671599085572410643', title: '年少有为用iQOO，选这6款包不会输！ #vivo  #iqoo  #游戏手机排名  #学生党手机推荐  iqoo，iq', author: '霸王茶机（冲50w粉版）', stats: { like: 7048, reply: 1361, favorite: 996 } },
+    { vid: '7671850113806978331', title: '到底值不值？聊聊ROG的第一款音箱加拉尔', author: '游戏宅朋克男', stats: { like: 4533, reply: 84, favorite: 187 } },
+    { vid: '7667498250689105162', title: '实测8台二手笔记本，2000-5000超高性价比推荐！ #笔记本推荐 #大学生电脑 #游戏本推荐 #二手笔记本 #性价比', author: '野生的装机宅', stats: { like: 1294, reply: 136, favorite: 156 } },
   ],
   travel: [
-    { vid: '7673452474016372347', title: 'Call me：婚礼主理人 #vlog#备婚#大疆osmo360二代#大疆全景新品#全景相机', author: '曲曲', stats: { like: 30503, reply: 24989, favorite: 1526 } },
+    { vid: '7667474503773162094', title: '主包的粉丝福利来袭！ #减肥vlog #大基数减肥 #减肥日常', author: '仓鼠团', stats: { like: 26773, reply: 2252, favorite: 6845 } },
+    { vid: '7666041629769308913', title: '过日子vlog：眼里有活的人别干“上门喂狗”， 干干成了全屋保洁。短暂的二胎小狗体验卡！#蓝氏狗粮#蓝氏乳鸽狗粮', author: '丁大根儿', stats: { like: 37800, reply: 571, favorite: 2927 } },
+    { vid: '7673682605431507419', title: '在澳洲做中式狗饭的一天！#vlog#袋鼠妈妈青少年洗发水', author: '灿灿的远☀️', stats: { like: 22138, reply: 627, favorite: 1283 } },
   ],
   general: [
-    { vid: '7670143412637684581', title: '我的敏感程度be like 电影解说@青青影视', author: '你的真心太会晦涩', stats: { like: 360818, reply: 17049, favorite: 911080 } },
-    { vid: '7673141364133111227', title: '这波贪了，留到春晚再看😂🌚#姐弟', author: '琪琪奶奶', stats: { like: 319316, reply: 13267, favorite: 382831 } },
-    { vid: '7669280237885190554', title: '王来了/汪来了 #被我的刺头迷晕了吧 #萌宠出道计划 #狗狗杀马特发型 #狗式躺平 #铲屎官日常记录', author: '或许', stats: { like: 368063, reply: 2798, favorite: 255874 } },
+    { vid: '7673877317339333989', title: '爷们#民间绝活 #非遗文化传承 #00后非遗传承人', author: '小安有绝活（非遗）', stats: { like: 174610, reply: 31611, favorite: 65687 } },
+    { vid: '7669625611098424547', title: '偶遇小男孩，暑假帮爷爷奶奶售卖葡萄，懂事上进。心中怀揣理想，立志参军保家卫国。愿少年坚守初心，不负热爱，未来闪闪发，我决', author: '李纪录', stats: { like: 320603, reply: 21212, favorite: 5505 } },
+    { vid: '7672339283864336997', title: '假如我国变成超大平原，那我们岂不是赚大了？我要开始尝试了……#地理 #科普 #我要开始了#MacBook', author: '热爱干饭饭饭', stats: { like: 266462, reply: 9303, favorite: 23677 } },
   ],
 };
 
