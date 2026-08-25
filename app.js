@@ -2266,58 +2266,58 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-08-24 22:58:33
+// 最后更新: 2026-08-25 23:01:09
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382212, reply: 1023, favorite: 39866 } },
-    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290399, reply: 805, favorite: 64917 } },
-    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267251, reply: 2325, favorite: 9382 } },
+    { bvid: 'BV1G48M6XEBt', title: '"复活吧！我的（ ）"', author: 'HL-Flame', pic: 'https://i0.hdslb.com/bfs/archive/32bd89a388d516e86c9aef3669217f4d9a8b231d.jpg', stats: { like: 707400, reply: 21453, favorite: 389629 } },
+    { bvid: 'BV1Vy8r6JE9z', title: '严肃观看儿子的历史记录', author: '逗比的雀巢', pic: 'https://i2.hdslb.com/bfs/archive/28c24920d68bd97718f88201f7fdbc401b7506a4.jpg', stats: { like: 536284, reply: 18116, favorite: 115299 } },
+    { bvid: 'BV1gLhK6LEcb', title: '贱谍过家家（8）', author: '小潮院长', pic: 'https://i1.hdslb.com/bfs/archive/9bda56f1a45fd9ed421ea1c18451a962f8345029.jpg', stats: { like: 380519, reply: 11509, favorite: 123687 } },
   ],
   fashion: [
-    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222044, reply: 469, favorite: 33244 } },
-    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 90908, reply: 475, favorite: 26011 } },
-    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87305, reply: 304, favorite: 22573 } },
+    { bvid: 'BV1G48M6XEBt', title: '"复活吧！我的（ ）"', author: 'HL-Flame', pic: 'https://i0.hdslb.com/bfs/archive/32bd89a388d516e86c9aef3669217f4d9a8b231d.jpg', stats: { like: 707400, reply: 21453, favorite: 389629 } },
+    { bvid: 'BV1Vy8r6JE9z', title: '严肃观看儿子的历史记录', author: '逗比的雀巢', pic: 'https://i2.hdslb.com/bfs/archive/28c24920d68bd97718f88201f7fdbc401b7506a4.jpg', stats: { like: 536284, reply: 18116, favorite: 115299 } },
+    { bvid: 'BV1gLhK6LEcb', title: '贱谍过家家（8）', author: '小潮院长', pic: 'https://i1.hdslb.com/bfs/archive/9bda56f1a45fd9ed421ea1c18451a962f8345029.jpg', stats: { like: 380519, reply: 11509, favorite: 123687 } },
   ],
   game: [
-    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 353234, reply: 2858, favorite: 757507 } },
-    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693885, reply: 4408, favorite: 130203 } },
-    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 517299, reply: 29150, favorite: 183265 } },
+    { bvid: 'BV1G48M6XEBt', title: '"复活吧！我的（ ）"', author: 'HL-Flame', pic: 'https://i0.hdslb.com/bfs/archive/32bd89a388d516e86c9aef3669217f4d9a8b231d.jpg', stats: { like: 707400, reply: 21453, favorite: 389629 } },
+    { bvid: 'BV1Vy8r6JE9z', title: '严肃观看儿子的历史记录', author: '逗比的雀巢', pic: 'https://i2.hdslb.com/bfs/archive/28c24920d68bd97718f88201f7fdbc401b7506a4.jpg', stats: { like: 536284, reply: 18116, favorite: 115299 } },
+    { bvid: 'BV1gLhK6LEcb', title: '贱谍过家家（8）', author: '小潮院长', pic: 'https://i1.hdslb.com/bfs/archive/9bda56f1a45fd9ed421ea1c18451a962f8345029.jpg', stats: { like: 380519, reply: 11509, favorite: 123687 } },
   ],
   travel: [
-    { bvid: 'BV1rHbY6MEB9', title: '我这一生最大的罪，是把人写成了妖……', author: '青瓜蛋丶', pic: 'https://i0.hdslb.com/bfs/archive/6533ca786585f35bbf352cee7cf74c8df25fcb01.jpg', stats: { like: 1300658, reply: 40799, favorite: 664293 } },
-    { bvid: 'BV1kS8H6VERt', title: '《黑神话：钟馗》15分钟实机演示', author: '黑神话', pic: 'https://i0.hdslb.com/bfs/archive/05d77b6337611727f47d5228d0d027f587c238b4.jpg', stats: { like: 890235, reply: 110969, favorite: 217328 } },
-    { bvid: 'BV1G48M6XEBt', title: '"复活吧！我的（ ）"', author: 'HL-Flame', pic: 'https://i0.hdslb.com/bfs/archive/32bd89a388d516e86c9aef3669217f4d9a8b231d.jpg', stats: { like: 660655, reply: 21990, favorite: 359939 } },
+    { bvid: 'BV1G48M6XEBt', title: '"复活吧！我的（ ）"', author: 'HL-Flame', pic: 'https://i0.hdslb.com/bfs/archive/32bd89a388d516e86c9aef3669217f4d9a8b231d.jpg', stats: { like: 707400, reply: 21453, favorite: 389629 } },
+    { bvid: 'BV1Vy8r6JE9z', title: '严肃观看儿子的历史记录', author: '逗比的雀巢', pic: 'https://i2.hdslb.com/bfs/archive/28c24920d68bd97718f88201f7fdbc401b7506a4.jpg', stats: { like: 536284, reply: 18116, favorite: 115299 } },
+    { bvid: 'BV1gLhK6LEcb', title: '贱谍过家家（8）', author: '小潮院长', pic: 'https://i1.hdslb.com/bfs/archive/9bda56f1a45fd9ed421ea1c18451a962f8345029.jpg', stats: { like: 380519, reply: 11509, favorite: 123687 } },
   ],
   general: [
-    { bvid: 'BV1rHbY6MEB9', title: '我这一生最大的罪，是把人写成了妖……', author: '青瓜蛋丶', pic: 'https://i0.hdslb.com/bfs/archive/6533ca786585f35bbf352cee7cf74c8df25fcb01.jpg', stats: { like: 1300658, reply: 40799, favorite: 664293 } },
-    { bvid: 'BV1kS8H6VERt', title: '《黑神话：钟馗》15分钟实机演示', author: '黑神话', pic: 'https://i0.hdslb.com/bfs/archive/05d77b6337611727f47d5228d0d027f587c238b4.jpg', stats: { like: 890235, reply: 110969, favorite: 217328 } },
-    { bvid: 'BV1G48M6XEBt', title: '"复活吧！我的（ ）"', author: 'HL-Flame', pic: 'https://i0.hdslb.com/bfs/archive/32bd89a388d516e86c9aef3669217f4d9a8b231d.jpg', stats: { like: 660655, reply: 21990, favorite: 359939 } },
+    { bvid: 'BV1FmhG6mEYn', title: '热门故事推荐', author: '晓晓爆单暴富', pic: '//i2.hdslb.com/bfs/archive/2986965d62c0f66ed2ea7ba88d2ea12ddd0acf76.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1XH8K67ERv', title: '热门故事推荐', author: '暴富暴财神', pic: '//i1.hdslb.com/bfs/archive/66f276a9227e8083d03f2de1249ee43a92ca88c1.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '【热门课堂】基于ESP32的步进电机控制驱动板', author: '嵌入式小林', pic: 'https://archive.biliimg.com/bfs/archive/47cacef033ccce7928976e9f2fc3dd1673661440.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-08-24 22:58:49
+// 最后更新: 2026-08-25 23:01:26
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
-    { vid: '7675667337990769926', title: '#媒体原创 路口红绿灯故障造成交通拥堵，关键时刻，他出手了！#媒体精选计划', author: '中国新闻网', stats: { like: 95883, reply: 2682, favorite: 2339 } },
-    { vid: '7671917013211680026', title: '睡前3分钟躺练，高效瘦腿之大腿小腿一起瘦，动画版跟练，一起变瘦变美！#瘦大腿的最快方法  #睡前运动  #瘦腿 #瘦腿提', author: '七七轻运动', stats: { like: 12053, reply: 989, favorite: 1860 } },
+    { vid: '7666768269910609188', title: 'afro无缝衔接合集 开车健身必听系列20min Set 夏天专属的Afro set来啦，大家都听过几首～ 全场景万能 ', author: '夏昊天SKY', stats: { like: 128429, reply: 508, favorite: 13024 } },
+    { vid: '7673832728630914432', title: '放肆野！宝宝护肤有它就够了~ #高圆圆代言青蛙王子#青蛙王子金茶油霜#慢慢长大更强大#青蛙王子山茶油霜#儿童护肤', author: '宝藏辣妈厚厚吖', stats: { like: 14322, reply: 141, favorite: 923 } },
   ],
   fashion: [
     { vid: '7671951507821989160', title: '中国人心态变了！运动户外爆火，暗藏怎样的消费趋势？ #2026秋冬白皮书 #户外运动白皮书  #天猫运动户外 #运动户外', author: '一林大话世界', stats: { like: 14585, reply: 542, favorite: 1492 } },
   ],
   game: [
-    { vid: '7676019544091817125', title: '2026年开学笔记本推荐！准大一新生选这五款，学习游戏两不误#学长推荐50系笔记本', author: '奥恩科技日志', stats: { like: 17997, reply: 283, favorite: 2011 } },
-    { vid: '7668987857633665253', title: '爽玩5年主力机！千元预算买游戏手机，只看这六款！ #低预算手机推荐  #千元手机推荐 #游戏手机 #手机性能排名  #手', author: '霸王茶机（冲50w粉版）', stats: { like: 4412, reply: 252, favorite: 490 } },
-    { vid: '7675994348890115366', title: '小兰德教了小姆巴吃面喝汤的技巧 #足球#足球的魅力#外国人真会玩#水龙头#游戏挑战', author: '搬砖·甄选', stats: { like: 5323, reply: 54, favorite: 142 } },
+    { vid: '7666768269910609188', title: 'afro无缝衔接合集 开车健身必听系列20min Set 夏天专属的Afro set来啦，大家都听过几首～ 全场景万能 ', author: '夏昊天SKY', stats: { like: 128429, reply: 508, favorite: 13024 } },
+    { vid: '7670066451188845867', title: '#媒体原创 独子去世母亲要求继承87个游戏账号（京法网事）', author: '半岛晨报', stats: { like: 5867, reply: 765, favorite: 1109 } },
   ],
   travel: [
-    { vid: '7675416605106441481', title: '带狗上班vlog 是它在我最孤独无助的时候陪着我 #盆子和多多 #带狗上班vlog #边牧', author: '盆子', stats: { like: 116757, reply: 2816, favorite: 19435 } },
-    { vid: '7676143555513027866', title: '“沐浴露”集齐了，记录三宝和大姐二姐的第一次见面！期待我们一家五口的幸福生活吧～#三胎生活#生产日记vlog#日常vlo', author: '晓露爸爸', stats: { like: 12902, reply: 625, favorite: 218 } },
+    { vid: '7674222375264682917', title: '新手养狗第1集｜五个科学小妙招，省钱又省事 #新手养狗 #狗狗科普 #科学养宠攻略 #去狗味 #训犬', author: '犬子有话讲', stats: { like: 123349, reply: 858, favorite: 79678 } },
+    { vid: '7676449496976330019', title: '电影结尾总会让人印象深刻 #旅行#电影感', author: 'Three.', stats: { like: 130024, reply: 478, favorite: 6523 } },
+    { vid: '7674137837264712881', title: '今日限定｜专属带娃日 抛开所有工作赛事，沉浸式陪伴小十一#人类幼崽成长记 #vlog #认养一头牛牛初乳儿童奶粉#认养一', author: '周雨', stats: { like: 6701, reply: 102, favorite: 60 } },
   ],
   general: [
-    { vid: '7675278720387750757', title: '车翻沟里了，先拍个抖音？（拍戏中）#包贝尔#包无趣的日常#活人感一夏', author: '包贝尔', stats: { like: 1458513, reply: 110832, favorite: 616387 } },
-    { vid: '7675628629631536384', title: '论1983年的严打力度有多强 #重器 #电视剧 #法律 #女性', author: '一只张娱', stats: { like: 544489, reply: 34770, favorite: 106050 } },
-    { vid: '7671596356654855077', title: '林则徐，我们在公共场所很想你 #真实事件改编 #公共场所禁烟 #女生必看 #一定要看到结尾 #58同城', author: '程子橙', stats: { like: 681791, reply: 28995, favorite: 37290 } },
+    { vid: '7668594541598903558', title: '我和闺蜜穿书，女扮男装进男校每天担心掉马甲。 我和闺蜜穿书了，成了女扮男装混进男校的炮灰女配#青春 #AI创作浪潮计划 ', author: '白昼与茄', stats: { like: 1399108, reply: 54077, favorite: 335569 } },
+    { vid: '7677476354652130611', title: '男孩儿的性教育该怎么开口？这些话让你老公亲口说给儿子听！ #性教育 #性教育永远不会嫌太早 #家庭教育 #养儿子 #正确', author: '晋城爸爸在郑州', stats: { like: 156631, reply: 76955, favorite: 705600 } },
+    { vid: '7677169323609230598', title: '治沙英雄殷玉珍和“赛考斯”眼含热泪，紧紧相拥！这段跨越27年的中美民间友谊，终于迎来线下重逢。（总台记者 单楚玉 内蒙古', author: '央视新闻', stats: { like: 1674738, reply: 75, favorite: 71923 } },
   ],
 };
 
