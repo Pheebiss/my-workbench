@@ -2266,57 +2266,59 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-08-28 04:32:18
+// 最后更新: 2026-08-28 22:08:07
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382211, reply: 1023, favorite: 39855 } },
-    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290428, reply: 806, favorite: 64915 } },
-    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267251, reply: 2325, favorite: 9379 } },
+    { bvid: 'BV1hk5k6yE1z', title: '超详细全流程步骤拆解！日常全妆教程（新老手皆宜版）', author: '姜乘澜', pic: '//i1.hdslb.com/bfs/archive/844d18e571fa51fcaf5cbec859530c5d831b9363.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1iU4y1L7G2', title: '【化妆入门课】0基础化妆变美逆袭课！易上手|化妆技巧|化妆教程|系统课|手把手教化妆|毕业变美指南', author: 'JSMN-Me', pic: '//i1.hdslb.com/bfs/archive/13f3dbf71ada18ba13be81fe20814b6d117f2d7a.png', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '女装服装制版课全科班+日常服装工艺（缝纫）全科班', author: '木米制衣', pic: 'https://archive.biliimg.com/bfs/archive/ddba40d8a71b1367262f6fef3ebbe000a87e945e.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   fashion: [
-    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222059, reply: 469, favorite: 33238 } },
-    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 90911, reply: 475, favorite: 26009 } },
-    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87305, reply: 304, favorite: 22569 } },
+    { bvid: 'BV1Uf8R6jEoC', title: '杭州电梯猥亵案反转：法律给了男邻居清白，但网络舆论的私刑已经执行完了，别让真相的迟到 成为常态', author: '大象新闻', pic: 'https://i0.hdslb.com/bfs/archive/970b748deb40b30caedaacbf2f2c71122e92b0b2.jpg', stats: { like: 412978, reply: 27136, favorite: 25394 } },
+    { bvid: 'BV1KMhF6dEt1', title: '《背心尊者》', author: '伤心欲茄222', pic: 'https://i1.hdslb.com/bfs/archive/d26ebd2645d38aa365596d536b7b89b1c396ef42.jpg', stats: { like: 385882, reply: 4944, favorite: 28708 } },
+    { bvid: 'BV16uhN68EUC', title: '经历四世轮回，只为回到你的身边', author: '赏月电影', pic: 'https://i1.hdslb.com/bfs/archive/65a0830a7e91ca31383430f7b8a87b4e33ee0322.jpg', stats: { like: 254773, reply: 2629, favorite: 67103 } },
   ],
   game: [
-    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 353582, reply: 2869, favorite: 757750 } },
-    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693884, reply: 4408, favorite: 130178 } },
-    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 517398, reply: 29161, favorite: 183292 } },
+    { bvid: 'BV1Uf8R6jEoC', title: '杭州电梯猥亵案反转：法律给了男邻居清白，但网络舆论的私刑已经执行完了，别让真相的迟到 成为常态', author: '大象新闻', pic: 'https://i0.hdslb.com/bfs/archive/970b748deb40b30caedaacbf2f2c71122e92b0b2.jpg', stats: { like: 412978, reply: 27136, favorite: 25394 } },
+    { bvid: 'BV1KMhF6dEt1', title: '《背心尊者》', author: '伤心欲茄222', pic: 'https://i1.hdslb.com/bfs/archive/d26ebd2645d38aa365596d536b7b89b1c396ef42.jpg', stats: { like: 385882, reply: 4944, favorite: 28708 } },
+    { bvid: 'BV16uhN68EUC', title: '经历四世轮回，只为回到你的身边', author: '赏月电影', pic: 'https://i1.hdslb.com/bfs/archive/65a0830a7e91ca31383430f7b8a87b4e33ee0322.jpg', stats: { like: 254773, reply: 2629, favorite: 67103 } },
   ],
   travel: [
-    { bvid: 'BV1AYhg6JEBq', title: '国外小女孩都这么早熟吗？这要怎么聊？！', author: 'Henry的小木屋', pic: 'https://i0.hdslb.com/bfs/archive/29652da1eac8b020216337359812c8f9d53a2c7e.jpg', stats: { like: 109640, reply: 971, favorite: 74891 } },
-    { bvid: 'BV1en8Q61Emy', title: '挑战从东北徒步去西藏（十倍速1小时9分版）', author: '阿丑徒步', pic: 'https://i1.hdslb.com/bfs/archive/55ef1145b143cc044c02ee713dc06c80d5d3190e.jpg', stats: { like: 111641, reply: 2557, favorite: 21302 } },
+    { bvid: 'BV1XntN63EV4', title: '【Playlist歌单】| 你无法游向新的地平线，直到你有勇气告别海岸 | 微风 旷野 治愈 | 骑车/旅行/散步/学习', author: 'Ellie的音乐屋', pic: '//i1.hdslb.com/bfs/archive/498b0b582d8bf244b44d1fe681c6e497ab97d190.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1nP411a7i7', title: '29岁，告别母亲与小狗，开启一场孤独的摩托旅行', author: 'Feesway', pic: '//i1.hdslb.com/bfs/archive/749662e7a289326ec0e46a4381aa80fa0d986cca.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '毛大王沉浸式生活旅行实用口语（四合一）', author: 'Arlis毛大王', pic: 'https://archive.biliimg.com/bfs/archive/bbb50460dffaaf1524193cbb61dda43b50f58c1a.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   general: [
-    { bvid: 'BV1Vy8r6JE9z', title: '严肃观看儿子的历史记录', author: '逗比的雀巢', pic: 'https://i2.hdslb.com/bfs/archive/28c24920d68bd97718f88201f7fdbc401b7506a4.jpg', stats: { like: 612745, reply: 19725, favorite: 132601 } },
-    { bvid: 'BV1PEhP6vERe', title: '王中王夺冠自战解说', author: '柯洁', pic: 'https://i0.hdslb.com/bfs/archive/dff6e9ccc224bbf49cd62806dc620ae1e0b66014.jpg', stats: { like: 588148, reply: 27642, favorite: 91445 } },
-    { bvid: 'BV1Uy8x6AETG', title: '高中生逃离原生家庭过程（下）', author: '王哈哈B站版', pic: 'https://i1.hdslb.com/bfs/archive/8f7017d8c1e807a739f0c60a5eef17df7585e5a1.jpg', stats: { like: 476913, reply: 5065, favorite: 213179 } },
+    { bvid: 'BV1Uf8R6jEoC', title: '杭州电梯猥亵案反转：法律给了男邻居清白，但网络舆论的私刑已经执行完了，别让真相的迟到 成为常态', author: '大象新闻', pic: 'https://i0.hdslb.com/bfs/archive/970b748deb40b30caedaacbf2f2c71122e92b0b2.jpg', stats: { like: 412978, reply: 27136, favorite: 25394 } },
+    { bvid: 'BV1KMhF6dEt1', title: '《背心尊者》', author: '伤心欲茄222', pic: 'https://i1.hdslb.com/bfs/archive/d26ebd2645d38aa365596d536b7b89b1c396ef42.jpg', stats: { like: 385882, reply: 4944, favorite: 28708 } },
+    { bvid: 'BV16uhN68EUC', title: '经历四世轮回，只为回到你的身边', author: '赏月电影', pic: 'https://i1.hdslb.com/bfs/archive/65a0830a7e91ca31383430f7b8a87b4e33ee0322.jpg', stats: { like: 254773, reply: 2629, favorite: 67103 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-08-28 04:32:36
+// 最后更新: 2026-08-28 22:08:23
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7666768269910609188', title: 'afro无缝衔接合集 开车健身必听系列20min Set 夏天专属的Afro set来啦，大家都听过几首～ 全场景万能 ', author: '夏昊天SKY', stats: { like: 128429, reply: 508, favorite: 13024 } },
     { vid: '7673832728630914432', title: '放肆野！宝宝护肤有它就够了~ #高圆圆代言青蛙王子#青蛙王子金茶油霜#慢慢长大更强大#青蛙王子山茶油霜#儿童护肤', author: '宝藏辣妈厚厚吖', stats: { like: 14322, reply: 141, favorite: 923 } },
   ],
   fashion: [
-    { vid: '7671951507821989160', title: '中国人心态变了！运动户外爆火，暗藏怎样的消费趋势？ #2026秋冬白皮书 #户外运动白皮书  #天猫运动户外 #运动户外', author: '一林大话世界', stats: { like: 14585, reply: 542, favorite: 1492 } },
+    { vid: '7672284257322045924', title: '难大的身材管理 #180难大 #穿搭', author: '快乐男孩', stats: { like: 11199, reply: 406, favorite: 475 } },
+    { vid: '7675564922197118214', title: '10月龄+宝宝辅食 | 山药鸡肉饼 孩子不爱吃肉，一定要试试这个山药鸡肉饼！🍗 ✅软嫩鲜香不柴——山药是软嫩秘诀，煎出来', author: '辰辰爸辅食日常', stats: { like: 2725, reply: 204, favorite: 826 } },
   ],
   game: [
     { vid: '7666768269910609188', title: 'afro无缝衔接合集 开车健身必听系列20min Set 夏天专属的Afro set来啦，大家都听过几首～ 全场景万能 ', author: '夏昊天SKY', stats: { like: 128429, reply: 508, favorite: 13024 } },
     { vid: '7670066451188845867', title: '#媒体原创 独子去世母亲要求继承87个游戏账号（京法网事）', author: '半岛晨报', stats: { like: 5867, reply: 765, favorite: 1109 } },
   ],
   travel: [
-    { vid: '7677899226466241855', title: '怎么咪也躲不过体测！ #ai猫咪 #大学里的猫 #治愈 #可爱 #vlog萌宠日常', author: '小耄vlog', stats: { like: 353905, reply: 1845, favorite: 173581 } },
-    { vid: '7672278540569627950', title: '锻造马赛克爆炸纹大马士革 #在拍一种很新的vlog #锻刀大赛 #锻造 #抖音创作者大会', author: '空闻灵语', stats: { like: 52282, reply: 10580, favorite: 4766 } },
-    { vid: '7674247752519372083', title: '走进中国古代最重要的边防要塞雁门关 看看它的防御系统到底有多牛#山西 #雁门关 #历史古迹 #旅行推荐官 #旅行大玩家', author: '南京方导', stats: { like: 4253, reply: 106, favorite: 345 } },
+    { vid: '7676212760725152180', title: '每次一说国外的物价贵，总有人说：“人家挣欧元花欧元，你折算什么呢？”这些人其实无耻至极#旅行#欧洲#物价#欧元', author: '请叫我大老师', stats: { like: 21913, reply: 1285, favorite: 1064 } },
+    { vid: '7673759224958061867', title: '小狗贝吉塔来川西玩啦 川西狗狗团出发啦#爪爪宠旅 #宠物旅行 #川西宠物友好攻略 #爪住夏日每一帧 #万物可爱计划', author: '九总是只小橘猫', stats: { like: 5238, reply: 883, favorite: 5651 } },
+    { vid: '7667952056510640302', title: '还记得芯一小时候每次打预防针都会哭很久，没想到现在居然这么勇敢了#日常vlog #骗你生女儿#海洋至尊三棱镜洗面奶 #海', author: '阿敏呀', stats: { like: 8297, reply: 110, favorite: 60 } },
   ],
   general: [
-    { vid: '7669244209194487080', title: '假如围裙妈妈和小头爸爸闹离婚，大头儿子应该判给谁？ #围裙妈妈 #大头儿子 #小头爸爸 #抚养权 #离婚', author: '一杯冥王', stats: { like: 320698, reply: 9415, favorite: 597271 } },
-    { vid: '7677899226466241855', title: '怎么咪也躲不过体测！ #ai猫咪 #大学里的猫 #治愈 #可爱 #vlog萌宠日常', author: '小耄vlog', stats: { like: 353905, reply: 1845, favorite: 173581 } },
-    { vid: '7673330229653940643', title: '小乔用情最深的那一年，偏偏是永失所爱！ #黑夜告白#姜佩瑶#王鹤棣#潘粤明#婆媳 #婆媳关系', author: '谢兴军', stats: { like: 441418, reply: 66702, favorite: 2927 } },
+    { vid: '7677604701094239077', title: '爸爸发现小西奥打妈妈 #日常带娃生活 #爸爸带娃', author: '中美混血小西奥Theo', stats: { like: 1867562, reply: 44202, favorite: 633542 } },
+    { vid: '7668202306156799589', title: '#手艺人', author: '黄氏木雕', stats: { like: 1790644, reply: 248013, favorite: 23150 } },
+    { vid: '7675640219274398312', title: '感谢评论区的损招让弟弟乐极生悲 #姐弟 #学习 #教育 #萌娃 #爆辣辣条吃霸王丝', author: '铁柱..', stats: { like: 684401, reply: 6467, favorite: 262114 } },
   ],
 };
 
