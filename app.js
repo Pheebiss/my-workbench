@@ -2266,41 +2266,40 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-08-31 00:20:49
+// 最后更新: 2026-09-01 01:10:28
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382212, reply: 1023, favorite: 39842 } },
-    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290439, reply: 806, favorite: 64913 } },
-    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267251, reply: 2325, favorite: 9378 } },
+    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382211, reply: 1023, favorite: 39838 } },
+    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290441, reply: 806, favorite: 64912 } },
+    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267252, reply: 2325, favorite: 9379 } },
   ],
   fashion: [
-    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222072, reply: 469, favorite: 33235 } },
-    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 90912, reply: 475, favorite: 26007 } },
-    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87306, reply: 304, favorite: 22567 } },
+    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222086, reply: 469, favorite: 33237 } },
+    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 90912, reply: 475, favorite: 26006 } },
+    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87306, reply: 304, favorite: 22564 } },
   ],
   game: [
-    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 353803, reply: 2874, favorite: 757864 } },
-    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693884, reply: 4408, favorite: 130145 } },
-    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 517477, reply: 29163, favorite: 183309 } },
+    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 353868, reply: 2876, favorite: 757890 } },
+    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693886, reply: 4408, favorite: 130137 } },
+    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 517498, reply: 29164, favorite: 183303 } },
   ],
   travel: [
-    { bvid: 'BV1ju4k6JE13', title: '我的回答是，劳动人民最高贵！', author: '铁手索大', pic: 'https://i1.hdslb.com/bfs/archive/4421f5a45adbd746a541625713e0b24bb31a00be.jpg', stats: { like: 233675, reply: 2437, favorite: 10801 } },
-    { bvid: 'BV1bx4k6zE6D', title: '巨构：暗黑森林【AI全民制作人】', author: '巨构AI', pic: 'https://i2.hdslb.com/bfs/archive/d082a849fe05ef37d2a6eff528e55232bda12eb3.jpg', stats: { like: 152574, reply: 1717, favorite: 29879 } },
-    { bvid: 'BV1Na4Q64Eos', title: '去了一趟西班牙2.0（荒岛四兄弟篇）', author: '影视飓风', pic: 'https://i0.hdslb.com/bfs/archive/b0b220f1953c34b1ed89888c18450cf94ef0480e.jpg', stats: { like: 101505, reply: 2373, favorite: 24628 } },
+    { bvid: 'BV1ju4k6JE13', title: '我的回答是，劳动人民最高贵！', author: '铁手索大', pic: 'https://i1.hdslb.com/bfs/archive/4421f5a45adbd746a541625713e0b24bb31a00be.jpg', stats: { like: 251834, reply: 2250, favorite: 11890 } },
+    { bvid: 'BV1bx4k6zE6D', title: '巨构：暗黑森林【AI全民制作人】', author: '巨构AI', pic: 'https://i2.hdslb.com/bfs/archive/d082a849fe05ef37d2a6eff528e55232bda12eb3.jpg', stats: { like: 167024, reply: 1803, favorite: 33341 } },
+    { bvid: 'BV1Na4Q64Eos', title: '去了一趟西班牙2.0（日全食篇）', author: '影视飓风', pic: 'https://i0.hdslb.com/bfs/archive/b0b220f1953c34b1ed89888c18450cf94ef0480e.jpg', stats: { like: 136897, reply: 2894, favorite: 31506 } },
   ],
   general: [
-    { bvid: 'BV1Jrtc6GEVU', title: '耗时一年，救赎相信光的小女孩，完整后续来了！', author: '扯淡人生-', pic: 'https://i0.hdslb.com/bfs/archive/36c0298e013922e9f12e3f1a03125f2fc570052a.jpg', stats: { like: 619089, reply: 18242, favorite: 74474 } },
-    { bvid: 'BV15EhG6qEAg', title: '《无限大》定档预告丨27年1月15日全球上线', author: '无限大', pic: 'https://i2.hdslb.com/bfs/archive/c6f6c0e1ee112630a5c97b7937648838d7128c07.jpg', stats: { like: 416505, reply: 67122, favorite: 155590 } },
-    { bvid: 'BV1KMhF6dEt1', title: '《背心尊者》', author: '伤心欲茄222', pic: 'https://i1.hdslb.com/bfs/archive/d26ebd2645d38aa365596d536b7b89b1c396ef42.jpg', stats: { like: 502521, reply: 6096, favorite: 38853 } },
+    { bvid: 'BV1Jrtc6GEVU', title: '耗时一年，救赎相信光的小女孩，完整后续来了！', author: '扯淡人生-', pic: 'https://i0.hdslb.com/bfs/archive/36c0298e013922e9f12e3f1a03125f2fc570052a.jpg', stats: { like: 688965, reply: 19529, favorite: 83640 } },
+    { bvid: 'BV1ZNtA6CExY', title: '当你的资产缩水到A0层级，挑选优质桥洞的六大方案！', author: '手搓工坊M', pic: 'https://i2.hdslb.com/bfs/archive/6fd4131ea6d02d3d16d65c280138ace43b096845.jpg', stats: { like: 303887, reply: 10742, favorite: 88812 } },
+    { bvid: 'BV1zCtA6mEay', title: '【明日方舟×女神异闻录３ Reload】SideStory「月行水上」活动宣传PV', author: '明日方舟', pic: 'https://i1.hdslb.com/bfs/archive/a62d2e2c3aef848b63f1d148fe16fa9b61a4972e.jpg', stats: { like: 281498, reply: 34454, favorite: 53742 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-08-31 00:21:04
+// 最后更新: 2026-09-01 01:10:46
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
-    { vid: '7666768269910609188', title: 'afro无缝衔接合集 开车健身必听系列20min Set 夏天专属的Afro set来啦，大家都听过几首～ 全场景万能 ', author: '夏昊天SKY', stats: { like: 128429, reply: 508, favorite: 13024 } },
-    { vid: '7673832728630914432', title: '放肆野！宝宝护肤有它就够了~ #高圆圆代言青蛙王子#青蛙王子金茶油霜#慢慢长大更强大#青蛙王子山茶油霜#儿童护肤', author: '宝藏辣妈厚厚吖', stats: { like: 14322, reply: 141, favorite: 923 } },
+    { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
   ],
   fashion: [
     { vid: '7677319979343056179', title: '九支顶级狙击枪同框，从 AI AXMC 到国产 88 狙！ 一次摆开九支狙击枪：AI 的 AXMC、AWSM、AT，巴雷', author: '老郭寻枪', stats: { like: 5615, reply: 261, favorite: 320 } },
@@ -2310,14 +2309,14 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7673480125291302163', title: '现在TWS都这样搞？？？ 真·指尖陀螺---漫步者GX05大师版 #炎帝trendy #无尽火域 #漫步者GX05大师版', author: '🔥炎帝Trendy（外设焚诀）', stats: { like: 1622, reply: 2817, favorite: 158 } },
   ],
   travel: [
-    { vid: '7673080874912667889', title: '传统口技表演《定海神珍铁》 #口技 #非遗 #西游记 #传统文化 #百young非遗计划', author: 'BBoxer酋长', stats: { like: 830472, reply: 12943, favorite: 313294 } },
-    { vid: '7673831833309629748', title: '又结一道婚！ #婚礼#民族文化  #vlog日常 #假老练新车', author: '假老练万喜', stats: { like: 23968, reply: 1354, favorite: 1588 } },
-    { vid: '7674490118241013018', title: '我有多种身份——球员，美食家……甚至是“小偷”？#vlog #正义之路 #汉堡王', author: '正义又善良的篮球爱好者（中街之神）', stats: { like: 9189, reply: 211, favorite: 600 } },
+    { vid: '7676267849414260145', title: '一点不难你也试试#日常vlog #训练 #蜘蛛侠', author: '湖北灵子（努力版）', stats: { like: 170418, reply: 1707, favorite: 92945 } },
+    { vid: '7674571949246254351', title: '国内自驾第一期——内蒙古辉腾锡勒大草原#黎奇 #自驾游 #图拉斯支点壳  #图拉斯  #防摔手机壳', author: '黎奇的幸福日记', stats: { like: 10533, reply: 338, favorite: 955 } },
+    { vid: '7679073504901369123', title: '八月二十九日 茶事日记 小哥继续冷泡龙珠，说一杯聚京香，好茶好水好时光呀~#茶叶 #茉莉花茶  #聚京香茶庄 #vlog', author: '聚京香茶庄', stats: { like: 5440, reply: 54, favorite: 323 } },
   ],
   general: [
-    { vid: '7676790551207667398', title: '别笑你也过不了第二关#猫咪 #狸花猫', author: '游标卡尺', stats: { like: 3814889, reply: 38814, favorite: 2394724 } },
-    { vid: '7675268008881327334', title: '看一遍笑一遍，为什么又臭又爱闻啊哈哈#萌宠出道计划 #猫咪的迷惑行为 #忧郁 #猫咪 #顽皮猫猫挑战赛', author: '小魚冻干', stats: { like: 846040, reply: 12893, favorite: 557372 } },
-    { vid: '7673080874912667889', title: '传统口技表演《定海神珍铁》 #口技 #非遗 #西游记 #传统文化 #百young非遗计划', author: 'BBoxer酋长', stats: { like: 830472, reply: 12943, favorite: 313294 } },
+    { vid: '7670143412637684581', title: '我的敏感程度be like 电影解说@青青影视', author: '你的真心太会晦涩', stats: { like: 361064, reply: 17011, favorite: 911493 } },
+    { vid: '7679741728773544122', title: '这么简单的道理#碎碎念 #队长captain #萌娃唱歌给你听', author: '高仿双胞胎', stats: { like: 1032500, reply: 84348, favorite: 318083 } },
+    { vid: '7676111060206500581', title: '', author: '0707', stats: { like: 658303, reply: 5492, favorite: 191953 } },
   ],
 };
 
