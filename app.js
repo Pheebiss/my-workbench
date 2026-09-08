@@ -2266,36 +2266,37 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-09-08 00:07:46
+// 最后更新: 2026-09-08 23:58:48
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382212, reply: 1023, favorite: 39815 } },
-    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290470, reply: 806, favorite: 64897 } },
-    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267253, reply: 2325, favorite: 9377 } },
+    { bvid: 'BV1hk5k6yE1z', title: '超详细全流程步骤拆解！日常全妆教程（新老手皆宜版）', author: '姜乘澜', pic: '//i1.hdslb.com/bfs/archive/844d18e571fa51fcaf5cbec859530c5d831b9363.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1iU4y1L7G2', title: '【化妆入门课】0基础化妆变美逆袭课！易上手|化妆技巧|化妆教程|系统课|手把手教化妆|毕业变美指南', author: 'JSMN-Me', pic: '//i1.hdslb.com/bfs/archive/13f3dbf71ada18ba13be81fe20814b6d117f2d7a.png', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1qAtd6dENr', title: '当我化妆开智！超详细保姆级新手化妆教程！', author: '栗阿阿阿', pic: '//i1.hdslb.com/bfs/archive/d845c7e1f5e1a0b57fc90e4ad2ba0b1337474311.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   fashion: [
-    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222134, reply: 469, favorite: 33235 } },
-    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 90915, reply: 475, favorite: 26001 } },
-    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87307, reply: 304, favorite: 22554 } },
+    { bvid: 'BV1W3bK6cE37', title: '《阴阳师》石长姬CG丨拾光永恒（CV：小清水亚美）', author: '网易阴阳师手游', pic: 'https://i1.hdslb.com/bfs/archive/e51d15058e465fe4071a99c70ac965e4d1f6832f.jpg', stats: { like: 127340, reply: 4000, favorite: 47173 } },
+    { bvid: 'BV1C9b76cEks', title: '《绝区零》克拉蕾EP | Link Up 血火相连', author: '绝区零', pic: 'https://i1.hdslb.com/bfs/archive/9f1e6f585a6d7d1546090b4bc03d4b9cf21292db.jpg', stats: { like: 125222, reply: 7155, favorite: 37360 } },
+    { bvid: 'BV1wKbs67Emc', title: '孤岛小夫 第三集', author: '派之新', pic: 'https://i2.hdslb.com/bfs/archive/d36d23db6bc26d4a5d673cea6d5691a175aed123.jpg', stats: { like: 102738, reply: 1913, favorite: 28859 } },
   ],
   game: [
-    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 354281, reply: 2886, favorite: 758161 } },
-    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693890, reply: 4409, favorite: 130098 } },
-    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 517614, reply: 29175, favorite: 183366 } },
+    { bvid: 'BV1W3bK6cE37', title: '《阴阳师》石长姬CG丨拾光永恒（CV：小清水亚美）', author: '网易阴阳师手游', pic: 'https://i1.hdslb.com/bfs/archive/e51d15058e465fe4071a99c70ac965e4d1f6832f.jpg', stats: { like: 127340, reply: 4000, favorite: 47173 } },
+    { bvid: 'BV1C9b76cEks', title: '《绝区零》克拉蕾EP | Link Up 血火相连', author: '绝区零', pic: 'https://i1.hdslb.com/bfs/archive/9f1e6f585a6d7d1546090b4bc03d4b9cf21292db.jpg', stats: { like: 125222, reply: 7155, favorite: 37360 } },
+    { bvid: 'BV1wKbs67Emc', title: '孤岛小夫 第三集', author: '派之新', pic: 'https://i2.hdslb.com/bfs/archive/d36d23db6bc26d4a5d673cea6d5691a175aed123.jpg', stats: { like: 102738, reply: 1913, favorite: 28859 } },
   ],
   travel: [
-    { bvid: 'BV13ttz6vEh2', title: '在机场随机跟随路人旅行，我意外翻新了一整所乡村小学', author: '东尼ookii', pic: 'https://i0.hdslb.com/bfs/archive/c4b8f177c7487bd5c5e63d07630f373122edba26.jpg', stats: { like: 116336, reply: 1670, favorite: 40298 } },
-    { bvid: 'BV1jct96JE1n', title: '美国拉斯维加斯有点爽！', author: '蓝战非OvO', pic: 'https://i0.hdslb.com/bfs/archive/5fbd63290774ed5647e9a428d6804313da4acfd4.jpg', stats: { like: 122056, reply: 3704, favorite: 12393 } },
+    { bvid: 'BV1W3bK6cE37', title: '《阴阳师》石长姬CG丨拾光永恒（CV：小清水亚美）', author: '网易阴阳师手游', pic: 'https://i1.hdslb.com/bfs/archive/e51d15058e465fe4071a99c70ac965e4d1f6832f.jpg', stats: { like: 127340, reply: 4000, favorite: 47173 } },
+    { bvid: 'BV1C9b76cEks', title: '《绝区零》克拉蕾EP | Link Up 血火相连', author: '绝区零', pic: 'https://i1.hdslb.com/bfs/archive/9f1e6f585a6d7d1546090b4bc03d4b9cf21292db.jpg', stats: { like: 125222, reply: 7155, favorite: 37360 } },
+    { bvid: 'BV1wKbs67Emc', title: '孤岛小夫 第三集', author: '派之新', pic: 'https://i2.hdslb.com/bfs/archive/d36d23db6bc26d4a5d673cea6d5691a175aed123.jpg', stats: { like: 102738, reply: 1913, favorite: 28859 } },
   ],
   general: [
-    { bvid: 'BV1gNbH6nEfT', title: '给盲人投放弹窗广告？', author: '销冠李老板', pic: 'https://i0.hdslb.com/bfs/archive/b9dca6a27ef8f08d6dd601978dff921f916c1f22.jpg', stats: { like: 662387, reply: 16042, favorite: 31016 } },
-    { bvid: 'BV1yuto66E8J', title: '万人追更的终南山怪虫，只有我们拍到了真相！', author: '中国国家地理', pic: 'https://i2.hdslb.com/bfs/archive/1630841f6b3f1630e9c319e0e0f0747f09ad28b3.jpg', stats: { like: 533253, reply: 10235, favorite: 79969 } },
-    { bvid: 'BV1aktB6KEA5', title: '手机发明之前，人们就是这样手书的……完整版！【bilibilionly同人扶持计划】', author: '杨小谬', pic: 'https://i2.hdslb.com/bfs/archive/12e0d0e07af37edb7a5e2c68200b64e358fa00d9.jpg', stats: { like: 397704, reply: 4021, favorite: 94996 } },
+    { bvid: 'BV1nHGT6sERH', title: '7月隔壁热门音频一览，B友们见笑了💀💀💀', author: '笑脸V', pic: '//i2.hdslb.com/bfs/archive/59a67da8c0ebd4090c59de5fe2ad5a7b205ff134.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1nzt26gEhg', title: '网络热门长虫视频(122)女子被五步蛇咬伤放血排毒！延误半小时致截肢？', author: '世界记忆大师龙雅', pic: '//i0.hdslb.com/bfs/archive/3c7240110db330f6cf4b549bb4f67dd58517881c.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '【热门课堂】基于ESP32的步进电机控制驱动板', author: '嵌入式小林', pic: 'https://archive.biliimg.com/bfs/archive/47cacef033ccce7928976e9f2fc3dd1673661440.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-09-08 00:08:09
+// 最后更新: 2026-09-08 23:59:11
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
@@ -2307,12 +2308,12 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7672386069173718310', title: '什么叫你有狗5的微动，还有毒蝰的模具， 然后还只要300多？这玩意电我一下我也得夸它调皮啊#游戏外设 #无畏契约 #三角', author: 'DDDDDX的键盘', stats: { like: 7364, reply: 5880, favorite: 1748 } },
   ],
   travel: [
-    { vid: '7682033415537503178', title: '好久不见啊车友们，因为现在开学了，视频更新没有之前多了，希望大家还能记住我，放假的时候我会把欠的视频补回来。#家庭出行新', author: '羊羽鹿其', stats: { like: 2058, reply: 140, favorite: 316 } },
+    { vid: '7683027005209731747', title: '姐是练过的～ #刘文文 #女人味 #御姐风格 #今日份身材打卡 @刘文文', author: '小小貓', stats: { like: 223301, reply: 4647, favorite: 117173 } },
   ],
   general: [
-    { vid: '7682326158705426687', title: '你的小猫怎么有点像小狗  给小猫用的是#城市理享猫砂 除臭和结团都很不错，有需要的可以直接搜城市理享~#猫砂推荐 #狸花', author: '小风波', stats: { like: 269081, reply: 1678, favorite: 148105 } },
-    { vid: '7681212837376867449', title: '完全不知道是去接哥哥，一脸懵圈', author: '千层女王👸MissDou', stats: { like: 566042, reply: 20629, favorite: 16789 } },
-    { vid: '7682702375793986852', title: '【女子暧昧约会  同伙敲诈索财】 抓捕现场！女嫌疑人以暧昧约会为名引诱受害人上钩，其余同伙伺机实施敲诈勒索。该团伙流窜十', author: '武涛拍案', stats: { like: 341041, reply: 13755, favorite: 96312 } },
+    { vid: '7680871841283542326', title: '受伤白琵鹭“口咬吕洞宾”，民警手动“闭麦” #白琵鹭 #大林公安 #小嘴巴 #小嘴巴闭起来', author: '内蒙古公安宣传', stats: { like: 540758, reply: 9757, favorite: 676729 } },
+    { vid: '7682250247631916307', title: '你们要的邦邦纯享版 #萌宠出道计划  #猫咪  #抖in萌宠计划  #万物可爱计划  #哈基米', author: '花生奶牛', stats: { like: 418911, reply: 9411, favorite: 466447 } },
+    { vid: '7681236058088928433', title: '如果不爱了就别勉为其难', author: '雪芙🍞', stats: { like: 517817, reply: 13999, favorite: 80896 } },
   ],
 };
 
