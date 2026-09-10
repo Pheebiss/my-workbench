@@ -2266,37 +2266,37 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-09-08 23:58:48
+// 最后更新: 2026-09-09 23:59:52
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1hk5k6yE1z', title: '超详细全流程步骤拆解！日常全妆教程（新老手皆宜版）', author: '姜乘澜', pic: '//i1.hdslb.com/bfs/archive/844d18e571fa51fcaf5cbec859530c5d831b9363.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1iU4y1L7G2', title: '【化妆入门课】0基础化妆变美逆袭课！易上手|化妆技巧|化妆教程|系统课|手把手教化妆|毕业变美指南', author: 'JSMN-Me', pic: '//i1.hdslb.com/bfs/archive/13f3dbf71ada18ba13be81fe20814b6d117f2d7a.png', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1qAtd6dENr', title: '当我化妆开智！超详细保姆级新手化妆教程！', author: '栗阿阿阿', pic: '//i1.hdslb.com/bfs/archive/d845c7e1f5e1a0b57fc90e4ad2ba0b1337474311.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1VabK62Ea5', title: '请停留三秒，为毛主席献花，今天9月9日是主席毛泽东逝世50周年的日子，他是中国共产党、中国人民解放军、中华人民共和国的主要缔造者', author: '大象新闻', pic: 'https://i2.hdslb.com/bfs/archive/5e973510b35ee5819a7415f63db6e0a6c8bf4af5.jpg', stats: { like: 834782, reply: 143, favorite: 53887 } },
+    { bvid: 'BV18gtJ6LECq', title: '《未眠野》首曝PV | 万物都在回应，世界没有答案', author: '未眠野', pic: 'https://i0.hdslb.com/bfs/archive/d4374157af4208e8d2c51299e989998c59b66e4f.jpg', stats: { like: 253045, reply: 13825, favorite: 84844 } },
+    { bvid: 'BV1eqYx6UE9V', title: '我 来 同 你 玩  丨 二洲年快乐', author: '三角洲行动', pic: 'https://i2.hdslb.com/bfs/archive/1d4f36adb3b2f8315493dc02a89a0dca6cb377d7.jpg', stats: { like: 263556, reply: 14153, favorite: 63716 } },
   ],
   fashion: [
-    { bvid: 'BV1W3bK6cE37', title: '《阴阳师》石长姬CG丨拾光永恒（CV：小清水亚美）', author: '网易阴阳师手游', pic: 'https://i1.hdslb.com/bfs/archive/e51d15058e465fe4071a99c70ac965e4d1f6832f.jpg', stats: { like: 127340, reply: 4000, favorite: 47173 } },
-    { bvid: 'BV1C9b76cEks', title: '《绝区零》克拉蕾EP | Link Up 血火相连', author: '绝区零', pic: 'https://i1.hdslb.com/bfs/archive/9f1e6f585a6d7d1546090b4bc03d4b9cf21292db.jpg', stats: { like: 125222, reply: 7155, favorite: 37360 } },
-    { bvid: 'BV1wKbs67Emc', title: '孤岛小夫 第三集', author: '派之新', pic: 'https://i2.hdslb.com/bfs/archive/d36d23db6bc26d4a5d673cea6d5691a175aed123.jpg', stats: { like: 102738, reply: 1913, favorite: 28859 } },
+    { bvid: 'BV1GWbV6KEZD', title: '秋冬叠穿的十个穿搭思路', author: '六一不是猫', pic: '//i2.hdslb.com/bfs/archive/7bb0e5b90dc42ba532c7aac619f595c4849ebd4d.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1AzY46TEXn', title: '59kg｜早秋穿搭&amp;搭配思路｜准备了好多风格 日常 休闲 韩系 小亚都有～', author: '林堅定_', pic: '//i2.hdslb.com/bfs/archive/ec23b49803b86562c9f1c75a5977d76dd474dca9.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '《高级穿搭配色·精选基础课》：CMB权威配色理论', author: 'KK白生', pic: 'https://archive.biliimg.com/bfs/archive/3b8681c54ba7430f154088932d2ebb8e142e935c.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   game: [
-    { bvid: 'BV1W3bK6cE37', title: '《阴阳师》石长姬CG丨拾光永恒（CV：小清水亚美）', author: '网易阴阳师手游', pic: 'https://i1.hdslb.com/bfs/archive/e51d15058e465fe4071a99c70ac965e4d1f6832f.jpg', stats: { like: 127340, reply: 4000, favorite: 47173 } },
-    { bvid: 'BV1C9b76cEks', title: '《绝区零》克拉蕾EP | Link Up 血火相连', author: '绝区零', pic: 'https://i1.hdslb.com/bfs/archive/9f1e6f585a6d7d1546090b4bc03d4b9cf21292db.jpg', stats: { like: 125222, reply: 7155, favorite: 37360 } },
-    { bvid: 'BV1wKbs67Emc', title: '孤岛小夫 第三集', author: '派之新', pic: 'https://i2.hdslb.com/bfs/archive/d36d23db6bc26d4a5d673cea6d5691a175aed123.jpg', stats: { like: 102738, reply: 1913, favorite: 28859 } },
+    { bvid: 'BV1aBbM6nE1W', title: '神界好配音', author: '拧不动啊真拧不动', pic: '//i0.hdslb.com/bfs/archive/27a6cbfd0bfdeb9b9bf9e6b3bd3da75303f59c31.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV199bT6nEdD', title: 'DNF：游戏酱时隔多日再次开启未央深夜父子局，第一次叫爸爸叫的心甘情愿！', author: '快乐游戏酱', pic: '//i1.hdslb.com/bfs/archive/65c10c7e198912a3a3f1b42e1270d365580cbbfc.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: 'Unity小白超神零基础课程第二期', author: 'Gamer飞羽', pic: 'https://archive.biliimg.com/bfs/archive/5b6e9bd1c18cd5a417a441a6deee62b690275680.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   travel: [
-    { bvid: 'BV1W3bK6cE37', title: '《阴阳师》石长姬CG丨拾光永恒（CV：小清水亚美）', author: '网易阴阳师手游', pic: 'https://i1.hdslb.com/bfs/archive/e51d15058e465fe4071a99c70ac965e4d1f6832f.jpg', stats: { like: 127340, reply: 4000, favorite: 47173 } },
-    { bvid: 'BV1C9b76cEks', title: '《绝区零》克拉蕾EP | Link Up 血火相连', author: '绝区零', pic: 'https://i1.hdslb.com/bfs/archive/9f1e6f585a6d7d1546090b4bc03d4b9cf21292db.jpg', stats: { like: 125222, reply: 7155, favorite: 37360 } },
-    { bvid: 'BV1wKbs67Emc', title: '孤岛小夫 第三集', author: '派之新', pic: 'https://i2.hdslb.com/bfs/archive/d36d23db6bc26d4a5d673cea6d5691a175aed123.jpg', stats: { like: 102738, reply: 1913, favorite: 28859 } },
+    { bvid: 'BV1VabK62Ea5', title: '请停留三秒，为毛主席献花，今天9月9日是主席毛泽东逝世50周年的日子，他是中国共产党、中国人民解放军、中华人民共和国的主要缔造者', author: '大象新闻', pic: 'https://i2.hdslb.com/bfs/archive/5e973510b35ee5819a7415f63db6e0a6c8bf4af5.jpg', stats: { like: 834782, reply: 143, favorite: 53887 } },
+    { bvid: 'BV18gtJ6LECq', title: '《未眠野》首曝PV | 万物都在回应，世界没有答案', author: '未眠野', pic: 'https://i0.hdslb.com/bfs/archive/d4374157af4208e8d2c51299e989998c59b66e4f.jpg', stats: { like: 253045, reply: 13825, favorite: 84844 } },
+    { bvid: 'BV1eqYx6UE9V', title: '我 来 同 你 玩  丨 二洲年快乐', author: '三角洲行动', pic: 'https://i2.hdslb.com/bfs/archive/1d4f36adb3b2f8315493dc02a89a0dca6cb377d7.jpg', stats: { like: 263556, reply: 14153, favorite: 63716 } },
   ],
   general: [
-    { bvid: 'BV1nHGT6sERH', title: '7月隔壁热门音频一览，B友们见笑了💀💀💀', author: '笑脸V', pic: '//i2.hdslb.com/bfs/archive/59a67da8c0ebd4090c59de5fe2ad5a7b205ff134.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1nzt26gEhg', title: '网络热门长虫视频(122)女子被五步蛇咬伤放血排毒！延误半小时致截肢？', author: '世界记忆大师龙雅', pic: '//i0.hdslb.com/bfs/archive/3c7240110db330f6cf4b549bb4f67dd58517881c.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: '【热门课堂】基于ESP32的步进电机控制驱动板', author: '嵌入式小林', pic: 'https://archive.biliimg.com/bfs/archive/47cacef033ccce7928976e9f2fc3dd1673661440.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1VabK62Ea5', title: '请停留三秒，为毛主席献花，今天9月9日是主席毛泽东逝世50周年的日子，他是中国共产党、中国人民解放军、中华人民共和国的主要缔造者', author: '大象新闻', pic: 'https://i2.hdslb.com/bfs/archive/5e973510b35ee5819a7415f63db6e0a6c8bf4af5.jpg', stats: { like: 834782, reply: 143, favorite: 53887 } },
+    { bvid: 'BV18gtJ6LECq', title: '《未眠野》首曝PV | 万物都在回应，世界没有答案', author: '未眠野', pic: 'https://i0.hdslb.com/bfs/archive/d4374157af4208e8d2c51299e989998c59b66e4f.jpg', stats: { like: 253045, reply: 13825, favorite: 84844 } },
+    { bvid: 'BV1eqYx6UE9V', title: '我 来 同 你 玩  丨 二洲年快乐', author: '三角洲行动', pic: 'https://i2.hdslb.com/bfs/archive/1d4f36adb3b2f8315493dc02a89a0dca6cb377d7.jpg', stats: { like: 263556, reply: 14153, favorite: 63716 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-09-08 23:59:11
+// 最后更新: 2026-09-10 00:00:15
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
@@ -2311,9 +2311,9 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7683027005209731747', title: '姐是练过的～ #刘文文 #女人味 #御姐风格 #今日份身材打卡 @刘文文', author: '小小貓', stats: { like: 223301, reply: 4647, favorite: 117173 } },
   ],
   general: [
-    { vid: '7680871841283542326', title: '受伤白琵鹭“口咬吕洞宾”，民警手动“闭麦” #白琵鹭 #大林公安 #小嘴巴 #小嘴巴闭起来', author: '内蒙古公安宣传', stats: { like: 540758, reply: 9757, favorite: 676729 } },
-    { vid: '7682250247631916307', title: '你们要的邦邦纯享版 #萌宠出道计划  #猫咪  #抖in萌宠计划  #万物可爱计划  #哈基米', author: '花生奶牛', stats: { like: 418911, reply: 9411, favorite: 466447 } },
-    { vid: '7681236058088928433', title: '如果不爱了就别勉为其难', author: '雪芙🍞', stats: { like: 517817, reply: 13999, favorite: 80896 } },
+    { vid: '7682031481048955243', title: '一直以为自己长大以后对情感变得漠视，回来的高铁大巴上没有想哭的感觉，只是一味看着从前和妈妈的视频，看监控回放。下大巴后坐', author: '还好', stats: { like: 2924046, reply: 70265, favorite: 300221 } },
+    { vid: '7681201862771865961', title: '欢迎回家#退伍接站仪式#退伍接站仪式', author: '望秋～', stats: { like: 2351709, reply: 53855, favorite: 289368 } },
+    { vid: '7682738608336471926', title: '小丧彪变脸可真快#田园犬#小奶狗#狗狗#中华田园犬#小狗崽', author: '乡野小狗狗', stats: { like: 491942, reply: 7956, favorite: 566061 } },
   ],
 };
 
