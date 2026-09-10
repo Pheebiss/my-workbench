@@ -2266,37 +2266,37 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-09-09 23:59:52
+// 最后更新: 2026-09-10 23:55:40
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1VabK62Ea5', title: '请停留三秒，为毛主席献花，今天9月9日是主席毛泽东逝世50周年的日子，他是中国共产党、中国人民解放军、中华人民共和国的主要缔造者', author: '大象新闻', pic: 'https://i2.hdslb.com/bfs/archive/5e973510b35ee5819a7415f63db6e0a6c8bf4af5.jpg', stats: { like: 834782, reply: 143, favorite: 53887 } },
-    { bvid: 'BV18gtJ6LECq', title: '《未眠野》首曝PV | 万物都在回应，世界没有答案', author: '未眠野', pic: 'https://i0.hdslb.com/bfs/archive/d4374157af4208e8d2c51299e989998c59b66e4f.jpg', stats: { like: 253045, reply: 13825, favorite: 84844 } },
-    { bvid: 'BV1eqYx6UE9V', title: '我 来 同 你 玩  丨 二洲年快乐', author: '三角洲行动', pic: 'https://i2.hdslb.com/bfs/archive/1d4f36adb3b2f8315493dc02a89a0dca6cb377d7.jpg', stats: { like: 263556, reply: 14153, favorite: 63716 } },
+    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382210, reply: 1023, favorite: 39810 } },
+    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290510, reply: 806, favorite: 64898 } },
+    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267252, reply: 2325, favorite: 9377 } },
   ],
   fashion: [
-    { bvid: 'BV1GWbV6KEZD', title: '秋冬叠穿的十个穿搭思路', author: '六一不是猫', pic: '//i2.hdslb.com/bfs/archive/7bb0e5b90dc42ba532c7aac619f595c4849ebd4d.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1AzY46TEXn', title: '59kg｜早秋穿搭&amp;搭配思路｜准备了好多风格 日常 休闲 韩系 小亚都有～', author: '林堅定_', pic: '//i2.hdslb.com/bfs/archive/ec23b49803b86562c9f1c75a5977d76dd474dca9.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: '《高级穿搭配色·精选基础课》：CMB权威配色理论', author: 'KK白生', pic: 'https://archive.biliimg.com/bfs/archive/3b8681c54ba7430f154088932d2ebb8e142e935c.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222148, reply: 469, favorite: 33230 } },
+    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 90915, reply: 475, favorite: 26002 } },
+    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87307, reply: 304, favorite: 22552 } },
   ],
   game: [
-    { bvid: 'BV1aBbM6nE1W', title: '神界好配音', author: '拧不动啊真拧不动', pic: '//i0.hdslb.com/bfs/archive/27a6cbfd0bfdeb9b9bf9e6b3bd3da75303f59c31.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV199bT6nEdD', title: 'DNF：游戏酱时隔多日再次开启未央深夜父子局，第一次叫爸爸叫的心甘情愿！', author: '快乐游戏酱', pic: '//i1.hdslb.com/bfs/archive/65c10c7e198912a3a3f1b42e1270d365580cbbfc.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: 'Unity小白超神零基础课程第二期', author: 'Gamer飞羽', pic: 'https://archive.biliimg.com/bfs/archive/5b6e9bd1c18cd5a417a441a6deee62b690275680.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 354336, reply: 2887, favorite: 758171 } },
+    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693893, reply: 4409, favorite: 130085 } },
+    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 517660, reply: 29176, favorite: 183396 } },
   ],
   travel: [
-    { bvid: 'BV1VabK62Ea5', title: '请停留三秒，为毛主席献花，今天9月9日是主席毛泽东逝世50周年的日子，他是中国共产党、中国人民解放军、中华人民共和国的主要缔造者', author: '大象新闻', pic: 'https://i2.hdslb.com/bfs/archive/5e973510b35ee5819a7415f63db6e0a6c8bf4af5.jpg', stats: { like: 834782, reply: 143, favorite: 53887 } },
-    { bvid: 'BV18gtJ6LECq', title: '《未眠野》首曝PV | 万物都在回应，世界没有答案', author: '未眠野', pic: 'https://i0.hdslb.com/bfs/archive/d4374157af4208e8d2c51299e989998c59b66e4f.jpg', stats: { like: 253045, reply: 13825, favorite: 84844 } },
-    { bvid: 'BV1eqYx6UE9V', title: '我 来 同 你 玩  丨 二洲年快乐', author: '三角洲行动', pic: 'https://i2.hdslb.com/bfs/archive/1d4f36adb3b2f8315493dc02a89a0dca6cb377d7.jpg', stats: { like: 263556, reply: 14153, favorite: 63716 } },
+    { bvid: 'BV1VabK62Ea5', title: '请停留三秒，为毛主席献花，今天9月9日是主席毛泽东逝世50周年的日子，他是中国共产党、中国人民解放军、中华人民共和国的主要缔造者', author: '大象新闻', pic: 'https://i2.hdslb.com/bfs/archive/5e973510b35ee5819a7415f63db6e0a6c8bf4af5.jpg', stats: { like: 1091395, reply: 141, favorite: 68507 } },
+    { bvid: 'BV1gNbH6nEfT', title: '给盲人投放弹窗广告？', author: '销冠李老板', pic: 'https://i0.hdslb.com/bfs/archive/b9dca6a27ef8f08d6dd601978dff921f916c1f22.jpg', stats: { like: 838131, reply: 21180, favorite: 41791 } },
+    { bvid: 'BV1eqYx6UE9V', title: '我 来 同 你 玩  丨 二洲年快乐', author: '三角洲行动', pic: 'https://i2.hdslb.com/bfs/archive/1d4f36adb3b2f8315493dc02a89a0dca6cb377d7.jpg', stats: { like: 504492, reply: 21759, favorite: 138199 } },
   ],
   general: [
-    { bvid: 'BV1VabK62Ea5', title: '请停留三秒，为毛主席献花，今天9月9日是主席毛泽东逝世50周年的日子，他是中国共产党、中国人民解放军、中华人民共和国的主要缔造者', author: '大象新闻', pic: 'https://i2.hdslb.com/bfs/archive/5e973510b35ee5819a7415f63db6e0a6c8bf4af5.jpg', stats: { like: 834782, reply: 143, favorite: 53887 } },
-    { bvid: 'BV18gtJ6LECq', title: '《未眠野》首曝PV | 万物都在回应，世界没有答案', author: '未眠野', pic: 'https://i0.hdslb.com/bfs/archive/d4374157af4208e8d2c51299e989998c59b66e4f.jpg', stats: { like: 253045, reply: 13825, favorite: 84844 } },
-    { bvid: 'BV1eqYx6UE9V', title: '我 来 同 你 玩  丨 二洲年快乐', author: '三角洲行动', pic: 'https://i2.hdslb.com/bfs/archive/1d4f36adb3b2f8315493dc02a89a0dca6cb377d7.jpg', stats: { like: 263556, reply: 14153, favorite: 63716 } },
+    { bvid: 'BV1VabK62Ea5', title: '请停留三秒，为毛主席献花，今天9月9日是主席毛泽东逝世50周年的日子，他是中国共产党、中国人民解放军、中华人民共和国的主要缔造者', author: '大象新闻', pic: 'https://i2.hdslb.com/bfs/archive/5e973510b35ee5819a7415f63db6e0a6c8bf4af5.jpg', stats: { like: 1091395, reply: 141, favorite: 68507 } },
+    { bvid: 'BV1gNbH6nEfT', title: '给盲人投放弹窗广告？', author: '销冠李老板', pic: 'https://i0.hdslb.com/bfs/archive/b9dca6a27ef8f08d6dd601978dff921f916c1f22.jpg', stats: { like: 838131, reply: 21180, favorite: 41791 } },
+    { bvid: 'BV1eqYx6UE9V', title: '我 来 同 你 玩  丨 二洲年快乐', author: '三角洲行动', pic: 'https://i2.hdslb.com/bfs/archive/1d4f36adb3b2f8315493dc02a89a0dca6cb377d7.jpg', stats: { like: 504492, reply: 21759, favorite: 138199 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-09-10 00:00:15
+// 最后更新: 2026-09-10 23:56:00
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
@@ -2308,12 +2308,13 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7672386069173718310', title: '什么叫你有狗5的微动，还有毒蝰的模具， 然后还只要300多？这玩意电我一下我也得夸它调皮啊#游戏外设 #无畏契约 #三角', author: 'DDDDDX的键盘', stats: { like: 7364, reply: 5880, favorite: 1748 } },
   ],
   travel: [
-    { vid: '7683027005209731747', title: '姐是练过的～ #刘文文 #女人味 #御姐风格 #今日份身材打卡 @刘文文', author: '小小貓', stats: { like: 223301, reply: 4647, favorite: 117173 } },
+    { vid: '7683871312208497929', title: '京圈少爷福建抗洪实录 #vlog日常#福建#莆田#抗洪救灾#吴梓濠', author: 'JASON吴', stats: { like: 705632, reply: 26079, favorite: 100819 } },
+    { vid: '7682973941812255206', title: '老婆走了一年多，我没有再婚，我自己买了一辆二手大货车，爸妈没有帮衬一分钱，是我贷款借的，今天第一次开张，准备装货，连夜发', author: '自驾远方（浪迹天涯）', stats: { like: 277201, reply: 63432, favorite: 174 } },
   ],
   general: [
-    { vid: '7682031481048955243', title: '一直以为自己长大以后对情感变得漠视，回来的高铁大巴上没有想哭的感觉，只是一味看着从前和妈妈的视频，看监控回放。下大巴后坐', author: '还好', stats: { like: 2924046, reply: 70265, favorite: 300221 } },
-    { vid: '7681201862771865961', title: '欢迎回家#退伍接站仪式#退伍接站仪式', author: '望秋～', stats: { like: 2351709, reply: 53855, favorite: 289368 } },
-    { vid: '7682738608336471926', title: '小丧彪变脸可真快#田园犬#小奶狗#狗狗#中华田园犬#小狗崽', author: '乡野小狗狗', stats: { like: 491942, reply: 7956, favorite: 566061 } },
+    { vid: '7682401536996439891', title: '🙋提问：小猫心眼能坏到哪里去？ #邪恶猫咪 #猫咪的迷惑行为 #猫咪日常 #萌宠', author: '我要发财啦', stats: { like: 1651678, reply: 31556, favorite: 860590 } },
+    { vid: '7682674859159535183', title: '咱俩好像不认识吧', author: '狂扔大便送你见太奶', stats: { like: 1117704, reply: 4200, favorite: 177385 } },
+    { vid: '7683707547274057195', title: '哥们，你的菜把你的菜吃了！！！#萌宠出道计划 #傻狗的日常 #不养狗不知道养狗的乐趣 #狗狗的心思都写在脸上了 #新手养', author: '能能真能', stats: { like: 132596, reply: 4955, favorite: 449612 } },
   ],
 };
 
