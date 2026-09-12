@@ -2266,37 +2266,37 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-09-12 00:02:49
+// 最后更新: 2026-09-12 23:53:52
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382210, reply: 1023, favorite: 39810 } },
-    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290530, reply: 806, favorite: 64900 } },
-    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267252, reply: 2325, favorite: 9375 } },
+    { bvid: 'BV1iU4y1L7G2', title: '【化妆入门课】0基础化妆变美逆袭课！易上手|化妆技巧|化妆教程|系统课|手把手教化妆|毕业变美指南', author: 'JSMN-Me', pic: '//i1.hdslb.com/bfs/archive/13f3dbf71ada18ba13be81fe20814b6d117f2d7a.png', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1hk5k6yE1z', title: '超详细全流程步骤拆解！日常全妆教程（新老手皆宜版）', author: '姜乘澜', pic: '//i1.hdslb.com/bfs/archive/844d18e571fa51fcaf5cbec859530c5d831b9363.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '毛戈平的化妆课', author: '大渔大师课', pic: 'https://archive.biliimg.com/bfs/archive/746ddede613a89824efe59abe51c61460de8c3f2.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   fashion: [
-    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222155, reply: 469, favorite: 33228 } },
-    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 90916, reply: 475, favorite: 26001 } },
-    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87306, reply: 304, favorite: 22551 } },
+    { bvid: 'BV1uZYu6cE6z', title: '一周穿搭｜早秋版｜8套不同风格穿搭灵感 不挑建模直接抄作业！男友改造｜通勤穿搭｜学生党｜小个子｜秋季穿搭', author: '痴五安chammy', pic: '//i2.hdslb.com/bfs/archive/ae8dacf314acffba87e2713f0c945bf462595522.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1tiYS6qEwC', title: '成年人原来这么穿！7套男生质感通勤look推荐｜通勤｜男生穿搭｜秋装｜外套｜长袖｜长裤', author: '我是路十六', pic: '//i2.hdslb.com/bfs/archive/869890a5b4961b109d65560225d8087078ba2365.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '形象蝶变 | 你天生的穿搭用色规律', author: 'KK白生', pic: 'https://archive.biliimg.com/bfs/archive/0b249c4c599a630b83edc28600ed173a5a25ca6a.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   game: [
-    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 354355, reply: 2887, favorite: 758176 } },
-    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693893, reply: 4409, favorite: 130080 } },
-    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 517681, reply: 29179, favorite: 183407 } },
+    { bvid: 'BV1ux411P7u3', title: 'Game囧很大番外篇：TM的我忘记做了！', author: '17173妖气山', pic: '//i0.hdslb.com/bfs/archive/01bf46ae3ee9265e4ce078e1c5a851e8d0fcdfd1.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1WNYb6ME3s', title: '攀爬可爱服装塔', author: '豆豆玩游戏6', pic: '//i2.hdslb.com/bfs/archive/aaac02b69f148ea303ffe383191d55d6bf8e75ce.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1TJtJ6uEQb', title: '7款好玩又不吃配置的手游推荐', author: '一口绿豆糕QAQ', pic: '//i1.hdslb.com/bfs/archive/58a1033cb8521e40040fcf4cc7cddedefa5eff73.png', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   travel: [
-    { bvid: 'BV1VabK62Ea5', title: '请停留三秒，为毛主席献花，今天9月9日是主席毛泽东逝世50周年的日子，他是中国共产党、中国人民解放军、中华人民共和国的主要缔造者', author: '大象新闻', pic: 'https://i2.hdslb.com/bfs/archive/5e973510b35ee5819a7415f63db6e0a6c8bf4af5.jpg', stats: { like: 1331962, reply: 140, favorite: 88381 } },
-    { bvid: 'BV1eqYx6UE9V', title: '我 来 同 你 玩  丨 二洲年快乐', author: '三角洲行动', pic: 'https://i2.hdslb.com/bfs/archive/1d4f36adb3b2f8315493dc02a89a0dca6cb377d7.jpg', stats: { like: 611037, reply: 24097, favorite: 185868 } },
-    { bvid: 'BV1QCYx6yERb', title: '下一个故事再见', author: '康康和爷爷', pic: 'https://i2.hdslb.com/bfs/archive/392e5556d7a1ceffed8f8fe4d33ca2169da37d23.jpg', stats: { like: 505550, reply: 9813, favorite: 27741 } },
+    { bvid: 'BV1BpYd66End', title: '九月太适合旅行了！！！', author: '森林每天都好饿', pic: '//i0.hdslb.com/bfs/archive/4d16aee5cba05b8cd2d10d43810e576bc70902a4.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1X1YD6JEE6', title: '辞职之后美美提着行李去旅行！田小娟《我要辞职啦》最新打歌舞台+直拍！', author: '剁头使我神清气爽', pic: '//i2.hdslb.com/bfs/archive/06d4f5a67150c3b270f6c536d8051e1f05dacee5.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '毛大王沉浸式生活旅行实用口语（四合一）', author: 'Arlis毛大王', pic: 'https://archive.biliimg.com/bfs/archive/bbb50460dffaaf1524193cbb61dda43b50f58c1a.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   general: [
-    { bvid: 'BV1VabK62Ea5', title: '请停留三秒，为毛主席献花，今天9月9日是主席毛泽东逝世50周年的日子，他是中国共产党、中国人民解放军、中华人民共和国的主要缔造者', author: '大象新闻', pic: 'https://i2.hdslb.com/bfs/archive/5e973510b35ee5819a7415f63db6e0a6c8bf4af5.jpg', stats: { like: 1331962, reply: 140, favorite: 88381 } },
-    { bvid: 'BV1eqYx6UE9V', title: '我 来 同 你 玩  丨 二洲年快乐', author: '三角洲行动', pic: 'https://i2.hdslb.com/bfs/archive/1d4f36adb3b2f8315493dc02a89a0dca6cb377d7.jpg', stats: { like: 611037, reply: 24097, favorite: 185868 } },
-    { bvid: 'BV1QCYx6yERb', title: '下一个故事再见', author: '康康和爷爷', pic: 'https://i2.hdslb.com/bfs/archive/392e5556d7a1ceffed8f8fe4d33ca2169da37d23.jpg', stats: { like: 505550, reply: 9813, favorite: 27741 } },
+    { bvid: 'BV16XbP6sEX2', title: '“人们常常在夏天结束时，回忆那些美好的时光... ”【Shawdow of the sun】【夏天结束の小曲】', author: '早睡起大王', pic: 'https://i1.hdslb.com/bfs/archive/c79560e31b23fab639951893fff597db2d7ceed3.jpg', stats: { like: 171374, reply: 4739, favorite: 79219 } },
+    { bvid: 'BV1aTYT64EQH', title: '我真有那么像外国人吗…!?', author: '厄尔尼诺-ARCdraws', pic: 'https://i0.hdslb.com/bfs/archive/be92f88ed0e4b9e65add845b207dbc0bebfa1a49.jpg', stats: { like: 155626, reply: 3356, favorite: 38960 } },
+    { bvid: 'BV1EmYm6HE57', title: '【独家】《凡人修仙传之慕兰之战》第15集【总第191集】', author: '哔哩哔哩国创', pic: 'https://i2.hdslb.com/bfs/archive/0cc60ac5b14303003c1d62706b59a957be3c12d9.jpg', stats: { like: 133675, reply: 5741, favorite: 22826 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-09-12 00:03:11
+// 最后更新: 2026-09-12 23:54:14
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
@@ -2308,12 +2308,12 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7672386069173718310', title: '什么叫你有狗5的微动，还有毒蝰的模具， 然后还只要300多？这玩意电我一下我也得夸它调皮啊#游戏外设 #无畏契约 #三角', author: 'DDDDDX的键盘', stats: { like: 7364, reply: 5880, favorite: 1748 } },
   ],
   travel: [
-    { vid: '7683871312208497929', title: 'JASON吴福建抗洪实录 #vlog日常#福建#莆田#抗洪救灾#吴梓濠', author: 'JASON吴', stats: { like: 1685303, reply: 61514, favorite: 200716 } },
+    { vid: '7683871312208497929', title: 'JASON吴福建抗洪实录 #vlog日常#福建#莆田#抗洪救灾#吴梓濠', author: 'JASON吴', stats: { like: 2191645, reply: 79571, favorite: 246525 } },
   ],
   general: [
-    { vid: '7683871312208497929', title: 'JASON吴福建抗洪实录 #vlog日常#福建#莆田#抗洪救灾#吴梓濠', author: 'JASON吴', stats: { like: 1685303, reply: 61514, favorite: 200716 } },
-    { vid: '7683053110940328394', title: '众望所归！今天带孙艺洲自律 #孙艺洲 #花小龙', author: '花小龙', stats: { like: 1612037, reply: 33312, favorite: 181521 } },
-    { vid: '7682674859159535183', title: '咱俩好像不认识吧', author: '狂扔大便送你见太奶', stats: { like: 1417524, reply: 5294, favorite: 214861 } },
+    { vid: '7682398068431964851', title: '父王，规则就是用来打破的。#变装 #军lo #王子系', author: '酥酥🍪', stats: { like: 4003817, reply: 31221, favorite: 324539 } },
+    { vid: '7683871312208497929', title: 'JASON吴福建抗洪实录 #vlog日常#福建#莆田#抗洪救灾#吴梓濠', author: 'JASON吴', stats: { like: 2191645, reply: 79571, favorite: 246525 } },
+    { vid: '7682674859159535183', title: '咱俩好像不认识吧', author: '狂扔大便送你见太奶', stats: { like: 1619522, reply: 5827, favorite: 238951 } },
   ],
 };
 
