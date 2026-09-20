@@ -2266,43 +2266,43 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-09-19 00:04:59
+// 最后更新: 2026-09-20 00:00:56
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382213, reply: 1023, favorite: 39792 } },
-    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290610, reply: 806, favorite: 64903 } },
-    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267251, reply: 2325, favorite: 9376 } },
+    { bvid: 'BV1RxeU6EEah', title: '【独家】《凡人修仙传之慕兰之战》第16集【总第192集】', author: '哔哩哔哩国创', pic: 'https://i1.hdslb.com/bfs/archive/435f312becd189da4066d371abfa63e91e6a9640.jpg', stats: { like: 128398, reply: 3799, favorite: 22265 } },
+    { bvid: 'BV1uaeA6mEDv', title: '这个小学生用烂梗骂人，惹怒7.8万人，满嘴烂梗的小学生，本质上就是油腻老登!', author: '王小七Fire', pic: 'https://i2.hdslb.com/bfs/archive/9003dd8b9dc6c10d1a574c9b4022c10c4828055c.jpg', stats: { like: 90944, reply: 10135, favorite: 40453 } },
+    { bvid: 'BV14Hem6AEah', title: '复仇者联盟内心独白belike', author: '瑄羽猫', pic: 'https://i2.hdslb.com/bfs/archive/1d9fe295ed07d547e722e7cdbdcd79cefa66f69c.jpg', stats: { like: 105086, reply: 1792, favorite: 22495 } },
   ],
   fashion: [
-    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222185, reply: 470, favorite: 33221 } },
-    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 90920, reply: 475, favorite: 26002 } },
-    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87306, reply: 304, favorite: 22540 } },
+    { bvid: 'BV1freb6iErD', title: '街头时尚穿搭：陌下山-无人知晓（Part 1）', author: '全网审美官', pic: '//i1.hdslb.com/bfs/archive/675e31ab747ba684a5ded1cdd852f5074593131e.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1DBet6SE1g', title: '2026年9月21日星期一农历八月初十一色彩穿搭 #原创视频 #穿搭技巧 #爱分享爱生活', author: '心若向阳开放', pic: '//i0.hdslb.com/bfs/archive/b2e53c199429a28158e5ed90b980902f8e42bdff.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '《高级穿搭配色·精选基础课》：CMB权威配色理论', author: 'KK白生', pic: 'https://archive.biliimg.com/bfs/archive/3b8681c54ba7430f154088932d2ebb8e142e935c.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   game: [
-    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 354629, reply: 2891, favorite: 758380 } },
-    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693904, reply: 4409, favorite: 130057 } },
-    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 517831, reply: 29184, favorite: 183490 } },
+    { bvid: 'BV1upeh6tE2v', title: '【补档】瓶子看蓝色星原宿舍互动后当场充钱！这游戏太crazy了！【瓶子君152】', author: '月枫下的妖精', pic: '//i2.hdslb.com/bfs/archive/0047a925a49ed7b426ff6c7e003a2a0108dace31.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1LNe46WEqL', title: '生活中和气生财游戏里欧气省财，怎么玩不是玩何必要在游戏里破财', author: '角球直接破门', pic: '//i2.hdslb.com/bfs/archive/8c4e91e83ee938e063cb6382f891e922a9912fcf.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '死寂案例实战课：第三人称丧尸射击制作-1v1辅导', author: '谌嘉诚', pic: 'https://archive.biliimg.com/bfs/archive/2f82e9588895cb90da3e8cb1506cfb0526f2a63e.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   travel: [
-    { bvid: 'BV1Nqeg6tEBo', title: '互相求婚？美国女孩和我为什么要这样做', author: 'Luca和Kim', pic: 'https://i1.hdslb.com/bfs/archive/b87eff012fe726cffba0e0aa75e919dba1fbcd7f.jpg', stats: { like: 124143, reply: 5184, favorite: 12564 } },
-    { bvid: 'BV1CveJ6SEXE', title: '因为我用力过猛，导致中文版的体验感超越了原版！开玩笑～因为我太喜欢做这些有趣的东西了！希望大家喜欢这款游戏，我会尽力修复Bug进行优化的！', author: '挪威老王', pic: 'https://i1.hdslb.com/bfs/archive/8188d4f6cc9315f4b6bf1e8ae07ce8552873168d.jpg', stats: { like: 83872, reply: 1706, favorite: 5802 } },
+    { bvid: 'BV1xheQ6kE4K', title: '【D】户外欢乐旅行vlog', author: '卖报纸的小坚果', pic: '//i1.hdslb.com/bfs/archive/1c81e702c3a0ae3db8191d28d32fe12d73bc332f.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1RSeb6cEea', title: '说好独自旅行，AI 怎么把我们拼成团建了？', author: 'A-S0UL_Official', pic: '//i0.hdslb.com/bfs/archive/f44234ccd417fca65dbd864f1dd32d44db63bebb.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '【限时5折】摄影创作实战课：人像/风光/旅行', author: '熊熊Bearie', pic: 'https://archive.biliimg.com/bfs/archive/84ac243b6dc8a002b6c756961c534d1bb154c9a6.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   general: [
-    { bvid: 'BV1cSec6tEux', title: '选哪个？iPhone 18 Pro&Duo深度上手', author: '影视飓风', pic: 'https://i1.hdslb.com/bfs/archive/aec12235afcae7c12ed1eb3684c103ed407434bf.jpg', stats: { like: 649709, reply: 134475, favorite: 223833 } },
-    { bvid: 'BV1PneF6bELe', title: '各省的刻板印象这一块', author: '不凉少年派', pic: 'https://i1.hdslb.com/bfs/archive/e7f83ca0a1b9bda807d5d93201a91a122e04dbe7.jpg', stats: { like: 566680, reply: 17121, favorite: 59908 } },
-    { bvid: 'BV1YaeN6xEWR', title: '天津漫展手机事件', author: '一颗小兔娘', pic: 'https://i1.hdslb.com/bfs/archive/b605df3a29e67a2fa3ab753804781e7bf25241a7.jpg', stats: { like: 421998, reply: 17328, favorite: 30437 } },
+    { bvid: 'BV1RxeU6EEah', title: '【独家】《凡人修仙传之慕兰之战》第16集【总第192集】', author: '哔哩哔哩国创', pic: 'https://i1.hdslb.com/bfs/archive/435f312becd189da4066d371abfa63e91e6a9640.jpg', stats: { like: 128398, reply: 3799, favorite: 22265 } },
+    { bvid: 'BV1uaeA6mEDv', title: '这个小学生用烂梗骂人，惹怒7.8万人，满嘴烂梗的小学生，本质上就是油腻老登!', author: '王小七Fire', pic: 'https://i2.hdslb.com/bfs/archive/9003dd8b9dc6c10d1a574c9b4022c10c4828055c.jpg', stats: { like: 90944, reply: 10135, favorite: 40453 } },
+    { bvid: 'BV14Hem6AEah', title: '复仇者联盟内心独白belike', author: '瑄羽猫', pic: 'https://i2.hdslb.com/bfs/archive/1d9fe295ed07d547e722e7cdbdcd79cefa66f69c.jpg', stats: { like: 105086, reply: 1792, favorite: 22495 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-09-19 00:05:22
+// 最后更新: 2026-09-20 00:01:21
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
   ],
   fashion: [
-    { vid: '7685029286655222120', title: '#ootd女生穿搭御姐 歌名就是标题', author: '璟1', stats: { like: 58888, reply: 874, favorite: 53180 } },
-    { vid: '7685221325136435875', title: '#真实生活分享计划 #姐感穿搭气质拉满', author: '广西珍珍', stats: { like: 24104, reply: 1369, favorite: 5440 } },
+    { vid: '7686920334986442139', title: '今天是很刻意的姐感穿搭 #学姐ootd #fyp #ootd', author: 'HonBrit', stats: { like: 142632, reply: 403, favorite: 9451 } },
   ],
   game: [
     { vid: '7686018080216709482', title: '此去必经年#少司缘 #走拍#王者ip创作团', author: '最爱吃兽奶', stats: { like: 407866, reply: 1399, favorite: 43956 } },
@@ -2311,9 +2311,9 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7685637695778852130', title: '爷孙骑行东北，一路上被各种照顾，广阔的土 #骑行vlog #真实生活分享计划 #交换世界计划 #交换100个旅途故事', author: '带姥爷骑行中国', stats: { like: 15083, reply: 462, favorite: 544 } },
   ],
   general: [
-    { vid: '7685678087782687994', title: '被喊到班主任办公室mvp结算画面 #班主任 #校园生活 #高中学校走廊', author: '小格乱撞', stats: { like: 5032706, reply: 47153, favorite: 1979787 } },
-    { vid: '7684569713896525498', title: '哭。有些狗 一旦搓过就不在…… #万物可爱计划 #我的秋天是毛茸茸的#我的养宠备忘录', author: '迪士尼在逃黄狗coco', stats: { like: 3332062, reply: 18654, favorite: 1167185 } },
-    { vid: '7684908169365914597', title: '人为什么不能活在过去', author: '01145087用户', stats: { like: 2173736, reply: 13319, favorite: 122556 } },
+    { vid: '7684908169365914597', title: '人为什么不能活在过去', author: '01145087用户', stats: { like: 3243835, reply: 21214, favorite: 196317 } },
+    { vid: '7686209933570333306', title: '就抢了个赔钱货… #短腿小拖宝 #抖音玩法合伙人计划 #创意文案玩法集', author: '短腿小拖宝🧸', stats: { like: 705384, reply: 9543, favorite: 378551 } },
+    { vid: '7685709469447500517', title: '当你养了只黑猫belike #黑猫 #我和我的怨种猫咪 #养猫人的精神状态 #猫咪', author: '悠悠不是球', stats: { like: 876090, reply: 5296, favorite: 71024 } },
   ],
 };
 
