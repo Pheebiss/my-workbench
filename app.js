@@ -2266,35 +2266,37 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-09-21 00:03:03
+// 最后更新: 2026-09-22 00:40:46
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382212, reply: 1023, favorite: 39788 } },
-    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290621, reply: 806, favorite: 64902 } },
-    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267252, reply: 2325, favorite: 9375 } },
+    { bvid: 'BV1ZCeb6NEyM', title: '“乡土凝存温情，善念永续流年.”【Blue Dragon-Inst】【乡土の小曲】', author: '早睡起大王', pic: 'https://i1.hdslb.com/bfs/archive/5e462c2847e1aeb183a6fd94437d6f415a5adda4.jpg', stats: { like: 244036, reply: 3915, favorite: 26089 } },
+    { bvid: 'BV14mez6VEG9', title: '后续就是还有高手', author: '未曾去过须弥山', pic: 'https://i2.hdslb.com/bfs/archive/5cfa1f9be78e4b04749f6a293efd82a2a1c4ae5b.jpg', stats: { like: 223261, reply: 6248, favorite: 27088 } },
+    { bvid: 'BV16veP6eEeC', title: '《花骨朵》亚细亚旷世奇才/洛天依', author: '亚细亚旷世奇才', pic: 'https://i1.hdslb.com/bfs/archive/d47d936f14f9fd33f70926014771ae60f75970f1.jpg', stats: { like: 149353, reply: 7244, favorite: 77177 } },
   ],
   fashion: [
-    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222195, reply: 470, favorite: 33220 } },
-    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 90923, reply: 475, favorite: 26002 } },
-    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87306, reply: 304, favorite: 22538 } },
+    { bvid: 'BV1V6hi66ESt', title: '想5G入秋｜8件低饱和淡人外套，小众百搭太好穿啦～', author: '叶子琳琳琳A', pic: '//i2.hdslb.com/bfs/archive/26b8f1476cbb34cd9e06dca701a426af52b65893.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1jdhq6EE9J', title: '50套【约会/通勤/上课/聚会】穿搭参考～搭配和优惠都准备好了！限时捡漏！穿搭技巧｜男生穿搭｜男友改造｜购物攻略｜秋季穿搭', author: '痴五安chammy', pic: '//i1.hdslb.com/bfs/archive/c2e83ef200689e1a3fab94c6478bf7b35ab11766.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1uZYu6cE6z', title: '一周穿搭｜早秋版｜8套不同风格穿搭灵感 不挑建模直接抄作业！男友改造｜通勤穿搭｜学生党｜小个子｜秋季穿搭', author: '痴五安chammy', pic: '//i2.hdslb.com/bfs/archive/3bb931e7854519ee3f69d954e0fae29ce48c021e.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   game: [
-    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 354727, reply: 2893, favorite: 758469 } },
-    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693908, reply: 4411, favorite: 130050 } },
-    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 517872, reply: 29185, favorite: 183516 } },
+    { bvid: 'BV12Te86UELG', title: '苏西的噩梦！', author: '小黄蜂游戏解说', pic: '//i1.hdslb.com/bfs/archive/7455ce71a662e4e8ee2c3d8058347f831077c399.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1xTe86SEBj', title: '爆氪5万拿下神兽玄武！目标究极神龙！霸服抓精灵游戏！', author: '一叮当猫一', pic: '//i2.hdslb.com/bfs/archive/9e8b2b54674b8bcb7f6bf34d72c517ec4dcfdb9a.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '死寂案例实战课：第三人称丧尸射击制作-1v1辅导', author: '谌嘉诚', pic: 'https://archive.biliimg.com/bfs/archive/2f82e9588895cb90da3e8cb1506cfb0526f2a63e.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   travel: [
-    { bvid: 'BV1Nqeg6tEBo', title: '互相求婚？美国女孩和我为什么要这样做', author: 'Luca和Kim', pic: 'https://i1.hdslb.com/bfs/archive/b87eff012fe726cffba0e0aa75e919dba1fbcd7f.jpg', stats: { like: 166659, reply: 6744, favorite: 17622 } },
+    { bvid: 'BV1ZCeb6NEyM', title: '“乡土凝存温情，善念永续流年.”【Blue Dragon-Inst】【乡土の小曲】', author: '早睡起大王', pic: 'https://i1.hdslb.com/bfs/archive/5e462c2847e1aeb183a6fd94437d6f415a5adda4.jpg', stats: { like: 244036, reply: 3915, favorite: 26089 } },
+    { bvid: 'BV14mez6VEG9', title: '后续就是还有高手', author: '未曾去过须弥山', pic: 'https://i2.hdslb.com/bfs/archive/5cfa1f9be78e4b04749f6a293efd82a2a1c4ae5b.jpg', stats: { like: 223261, reply: 6248, favorite: 27088 } },
+    { bvid: 'BV16veP6eEeC', title: '《花骨朵》亚细亚旷世奇才/洛天依', author: '亚细亚旷世奇才', pic: 'https://i1.hdslb.com/bfs/archive/d47d936f14f9fd33f70926014771ae60f75970f1.jpg', stats: { like: 149353, reply: 7244, favorite: 77177 } },
   ],
   general: [
-    { bvid: 'BV1cSec6tEux', title: '选哪个？iPhone 18 Pro&Duo深度上手', author: '影视飓风', pic: 'https://i1.hdslb.com/bfs/archive/aec12235afcae7c12ed1eb3684c103ed407434bf.jpg', stats: { like: 818427, reply: 169703, favorite: 277116 } },
-    { bvid: 'BV1PneF6bELe', title: '各省的刻板印象这一块', author: '不凉少年派', pic: 'https://i1.hdslb.com/bfs/archive/e7f83ca0a1b9bda807d5d93201a91a122e04dbe7.jpg', stats: { like: 705011, reply: 22257, favorite: 77798 } },
-    { bvid: 'BV1YaeN6xEWR', title: '天津漫展手机事件', author: '一颗小兔娘', pic: 'https://i1.hdslb.com/bfs/archive/b605df3a29e67a2fa3ab753804781e7bf25241a7.jpg', stats: { like: 534235, reply: 20957, favorite: 38428 } },
+    { bvid: 'BV1ANQqBTEVU', title: '2026网络最好听100首热门歌曲，每一首都好听 🎧', author: '那首你最爱的歌谣啊', pic: '//i0.hdslb.com/bfs/archive/c3ba106604affe3e5ff608af7cf62b3d318243eb.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1twbK6MEXn', title: '【无损音质】2026年最火的50首热门歌曲合集，好听的流行音乐合集', author: 'Music_精彩音乐', pic: '//i0.hdslb.com/bfs/archive/9cabc2fe2c78e2130cc4b6d234a20a9fc9fa2444.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '【热门课堂】基于ESP32的步进电机控制驱动板', author: '嵌入式小林', pic: 'https://archive.biliimg.com/bfs/archive/47cacef033ccce7928976e9f2fc3dd1673661440.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-09-21 00:03:27
+// 最后更新: 2026-09-22 00:41:09
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
@@ -2306,12 +2308,12 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7686018080216709482', title: '此去必经年#少司缘 #走拍#王者ip创作团', author: '最爱吃兽奶', stats: { like: 407866, reply: 1399, favorite: 43956 } },
   ],
   travel: [
-    { vid: '7685637695778852130', title: '爷孙骑行东北，一路上被各种照顾，广阔的土 #骑行vlog #真实生活分享计划 #交换世界计划 #交换100个旅途故事', author: '带姥爷骑行中国', stats: { like: 15083, reply: 462, favorite: 544 } },
+    { vid: '7686101970680169317', title: '让大家了解一下，飞机飞行员月工资真实的数据，', author: '说走就走的旅行', stats: { like: 4456, reply: 2436, favorite: 942 } },
   ],
   general: [
-    { vid: '7686432847778982833', title: '当你在2026年再次听到这首歌（第5集）#ladygaga #pokerface #高中生', author: '拉小提琴的王主任🎻', stats: { like: 3335463, reply: 30270, favorite: 678794 } },
-    { vid: '7687185519230664518', title: '见缝插针出现一下', author: '鞠婧祎', stats: { like: 2620085, reply: 145423, favorite: 345280 } },
-    { vid: '7685689794223048357', title: '剧情纯属真实 #万宁与晚安', author: '万宁叔-', stats: { like: 1252608, reply: 11010, favorite: 368685 } },
+    { vid: '7687899397346650027', title: '无实物笛子教学 #银渐层', author: '藤藤菜是也', stats: { like: 1190636, reply: 11587, favorite: 1028249 } },
+    { vid: '7687197909498016960', title: '狗子:没有一口粮是白吃的！', author: '梁彬家的汪星人', stats: { like: 527004, reply: 5641, favorite: 277082 } },
+    { vid: '7686441340905281467', title: '我爱你三千遍 #氛围感 #ccd #故事感 #双人拍照 #摄影', author: 'Vico', stats: { like: 322255, reply: 1993, favorite: 46324 } },
   ],
 };
 
