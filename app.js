@@ -2266,37 +2266,37 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-09-23 00:13:44
+// 最后更新: 2026-09-24 00:21:12
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382213, reply: 1023, favorite: 39787 } },
-    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290632, reply: 806, favorite: 64899 } },
-    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267252, reply: 2325, favorite: 9374 } },
+    { bvid: 'BV1iU4y1L7G2', title: '【化妆入门课】0基础化妆变美逆袭课！易上手|化妆技巧|化妆教程|系统课|手把手教化妆|毕业变美指南', author: 'JSMN-Me', pic: '//i1.hdslb.com/bfs/archive/13f3dbf71ada18ba13be81fe20814b6d117f2d7a.png', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1geh86nEZM', title: '美妆聊天室｜i人但不缺朋友，我做对了什么', author: '溜溜没了吧', pic: '//i2.hdslb.com/bfs/archive/08675e8b03acb2ee75d113fda5ef5f4e21e8ab93.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '国风古风汉服妆造创意系统课', author: '新学艺', pic: 'https://i0.hdslb.com/bfs/upower/workflow_images/1790206011387_d0ae54bfe6c6.png', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   fashion: [
-    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222200, reply: 470, favorite: 33220 } },
-    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 90926, reply: 475, favorite: 26001 } },
-    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87306, reply: 304, favorite: 22535 } },
+    { bvid: 'BV1wihk6qEfU', title: '【160cm125斤】这才是我们微胖想要的松弛穿搭！', author: '酒心蛋糕_', pic: '//i1.hdslb.com/bfs/archive/42a6c2d073651b1c258d77fa89cfb138ea629182.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV17eh46XEqL', title: '原来这就是你们口中&quot;180&quot;&quot;会穿搭&quot;的健身男啊？这次的改造系列！重磅回归！素人改造｜健身｜变帅｜胖子｜穿搭攻略', author: '痴五安chammy', pic: '//i0.hdslb.com/bfs/archive/04f14b0be5425e01bb363529c36717b85beb45bb.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '男士穿搭形象提升衬衫西装外套全品类穿搭技巧全掌握', author: '新学艺', pic: 'https://i0.hdslb.com/bfs/upower/workflow_images/1789902379210_a0b4f8ac0e5e.png', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   game: [
-    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 354783, reply: 2894, favorite: 758506 } },
-    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693911, reply: 4411, favorite: 130045 } },
-    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 517901, reply: 29188, favorite: 183533 } },
+    { bvid: 'BV1YDhJ6ZEL6', title: '《柯洁围棋入门课》', author: '柯洁', pic: 'https://i2.hdslb.com/bfs/archive/35baeae957483b53d75c1dd12eecb7e6d2f498c4.jpg', stats: { like: 294573, reply: 16404, favorite: 57603 } },
+    { bvid: 'BV1J7hE6aEDQ', title: '比电影更夸张？专业保镖到底在做什么？', author: '影视飓风', pic: 'https://i0.hdslb.com/bfs/archive/6646bc361d2c9f37b009317725abc242a6bd23cd.jpg', stats: { like: 205690, reply: 5357, favorite: 39257 } },
+    { bvid: 'BV1yvhW6sEzi', title: '《崩坏：星穹铁道》即兴巡演PV——「至此，已成艺术」', author: '崩坏星穹铁道', pic: 'https://i1.hdslb.com/bfs/archive/918036e5a4c1f79f447229654c474eec94ee5620.jpg', stats: { like: 179645, reply: 11593, favorite: 36305 } },
   ],
   travel: [
-    { bvid: 'BV14mez6VEG9', title: '后续就是还有高手', author: '未曾去过须弥山', pic: 'https://i2.hdslb.com/bfs/archive/5cfa1f9be78e4b04749f6a293efd82a2a1c4ae5b.jpg', stats: { like: 312838, reply: 8912, favorite: 39010 } },
-    { bvid: 'BV1ZCeb6NEyM', title: '“乡土凝存温情，善念永续流年.”【Blue Dragon-Inst】【乡土の小曲】', author: '早睡起大王', pic: 'https://i1.hdslb.com/bfs/archive/5e462c2847e1aeb183a6fd94437d6f415a5adda4.jpg', stats: { like: 275528, reply: 4087, favorite: 30263 } },
-    { bvid: 'BV1E2eb6PE5Q', title: '仅5.87MB？全新重构Bongocat，推荐所有人使用！', author: '宇痕冫', pic: 'https://i1.hdslb.com/bfs/archive/412726a55b8c8d3737547ef31fa8a82ee0388007.jpg', stats: { like: 137587, reply: 1798, favorite: 153622 } },
+    { bvid: 'BV1YDhJ6ZEL6', title: '《柯洁围棋入门课》', author: '柯洁', pic: 'https://i2.hdslb.com/bfs/archive/35baeae957483b53d75c1dd12eecb7e6d2f498c4.jpg', stats: { like: 294573, reply: 16404, favorite: 57603 } },
+    { bvid: 'BV1J7hE6aEDQ', title: '比电影更夸张？专业保镖到底在做什么？', author: '影视飓风', pic: 'https://i0.hdslb.com/bfs/archive/6646bc361d2c9f37b009317725abc242a6bd23cd.jpg', stats: { like: 205690, reply: 5357, favorite: 39257 } },
+    { bvid: 'BV1yvhW6sEzi', title: '《崩坏：星穹铁道》即兴巡演PV——「至此，已成艺术」', author: '崩坏星穹铁道', pic: 'https://i1.hdslb.com/bfs/archive/918036e5a4c1f79f447229654c474eec94ee5620.jpg', stats: { like: 179645, reply: 11593, favorite: 36305 } },
   ],
   general: [
-    { bvid: 'BV14mez6VEG9', title: '后续就是还有高手', author: '未曾去过须弥山', pic: 'https://i2.hdslb.com/bfs/archive/5cfa1f9be78e4b04749f6a293efd82a2a1c4ae5b.jpg', stats: { like: 312838, reply: 8912, favorite: 39010 } },
-    { bvid: 'BV1ZCeb6NEyM', title: '“乡土凝存温情，善念永续流年.”【Blue Dragon-Inst】【乡土の小曲】', author: '早睡起大王', pic: 'https://i1.hdslb.com/bfs/archive/5e462c2847e1aeb183a6fd94437d6f415a5adda4.jpg', stats: { like: 275528, reply: 4087, favorite: 30263 } },
-    { bvid: 'BV1E2eb6PE5Q', title: '仅5.87MB？全新重构Bongocat，推荐所有人使用！', author: '宇痕冫', pic: 'https://i1.hdslb.com/bfs/archive/412726a55b8c8d3737547ef31fa8a82ee0388007.jpg', stats: { like: 137587, reply: 1798, favorite: 153622 } },
+    { bvid: 'BV1YDhJ6ZEL6', title: '《柯洁围棋入门课》', author: '柯洁', pic: 'https://i2.hdslb.com/bfs/archive/35baeae957483b53d75c1dd12eecb7e6d2f498c4.jpg', stats: { like: 294573, reply: 16404, favorite: 57603 } },
+    { bvid: 'BV1J7hE6aEDQ', title: '比电影更夸张？专业保镖到底在做什么？', author: '影视飓风', pic: 'https://i0.hdslb.com/bfs/archive/6646bc361d2c9f37b009317725abc242a6bd23cd.jpg', stats: { like: 205690, reply: 5357, favorite: 39257 } },
+    { bvid: 'BV1yvhW6sEzi', title: '《崩坏：星穹铁道》即兴巡演PV——「至此，已成艺术」', author: '崩坏星穹铁道', pic: 'https://i1.hdslb.com/bfs/archive/918036e5a4c1f79f447229654c474eec94ee5620.jpg', stats: { like: 179645, reply: 11593, favorite: 36305 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-09-23 00:14:09
+// 最后更新: 2026-09-24 00:21:37
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
@@ -2308,12 +2308,14 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7686018080216709482', title: '此去必经年#少司缘 #走拍#王者ip创作团', author: '最爱吃兽奶', stats: { like: 407866, reply: 1399, favorite: 43956 } },
   ],
   travel: [
-    { vid: '7688320876513898112', title: '中国模特勇闯欧洲时装周|面试实录第四集 #vlog #真实 #模特 #hello时尚季 #青年创作者成长计划', author: '李东恒', stats: { like: 67849, reply: 2517, favorite: 8593 } },
+    { vid: '7687548046267744666', title: '世间多纷扰… #赤坎艺术节#赤坎古镇#赤坎度假区#赤坎的烟花真的好浪漫', author: '370', stats: { like: 149536, reply: 493, favorite: 21733 } },
+    { vid: '7687488060708291813', title: '今天是小猫验收花园 完成度90%#猫咪vlog#宠物友好植物推荐', author: '伦家的喵', stats: { like: 47509, reply: 800, favorite: 4091 } },
+    { vid: '7688309904347913318', title: '努力了8个月 #体重打卡 #体重卡点视频 #减肥逆袭', author: '冯胖胖不胖了（已瘦87斤）', stats: { like: 1481, reply: 352, favorite: 567 } },
   ],
   general: [
-    { vid: '7687899397346650027', title: '无实物笛子教学 #银渐层', author: '藤藤菜是也', stats: { like: 2279075, reply: 26882, favorite: 1997381 } },
-    { vid: '7687174000963832947', title: '你是会找位置的，完全放飞自我了', author: 'Cy', stats: { like: 1581193, reply: 16343, favorite: 1363496 } },
-    { vid: '7687465835854843813', title: '小生戏学长（此视频用相机拍摄 所以画质也比较糊） #高中 #高三 #09 #小猫', author: '青椿遇雨', stats: { like: 817276, reply: 6809, favorite: 338240 } },
+    { vid: '7687899397346650027', title: '无实物笛子教学 #银渐层', author: '藤藤菜是也', stats: { like: 2867694, reply: 36181, favorite: 2470454 } },
+    { vid: '7688336648769531712', title: '爱人的人获得自由', author: '了 了', stats: { like: 1524573, reply: 12238, favorite: 348548 } },
+    { vid: '7687197909498016960', title: '狗子:没有一口粮是白吃的！', author: '梁彬家的汪星人', stats: { like: 911809, reply: 10255, favorite: 504107 } },
   ],
 };
 
