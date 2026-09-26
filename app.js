@@ -2266,37 +2266,37 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-09-25 00:23:54
+// 最后更新: 2026-09-26 00:28:17
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV17Eaw6DEMi', title: '游本昌爷爷，一路走好！我们会继续向前', author: '人民日报', pic: 'https://i0.hdslb.com/bfs/archive/3c5a54b979479eadbf616672f94673cfff7a0b18.jpg', stats: { like: 375290, reply: 5315, favorite: 35796 } },
-    { bvid: 'BV1N9hp6WExy', title: '欢迎来到我的频道!', author: 'GroxOfficial', pic: 'https://i1.hdslb.com/bfs/archive/c78a5527ad4fa19a5d6f0cdeafc7280354da931b.jpg', stats: { like: 216131, reply: 5520, favorite: 63891 } },
-    { bvid: 'BV1e6h46UEfG', title: '『飙马野郎 JOJO的奇妙冒险』 OP Kroi 「SPIN」', author: 'WBJ_Anime', pic: 'https://i1.hdslb.com/bfs/archive/3b49aa06630a79d9ab887709ff8126a591a26859.jpg', stats: { like: 163591, reply: 10393, favorite: 53586 } },
+    { bvid: 'BV1hk5k6yE1z', title: '超详细全流程步骤拆解！日常全妆教程（新老手皆宜版）', author: '姜乘澜', pic: '//i1.hdslb.com/bfs/archive/844d18e571fa51fcaf5cbec859530c5d831b9363.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1jJhU6kEFU', title: '【ASMR】爱豆上台前｜毒舌化妆师给你紧急救场，结果...｜补妆·戴美瞳·发型·视觉触发', author: '劳拉的枕头', pic: '//i1.hdslb.com/bfs/archive/117238febc9918ce9c18525f73eb884ffde2a9bd.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1iU4y1L7G2', title: '【化妆入门课】0基础化妆变美逆袭课！易上手|化妆技巧|化妆教程|系统课|手把手教化妆|毕业变美指南', author: 'JSMN-Me', pic: '//i1.hdslb.com/bfs/archive/13f3dbf71ada18ba13be81fe20814b6d117f2d7a.png', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   fashion: [
-    { bvid: 'BV1sbaN66E7d', title: '有一说一！谁能拒绝软糯耐看的秋日毛衣！8套日常款直接抄作业！秋冬穿搭｜毛衣｜氛围感穿搭', author: '痴五安chammy', pic: '//i2.hdslb.com/bfs/archive/185365fea8ceb18ae69a14adbf6ff8cc90e82417.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1zfaw6pEGK', title: '国庆出游穿搭攻略｜7件8套｜穿搭挑战回归！', author: 'Elena朴', pic: '//i2.hdslb.com/bfs/archive/c15b9c6d92e3c41e6ebce1b92aae8a41dfc68216.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: '形象蝶变 | 你天生的穿搭用色规律', author: 'KK白生', pic: 'https://archive.biliimg.com/bfs/archive/0b249c4c599a630b83edc28600ed173a5a25ca6a.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1YLPozVEhR', title: '52分钟从0到98玩明白穿搭全流程无广告无专业术语#平民穿搭指南 终极版 #玩儿大师 #多巴胺供销社', author: 'SKY_hahalife', pic: '//i1.hdslb.com/bfs/archive/f45e92cd672d806e71095034cb7457de637a05b3.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1oC4y1s7eM', title: '【7招穿搭速成】你的穿搭问题到底出在哪？', author: '怪力老陈', pic: '//i0.hdslb.com/bfs/archive/99aaf25047036faa15abf4a8f7e400878aad6ea3.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1drhB62Efz', title: '男大分享｜秋季上衣分享（100-200r）', author: '我我我爱吃火锅', pic: '//i1.hdslb.com/bfs/archive/414ab1a17035292e5c77819acc65bc53aa4a1914.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   game: [
-    { bvid: 'BV12vhW6sEg9', title: '这绝对是我人生中打码最多的一期视频，搞了几块布非说自己是游戏【次元万事屋#100】', author: '完勒Linew', pic: '//i2.hdslb.com/bfs/archive/25842beaed27ea51afd282956088d7c5795e8d30.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1ux411P7u3', title: 'Game囧很大番外篇：TM的我忘记做了！', author: '17173妖气山', pic: '//i0.hdslb.com/bfs/archive/01bf46ae3ee9265e4ce078e1c5a851e8d0fcdfd1.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1g1hp6fExF', title: '教伪人开车', author: '拧不动啊真拧不动', pic: '//i1.hdslb.com/bfs/archive/69f6321e944d6aadff65ba3e16c75a512048d900.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1Deht6rEpZ', title: '我记录下了妹妹的最后7天...【自制伪纪录片电影】', author: '沢人', pic: 'https://i0.hdslb.com/bfs/archive/25532448b0bef5b5a71b1515bb4264da3f6b5890.jpg', stats: { like: 230952, reply: 4012, favorite: 99903 } },
+    { bvid: 'BV1JBaA6oEmA', title: '每百年一次深渊血战，恶魔世界会如何发展？', author: '末影大黑', pic: 'https://i1.hdslb.com/bfs/archive/300df1f1cf8489d78a00df1e0bff2dfa4d91efff.jpg', stats: { like: 164272, reply: 5077, favorite: 53683 } },
+    { bvid: 'BV1Vkag6TExf', title: '今日份缇宝', author: '以尘动画', pic: 'https://i0.hdslb.com/bfs/archive/69f5eb1b7b10b2c92755360e15218343c431a14d.jpg', stats: { like: 143002, reply: 2961, favorite: 45780 } },
   ],
   travel: [
-    { bvid: 'BV17Eaw6DEMi', title: '游本昌爷爷，一路走好！我们会继续向前', author: '人民日报', pic: 'https://i0.hdslb.com/bfs/archive/3c5a54b979479eadbf616672f94673cfff7a0b18.jpg', stats: { like: 375290, reply: 5315, favorite: 35796 } },
-    { bvid: 'BV1N9hp6WExy', title: '欢迎来到我的频道!', author: 'GroxOfficial', pic: 'https://i1.hdslb.com/bfs/archive/c78a5527ad4fa19a5d6f0cdeafc7280354da931b.jpg', stats: { like: 216131, reply: 5520, favorite: 63891 } },
-    { bvid: 'BV1e6h46UEfG', title: '『飙马野郎 JOJO的奇妙冒险』 OP Kroi 「SPIN」', author: 'WBJ_Anime', pic: 'https://i1.hdslb.com/bfs/archive/3b49aa06630a79d9ab887709ff8126a591a26859.jpg', stats: { like: 163591, reply: 10393, favorite: 53586 } },
+    { bvid: 'BV1szau6JEX9', title: '房车旅行到东北追秋，发现小众宝藏秋色秘境', author: '家和远方的旅行', pic: '//i0.hdslb.com/bfs/archive/537e1405dba9ffc5c50810d58c55748f18404c7c.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV16EF8eGEiE', title: '给莎莎续舰三个月，结果被毕业旅行了', author: '雪碧青柠呀', pic: '//i1.hdslb.com/bfs/archive/f4eb29e490ba88d8e1d3415d43c1c80f379eee18.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '毛大王沉浸式生活旅行实用口语（四合一）', author: 'Arlis毛大王', pic: 'https://archive.biliimg.com/bfs/archive/bbb50460dffaaf1524193cbb61dda43b50f58c1a.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   general: [
-    { bvid: 'BV1JBhb6ZE5k', title: '洗白了？颤抖吧！伦纳德的猛龙成争冠最大热门？', author: '业余球探刀先生', pic: '//i0.hdslb.com/bfs/archive/c977512125377dc4a5fb8dca39b04acb26ad32f0.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV11DaP6iEc7', title: '【冒险岛】老岛民集结，人气火爆热门玩法齐全，无强制氪金，全新职业，稳定长久耐玩', author: '芳华绝代似', pic: '//i0.hdslb.com/bfs/archive/c86945860575210c6d1ce195201d00b8093cf90c.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: '【热门小吃在家做】20套热门小吃家庭版视频教程', author: '品诺美食开课啦', pic: 'https://archive.biliimg.com/bfs/archive/a261808382e7de716fd06ad31fbd89c9392bc81a.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1oM1JYMEau', title: '100款超过瘾的高质量手游推荐！单机联机全都有，告别游戏荒！！', author: '唐印OvO', pic: '//i2.hdslb.com/bfs/archive/318534c5c1b9ce592d065b3aeb61be7b32c83818.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1AowRzDEN8', title: '相当炸裂的游戏排行榜！2026全球最受欢迎的30款游戏！', author: '游戏老冰棍DY', pic: '//i0.hdslb.com/bfs/archive/45f0480efcf51ecf076521c448fab5b1afa5ce9b.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1gikKB3EbC', title: '2026年全球最值得期待的10款手游！神仙打架！钱包难保！', author: '魔游社', pic: '//i0.hdslb.com/bfs/archive/4a9aa0e1b0c42a449e67013e8851c26239909ecf.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-09-25 00:24:19
+// 最后更新: 2026-09-26 00:28:42
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
@@ -2312,9 +2312,9 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7687190237856699385', title: '新来的成员雕鸮妹妹 #雕鸮 #海外合法拍摄 #芝麻熊的vlog #法国乡村生活 #猫头鹰萌主', author: '芝麻熊在法兰西🇨🇳🇫🇷', stats: { like: 63315, reply: 1158, favorite: 6743 } },
   ],
   general: [
-    { vid: '7688360282867681018', title: '我的向日葵成了松鼠的自助餐…… #额尔古纳 #松鼠嗑瓜子 #松鼠吃什么 #大兴安岭的秋天 #额尔古纳国家湿地公园', author: '阿吕 松笛咖啡', stats: { like: 2716352, reply: 35248, favorite: 1860507 } },
-    { vid: '7687533032924408235', title: '｜有咪自远方来，不亦乐乎#萌物 #猫咪', author: '称心', stats: { like: 804344, reply: 16857, favorite: 461325 } },
-    { vid: '7688890046803479846', title: '习近平抵达华盛顿对美国进行国事访问。#媒体原创', author: '央视新闻', stats: { like: 1253955, reply: 95, favorite: 94303 } },
+    { vid: '7687205508662785902', title: '世人皆道金玉良缘我却只认木石姻缘 #红楼梦 #林黛玉 #贾宝玉 #薛宝钗 #二创ooc致歉', author: '傅羊羊', stats: { like: 2856651, reply: 8102, favorite: 248922 } },
+    { vid: '7687197909498016960', title: '狗子:没有一口粮是白吃的！', author: '梁彬家的汪星人', stats: { like: 1179473, reply: 12389, favorite: 639435 } },
+    { vid: '7687882613504036777', title: '赶个末班车！ #王子系 #lolita #变装 #胡有姬 #这个bgm终于轮到我了', author: '元气姬姬', stats: { like: 1466928, reply: 7450, favorite: 92728 } },
   ],
 };
 
