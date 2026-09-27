@@ -2266,37 +2266,37 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-09-26 00:28:17
+// 最后更新: 2026-09-27 00:23:43
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
     { bvid: 'BV1hk5k6yE1z', title: '超详细全流程步骤拆解！日常全妆教程（新老手皆宜版）', author: '姜乘澜', pic: '//i1.hdslb.com/bfs/archive/844d18e571fa51fcaf5cbec859530c5d831b9363.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1jJhU6kEFU', title: '【ASMR】爱豆上台前｜毒舌化妆师给你紧急救场，结果...｜补妆·戴美瞳·发型·视觉触发', author: '劳拉的枕头', pic: '//i1.hdslb.com/bfs/archive/117238febc9918ce9c18525f73eb884ffde2a9bd.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
     { bvid: 'BV1iU4y1L7G2', title: '【化妆入门课】0基础化妆变美逆袭课！易上手|化妆技巧|化妆教程|系统课|手把手教化妆|毕业变美指南', author: 'JSMN-Me', pic: '//i1.hdslb.com/bfs/archive/13f3dbf71ada18ba13be81fe20814b6d117f2d7a.png', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '维爱美甲线上全科班：网络课水彩彩绘雕花晕染整手款', author: '维爱美甲中心', pic: 'https://archive.biliimg.com/bfs/archive/bb6d96c42f8668f8425e1112ba30bca8794ad47b.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   fashion: [
-    { bvid: 'BV1YLPozVEhR', title: '52分钟从0到98玩明白穿搭全流程无广告无专业术语#平民穿搭指南 终极版 #玩儿大师 #多巴胺供销社', author: 'SKY_hahalife', pic: '//i1.hdslb.com/bfs/archive/f45e92cd672d806e71095034cb7457de637a05b3.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1oC4y1s7eM', title: '【7招穿搭速成】你的穿搭问题到底出在哪？', author: '怪力老陈', pic: '//i0.hdslb.com/bfs/archive/99aaf25047036faa15abf4a8f7e400878aad6ea3.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1drhB62Efz', title: '男大分享｜秋季上衣分享（100-200r）', author: '我我我爱吃火锅', pic: '//i1.hdslb.com/bfs/archive/414ab1a17035292e5c77819acc65bc53aa4a1914.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1LahR6ZEsT', title: '对不起~穿成这样的小帅我先冲了！8件初秋衬衫分享~ 衬衫男 | 秋装男｜外套男｜约会 | 通勤 | 秋装推荐｜秋季穿搭', author: '我是路十六', pic: '//i1.hdslb.com/bfs/archive/a00ac09306ace3d684649b2b6409d8dfdf9dd4f1.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1Yrhm6BEW3', title: '男生秋季通勤穿搭指南！上班不易别被形象拖了后腿！', author: '大呸湿', pic: '//i0.hdslb.com/bfs/archive/aba44d75fa078159adf8a7c89ed144cf34a4bdf6.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '形象蝶变 | 你天生的穿搭用色规律', author: 'KK白生', pic: 'https://archive.biliimg.com/bfs/archive/0b249c4c599a630b83edc28600ed173a5a25ca6a.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   game: [
-    { bvid: 'BV1Deht6rEpZ', title: '我记录下了妹妹的最后7天...【自制伪纪录片电影】', author: '沢人', pic: 'https://i0.hdslb.com/bfs/archive/25532448b0bef5b5a71b1515bb4264da3f6b5890.jpg', stats: { like: 230952, reply: 4012, favorite: 99903 } },
-    { bvid: 'BV1JBaA6oEmA', title: '每百年一次深渊血战，恶魔世界会如何发展？', author: '末影大黑', pic: 'https://i1.hdslb.com/bfs/archive/300df1f1cf8489d78a00df1e0bff2dfa4d91efff.jpg', stats: { like: 164272, reply: 5077, favorite: 53683 } },
-    { bvid: 'BV1Vkag6TExf', title: '今日份缇宝', author: '以尘动画', pic: 'https://i0.hdslb.com/bfs/archive/69f5eb1b7b10b2c92755360e15218343c431a14d.jpg', stats: { like: 143002, reply: 2961, favorite: 45780 } },
+    { bvid: 'BV1JSau6kEou', title: '《以片换物- -洗剪吹》 再不疯狂就老了  借一场大笑，释放藏起来的自己。', author: '拍照的阿甘', pic: 'https://i2.hdslb.com/bfs/archive/85d749139b2bce8ca92e2e895cdb749e30faa427.jpg', stats: { like: 207324, reply: 2816, favorite: 21797 } },
+    { bvid: 'BV1JFaN6hEL9', title: '《小杨有约30#》：杨迪', author: '小杨Johnson', pic: 'https://i0.hdslb.com/bfs/archive/dde639d8ad90db845348ea55396e69293c7b603a.jpg', stats: { like: 158500, reply: 2729, favorite: 34235 } },
+    { bvid: 'BV17BaA6dERY', title: '【独家】《凡人修仙传之慕兰之战》第17集【总第193集】', author: '哔哩哔哩国创', pic: 'https://i2.hdslb.com/bfs/archive/04c4e32d0f106a78d2caef7da5139371cb2ce252.jpg', stats: { like: 137440, reply: 5403, favorite: 23149 } },
   ],
   travel: [
-    { bvid: 'BV1szau6JEX9', title: '房车旅行到东北追秋，发现小众宝藏秋色秘境', author: '家和远方的旅行', pic: '//i0.hdslb.com/bfs/archive/537e1405dba9ffc5c50810d58c55748f18404c7c.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV16EF8eGEiE', title: '给莎莎续舰三个月，结果被毕业旅行了', author: '雪碧青柠呀', pic: '//i1.hdslb.com/bfs/archive/f4eb29e490ba88d8e1d3415d43c1c80f379eee18.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1fwhd6TEf7', title: '独自旅行石垣岛！猫猫公园+超绝蓝海，我向往的完美日子', author: '我找小巫', pic: '//i1.hdslb.com/bfs/archive/c02727f6174a3b23f6044c32bdeb1bf8fdcc2a40.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV19naF66Ezb', title: '我买下了15万的船票，踏上了前往世界尽头的旅行…..', author: 'Linksphotograph', pic: '//i2.hdslb.com/bfs/archive/6c418aa83f64c7ec86d5c0b13c85520ed791941d.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
     { bvid: '', title: '毛大王沉浸式生活旅行实用口语（四合一）', author: 'Arlis毛大王', pic: 'https://archive.biliimg.com/bfs/archive/bbb50460dffaaf1524193cbb61dda43b50f58c1a.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   general: [
-    { bvid: 'BV1oM1JYMEau', title: '100款超过瘾的高质量手游推荐！单机联机全都有，告别游戏荒！！', author: '唐印OvO', pic: '//i2.hdslb.com/bfs/archive/318534c5c1b9ce592d065b3aeb61be7b32c83818.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1AowRzDEN8', title: '相当炸裂的游戏排行榜！2026全球最受欢迎的30款游戏！', author: '游戏老冰棍DY', pic: '//i0.hdslb.com/bfs/archive/45f0480efcf51ecf076521c448fab5b1afa5ce9b.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1gikKB3EbC', title: '2026年全球最值得期待的10款手游！神仙打架！钱包难保！', author: '魔游社', pic: '//i0.hdslb.com/bfs/archive/4a9aa0e1b0c42a449e67013e8851c26239909ecf.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1ANQqBTEVU', title: '2026网络最好听100首热门歌曲，每一首都好听 🎧', author: '那首你最爱的歌谣啊', pic: '//i0.hdslb.com/bfs/archive/c3ba106604affe3e5ff608af7cf62b3d318243eb.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV19NhQ6UEX6', title: '【9月排行】大事不妙！19~29元热门流量卡全测评，从夯到拉榜单揭晓！流量卡测评 | 流量卡 | 性价比流量卡 | 2026流量卡推荐 | 广电流量卡 |手机卡', author: '流量卡徐老师', pic: '//i0.hdslb.com/bfs/archive/b64ec2a06049030228506c72194a50ede116ca1b.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '【热门小吃在家做】20套热门小吃家庭版视频教程', author: '品诺美食开课啦', pic: 'https://archive.biliimg.com/bfs/archive/a261808382e7de716fd06ad31fbd89c9392bc81a.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-09-26 00:28:42
+// 最后更新: 2026-09-27 00:24:05
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
@@ -2312,9 +2312,9 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7687190237856699385', title: '新来的成员雕鸮妹妹 #雕鸮 #海外合法拍摄 #芝麻熊的vlog #法国乡村生活 #猫头鹰萌主', author: '芝麻熊在法兰西🇨🇳🇫🇷', stats: { like: 63315, reply: 1158, favorite: 6743 } },
   ],
   general: [
-    { vid: '7687205508662785902', title: '世人皆道金玉良缘我却只认木石姻缘 #红楼梦 #林黛玉 #贾宝玉 #薛宝钗 #二创ooc致歉', author: '傅羊羊', stats: { like: 2856651, reply: 8102, favorite: 248922 } },
-    { vid: '7687197909498016960', title: '狗子:没有一口粮是白吃的！', author: '梁彬家的汪星人', stats: { like: 1179473, reply: 12389, favorite: 639435 } },
-    { vid: '7687882613504036777', title: '赶个末班车！ #王子系 #lolita #变装 #胡有姬 #这个bgm终于轮到我了', author: '元气姬姬', stats: { like: 1466928, reply: 7450, favorite: 92728 } },
+    { vid: '7687547913903999653', title: '剧情纯属真实 #万宁与晚安', author: '万宁叔-', stats: { like: 1029466, reply: 11914, favorite: 422088 } },
+    { vid: '7687882613504036777', title: '赶个末班车！ #王子系 #lolita #变装 #胡有姬 #这个bgm终于轮到我了', author: '元气姬姬', stats: { like: 1700869, reply: 8913, favorite: 104654 } },
+    { vid: '7689400831947151995', title: '剧情纯属真实 #万宁与晚安', author: '万宁叔-', stats: { like: 665246, reply: 9606, favorite: 248892 } },
   ],
 };
 
