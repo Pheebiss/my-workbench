@@ -2266,37 +2266,37 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-09-27 00:23:43
+// 最后更新: 2026-09-28 00:28:38
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1hk5k6yE1z', title: '超详细全流程步骤拆解！日常全妆教程（新老手皆宜版）', author: '姜乘澜', pic: '//i1.hdslb.com/bfs/archive/844d18e571fa51fcaf5cbec859530c5d831b9363.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1iU4y1L7G2', title: '【化妆入门课】0基础化妆变美逆袭课！易上手|化妆技巧|化妆教程|系统课|手把手教化妆|毕业变美指南', author: 'JSMN-Me', pic: '//i1.hdslb.com/bfs/archive/13f3dbf71ada18ba13be81fe20814b6d117f2d7a.png', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: '维爱美甲线上全科班：网络课水彩彩绘雕花晕染整手款', author: '维爱美甲中心', pic: 'https://archive.biliimg.com/bfs/archive/bb6d96c42f8668f8425e1112ba30bca8794ad47b.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1Kyas6wEuz', title: '《纯粹の体育精神》', author: '伤心欲茄222', pic: 'https://i1.hdslb.com/bfs/archive/fcd6f6f437fc1b15960bf6df2535312f8a5cbade.jpg', stats: { like: 173624, reply: 1986, favorite: 6745 } },
+    { bvid: 'BV1Rmh96ZEXh', title: '《崩坏：星穹铁道》真珠角色PV——「如何描绘一种希望」', author: '崩坏星穹铁道', pic: 'https://i0.hdslb.com/bfs/archive/54bde642fdd0a0a0a78b3a63bbc075e6fa71146d.jpg', stats: { like: 142268, reply: 11115, favorite: 27396 } },
+    { bvid: 'BV1fAh96ZELn', title: '《三角洲行动》群星计划—代号：威龙', author: '三角洲行动', pic: 'https://i2.hdslb.com/bfs/archive/67a46169420d507f3f1846d282d59be3472acb98.jpg', stats: { like: 89662, reply: 5806, favorite: 30945 } },
   ],
   fashion: [
-    { bvid: 'BV1LahR6ZEsT', title: '对不起~穿成这样的小帅我先冲了！8件初秋衬衫分享~ 衬衫男 | 秋装男｜外套男｜约会 | 通勤 | 秋装推荐｜秋季穿搭', author: '我是路十六', pic: '//i1.hdslb.com/bfs/archive/a00ac09306ace3d684649b2b6409d8dfdf9dd4f1.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1Yrhm6BEW3', title: '男生秋季通勤穿搭指南！上班不易别被形象拖了后腿！', author: '大呸湿', pic: '//i0.hdslb.com/bfs/archive/aba44d75fa078159adf8a7c89ed144cf34a4bdf6.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: '形象蝶变 | 你天生的穿搭用色规律', author: 'KK白生', pic: 'https://archive.biliimg.com/bfs/archive/0b249c4c599a630b83edc28600ed173a5a25ca6a.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1Kyas6wEuz', title: '《纯粹の体育精神》', author: '伤心欲茄222', pic: 'https://i1.hdslb.com/bfs/archive/fcd6f6f437fc1b15960bf6df2535312f8a5cbade.jpg', stats: { like: 173624, reply: 1986, favorite: 6745 } },
+    { bvid: 'BV1Rmh96ZEXh', title: '《崩坏：星穹铁道》真珠角色PV——「如何描绘一种希望」', author: '崩坏星穹铁道', pic: 'https://i0.hdslb.com/bfs/archive/54bde642fdd0a0a0a78b3a63bbc075e6fa71146d.jpg', stats: { like: 142268, reply: 11115, favorite: 27396 } },
+    { bvid: 'BV1fAh96ZELn', title: '《三角洲行动》群星计划—代号：威龙', author: '三角洲行动', pic: 'https://i2.hdslb.com/bfs/archive/67a46169420d507f3f1846d282d59be3472acb98.jpg', stats: { like: 89662, reply: 5806, favorite: 30945 } },
   ],
   game: [
-    { bvid: 'BV1JSau6kEou', title: '《以片换物- -洗剪吹》 再不疯狂就老了  借一场大笑，释放藏起来的自己。', author: '拍照的阿甘', pic: 'https://i2.hdslb.com/bfs/archive/85d749139b2bce8ca92e2e895cdb749e30faa427.jpg', stats: { like: 207324, reply: 2816, favorite: 21797 } },
-    { bvid: 'BV1JFaN6hEL9', title: '《小杨有约30#》：杨迪', author: '小杨Johnson', pic: 'https://i0.hdslb.com/bfs/archive/dde639d8ad90db845348ea55396e69293c7b603a.jpg', stats: { like: 158500, reply: 2729, favorite: 34235 } },
-    { bvid: 'BV17BaA6dERY', title: '【独家】《凡人修仙传之慕兰之战》第17集【总第193集】', author: '哔哩哔哩国创', pic: 'https://i2.hdslb.com/bfs/archive/04c4e32d0f106a78d2caef7da5139371cb2ce252.jpg', stats: { like: 137440, reply: 5403, favorite: 23149 } },
+    { bvid: 'BV1Kyas6wEuz', title: '《纯粹の体育精神》', author: '伤心欲茄222', pic: 'https://i1.hdslb.com/bfs/archive/fcd6f6f437fc1b15960bf6df2535312f8a5cbade.jpg', stats: { like: 173624, reply: 1986, favorite: 6745 } },
+    { bvid: 'BV1Rmh96ZEXh', title: '《崩坏：星穹铁道》真珠角色PV——「如何描绘一种希望」', author: '崩坏星穹铁道', pic: 'https://i0.hdslb.com/bfs/archive/54bde642fdd0a0a0a78b3a63bbc075e6fa71146d.jpg', stats: { like: 142268, reply: 11115, favorite: 27396 } },
+    { bvid: 'BV1fAh96ZELn', title: '《三角洲行动》群星计划—代号：威龙', author: '三角洲行动', pic: 'https://i2.hdslb.com/bfs/archive/67a46169420d507f3f1846d282d59be3472acb98.jpg', stats: { like: 89662, reply: 5806, favorite: 30945 } },
   ],
   travel: [
-    { bvid: 'BV1fwhd6TEf7', title: '独自旅行石垣岛！猫猫公园+超绝蓝海，我向往的完美日子', author: '我找小巫', pic: '//i1.hdslb.com/bfs/archive/c02727f6174a3b23f6044c32bdeb1bf8fdcc2a40.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV19naF66Ezb', title: '我买下了15万的船票，踏上了前往世界尽头的旅行…..', author: 'Linksphotograph', pic: '//i2.hdslb.com/bfs/archive/6c418aa83f64c7ec86d5c0b13c85520ed791941d.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1aahD6GErP', title: '包吱哇乱叫的39个秋景目的地，11月去哪玩？', author: '开元心旅行', pic: '//i2.hdslb.com/bfs/archive/9312431a28e2e74b37b2e2cda2c5597b49ce2a62.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV19naF66Ezb', title: '我买下了北极的船票，踏上了前往世界尽头的旅行…..', author: 'Linksphotograph', pic: '//i2.hdslb.com/bfs/archive/6c418aa83f64c7ec86d5c0b13c85520ed791941d.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
     { bvid: '', title: '毛大王沉浸式生活旅行实用口语（四合一）', author: 'Arlis毛大王', pic: 'https://archive.biliimg.com/bfs/archive/bbb50460dffaaf1524193cbb61dda43b50f58c1a.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   general: [
-    { bvid: 'BV1ANQqBTEVU', title: '2026网络最好听100首热门歌曲，每一首都好听 🎧', author: '那首你最爱的歌谣啊', pic: '//i0.hdslb.com/bfs/archive/c3ba106604affe3e5ff608af7cf62b3d318243eb.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV19NhQ6UEX6', title: '【9月排行】大事不妙！19~29元热门流量卡全测评，从夯到拉榜单揭晓！流量卡测评 | 流量卡 | 性价比流量卡 | 2026流量卡推荐 | 广电流量卡 |手机卡', author: '流量卡徐老师', pic: '//i0.hdslb.com/bfs/archive/b64ec2a06049030228506c72194a50ede116ca1b.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: '【热门小吃在家做】20套热门小吃家庭版视频教程', author: '品诺美食开课啦', pic: 'https://archive.biliimg.com/bfs/archive/a261808382e7de716fd06ad31fbd89c9392bc81a.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1Kyas6wEuz', title: '《纯粹の体育精神》', author: '伤心欲茄222', pic: 'https://i1.hdslb.com/bfs/archive/fcd6f6f437fc1b15960bf6df2535312f8a5cbade.jpg', stats: { like: 173624, reply: 1986, favorite: 6745 } },
+    { bvid: 'BV1Rmh96ZEXh', title: '《崩坏：星穹铁道》真珠角色PV——「如何描绘一种希望」', author: '崩坏星穹铁道', pic: 'https://i0.hdslb.com/bfs/archive/54bde642fdd0a0a0a78b3a63bbc075e6fa71146d.jpg', stats: { like: 142268, reply: 11115, favorite: 27396 } },
+    { bvid: 'BV1fAh96ZELn', title: '《三角洲行动》群星计划—代号：威龙', author: '三角洲行动', pic: 'https://i2.hdslb.com/bfs/archive/67a46169420d507f3f1846d282d59be3472acb98.jpg', stats: { like: 89662, reply: 5806, favorite: 30945 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-09-27 00:24:05
+// 最后更新: 2026-09-28 00:29:04
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
@@ -2312,9 +2312,9 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7687190237856699385', title: '新来的成员雕鸮妹妹 #雕鸮 #海外合法拍摄 #芝麻熊的vlog #法国乡村生活 #猫头鹰萌主', author: '芝麻熊在法兰西🇨🇳🇫🇷', stats: { like: 63315, reply: 1158, favorite: 6743 } },
   ],
   general: [
-    { vid: '7687547913903999653', title: '剧情纯属真实 #万宁与晚安', author: '万宁叔-', stats: { like: 1029466, reply: 11914, favorite: 422088 } },
-    { vid: '7687882613504036777', title: '赶个末班车！ #王子系 #lolita #变装 #胡有姬 #这个bgm终于轮到我了', author: '元气姬姬', stats: { like: 1700869, reply: 8913, favorite: 104654 } },
-    { vid: '7689400831947151995', title: '剧情纯属真实 #万宁与晚安', author: '万宁叔-', stats: { like: 665246, reply: 9606, favorite: 248892 } },
+    { vid: '7689164030737528521', title: '', author: '蟹黄锅巴', stats: { like: 660632, reply: 4192, favorite: 760972 } },
+    { vid: '7687882613504036777', title: '赶个末班车！ #王子系 #lolita #变装 #胡有姬 #这个bgm终于轮到我了', author: '元气姬姬', stats: { like: 1830706, reply: 9986, favorite: 112081 } },
+    { vid: '7689400831947151995', title: '剧情纯属真实 #万宁与晚安', author: '万宁叔-', stats: { like: 734562, reply: 10387, favorite: 272143 } },
   ],
 };
 
