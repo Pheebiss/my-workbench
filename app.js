@@ -2266,37 +2266,37 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-09-28 00:28:38
+// 最后更新: 2026-09-29 01:42:58
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1Kyas6wEuz', title: '《纯粹の体育精神》', author: '伤心欲茄222', pic: 'https://i1.hdslb.com/bfs/archive/fcd6f6f437fc1b15960bf6df2535312f8a5cbade.jpg', stats: { like: 173624, reply: 1986, favorite: 6745 } },
-    { bvid: 'BV1Rmh96ZEXh', title: '《崩坏：星穹铁道》真珠角色PV——「如何描绘一种希望」', author: '崩坏星穹铁道', pic: 'https://i0.hdslb.com/bfs/archive/54bde642fdd0a0a0a78b3a63bbc075e6fa71146d.jpg', stats: { like: 142268, reply: 11115, favorite: 27396 } },
-    { bvid: 'BV1fAh96ZELn', title: '《三角洲行动》群星计划—代号：威龙', author: '三角洲行动', pic: 'https://i2.hdslb.com/bfs/archive/67a46169420d507f3f1846d282d59be3472acb98.jpg', stats: { like: 89662, reply: 5806, favorite: 30945 } },
+    { bvid: 'BV1hk5k6yE1z', title: '超详细全流程步骤拆解！日常全妆教程（新老手皆宜版）', author: '姜乘澜', pic: '//i1.hdslb.com/bfs/archive/844d18e571fa51fcaf5cbec859530c5d831b9363.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1Lmaq6mEGw', title: '单眼皮三款风格美妆 红唇明媚  紫妆灵动 裸妆素净 保留原生五官才更出彩', author: '泽叔唠妆', pic: '//i0.hdslb.com/bfs/archive/90ef85837fcfe14db1d360245818ad1328d21868.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1iU4y1L7G2', title: '【化妆入门课】0基础化妆变美逆袭课！易上手|化妆技巧|化妆教程|系统课|手把手教化妆|毕业变美指南', author: 'JSMN-Me', pic: '//i1.hdslb.com/bfs/archive/13f3dbf71ada18ba13be81fe20814b6d117f2d7a.png', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   fashion: [
-    { bvid: 'BV1Kyas6wEuz', title: '《纯粹の体育精神》', author: '伤心欲茄222', pic: 'https://i1.hdslb.com/bfs/archive/fcd6f6f437fc1b15960bf6df2535312f8a5cbade.jpg', stats: { like: 173624, reply: 1986, favorite: 6745 } },
-    { bvid: 'BV1Rmh96ZEXh', title: '《崩坏：星穹铁道》真珠角色PV——「如何描绘一种希望」', author: '崩坏星穹铁道', pic: 'https://i0.hdslb.com/bfs/archive/54bde642fdd0a0a0a78b3a63bbc075e6fa71146d.jpg', stats: { like: 142268, reply: 11115, favorite: 27396 } },
-    { bvid: 'BV1fAh96ZELn', title: '《三角洲行动》群星计划—代号：威龙', author: '三角洲行动', pic: 'https://i2.hdslb.com/bfs/archive/67a46169420d507f3f1846d282d59be3472acb98.jpg', stats: { like: 89662, reply: 5806, favorite: 30945 } },
+    { bvid: 'BV14Baa6JENd', title: '《原神》六周年主题曲《风的来信》', author: '原神', pic: 'https://i2.hdslb.com/bfs/archive/e0fff47818224cf8016d5743fb8b35a2c3812eb8.jpg', stats: { like: 306216, reply: 16823, favorite: 93204 } },
+    { bvid: 'BV14Qah6DEBL', title: '三幻魔集结！超越神的力量！【水无月菌】', author: '水无月菌', pic: 'https://i1.hdslb.com/bfs/archive/e1c966d35be7a8b71a844d35d106ddbebf96e00b.jpg', stats: { like: 126769, reply: 5683, favorite: 32820 } },
+    { bvid: 'BV1ntah6TEe9', title: '“钻玉米地”不划脸教程', author: '农民老杨_Shandong', pic: 'https://i2.hdslb.com/bfs/archive/e8306e9463ddcf83493b63d087866628e5f4352f.jpg', stats: { like: 121292, reply: 5078, favorite: 31222 } },
   ],
   game: [
-    { bvid: 'BV1Kyas6wEuz', title: '《纯粹の体育精神》', author: '伤心欲茄222', pic: 'https://i1.hdslb.com/bfs/archive/fcd6f6f437fc1b15960bf6df2535312f8a5cbade.jpg', stats: { like: 173624, reply: 1986, favorite: 6745 } },
-    { bvid: 'BV1Rmh96ZEXh', title: '《崩坏：星穹铁道》真珠角色PV——「如何描绘一种希望」', author: '崩坏星穹铁道', pic: 'https://i0.hdslb.com/bfs/archive/54bde642fdd0a0a0a78b3a63bbc075e6fa71146d.jpg', stats: { like: 142268, reply: 11115, favorite: 27396 } },
-    { bvid: 'BV1fAh96ZELn', title: '《三角洲行动》群星计划—代号：威龙', author: '三角洲行动', pic: 'https://i2.hdslb.com/bfs/archive/67a46169420d507f3f1846d282d59be3472acb98.jpg', stats: { like: 89662, reply: 5806, favorite: 30945 } },
+    { bvid: 'BV14Baa6JENd', title: '《原神》六周年主题曲《风的来信》', author: '原神', pic: 'https://i2.hdslb.com/bfs/archive/e0fff47818224cf8016d5743fb8b35a2c3812eb8.jpg', stats: { like: 306216, reply: 16823, favorite: 93204 } },
+    { bvid: 'BV14Qah6DEBL', title: '三幻魔集结！超越神的力量！【水无月菌】', author: '水无月菌', pic: 'https://i1.hdslb.com/bfs/archive/e1c966d35be7a8b71a844d35d106ddbebf96e00b.jpg', stats: { like: 126769, reply: 5683, favorite: 32820 } },
+    { bvid: 'BV1ntah6TEe9', title: '“钻玉米地”不划脸教程', author: '农民老杨_Shandong', pic: 'https://i2.hdslb.com/bfs/archive/e8306e9463ddcf83493b63d087866628e5f4352f.jpg', stats: { like: 121292, reply: 5078, favorite: 31222 } },
   ],
   travel: [
-    { bvid: 'BV1aahD6GErP', title: '包吱哇乱叫的39个秋景目的地，11月去哪玩？', author: '开元心旅行', pic: '//i2.hdslb.com/bfs/archive/9312431a28e2e74b37b2e2cda2c5597b49ce2a62.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV19naF66Ezb', title: '我买下了北极的船票，踏上了前往世界尽头的旅行…..', author: 'Linksphotograph', pic: '//i2.hdslb.com/bfs/archive/6c418aa83f64c7ec86d5c0b13c85520ed791941d.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: '毛大王沉浸式生活旅行实用口语（四合一）', author: 'Arlis毛大王', pic: 'https://archive.biliimg.com/bfs/archive/bbb50460dffaaf1524193cbb61dda43b50f58c1a.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV14Baa6JENd', title: '《原神》六周年主题曲《风的来信》', author: '原神', pic: 'https://i2.hdslb.com/bfs/archive/e0fff47818224cf8016d5743fb8b35a2c3812eb8.jpg', stats: { like: 306216, reply: 16823, favorite: 93204 } },
+    { bvid: 'BV14Qah6DEBL', title: '三幻魔集结！超越神的力量！【水无月菌】', author: '水无月菌', pic: 'https://i1.hdslb.com/bfs/archive/e1c966d35be7a8b71a844d35d106ddbebf96e00b.jpg', stats: { like: 126769, reply: 5683, favorite: 32820 } },
+    { bvid: 'BV1ntah6TEe9', title: '“钻玉米地”不划脸教程', author: '农民老杨_Shandong', pic: 'https://i2.hdslb.com/bfs/archive/e8306e9463ddcf83493b63d087866628e5f4352f.jpg', stats: { like: 121292, reply: 5078, favorite: 31222 } },
   ],
   general: [
-    { bvid: 'BV1Kyas6wEuz', title: '《纯粹の体育精神》', author: '伤心欲茄222', pic: 'https://i1.hdslb.com/bfs/archive/fcd6f6f437fc1b15960bf6df2535312f8a5cbade.jpg', stats: { like: 173624, reply: 1986, favorite: 6745 } },
-    { bvid: 'BV1Rmh96ZEXh', title: '《崩坏：星穹铁道》真珠角色PV——「如何描绘一种希望」', author: '崩坏星穹铁道', pic: 'https://i0.hdslb.com/bfs/archive/54bde642fdd0a0a0a78b3a63bbc075e6fa71146d.jpg', stats: { like: 142268, reply: 11115, favorite: 27396 } },
-    { bvid: 'BV1fAh96ZELn', title: '《三角洲行动》群星计划—代号：威龙', author: '三角洲行动', pic: 'https://i2.hdslb.com/bfs/archive/67a46169420d507f3f1846d282d59be3472acb98.jpg', stats: { like: 89662, reply: 5806, favorite: 30945 } },
+    { bvid: 'BV14Baa6JENd', title: '《原神》六周年主题曲《风的来信》', author: '原神', pic: 'https://i2.hdslb.com/bfs/archive/e0fff47818224cf8016d5743fb8b35a2c3812eb8.jpg', stats: { like: 306216, reply: 16823, favorite: 93204 } },
+    { bvid: 'BV14Qah6DEBL', title: '三幻魔集结！超越神的力量！【水无月菌】', author: '水无月菌', pic: 'https://i1.hdslb.com/bfs/archive/e1c966d35be7a8b71a844d35d106ddbebf96e00b.jpg', stats: { like: 126769, reply: 5683, favorite: 32820 } },
+    { bvid: 'BV1ntah6TEe9', title: '“钻玉米地”不划脸教程', author: '农民老杨_Shandong', pic: 'https://i2.hdslb.com/bfs/archive/e8306e9463ddcf83493b63d087866628e5f4352f.jpg', stats: { like: 121292, reply: 5078, favorite: 31222 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-09-28 00:29:04
+// 最后更新: 2026-09-29 01:43:24
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
@@ -2305,16 +2305,16 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7688320876513898112', title: '中国模特勇闯欧洲时装周|面试实录第四集 #vlog #真实 #模特 #hello时尚季 #青年创作者成长计划', author: '李东恒', stats: { like: 67849, reply: 2517, favorite: 8593 } },
   ],
   game: [
-    { vid: '7686018080216709482', title: '此去必经年#少司缘 #走拍#王者ip创作团', author: '最爱吃兽奶', stats: { like: 407866, reply: 1399, favorite: 43956 } },
+    { vid: '7690135379949814193', title: '所有人感受香香的萌萌拳 #孙尚香云端乐园 #王者三丽鸥新皮肤cos #孙尚香三丽鸥家族联动皮肤二创 #王者ip创作团 #', author: '桃泽早睡', stats: { like: 104175, reply: 393, favorite: 5930 } },
   ],
   travel: [
     { vid: '7689052205676065521', title: '这大概就是养宠的意义吧！ #姐宝狗 #日常vlog #养宠意义 #狗狗', author: '糖糖很甜', stats: { like: 257818, reply: 2145, favorite: 35085 } },
     { vid: '7687190237856699385', title: '新来的成员雕鸮妹妹 #雕鸮 #海外合法拍摄 #芝麻熊的vlog #法国乡村生活 #猫头鹰萌主', author: '芝麻熊在法兰西🇨🇳🇫🇷', stats: { like: 63315, reply: 1158, favorite: 6743 } },
   ],
   general: [
-    { vid: '7689164030737528521', title: '', author: '蟹黄锅巴', stats: { like: 660632, reply: 4192, favorite: 760972 } },
-    { vid: '7687882613504036777', title: '赶个末班车！ #王子系 #lolita #变装 #胡有姬 #这个bgm终于轮到我了', author: '元气姬姬', stats: { like: 1830706, reply: 9986, favorite: 112081 } },
-    { vid: '7689400831947151995', title: '剧情纯属真实 #万宁与晚安', author: '万宁叔-', stats: { like: 734562, reply: 10387, favorite: 272143 } },
+    { vid: '7688494409240254449', title: '不是给舅舅送饭怎么一下子多了这么多舅舅？#舅舅带娃#是热热呀#骗你生女儿', author: '是热热呀', stats: { like: 3761755, reply: 26307, favorite: 447765 } },
+    { vid: '7689164030737528521', title: '', author: '蟹黄锅巴', stats: { like: 923838, reply: 6287, favorite: 957510 } },
+    { vid: '7688666273433144616', title: '准备那么久终于连麦到陈伯了！期待解锁很多主播同台名场面。美猴王小李与陈伯史诗级连麦！致敬陈伯举杯名场面，直播间人气爆棚！', author: '美猴王小李', stats: { like: 429677, reply: 6182, favorite: 168568 } },
   ],
 };
 
