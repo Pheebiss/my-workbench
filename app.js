@@ -2266,43 +2266,43 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-09-29 01:42:58
+// 最后更新: 2026-09-30 01:11:00
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1hk5k6yE1z', title: '超详细全流程步骤拆解！日常全妆教程（新老手皆宜版）', author: '姜乘澜', pic: '//i1.hdslb.com/bfs/archive/844d18e571fa51fcaf5cbec859530c5d831b9363.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1Lmaq6mEGw', title: '单眼皮三款风格美妆 红唇明媚  紫妆灵动 裸妆素净 保留原生五官才更出彩', author: '泽叔唠妆', pic: '//i0.hdslb.com/bfs/archive/90ef85837fcfe14db1d360245818ad1328d21868.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1iU4y1L7G2', title: '【化妆入门课】0基础化妆变美逆袭课！易上手|化妆技巧|化妆教程|系统课|手把手教化妆|毕业变美指南', author: 'JSMN-Me', pic: '//i1.hdslb.com/bfs/archive/13f3dbf71ada18ba13be81fe20814b6d117f2d7a.png', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382213, reply: 1023, favorite: 39771 } },
+    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290674, reply: 807, favorite: 64884 } },
+    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267254, reply: 2325, favorite: 9371 } },
   ],
   fashion: [
-    { bvid: 'BV14Baa6JENd', title: '《原神》六周年主题曲《风的来信》', author: '原神', pic: 'https://i2.hdslb.com/bfs/archive/e0fff47818224cf8016d5743fb8b35a2c3812eb8.jpg', stats: { like: 306216, reply: 16823, favorite: 93204 } },
-    { bvid: 'BV14Qah6DEBL', title: '三幻魔集结！超越神的力量！【水无月菌】', author: '水无月菌', pic: 'https://i1.hdslb.com/bfs/archive/e1c966d35be7a8b71a844d35d106ddbebf96e00b.jpg', stats: { like: 126769, reply: 5683, favorite: 32820 } },
-    { bvid: 'BV1ntah6TEe9', title: '“钻玉米地”不划脸教程', author: '农民老杨_Shandong', pic: 'https://i2.hdslb.com/bfs/archive/e8306e9463ddcf83493b63d087866628e5f4352f.jpg', stats: { like: 121292, reply: 5078, favorite: 31222 } },
+    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222242, reply: 470, favorite: 33216 } },
+    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 90932, reply: 475, favorite: 26009 } },
+    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87305, reply: 304, favorite: 22525 } },
   ],
   game: [
-    { bvid: 'BV14Baa6JENd', title: '《原神》六周年主题曲《风的来信》', author: '原神', pic: 'https://i2.hdslb.com/bfs/archive/e0fff47818224cf8016d5743fb8b35a2c3812eb8.jpg', stats: { like: 306216, reply: 16823, favorite: 93204 } },
-    { bvid: 'BV14Qah6DEBL', title: '三幻魔集结！超越神的力量！【水无月菌】', author: '水无月菌', pic: 'https://i1.hdslb.com/bfs/archive/e1c966d35be7a8b71a844d35d106ddbebf96e00b.jpg', stats: { like: 126769, reply: 5683, favorite: 32820 } },
-    { bvid: 'BV1ntah6TEe9', title: '“钻玉米地”不划脸教程', author: '农民老杨_Shandong', pic: 'https://i2.hdslb.com/bfs/archive/e8306e9463ddcf83493b63d087866628e5f4352f.jpg', stats: { like: 121292, reply: 5078, favorite: 31222 } },
+    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 355186, reply: 2898, favorite: 758830 } },
+    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693916, reply: 4411, favorite: 130006 } },
+    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 518022, reply: 29196, favorite: 183562 } },
   ],
   travel: [
-    { bvid: 'BV14Baa6JENd', title: '《原神》六周年主题曲《风的来信》', author: '原神', pic: 'https://i2.hdslb.com/bfs/archive/e0fff47818224cf8016d5743fb8b35a2c3812eb8.jpg', stats: { like: 306216, reply: 16823, favorite: 93204 } },
-    { bvid: 'BV14Qah6DEBL', title: '三幻魔集结！超越神的力量！【水无月菌】', author: '水无月菌', pic: 'https://i1.hdslb.com/bfs/archive/e1c966d35be7a8b71a844d35d106ddbebf96e00b.jpg', stats: { like: 126769, reply: 5683, favorite: 32820 } },
-    { bvid: 'BV1ntah6TEe9', title: '“钻玉米地”不划脸教程', author: '农民老杨_Shandong', pic: 'https://i2.hdslb.com/bfs/archive/e8306e9463ddcf83493b63d087866628e5f4352f.jpg', stats: { like: 121292, reply: 5078, favorite: 31222 } },
+    { bvid: 'BV1Hxah6BEGy', title: '蛙跳爬泰山', author: '爱健身小庞', pic: 'https://i1.hdslb.com/bfs/archive/7352ffb6b3855ae481e3588fccfc0b436e315119.jpg', stats: { like: 301451, reply: 8628, favorite: 25592 } },
+    { bvid: 'BV1R5hH6cEje', title: '网络热传生物鉴定 第64期', author: '无穷小亮的科普日常', pic: 'https://i2.hdslb.com/bfs/archive/e510a1ad1b41f2f8a182c6eae646faf1fd8e4e14.jpg', stats: { like: 176502, reply: 3042, favorite: 11449 } },
+    { bvid: 'BV11ahH6UEbn', title: '消失的队友二', author: '暗夜骑士XZ', pic: 'https://i0.hdslb.com/bfs/archive/f918a668f263993047e483239e20d3efdc9faec9.jpg', stats: { like: 110667, reply: 5178, favorite: 65019 } },
   ],
   general: [
-    { bvid: 'BV14Baa6JENd', title: '《原神》六周年主题曲《风的来信》', author: '原神', pic: 'https://i2.hdslb.com/bfs/archive/e0fff47818224cf8016d5743fb8b35a2c3812eb8.jpg', stats: { like: 306216, reply: 16823, favorite: 93204 } },
-    { bvid: 'BV14Qah6DEBL', title: '三幻魔集结！超越神的力量！【水无月菌】', author: '水无月菌', pic: 'https://i1.hdslb.com/bfs/archive/e1c966d35be7a8b71a844d35d106ddbebf96e00b.jpg', stats: { like: 126769, reply: 5683, favorite: 32820 } },
-    { bvid: 'BV1ntah6TEe9', title: '“钻玉米地”不划脸教程', author: '农民老杨_Shandong', pic: 'https://i2.hdslb.com/bfs/archive/e8306e9463ddcf83493b63d087866628e5f4352f.jpg', stats: { like: 121292, reply: 5078, favorite: 31222 } },
+    { bvid: 'BV14Baa6JENd', title: '《原神》六周年主题曲《风的来信》', author: '原神', pic: 'https://i2.hdslb.com/bfs/archive/e0fff47818224cf8016d5743fb8b35a2c3812eb8.jpg', stats: { like: 365633, reply: 19436, favorite: 111400 } },
+    { bvid: 'BV1Kyas6wEuz', title: '《纯粹の体育精神》', author: '伤心欲茄222', pic: 'https://i1.hdslb.com/bfs/archive/fcd6f6f437fc1b15960bf6df2535312f8a5cbade.jpg', stats: { like: 329236, reply: 3669, favorite: 15408 } },
+    { bvid: 'BV1JSau6kEou', title: '《以片换物- -洗剪吹》 再不疯狂就老了  借一场大笑，释放藏起来的自己。', author: '拍照的阿甘', pic: 'https://i2.hdslb.com/bfs/archive/85d749139b2bce8ca92e2e895cdb749e30faa427.jpg', stats: { like: 302603, reply: 4317, favorite: 34681 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-09-29 01:43:24
+// 最后更新: 2026-09-30 01:11:27
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
   ],
   fashion: [
-    { vid: '7688320876513898112', title: '中国模特勇闯欧洲时装周|面试实录第四集 #vlog #真实 #模特 #hello时尚季 #青年创作者成长计划', author: '李东恒', stats: { like: 67849, reply: 2517, favorite: 8593 } },
+    { vid: '7690931759308196834', title: '@小哈娜hana @小雪花 #夏天闺蜜穿搭', author: '椰椰', stats: { like: 40486, reply: 656, favorite: 68779 } },
   ],
   game: [
     { vid: '7690135379949814193', title: '所有人感受香香的萌萌拳 #孙尚香云端乐园 #王者三丽鸥新皮肤cos #孙尚香三丽鸥家族联动皮肤二创 #王者ip创作团 #', author: '桃泽早睡', stats: { like: 104175, reply: 393, favorite: 5930 } },
@@ -2312,9 +2312,9 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7687190237856699385', title: '新来的成员雕鸮妹妹 #雕鸮 #海外合法拍摄 #芝麻熊的vlog #法国乡村生活 #猫头鹰萌主', author: '芝麻熊在法兰西🇨🇳🇫🇷', stats: { like: 63315, reply: 1158, favorite: 6743 } },
   ],
   general: [
-    { vid: '7688494409240254449', title: '不是给舅舅送饭怎么一下子多了这么多舅舅？#舅舅带娃#是热热呀#骗你生女儿', author: '是热热呀', stats: { like: 3761755, reply: 26307, favorite: 447765 } },
-    { vid: '7689164030737528521', title: '', author: '蟹黄锅巴', stats: { like: 923838, reply: 6287, favorite: 957510 } },
-    { vid: '7688666273433144616', title: '准备那么久终于连麦到陈伯了！期待解锁很多主播同台名场面。美猴王小李与陈伯史诗级连麦！致敬陈伯举杯名场面，直播间人气爆棚！', author: '美猴王小李', stats: { like: 429677, reply: 6182, favorite: 168568 } },
+    { vid: '7688675056348480232', title: '没有人愿意选择一个有伤的娃娃#黑香菱cos #叶罗丽精灵梦 #走拍 #鞋子致歉 原创@和小陆的he', author: '小鱼', stats: { like: 1979399, reply: 3578, favorite: 125471 } },
+    { vid: '7688753253634361210', title: '很难用语言去描述的一个夜晚 #溺死的鱼#戒断', author: '肆口鱼一', stats: { like: 505094, reply: 7489, favorite: 355341 } },
+    { vid: '7690171429975783589', title: '你别管，我有我的#闪身步', author: '曾舜晞', stats: { like: 1103003, reply: 9754, favorite: 120511 } },
   ],
 };
 
