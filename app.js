@@ -2266,37 +2266,37 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-10-01 01:10:40
+// 最后更新: 2026-10-02 01:29:46
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382212, reply: 1023, favorite: 39769 } },
-    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290684, reply: 807, favorite: 64884 } },
-    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267254, reply: 2325, favorite: 9371 } },
+    { bvid: 'BV1zmYP6aEdH', title: '我———问你为什么要折断奥特钥匙!！！（大结局下）', author: '百火哥斯拉', pic: 'https://i0.hdslb.com/bfs/archive/c2c33ea113452198230ba208d119f9b85c005a0a.jpg', stats: { like: 253659, reply: 44272, favorite: 133028 } },
+    { bvid: 'BV1ujaZ68Ea5', title: '《大回忆时代》', author: '韩波格_', pic: 'https://i0.hdslb.com/bfs/archive/36889d67be6a4821aad15bf0089b6ed13710ede9.jpg', stats: { like: 272820, reply: 3362, favorite: 42352 } },
+    { bvid: 'BV1wbad6CEFf', title: '【什么是世面？？？】', author: '富贵咸蛋黄', pic: 'https://i1.hdslb.com/bfs/archive/1c2c43b6097a60db7883e6b57c2c0b2e7974530c.jpg', stats: { like: 247008, reply: 5378, favorite: 51171 } },
   ],
   fashion: [
-    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222255, reply: 470, favorite: 33218 } },
-    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 90934, reply: 475, favorite: 26009 } },
-    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87306, reply: 304, favorite: 22525 } },
+    { bvid: 'BV1zmYP6aEdH', title: '我———问你为什么要折断奥特钥匙!！！（大结局下）', author: '百火哥斯拉', pic: 'https://i0.hdslb.com/bfs/archive/c2c33ea113452198230ba208d119f9b85c005a0a.jpg', stats: { like: 253659, reply: 44272, favorite: 133028 } },
+    { bvid: 'BV1ujaZ68Ea5', title: '《大回忆时代》', author: '韩波格_', pic: 'https://i0.hdslb.com/bfs/archive/36889d67be6a4821aad15bf0089b6ed13710ede9.jpg', stats: { like: 272820, reply: 3362, favorite: 42352 } },
+    { bvid: 'BV1wbad6CEFf', title: '【什么是世面？？？】', author: '富贵咸蛋黄', pic: 'https://i1.hdslb.com/bfs/archive/1c2c43b6097a60db7883e6b57c2c0b2e7974530c.jpg', stats: { like: 247008, reply: 5378, favorite: 51171 } },
   ],
   game: [
-    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 355236, reply: 2901, favorite: 758838 } },
-    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693926, reply: 4414, favorite: 130006 } },
-    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 518040, reply: 29201, favorite: 183564 } },
+    { bvid: 'BV1B2Yw6sEj8', title: '精彩游戏', author: 'bili_88545680861', pic: '//i0.hdslb.com/bfs/archive/961e991973e86b731e4c489ac1c9fad9c945c583.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1ux411P7u3', title: 'Game囧很大番外篇：TM的我忘记做了！', author: '17173妖气山', pic: '//i0.hdslb.com/bfs/archive/01bf46ae3ee9265e4ce078e1c5a851e8d0fcdfd1.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '死寂案例实战课：第三人称丧尸射击制作-1v1辅导', author: '谌嘉诚', pic: 'https://archive.biliimg.com/bfs/archive/2f82e9588895cb90da3e8cb1506cfb0526f2a63e.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   travel: [
-    { bvid: 'BV1Hxah6BEGy', title: '蛙跳爬泰山', author: '爱健身小庞', pic: 'https://i1.hdslb.com/bfs/archive/7352ffb6b3855ae481e3588fccfc0b436e315119.jpg', stats: { like: 372762, reply: 9938, favorite: 32733 } },
-    { bvid: 'BV1nqaq6sEda', title: '真的有人这样旅游吗？？？【雷霆姐妹花3】', author: '-欣小萌-', pic: 'https://i1.hdslb.com/bfs/archive/ec7851ef728a29274929dd479ae0c552ebfe46b1.jpg', stats: { like: 80640, reply: 1307, favorite: 16722 } },
-    { bvid: 'BV1Bhho6TEkX', title: '内蒙古野生卤虫，真红啊！', author: '无穷小亮的科普日常', pic: 'https://i0.hdslb.com/bfs/archive/062af56774bee7e448069734f0f8a976b11426d5.jpg', stats: { like: 77207, reply: 963, favorite: 4474 } },
+    { bvid: 'BV1zmYP6aEdH', title: '我———问你为什么要折断奥特钥匙!！！（大结局下）', author: '百火哥斯拉', pic: 'https://i0.hdslb.com/bfs/archive/c2c33ea113452198230ba208d119f9b85c005a0a.jpg', stats: { like: 253659, reply: 44272, favorite: 133028 } },
+    { bvid: 'BV1ujaZ68Ea5', title: '《大回忆时代》', author: '韩波格_', pic: 'https://i0.hdslb.com/bfs/archive/36889d67be6a4821aad15bf0089b6ed13710ede9.jpg', stats: { like: 272820, reply: 3362, favorite: 42352 } },
+    { bvid: 'BV1wbad6CEFf', title: '【什么是世面？？？】', author: '富贵咸蛋黄', pic: 'https://i1.hdslb.com/bfs/archive/1c2c43b6097a60db7883e6b57c2c0b2e7974530c.jpg', stats: { like: 247008, reply: 5378, favorite: 51171 } },
   ],
   general: [
-    { bvid: 'BV14Baa6JENd', title: '《原神》六周年主题曲《风的来信》', author: '原神', pic: 'https://i2.hdslb.com/bfs/archive/e0fff47818224cf8016d5743fb8b35a2c3812eb8.jpg', stats: { like: 431354, reply: 21883, favorite: 135002 } },
-    { bvid: 'BV1E6aq6pEKR', title: '自学动画 爆肝俩月 自创一集《猫和老鼠》【手搓动画大赛】', author: '小蒙古包卓拉', pic: 'https://i1.hdslb.com/bfs/archive/898e85b47826711b059bb112df176eff5f916886.jpg', stats: { like: 420257, reply: 5052, favorite: 101633 } },
-    { bvid: 'BV1i4aL6QEYX', title: '手绘465张！One Last Kiss【EVA30周年回忆重逢计划】', author: '棕与灰9', pic: 'https://i0.hdslb.com/bfs/archive/d174a334a827a8a74fb716d0c2c70a47233510c8.jpg', stats: { like: 420962, reply: 3056, favorite: 77815 } },
+    { bvid: 'BV1zmYP6aEdH', title: '我———问你为什么要折断奥特钥匙!！！（大结局下）', author: '百火哥斯拉', pic: 'https://i0.hdslb.com/bfs/archive/c2c33ea113452198230ba208d119f9b85c005a0a.jpg', stats: { like: 253659, reply: 44272, favorite: 133028 } },
+    { bvid: 'BV1ujaZ68Ea5', title: '《大回忆时代》', author: '韩波格_', pic: 'https://i0.hdslb.com/bfs/archive/36889d67be6a4821aad15bf0089b6ed13710ede9.jpg', stats: { like: 272820, reply: 3362, favorite: 42352 } },
+    { bvid: 'BV1wbad6CEFf', title: '【什么是世面？？？】', author: '富贵咸蛋黄', pic: 'https://i1.hdslb.com/bfs/archive/1c2c43b6097a60db7883e6b57c2c0b2e7974530c.jpg', stats: { like: 247008, reply: 5378, favorite: 51171 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-10-01 01:11:02
+// 最后更新: 2026-10-02 01:30:13
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
@@ -2305,16 +2305,16 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7690931759308196834', title: '@小哈娜hana @小雪花 #夏天闺蜜穿搭', author: '椰椰', stats: { like: 40486, reply: 656, favorite: 68779 } },
   ],
   game: [
-    { vid: '7690135379949814193', title: '所有人感受香香的萌萌拳 #孙尚香云端乐园 #王者三丽鸥新皮肤cos #孙尚香三丽鸥家族联动皮肤二创 #王者ip创作团 #', author: '桃泽早睡', stats: { like: 104175, reply: 393, favorite: 5930 } },
+    { vid: '7691161059969967353', title: '周末姐弟一起打游戏一共30分钟，弟弟给姐姐玩了25分钟姐姐玩的过份投入直到妈妈说结束都没来得急保存就被弟弟关机了！弟弟觉', author: 'My name is 伊森', stats: { like: 116581, reply: 6735, favorite: 28641 } },
   ],
   travel: [
     { vid: '7689052205676065521', title: '这大概就是养宠的意义吧！ #姐宝狗 #日常vlog #养宠意义 #狗狗', author: '糖糖很甜', stats: { like: 257818, reply: 2145, favorite: 35085 } },
     { vid: '7687190237856699385', title: '新来的成员雕鸮妹妹 #雕鸮 #海外合法拍摄 #芝麻熊的vlog #法国乡村生活 #猫头鹰萌主', author: '芝麻熊在法兰西🇨🇳🇫🇷', stats: { like: 63315, reply: 1158, favorite: 6743 } },
   ],
   general: [
-    { vid: '7689777686508232377', title: '#咪咪#猫', author: '樱桃小完犊子', stats: { like: 603663, reply: 1969, favorite: 161846 } },
-    { vid: '7689035570279257033', title: '仿佛坠入幻境… #为了片萤火去了趟十二背后', author: '370', stats: { like: 253597, reply: 2310, favorite: 95407 } },
-    { vid: '7689788138877973498', title: '叫醒我的不是闹钟，是鸟… #万物可爱计划#鹦鹉#这个假期我的毛孩子不孤单', author: '胖胖谷粒', stats: { like: 142184, reply: 1490, favorite: 35046 } },
+    { vid: '7691327399354584370', title: '来自边防战士的国庆祝福，笑着笑着就哭了', author: '中国军号', stats: { like: 3998008, reply: 543233, favorite: 131584 } },
+    { vid: '7691191160080960403', title: '好好康复训练，明年回归小钢炮.  #竞技体育不养怂人 #竞技体育的魅力时刻 #跳高 #邵雨琪', author: '邵什么雨琪', stats: { like: 4400521, reply: 14830, favorite: 604892 } },
+    { vid: '7690574994841721002', title: '快点快点躲开 right  #Hearts2Hearts #H2H', author: 'Hearts2Hearts', stats: { like: 1409978, reply: 13376, favorite: 118558 } },
   ],
 };
 
