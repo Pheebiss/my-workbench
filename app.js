@@ -2266,37 +2266,37 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-10-10 01:37:14
+// 最后更新: 2026-10-11 00:46:19
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1sBp46rEPz', title: '【开心元元reaction丨充电专场】路人第一次看美妆主播开心元元丨男孩子也可以这么美吗', author: '面包车厘子', pic: '//i1.hdslb.com/bfs/archive/a8b2e948a2c11ea64db0ae0c81dc6d350c440dd1.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1iU4y1L7G2', title: '【化妆入门课】0基础化妆变美逆袭课！易上手|化妆技巧|化妆教程|系统课|手把手教化妆|毕业变美指南', author: 'JSMN-Me', pic: '//i1.hdslb.com/bfs/archive/13f3dbf71ada18ba13be81fe20814b6d117f2d7a.png', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: '毛戈平美妆学院：小白零基础入门课', author: '毛戈平光影美学', pic: 'https://archive.biliimg.com/bfs/archive/55529b35ef4a4c9ab4a92d598308f844d8f0c813.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382214, reply: 1023, favorite: 39750 } },
+    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290798, reply: 808, favorite: 64877 } },
+    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267257, reply: 2325, favorite: 9366 } },
   ],
   fashion: [
-    { bvid: 'BV1UTH96XEDX', title: '穿破洞袜也要买！8件超值卫衣推荐～| 男生穿搭 | 秋季穿搭 | 卫衣 | 外套 | 秋装 | 通勤 | 约会', author: '我是路十六', pic: '//i0.hdslb.com/bfs/archive/8af40f6aba806fc6c842fedad6e7a5e23cd62f1c.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1ubpb6xEbE', title: '平价的花语是手慢无！尾货/清仓/小众单品 全给我挖出来了！！', author: '痴五安chammy', pic: '//i1.hdslb.com/bfs/archive/51853a901784601f49df17db9f0fbf39d830ba8a.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: '30 天形象提升训练营：从穿搭到气质的全方位蜕变', author: '简笙认知局', pic: 'https://i0.hdslb.com/bfs/album/8b0081490294bf3df2049effa9e00066512268557.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222307, reply: 470, favorite: 33208 } },
+    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 90978, reply: 475, favorite: 26016 } },
+    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87307, reply: 304, favorite: 22513 } },
   ],
   game: [
-    { bvid: 'BV1FtH96gEMZ', title: '终极还是中计', author: '月初的深渊日记', pic: '//i1.hdslb.com/bfs/archive/fd931bc08d993e36bc3942d295197f0a61b6fc1b.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1vGpP6cE4F', title: '恐龙突然复活，并且想要吃掉你！', author: '小黄蜂游戏解说', pic: '//i0.hdslb.com/bfs/archive/21eb351a6caed5949cd221e282a1fda0f618b017.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: '镜打野思路教程', author: '颐安教剪辑', pic: 'https://archive.biliimg.com/bfs/archive/c52ca09478a2aefe62b3e0bd22d97314a4ddc761.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 355843, reply: 2912, favorite: 759234 } },
+    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693954, reply: 4415, favorite: 129931 } },
+    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 518228, reply: 29213, favorite: 183601 } },
   ],
   travel: [
-    { bvid: 'BV1DRHU6LELy', title: '2026英雄联盟全球总决赛主题曲《KNOW MY NAME》（以我之名）', author: '英雄联盟', pic: 'https://i0.hdslb.com/bfs/archive/4260b5a0d7a5aac474f13b1ee6b90b9cc1f37b6a.jpg', stats: { like: 130849, reply: 23856, favorite: 36683 } },
-    { bvid: 'BV1qsHQ6YEs4', title: '“我穿越成了一棵树。”', author: 'Mr-Ferret', pic: 'https://i2.hdslb.com/bfs/archive/697af1e1065a70a0787f62d1fb9f9446bb4123cc.jpg', stats: { like: 158555, reply: 3243, favorite: 26588 } },
-    { bvid: 'BV1PTHS6MEC5', title: '极极极极，极限战场👉🏻首曝极首测，所见极所玩', author: '极限战场', pic: 'https://i2.hdslb.com/bfs/archive/95de76e3c689b9d701827c9a47b3c9675d9daf4f.jpg', stats: { like: 88234, reply: 6421, favorite: 60215 } },
+    { bvid: 'BV1x2HS66E96', title: '来纽约，拍到了些怪东西', author: '百万剪辑狮', pic: 'https://i2.hdslb.com/bfs/archive/08af6efbda1bea0070171f1a5afff0ee6eca7bb6.jpg', stats: { like: 212595, reply: 6038, favorite: 64162 } },
+    { bvid: 'BV1XGpF6CEwq', title: '去台湾地区管辖的马祖列岛旅行...', author: '赖导AboutLai', pic: 'https://i0.hdslb.com/bfs/archive/1954151f4b7fc343379b41785d9d621c2bbe364a.jpg', stats: { like: 146373, reply: 7628, favorite: 40639 } },
+    { bvid: 'BV1ehHQ6bErB', title: '中国穷小子用7千块花掉印度人半年的薪资，体验婆罗门生活，富人生活到底有多奢侈？', author: '猛男阿凯奇幻之旅_kay', pic: 'https://i2.hdslb.com/bfs/archive/b2da1894c28886f83bdaf163e69580465ca20e56.jpg', stats: { like: 25485, reply: 1372, favorite: 7579 } },
   ],
   general: [
-    { bvid: 'BV1DRHU6LELy', title: '2026英雄联盟全球总决赛主题曲《KNOW MY NAME》（以我之名）', author: '英雄联盟', pic: 'https://i0.hdslb.com/bfs/archive/4260b5a0d7a5aac474f13b1ee6b90b9cc1f37b6a.jpg', stats: { like: 130849, reply: 23856, favorite: 36683 } },
-    { bvid: 'BV1qsHQ6YEs4', title: '“我穿越成了一棵树。”', author: 'Mr-Ferret', pic: 'https://i2.hdslb.com/bfs/archive/697af1e1065a70a0787f62d1fb9f9446bb4123cc.jpg', stats: { like: 158555, reply: 3243, favorite: 26588 } },
-    { bvid: 'BV1PTHS6MEC5', title: '极极极极，极限战场👉🏻首曝极首测，所见极所玩', author: '极限战场', pic: 'https://i2.hdslb.com/bfs/archive/95de76e3c689b9d701827c9a47b3c9675d9daf4f.jpg', stats: { like: 88234, reply: 6421, favorite: 60215 } },
+    { bvid: 'BV1VeHQ6tEaS', title: '超市生存挑战后续！4人吃完整个超市赢100万美金！', author: '野兽先生MrBeast', pic: 'https://i2.hdslb.com/bfs/archive/7f475d7d8d1cace38cb12d4a9de69f8bed9af109.jpg', stats: { like: 280298, reply: 6790, favorite: 92221 } },
+    { bvid: 'BV1pMH46MEmw', title: '耗时一年，改造善良老人晚年，完整后续来了！', author: '扯淡人生-', pic: 'https://i1.hdslb.com/bfs/archive/8af11e287f75c6cf1dd8be2cd2e30fccf871f2f9.jpg', stats: { like: 301909, reply: 5387, favorite: 51952 } },
+    { bvid: 'BV1Uppw6yEMr', title: '啊啊7月新番你到底给我下了什么药啊！！【泛式】', author: '泛式', pic: 'https://i0.hdslb.com/bfs/archive/763e6cd735f2b8669fd1c0f85ced644de9a213ac.jpg', stats: { like: 270143, reply: 9056, favorite: 73070 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-10-10 01:37:37
+// 最后更新: 2026-10-11 00:46:44
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
@@ -2313,9 +2313,9 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7694591730024205568', title: '#度假旅行穿搭', author: '塔莎', stats: { like: 1372, reply: 22, favorite: 1584 } },
   ],
   general: [
-    { vid: '7693922131301828762', title: '诡异的像AI😂#宠物猫的迷惑行为 #猫咪日记', author: '臭臭大王', stats: { like: 478644, reply: 12475, favorite: 675819 } },
-    { vid: '7694291470207828602', title: '小宝宝还不会走路的时候 乖乖的趴在姥姥肩膀上 #小猫 #散步', author: 'NnnIV', stats: { like: 599539, reply: 2551, favorite: 219374 } },
-    { vid: '7694497336081066161', title: '你告诉谁也没用～～#舅舅带娃#是热热呀#骗你生女儿', author: '是热热呀', stats: { like: 643040, reply: 2431, favorite: 104949 } },
+    { vid: '7694291097355700409', title: '日常“挂壁” 不是在八卦  就是在八卦的路上', author: '牛多多多多', stats: { like: 3607285, reply: 19245, favorite: 2327375 } },
+    { vid: '7695013107428780721', title: '对抗路选手#铲屎官日常 #养宠物哪有不疯的 @DOU+小助手', author: '小點', stats: { like: 998323, reply: 30804, favorite: 1064158 } },
+    { vid: '7694690951692360561', title: '虽然换水有点麻烦  但是看见他们翻身真的好治愈 #海星 #海燕海星 #海缸', author: '1梦', stats: { like: 692595, reply: 11446, favorite: 414147 } },
   ],
 };
 
