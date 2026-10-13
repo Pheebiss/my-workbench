@@ -2266,43 +2266,43 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-10-12 01:08:11
+// 最后更新: 2026-10-13 02:56:26
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV16xpt6BE6t', title: '如果把我和男朋友这几年的约会地点列出来', author: '锣斯特', pic: 'https://i2.hdslb.com/bfs/archive/e37616daf7c815734d6fb73ae3cc8d76a7c22b1b.jpg', stats: { like: 152807, reply: 7806, favorite: 43264 } },
-    { bvid: 'BV1uvpg6zEdw', title: '“上大学该谈个女朋友了”。我呀？我去谈恋爱啊？！那无敌了……', author: '个大活人', pic: 'https://i0.hdslb.com/bfs/archive/173f1ebfb9a8c60a8c426728a6c5aedbeb2f678c.jpg', stats: { like: 155972, reply: 14653, favorite: 21715 } },
-    { bvid: 'BV1xTpG6iEbV', title: '虽然命还在，但是鱼没了啊！！！【AI全民制作人】', author: '陈要得', pic: 'https://i1.hdslb.com/bfs/archive/c42f7e9af7ddbf8bc9b4e1fe741529743eed0a5e.jpg', stats: { like: 165361, reply: 1611, favorite: 12611 } },
+    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382214, reply: 1023, favorite: 39744 } },
+    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290813, reply: 808, favorite: 64880 } },
+    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267258, reply: 2325, favorite: 9366 } },
   ],
   fashion: [
-    { bvid: 'BV16xpt6BE6t', title: '如果把我和男朋友这几年的约会地点列出来', author: '锣斯特', pic: 'https://i2.hdslb.com/bfs/archive/e37616daf7c815734d6fb73ae3cc8d76a7c22b1b.jpg', stats: { like: 152807, reply: 7806, favorite: 43264 } },
-    { bvid: 'BV1uvpg6zEdw', title: '“上大学该谈个女朋友了”。我呀？我去谈恋爱啊？！那无敌了……', author: '个大活人', pic: 'https://i0.hdslb.com/bfs/archive/173f1ebfb9a8c60a8c426728a6c5aedbeb2f678c.jpg', stats: { like: 155972, reply: 14653, favorite: 21715 } },
-    { bvid: 'BV1xTpG6iEbV', title: '虽然命还在，但是鱼没了啊！！！【AI全民制作人】', author: '陈要得', pic: 'https://i1.hdslb.com/bfs/archive/c42f7e9af7ddbf8bc9b4e1fe741529743eed0a5e.jpg', stats: { like: 165361, reply: 1611, favorite: 12611 } },
+    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222315, reply: 470, favorite: 33211 } },
+    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 90985, reply: 475, favorite: 26019 } },
+    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87307, reply: 304, favorite: 22509 } },
   ],
   game: [
-    { bvid: 'BV1ovpt6aE3F', title: 'DNF：疑似未央界赢面最大的一种玩法？游戏酱：下次我也要试试！', author: '快乐游戏酱', pic: '//i1.hdslb.com/bfs/archive/f93a7335fc24233796fca1cc5c444f58cde47e33.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1GEHX64EQ2', title: '我招了这俩货，结果直接破产了', author: '解说刘大大', pic: '//i2.hdslb.com/bfs/archive/429f6aa5ba0afce119ad93d02df3cb5ca79d7198.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1MTa66kETY', title: '我把《咒术回战》新宿决战做成了双人格斗游戏！', author: '桃天帝不差', pic: '//i0.hdslb.com/bfs/archive/2d38218e9a596b1ce4af739cfe49ae2ba657aaa7.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 355943, reply: 2913, favorite: 759312 } },
+    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693958, reply: 4415, favorite: 129925 } },
+    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 518260, reply: 29214, favorite: 183608 } },
   ],
   travel: [
-    { bvid: 'BV16xpt6BE6t', title: '如果把我和男朋友这几年的约会地点列出来', author: '锣斯特', pic: 'https://i2.hdslb.com/bfs/archive/e37616daf7c815734d6fb73ae3cc8d76a7c22b1b.jpg', stats: { like: 152807, reply: 7806, favorite: 43264 } },
-    { bvid: 'BV1uvpg6zEdw', title: '“上大学该谈个女朋友了”。我呀？我去谈恋爱啊？！那无敌了……', author: '个大活人', pic: 'https://i0.hdslb.com/bfs/archive/173f1ebfb9a8c60a8c426728a6c5aedbeb2f678c.jpg', stats: { like: 155972, reply: 14653, favorite: 21715 } },
-    { bvid: 'BV1xTpG6iEbV', title: '虽然命还在，但是鱼没了啊！！！【AI全民制作人】', author: '陈要得', pic: 'https://i1.hdslb.com/bfs/archive/c42f7e9af7ddbf8bc9b4e1fe741529743eed0a5e.jpg', stats: { like: 165361, reply: 1611, favorite: 12611 } },
+    { bvid: 'BV1mopE6xEqv', title: '我们来到了地中海，重走《奥德赛》十年回家路！', author: '-欣小萌-', pic: 'https://i0.hdslb.com/bfs/archive/c6ad825319b3d14824912e79fc1c4da08a033b66.jpg', stats: { like: 190459, reply: 2179, favorite: 29489 } },
+    { bvid: 'BV1Cepi6NEjC', title: '公路旁的山洞里出现了人民碎片', author: '鸽子户外探险', pic: 'https://i1.hdslb.com/bfs/archive/d856b7107252eca1f6a3aaaf60cd63513fdb3095.jpg', stats: { like: 58205, reply: 1597, favorite: 4809 } },
+    { bvid: 'BV1KApg6hEa1', title: '一镜到底骑行在路边发现一条未知小路，沉浸式体验在城市角落探索', author: '暗夜骑士XZ', pic: 'https://i1.hdslb.com/bfs/archive/677ca9ba99cb203f85565f5507729e8287e5705f.jpg', stats: { like: 45545, reply: 2954, favorite: 8189 } },
   ],
   general: [
-    { bvid: 'BV16xpt6BE6t', title: '如果把我和男朋友这几年的约会地点列出来', author: '锣斯特', pic: 'https://i2.hdslb.com/bfs/archive/e37616daf7c815734d6fb73ae3cc8d76a7c22b1b.jpg', stats: { like: 152807, reply: 7806, favorite: 43264 } },
-    { bvid: 'BV1uvpg6zEdw', title: '“上大学该谈个女朋友了”。我呀？我去谈恋爱啊？！那无敌了……', author: '个大活人', pic: 'https://i0.hdslb.com/bfs/archive/173f1ebfb9a8c60a8c426728a6c5aedbeb2f678c.jpg', stats: { like: 155972, reply: 14653, favorite: 21715 } },
-    { bvid: 'BV1xTpG6iEbV', title: '虽然命还在，但是鱼没了啊！！！【AI全民制作人】', author: '陈要得', pic: 'https://i1.hdslb.com/bfs/archive/c42f7e9af7ddbf8bc9b4e1fe741529743eed0a5e.jpg', stats: { like: 165361, reply: 1611, favorite: 12611 } },
+    { bvid: 'BV1VeHQ6tEaS', title: '超市生存挑战后续！4人吃完整个超市赢100万美金！', author: '野兽先生MrBeast', pic: 'https://i2.hdslb.com/bfs/archive/7f475d7d8d1cace38cb12d4a9de69f8bed9af109.jpg', stats: { like: 366810, reply: 8442, favorite: 127024 } },
+    { bvid: 'BV1rxp86jEYH', title: '《司机の噩梦》', author: '伤心欲茄222', pic: 'https://i1.hdslb.com/bfs/archive/fcca62328ac8adf225bfe223d26807bbd5de6fc6.jpg', stats: { like: 388499, reply: 5925, favorite: 24049 } },
+    { bvid: 'BV1XXHD6sEe7', title: 'deepseek 翻唱《人是猫》完整版，大肥鱼觉得人和猫一样可爱,所以人是猫', author: '星落落_oi', pic: 'https://i1.hdslb.com/bfs/archive/7f587f522150247f2e53aa9e4faa4063c7eff238.jpg', stats: { like: 255144, reply: 5511, favorite: 123014 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-10-12 01:08:34
+// 最后更新: 2026-10-13 02:56:52
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
   ],
   fashion: [
-    { vid: '7694522947989970122', title: '#海边正常穿搭泳衣', author: 'ㅤㅤㅤ       ㅤ金艺琳✨', stats: { like: 8245, reply: 209, favorite: 6093 } },
+    { vid: '7694560512978252411', title: '#泳池穿搭 #泳池 @酸菜于🐟', author: '梦丽🍃', stats: { like: 67811, reply: 3263, favorite: 56371 } },
   ],
   game: [
     { vid: '7694614790295127653', title: '可以给姨姨玩一下吗  姨姨给你买糖糖#街头小吃摊 #这是啥游戏 #街头小吃摊 #网瘾少年#', author: '八月', stats: { like: 2635, reply: 730, favorite: 8336 } },
@@ -2311,9 +2311,9 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7695375490881959781', title: '他的身体素质 中医（还有我）检查过了 行 #vlog #外国人看中医 #异国恋', author: '鹿家嘴bb机', stats: { like: 87967, reply: 3390, favorite: 41967 } },
   ],
   general: [
-    { vid: '7695013107428780721', title: '对抗路选手#铲屎官日常 #养宠物哪有不疯的 @DOU+小助手', author: '小點', stats: { like: 4372863, reply: 100920, favorite: 4219041 } },
-    { vid: '7694661751569213608', title: '喵🫢', author: '鞠婧祎', stats: { like: 5086565, reply: 190924, favorite: 653668 } },
-    { vid: '7694623386420393445', title: '哒哒呐🤟🏻 #长长长假星日记 #我的长长长假', author: '余承恩', stats: { like: 1596688, reply: 12944, favorite: 218001 } },
+    { vid: '7695044884910393009', title: '', author: '^o^🍀', stats: { like: 288596, reply: 2784, favorite: 272461 } },
+    { vid: '7693565497359877082', title: '大家好 我是橘扒拉 #橘猫 #不烧心 #猫@咪齐喵喵屋 原作者', author: '管住嘴迈开腿', stats: { like: 145355, reply: 5340, favorite: 91659 } },
+    { vid: '7695712007031642361', title: '衣服还能这么晾…… #万万没想到 #神操作 #绝活 #新脑子就是好用 #内容过于真实', author: '歆歆与老郑', stats: { like: 68057, reply: 5096, favorite: 65937 } },
   ],
 };
 
