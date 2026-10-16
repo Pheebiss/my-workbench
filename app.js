@@ -2266,54 +2266,55 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-10-15 00:22:58
+// 最后更新: 2026-10-16 00:12:07
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382213, reply: 1023, favorite: 39742 } },
-    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290824, reply: 808, favorite: 64881 } },
-    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267259, reply: 2325, favorite: 9367 } },
+    { bvid: 'BV18eHs6kEJX', title: '太夸张了！圆脸可直接换头的清冷姐系妆', author: 'chilly香菜', pic: '//i2.hdslb.com/bfs/archive/e2e7cdccc8636f1a6fa2c9723b9cf9216f6f5bb4.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1iU4y1L7G2', title: '【化妆入门课】0基础化妆变美逆袭课！易上手|化妆技巧|化妆教程|系统课|手把手教化妆|毕业变美指南', author: 'JSMN-Me', pic: '//i1.hdslb.com/bfs/archive/13f3dbf71ada18ba13be81fe20814b6d117f2d7a.png', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '毛戈平美妆学院：小白零基础入门课', author: '毛戈平光影美学', pic: 'https://archive.biliimg.com/bfs/archive/55529b35ef4a4c9ab4a92d598308f844d8f0c813.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   fashion: [
-    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222319, reply: 470, favorite: 33211 } },
-    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 90991, reply: 475, favorite: 26020 } },
-    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87307, reply: 304, favorite: 22507 } },
+    { bvid: 'BV1cApB6NEPq', title: '这下可好了！收养一只咪，迎来一大群！', author: '明月忘了缺yh', pic: 'https://i0.hdslb.com/bfs/archive/7ebecaf9ab49257a2a8d7b76359f1f2f78d472d1.jpg', stats: { like: 188243, reply: 2532, favorite: 16789 } },
+    { bvid: 'BV19gp16kEAV', title: '婚礼摄影师记录下婚礼后感人一幕……喧闹落幕，新人相视一笑便红了眼眶', author: '人民日报', pic: 'https://i1.hdslb.com/bfs/archive/fc7d669188dfe6ad53cd6fb5aff7e5ec50477bb8.jpg', stats: { like: 161266, reply: 4829, favorite: 32282 } },
+    { bvid: 'BV1SMJC6sE6R', title: '《最有耐心の杀手》', author: '伤心欲茄222', pic: 'https://i0.hdslb.com/bfs/archive/75069b48e67ab49d01a0bd665fbcdb79ac48949b.jpg', stats: { like: 138316, reply: 2731, favorite: 6656 } },
   ],
   game: [
-    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 355989, reply: 2918, favorite: 759370 } },
-    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693960, reply: 4415, favorite: 129916 } },
-    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 518282, reply: 29216, favorite: 183620 } },
+    { bvid: 'BV17Xp76gEGj', title: '宝石怪兽 拯救图形朋友第二章来啦！', author: '小黄蜂游戏解说', pic: '//i2.hdslb.com/bfs/archive/acf016e36eb7b65fd918067bbadbf773a4d4b6d8.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1iUJS6HEG3', title: '请了一堆二次元角色看我直播打游戏Pt.13', author: '老野的环形物语', pic: '//i2.hdslb.com/bfs/archive/773f7888e116a2457db430e197f59142c256a369.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '镜打野思路教程', author: '颐安教剪辑', pic: 'https://archive.biliimg.com/bfs/archive/c52ca09478a2aefe62b3e0bd22d97314a4ddc761.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   travel: [
-    { bvid: 'BV1mopE6xEqv', title: '我们来到了地中海，重走《奥德赛》十年回家路！', author: '-欣小萌-', pic: 'https://i0.hdslb.com/bfs/archive/c6ad825319b3d14824912e79fc1c4da08a033b66.jpg', stats: { like: 300250, reply: 2789, favorite: 45852 } },
-    { bvid: 'BV1FBpR6jEz1', title: '63小时？疯狂就在当下！！面包车直达新疆！赛里木湖！没白活！', author: '张舒克和黄贝塔旅行版', pic: 'https://i1.hdslb.com/bfs/archive/a0b6db7cdc01df1dbdceb5fb14ce6cf8fb9dfd71.jpg', stats: { like: 85898, reply: 2996, favorite: 10029 } },
-    { bvid: 'BV1QfHD6nEVo', title: '这年头还有这么野的温泉', author: '无穷小亮的科普日常', pic: 'https://i0.hdslb.com/bfs/archive/7073d3a804e60b391923d04cfd1499daa0c540d5.jpg', stats: { like: 72395, reply: 1315, favorite: 3831 } },
+    { bvid: 'BV1cApB6NEPq', title: '这下可好了！收养一只咪，迎来一大群！', author: '明月忘了缺yh', pic: 'https://i0.hdslb.com/bfs/archive/7ebecaf9ab49257a2a8d7b76359f1f2f78d472d1.jpg', stats: { like: 188243, reply: 2532, favorite: 16789 } },
+    { bvid: 'BV19gp16kEAV', title: '婚礼摄影师记录下婚礼后感人一幕……喧闹落幕，新人相视一笑便红了眼眶', author: '人民日报', pic: 'https://i1.hdslb.com/bfs/archive/fc7d669188dfe6ad53cd6fb5aff7e5ec50477bb8.jpg', stats: { like: 161266, reply: 4829, favorite: 32282 } },
+    { bvid: 'BV1SMJC6sE6R', title: '《最有耐心の杀手》', author: '伤心欲茄222', pic: 'https://i0.hdslb.com/bfs/archive/75069b48e67ab49d01a0bd665fbcdb79ac48949b.jpg', stats: { like: 138316, reply: 2731, favorite: 6656 } },
   ],
   general: [
-    { bvid: 'BV1Jjpg6QEkh', title: '12个脑洞大开的做饭方式！', author: '胡仔一人食', pic: 'https://i2.hdslb.com/bfs/archive/dfa7a7bddbbbed4f315f0077a3b6a5adb490efcf.jpg', stats: { like: 248526, reply: 1751, favorite: 164224 } },
-    { bvid: 'BV1uvpg6zEdw', title: '“上大学该谈个女朋友了”。我呀？我去谈恋爱啊？！那无敌了……', author: '个大活人', pic: 'https://i0.hdslb.com/bfs/archive/173f1ebfb9a8c60a8c426728a6c5aedbeb2f678c.jpg', stats: { like: 303220, reply: 21900, favorite: 44905 } },
-    { bvid: 'BV1QmpE6aEA7', title: '逃离闪电侠黄金费德熊！你好邻居Mod', author: '鲤鱼Ace', pic: 'https://i1.hdslb.com/bfs/archive/e32aa27380e7d3be958e5e9ed001d306b7b64d5c.jpg', stats: { like: 211901, reply: 7876, favorite: 141102 } },
+    { bvid: 'BV14GHY6fExG', title: '网络热门长虫视频(124)十岁男孩被太攀蛇咬伤！生命垂危险丧命！', author: '世界记忆大师龙雅', pic: '//i0.hdslb.com/bfs/archive/72a7e189b9cc54205b3a568bbc52748d3fb87664.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV15Dp16LESn', title: '2026最后一波热门待播剧盘点，你押宝哪一部？', author: '降B_大调', pic: '//i2.hdslb.com/bfs/archive/d286521dffc16bdfda112b741c0e0d6d9c9add82.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '【大陈唯舞】经典热门舞蹈教学', author: '大陈唯舞', pic: 'https://archive.biliimg.com/bfs/archive/e551acb2effb4f27fbc9fc0bcbd6a85c54b1d4bd.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-10-15 00:23:19
+// 最后更新: 2026-10-16 00:12:29
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
   ],
   fashion: [
-    { vid: '7694560512978252411', title: '#泳池穿搭 #泳池 @酸菜于🐟', author: '梦丽🍃', stats: { like: 67811, reply: 3263, favorite: 56371 } },
+    { vid: '7696884747184378511', title: '可视门铃记录我的穿搭 今天发一个出门玩的 也是以前的视频#监控视角 #穿搭', author: '悦悦', stats: { like: 152856, reply: 2371, favorite: 69924 } },
   ],
   game: [
     { vid: '7694614790295127653', title: '可以给姨姨玩一下吗  姨姨给你买糖糖#街头小吃摊 #这是啥游戏 #街头小吃摊 #网瘾少年#', author: '八月', stats: { like: 2635, reply: 730, favorite: 8336 } },
   ],
   travel: [
-    { vid: '7696318061788710399', title: '早上起来拉伸一下#dou有好身材 #养成一个好身材 #真实生活分享计划 #日常vlog #上热门🔥', author: '小蓝溪', stats: { like: 7040, reply: 223, favorite: 2197 } },
+    { vid: '7695815002300630120', title: '黄道吉日你跟他比运气？ #小霸王张律婚礼 #婚礼那天 #黄道吉日 #心动打卡指南', author: '小霸王', stats: { like: 6678086, reply: 59770, favorite: 992876 } },
+    { vid: '7696708689554495593', title: '中国最火的旅游城市是哪哪里？#涨知识 #你知道吗', author: '孙佳音', stats: { like: 6099, reply: 6167, favorite: 164 } },
   ],
   general: [
-    { vid: '7695376249594582891', title: '这首歌频率太快 就像逝去的青春 #段俊 #钢琴 #nightcruising #夜间巡航', author: '段俊', stats: { like: 1971351, reply: 23930, favorite: 133352 } },
-    { vid: '7695722500298467492', title: '', author: '童童子', stats: { like: 260920, reply: 2998, favorite: 43328 } },
-    { vid: '7696248046594588582', title: '#泳池拍照', author: '大碗麻辣烫', stats: { like: 89038, reply: 2425, favorite: 86662 } },
+    { vid: '7695815002300630120', title: '黄道吉日你跟他比运气？ #小霸王张律婚礼 #婚礼那天 #黄道吉日 #心动打卡指南', author: '小霸王', stats: { like: 6678086, reply: 59770, favorite: 992876 } },
+    { vid: '7695067607095174885', title: '评论区发表文案，后续我来修改标题  #未来导演扶持计划#金鸡奖', author: '马小', stats: { like: 760944, reply: 41414, favorite: 323928 } },
+    { vid: '7696457618449124608', title: '25后暴躁女人高能量折磨人的一天！带孩子拍亲子照一点不烧心！ #拽爸吴喊喊 #邪恶面剂子 #亲子时光 #美好瞬间 #贴心', author: '拽爸吴喊喊（酵父）', stats: { like: 800873, reply: 23979, favorite: 205885 } },
   ],
 };
 
