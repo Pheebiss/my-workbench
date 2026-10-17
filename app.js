@@ -2266,37 +2266,37 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-10-16 00:12:07
+// 最后更新: 2026-10-17 00:15:23
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV18eHs6kEJX', title: '太夸张了！圆脸可直接换头的清冷姐系妆', author: 'chilly香菜', pic: '//i2.hdslb.com/bfs/archive/e2e7cdccc8636f1a6fa2c9723b9cf9216f6f5bb4.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1iU4y1L7G2', title: '【化妆入门课】0基础化妆变美逆袭课！易上手|化妆技巧|化妆教程|系统课|手把手教化妆|毕业变美指南', author: 'JSMN-Me', pic: '//i1.hdslb.com/bfs/archive/13f3dbf71ada18ba13be81fe20814b6d117f2d7a.png', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: '毛戈平美妆学院：小白零基础入门课', author: '毛戈平光影美学', pic: 'https://archive.biliimg.com/bfs/archive/55529b35ef4a4c9ab4a92d598308f844d8f0c813.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1Fspj66E66', title: '“这波秒开仙人，直接把六小龄童看呆了！”', author: '荒草音乐', pic: 'https://i0.hdslb.com/bfs/archive/f21672f24cca6cde29055f7b5051d2ccef68de51.jpg', stats: { like: 285751, reply: 4167, favorite: 58030 } },
+    { bvid: 'BV1KiJk67EQ9', title: '我造了一块会飞的滑板...', author: '神奇阿宇Ayu', pic: 'https://i1.hdslb.com/bfs/archive/72619f16a4b0703a5aa22c1c0bbcc5b9735f9799.jpg', stats: { like: 190358, reply: 8858, favorite: 51621 } },
+    { bvid: 'BV1WkJk6VEqA', title: '《剃刀 》每一个也许都要付钱：0.8⁵ = 33%', author: '比特新语', pic: 'https://i1.hdslb.com/bfs/archive/d56bf58583158d54b255c2e56f3eba2dd63a5039.jpg', stats: { like: 142531, reply: 2326, favorite: 71532 } },
   ],
   fashion: [
-    { bvid: 'BV1cApB6NEPq', title: '这下可好了！收养一只咪，迎来一大群！', author: '明月忘了缺yh', pic: 'https://i0.hdslb.com/bfs/archive/7ebecaf9ab49257a2a8d7b76359f1f2f78d472d1.jpg', stats: { like: 188243, reply: 2532, favorite: 16789 } },
-    { bvid: 'BV19gp16kEAV', title: '婚礼摄影师记录下婚礼后感人一幕……喧闹落幕，新人相视一笑便红了眼眶', author: '人民日报', pic: 'https://i1.hdslb.com/bfs/archive/fc7d669188dfe6ad53cd6fb5aff7e5ec50477bb8.jpg', stats: { like: 161266, reply: 4829, favorite: 32282 } },
-    { bvid: 'BV1SMJC6sE6R', title: '《最有耐心の杀手》', author: '伤心欲茄222', pic: 'https://i0.hdslb.com/bfs/archive/75069b48e67ab49d01a0bd665fbcdb79ac48949b.jpg', stats: { like: 138316, reply: 2731, favorite: 6656 } },
+    { bvid: 'BV1Fspj66E66', title: '“这波秒开仙人，直接把六小龄童看呆了！”', author: '荒草音乐', pic: 'https://i0.hdslb.com/bfs/archive/f21672f24cca6cde29055f7b5051d2ccef68de51.jpg', stats: { like: 285751, reply: 4167, favorite: 58030 } },
+    { bvid: 'BV1KiJk67EQ9', title: '我造了一块会飞的滑板...', author: '神奇阿宇Ayu', pic: 'https://i1.hdslb.com/bfs/archive/72619f16a4b0703a5aa22c1c0bbcc5b9735f9799.jpg', stats: { like: 190358, reply: 8858, favorite: 51621 } },
+    { bvid: 'BV1WkJk6VEqA', title: '《剃刀 》每一个也许都要付钱：0.8⁵ = 33%', author: '比特新语', pic: 'https://i1.hdslb.com/bfs/archive/d56bf58583158d54b255c2e56f3eba2dd63a5039.jpg', stats: { like: 142531, reply: 2326, favorite: 71532 } },
   ],
   game: [
-    { bvid: 'BV17Xp76gEGj', title: '宝石怪兽 拯救图形朋友第二章来啦！', author: '小黄蜂游戏解说', pic: '//i2.hdslb.com/bfs/archive/acf016e36eb7b65fd918067bbadbf773a4d4b6d8.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1iUJS6HEG3', title: '请了一堆二次元角色看我直播打游戏Pt.13', author: '老野的环形物语', pic: '//i2.hdslb.com/bfs/archive/773f7888e116a2457db430e197f59142c256a369.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: '镜打野思路教程', author: '颐安教剪辑', pic: 'https://archive.biliimg.com/bfs/archive/c52ca09478a2aefe62b3e0bd22d97314a4ddc761.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1Fspj66E66', title: '“这波秒开仙人，直接把六小龄童看呆了！”', author: '荒草音乐', pic: 'https://i0.hdslb.com/bfs/archive/f21672f24cca6cde29055f7b5051d2ccef68de51.jpg', stats: { like: 285751, reply: 4167, favorite: 58030 } },
+    { bvid: 'BV1KiJk67EQ9', title: '我造了一块会飞的滑板...', author: '神奇阿宇Ayu', pic: 'https://i1.hdslb.com/bfs/archive/72619f16a4b0703a5aa22c1c0bbcc5b9735f9799.jpg', stats: { like: 190358, reply: 8858, favorite: 51621 } },
+    { bvid: 'BV1WkJk6VEqA', title: '《剃刀 》每一个也许都要付钱：0.8⁵ = 33%', author: '比特新语', pic: 'https://i1.hdslb.com/bfs/archive/d56bf58583158d54b255c2e56f3eba2dd63a5039.jpg', stats: { like: 142531, reply: 2326, favorite: 71532 } },
   ],
   travel: [
-    { bvid: 'BV1cApB6NEPq', title: '这下可好了！收养一只咪，迎来一大群！', author: '明月忘了缺yh', pic: 'https://i0.hdslb.com/bfs/archive/7ebecaf9ab49257a2a8d7b76359f1f2f78d472d1.jpg', stats: { like: 188243, reply: 2532, favorite: 16789 } },
-    { bvid: 'BV19gp16kEAV', title: '婚礼摄影师记录下婚礼后感人一幕……喧闹落幕，新人相视一笑便红了眼眶', author: '人民日报', pic: 'https://i1.hdslb.com/bfs/archive/fc7d669188dfe6ad53cd6fb5aff7e5ec50477bb8.jpg', stats: { like: 161266, reply: 4829, favorite: 32282 } },
-    { bvid: 'BV1SMJC6sE6R', title: '《最有耐心の杀手》', author: '伤心欲茄222', pic: 'https://i0.hdslb.com/bfs/archive/75069b48e67ab49d01a0bd665fbcdb79ac48949b.jpg', stats: { like: 138316, reply: 2731, favorite: 6656 } },
+    { bvid: 'BV1Fspj66E66', title: '“这波秒开仙人，直接把六小龄童看呆了！”', author: '荒草音乐', pic: 'https://i0.hdslb.com/bfs/archive/f21672f24cca6cde29055f7b5051d2ccef68de51.jpg', stats: { like: 285751, reply: 4167, favorite: 58030 } },
+    { bvid: 'BV1KiJk67EQ9', title: '我造了一块会飞的滑板...', author: '神奇阿宇Ayu', pic: 'https://i1.hdslb.com/bfs/archive/72619f16a4b0703a5aa22c1c0bbcc5b9735f9799.jpg', stats: { like: 190358, reply: 8858, favorite: 51621 } },
+    { bvid: 'BV1WkJk6VEqA', title: '《剃刀 》每一个也许都要付钱：0.8⁵ = 33%', author: '比特新语', pic: 'https://i1.hdslb.com/bfs/archive/d56bf58583158d54b255c2e56f3eba2dd63a5039.jpg', stats: { like: 142531, reply: 2326, favorite: 71532 } },
   ],
   general: [
     { bvid: 'BV14GHY6fExG', title: '网络热门长虫视频(124)十岁男孩被太攀蛇咬伤！生命垂危险丧命！', author: '世界记忆大师龙雅', pic: '//i0.hdslb.com/bfs/archive/72a7e189b9cc54205b3a568bbc52748d3fb87664.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV15Dp16LESn', title: '2026最后一波热门待播剧盘点，你押宝哪一部？', author: '降B_大调', pic: '//i2.hdslb.com/bfs/archive/d286521dffc16bdfda112b741c0e0d6d9c9add82.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: '【大陈唯舞】经典热门舞蹈教学', author: '大陈唯舞', pic: 'https://archive.biliimg.com/bfs/archive/e551acb2effb4f27fbc9fc0bcbd6a85c54b1d4bd.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1c2Wc6PEcM', title: '热门故事推荐', author: '晓晓爆单暴富', pic: '//i2.hdslb.com/bfs/archive/cf1bc1139bba4e195eac410c80652881b98cd686.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '【热门课堂】基于ESP32的步进电机控制驱动板', author: '嵌入式小林', pic: 'https://archive.biliimg.com/bfs/archive/47cacef033ccce7928976e9f2fc3dd1673661440.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-10-16 00:12:29
+// 最后更新: 2026-10-17 00:15:50
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
@@ -2312,9 +2312,9 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7696708689554495593', title: '中国最火的旅游城市是哪哪里？#涨知识 #你知道吗', author: '孙佳音', stats: { like: 6099, reply: 6167, favorite: 164 } },
   ],
   general: [
-    { vid: '7695815002300630120', title: '黄道吉日你跟他比运气？ #小霸王张律婚礼 #婚礼那天 #黄道吉日 #心动打卡指南', author: '小霸王', stats: { like: 6678086, reply: 59770, favorite: 992876 } },
-    { vid: '7695067607095174885', title: '评论区发表文案，后续我来修改标题  #未来导演扶持计划#金鸡奖', author: '马小', stats: { like: 760944, reply: 41414, favorite: 323928 } },
-    { vid: '7696457618449124608', title: '25后暴躁女人高能量折磨人的一天！带孩子拍亲子照一点不烧心！ #拽爸吴喊喊 #邪恶面剂子 #亲子时光 #美好瞬间 #贴心', author: '拽爸吴喊喊（酵父）', stats: { like: 800873, reply: 23979, favorite: 205885 } },
+    { vid: '7695376249594582891', title: '这首歌频率太快 就像逝去的青春 #段俊 #钢琴 #nightcruising #夜间巡航', author: '段俊', stats: { like: 2480228, reply: 27701, favorite: 163491 } },
+    { vid: '7697196237283475557', title: '哈哈哈 还要让他爸亲一下😂', author: '林仙女呀', stats: { like: 507527, reply: 4635, favorite: 137680 } },
+    { vid: '7696731262207452005', title: '三娃儿是只猫 #丰都调皮匠 这个猫，去哪儿都要跟着一路……', author: '丰都调皮匠', stats: { like: 210649, reply: 2685, favorite: 173138 } },
   ],
 };
 
