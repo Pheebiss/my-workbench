@@ -2266,37 +2266,36 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-10-17 00:15:23
+// 最后更新: 2026-10-17 23:54:20
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1Fspj66E66', title: '“这波秒开仙人，直接把六小龄童看呆了！”', author: '荒草音乐', pic: 'https://i0.hdslb.com/bfs/archive/f21672f24cca6cde29055f7b5051d2ccef68de51.jpg', stats: { like: 285751, reply: 4167, favorite: 58030 } },
-    { bvid: 'BV1KiJk67EQ9', title: '我造了一块会飞的滑板...', author: '神奇阿宇Ayu', pic: 'https://i1.hdslb.com/bfs/archive/72619f16a4b0703a5aa22c1c0bbcc5b9735f9799.jpg', stats: { like: 190358, reply: 8858, favorite: 51621 } },
-    { bvid: 'BV1WkJk6VEqA', title: '《剃刀 》每一个也许都要付钱：0.8⁵ = 33%', author: '比特新语', pic: 'https://i1.hdslb.com/bfs/archive/d56bf58583158d54b255c2e56f3eba2dd63a5039.jpg', stats: { like: 142531, reply: 2326, favorite: 71532 } },
+    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382213, reply: 1023, favorite: 39739 } },
+    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290860, reply: 808, favorite: 64873 } },
+    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267259, reply: 2325, favorite: 9367 } },
   ],
   fashion: [
-    { bvid: 'BV1Fspj66E66', title: '“这波秒开仙人，直接把六小龄童看呆了！”', author: '荒草音乐', pic: 'https://i0.hdslb.com/bfs/archive/f21672f24cca6cde29055f7b5051d2ccef68de51.jpg', stats: { like: 285751, reply: 4167, favorite: 58030 } },
-    { bvid: 'BV1KiJk67EQ9', title: '我造了一块会飞的滑板...', author: '神奇阿宇Ayu', pic: 'https://i1.hdslb.com/bfs/archive/72619f16a4b0703a5aa22c1c0bbcc5b9735f9799.jpg', stats: { like: 190358, reply: 8858, favorite: 51621 } },
-    { bvid: 'BV1WkJk6VEqA', title: '《剃刀 》每一个也许都要付钱：0.8⁵ = 33%', author: '比特新语', pic: 'https://i1.hdslb.com/bfs/archive/d56bf58583158d54b255c2e56f3eba2dd63a5039.jpg', stats: { like: 142531, reply: 2326, favorite: 71532 } },
+    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222332, reply: 470, favorite: 33213 } },
+    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 91001, reply: 475, favorite: 26027 } },
+    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87307, reply: 304, favorite: 22504 } },
   ],
   game: [
-    { bvid: 'BV1Fspj66E66', title: '“这波秒开仙人，直接把六小龄童看呆了！”', author: '荒草音乐', pic: 'https://i0.hdslb.com/bfs/archive/f21672f24cca6cde29055f7b5051d2ccef68de51.jpg', stats: { like: 285751, reply: 4167, favorite: 58030 } },
-    { bvid: 'BV1KiJk67EQ9', title: '我造了一块会飞的滑板...', author: '神奇阿宇Ayu', pic: 'https://i1.hdslb.com/bfs/archive/72619f16a4b0703a5aa22c1c0bbcc5b9735f9799.jpg', stats: { like: 190358, reply: 8858, favorite: 51621 } },
-    { bvid: 'BV1WkJk6VEqA', title: '《剃刀 》每一个也许都要付钱：0.8⁵ = 33%', author: '比特新语', pic: 'https://i1.hdslb.com/bfs/archive/d56bf58583158d54b255c2e56f3eba2dd63a5039.jpg', stats: { like: 142531, reply: 2326, favorite: 71532 } },
+    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 356126, reply: 2923, favorite: 759504 } },
+    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693966, reply: 4417, favorite: 129906 } },
+    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 518324, reply: 29220, favorite: 183636 } },
   ],
   travel: [
-    { bvid: 'BV1Fspj66E66', title: '“这波秒开仙人，直接把六小龄童看呆了！”', author: '荒草音乐', pic: 'https://i0.hdslb.com/bfs/archive/f21672f24cca6cde29055f7b5051d2ccef68de51.jpg', stats: { like: 285751, reply: 4167, favorite: 58030 } },
-    { bvid: 'BV1KiJk67EQ9', title: '我造了一块会飞的滑板...', author: '神奇阿宇Ayu', pic: 'https://i1.hdslb.com/bfs/archive/72619f16a4b0703a5aa22c1c0bbcc5b9735f9799.jpg', stats: { like: 190358, reply: 8858, favorite: 51621 } },
-    { bvid: 'BV1WkJk6VEqA', title: '《剃刀 》每一个也许都要付钱：0.8⁵ = 33%', author: '比特新语', pic: 'https://i1.hdslb.com/bfs/archive/d56bf58583158d54b255c2e56f3eba2dd63a5039.jpg', stats: { like: 142531, reply: 2326, favorite: 71532 } },
+    { bvid: 'BV1KoJX6CEGT', title: '挑战全程扛共享单车登顶峨眉山金顶', author: '爱健身小庞', pic: 'https://i1.hdslb.com/bfs/archive/12088dc84acd53ab49c86aee7e9522c5807e86d5.jpg', stats: { like: 143037, reply: 3790, favorite: 9225 } },
+    { bvid: 'BV1XoHD6QEw4', title: '想停在黄河与海的交汇线上，竟然这么难', author: '无穷小亮的科普日常', pic: 'https://i0.hdslb.com/bfs/archive/7cc797969569a25196a1d440826fa2fa822a231f.jpg', stats: { like: 76663, reply: 1616, favorite: 4126 } },
   ],
   general: [
-    { bvid: 'BV14GHY6fExG', title: '网络热门长虫视频(124)十岁男孩被太攀蛇咬伤！生命垂危险丧命！', author: '世界记忆大师龙雅', pic: '//i0.hdslb.com/bfs/archive/72a7e189b9cc54205b3a568bbc52748d3fb87664.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1c2Wc6PEcM', title: '热门故事推荐', author: '晓晓爆单暴富', pic: '//i2.hdslb.com/bfs/archive/cf1bc1139bba4e195eac410c80652881b98cd686.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: '【热门课堂】基于ESP32的步进电机控制驱动板', author: '嵌入式小林', pic: 'https://archive.biliimg.com/bfs/archive/47cacef033ccce7928976e9f2fc3dd1673661440.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1wbpR6HE1g', title: '“优秀的作品都在讲同一件事”', author: '向明燃剪', pic: 'https://i2.hdslb.com/bfs/archive/bc0202102fdd7662a2a9952ca409dae3bc8dbde5.jpg', stats: { like: 413628, reply: 2476, favorite: 120636 } },
+    { bvid: 'BV1Fspj66E66', title: '“这波秒开仙人，直接把六小龄童看呆了！”', author: '荒草音乐', pic: 'https://i0.hdslb.com/bfs/archive/f21672f24cca6cde29055f7b5051d2ccef68de51.jpg', stats: { like: 427016, reply: 5169, favorite: 82622 } },
+    { bvid: 'BV1cApB6NEPq', title: '这下可好了！收养一只咪，迎来一大群！', author: '明月忘了缺yh', pic: 'https://i0.hdslb.com/bfs/archive/7ebecaf9ab49257a2a8d7b76359f1f2f78d472d1.jpg', stats: { like: 367786, reply: 4697, favorite: 39543 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-10-17 00:15:50
+// 最后更新: 2026-10-17 23:54:42
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
@@ -2312,9 +2311,9 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7696708689554495593', title: '中国最火的旅游城市是哪哪里？#涨知识 #你知道吗', author: '孙佳音', stats: { like: 6099, reply: 6167, favorite: 164 } },
   ],
   general: [
-    { vid: '7695376249594582891', title: '这首歌频率太快 就像逝去的青春 #段俊 #钢琴 #nightcruising #夜间巡航', author: '段俊', stats: { like: 2480228, reply: 27701, favorite: 163491 } },
-    { vid: '7697196237283475557', title: '哈哈哈 还要让他爸亲一下😂', author: '林仙女呀', stats: { like: 507527, reply: 4635, favorite: 137680 } },
-    { vid: '7696731262207452005', title: '三娃儿是只猫 #丰都调皮匠 这个猫，去哪儿都要跟着一路……', author: '丰都调皮匠', stats: { like: 210649, reply: 2685, favorite: 173138 } },
+    { vid: '7696059675594308331', title: '你不要那样看着我的眼睛 #猫咪', author: '抱抱小壮', stats: { like: 1865951, reply: 4841, favorite: 550670 } },
+    { vid: '7697495265423184229', title: '急什么！少不了你的 #剧剧抖有戏', author: '小田', stats: { like: 2125235, reply: 23060, favorite: 182542 } },
+    { vid: '7696846115509847167', title: '负汪者 当猪#田园犬#小狗崽#小奶狗#中华田园犬#总有一天所有回忆都会消失的', author: '乡野小狗狗', stats: { like: 450459, reply: 4144, favorite: 622880 } },
   ],
 };
 
