@@ -2266,54 +2266,55 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-10-22 00:33:01
+// 最后更新: 2026-10-23 00:30:16
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382212, reply: 1023, favorite: 39729 } },
-    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290887, reply: 808, favorite: 64864 } },
-    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267261, reply: 2325, favorite: 9367 } },
+    { bvid: 'BV1n7nF6WEco', title: '《三过车门而不入》', author: '伤心欲茄222', pic: 'https://i0.hdslb.com/bfs/archive/ff074f2db01b2dd745d01085ba749371f547a7c4.jpg', stats: { like: 206471, reply: 3301, favorite: 13137 } },
+    { bvid: 'BV1mgnP6yELh', title: '《南屏晚钟》来啦！', author: '李诺Noomi', pic: 'https://i1.hdslb.com/bfs/archive/6e7a970e4f679969853d80f8154b6ccb3d3a5b48.jpg', stats: { like: 158203, reply: 8689, favorite: 28332 } },
+    { bvid: 'BV1AHnB6NEhM', title: '《影之刃零》最终预告', author: '影之刃零', pic: 'https://i0.hdslb.com/bfs/archive/2fac0694cfde836d3d03db204b49e9d574e4f13f.jpg', stats: { like: 124559, reply: 22441, favorite: 25337 } },
   ],
   fashion: [
-    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222344, reply: 470, favorite: 33213 } },
-    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 91008, reply: 475, favorite: 26028 } },
-    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87307, reply: 304, favorite: 22500 } },
+    { bvid: 'BV1n7nF6WEco', title: '《三过车门而不入》', author: '伤心欲茄222', pic: 'https://i0.hdslb.com/bfs/archive/ff074f2db01b2dd745d01085ba749371f547a7c4.jpg', stats: { like: 206471, reply: 3301, favorite: 13137 } },
+    { bvid: 'BV1mgnP6yELh', title: '《南屏晚钟》来啦！', author: '李诺Noomi', pic: 'https://i1.hdslb.com/bfs/archive/6e7a970e4f679969853d80f8154b6ccb3d3a5b48.jpg', stats: { like: 158203, reply: 8689, favorite: 28332 } },
+    { bvid: 'BV1AHnB6NEhM', title: '《影之刃零》最终预告', author: '影之刃零', pic: 'https://i0.hdslb.com/bfs/archive/2fac0694cfde836d3d03db204b49e9d574e4f13f.jpg', stats: { like: 124559, reply: 22441, favorite: 25337 } },
   ],
   game: [
-    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 356253, reply: 2926, favorite: 759606 } },
-    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693980, reply: 4421, favorite: 129890 } },
-    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 518386, reply: 29223, favorite: 183657 } },
+    { bvid: 'BV17K411T7xC', title: '情侣游戏｜摸摸看这是哪里？你真的了解我的身体吗？', author: '羊咩咩和丫吖吖', pic: '//i0.hdslb.com/bfs/archive/f4184f2a5c59d2dbec9fec5a2ba0adb79dd7786a.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV15qns62EAA', title: '铸剑有点绕3 小游戏', author: '黑色星暮的白昼', pic: '//i1.hdslb.com/bfs/archive/8264c003aa06b67e93f0e566383dd214c171bb92.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '镜打野思路教程', author: '颐安教剪辑', pic: 'https://archive.biliimg.com/bfs/archive/c52ca09478a2aefe62b3e0bd22d97314a4ddc761.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   travel: [
-    { bvid: 'BV1wMJv6WErL', title: '以为又是一次遗憾炸机，直到打开素材的瞬间 感觉一切都值了', author: '飞焰fpv', pic: 'https://i2.hdslb.com/bfs/archive/1b272703660299e3f1a82a81adbf17ffd6141392.jpg', stats: { like: 236221, reply: 2353, favorite: 40079 } },
+    { bvid: 'BV1n7nF6WEco', title: '《三过车门而不入》', author: '伤心欲茄222', pic: 'https://i0.hdslb.com/bfs/archive/ff074f2db01b2dd745d01085ba749371f547a7c4.jpg', stats: { like: 206471, reply: 3301, favorite: 13137 } },
+    { bvid: 'BV1mgnP6yELh', title: '《南屏晚钟》来啦！', author: '李诺Noomi', pic: 'https://i1.hdslb.com/bfs/archive/6e7a970e4f679969853d80f8154b6ccb3d3a5b48.jpg', stats: { like: 158203, reply: 8689, favorite: 28332 } },
+    { bvid: 'BV1AHnB6NEhM', title: '《影之刃零》最终预告', author: '影之刃零', pic: 'https://i0.hdslb.com/bfs/archive/2fac0694cfde836d3d03db204b49e9d574e4f13f.jpg', stats: { like: 124559, reply: 22441, favorite: 25337 } },
   ],
   general: [
-    { bvid: 'BV1pGnn67EbB', title: '带着100万，我们见了成人网红...', author: '影视飓风', pic: 'https://i2.hdslb.com/bfs/archive/1bf5beb95e275c81e31f84f4798fdc1eaba4295f.jpg', stats: { like: 359642, reply: 8113, favorite: 120470 } },
-    { bvid: 'BV1rFnc69EFU', title: '鼻塞疏通教程', author: '农民老杨_Shandong', pic: 'https://i1.hdslb.com/bfs/archive/916d55f4dcce220f5883a043e1c394260c95c91f.jpg', stats: { like: 175361, reply: 3011, favorite: 245693 } },
-    { bvid: 'BV1MHJB63Emv', title: '不是 AI 特效！这才是《中国功夫》的魅力！', author: '含亮老师', pic: 'https://i1.hdslb.com/bfs/archive/ba8e18c62afae65081c781610690d11164ca22cc.jpg', stats: { like: 316799, reply: 7606, favorite: 45446 } },
+    { bvid: 'BV1n7nF6WEco', title: '《三过车门而不入》', author: '伤心欲茄222', pic: 'https://i0.hdslb.com/bfs/archive/ff074f2db01b2dd745d01085ba749371f547a7c4.jpg', stats: { like: 206471, reply: 3301, favorite: 13137 } },
+    { bvid: 'BV1mgnP6yELh', title: '《南屏晚钟》来啦！', author: '李诺Noomi', pic: 'https://i1.hdslb.com/bfs/archive/6e7a970e4f679969853d80f8154b6ccb3d3a5b48.jpg', stats: { like: 158203, reply: 8689, favorite: 28332 } },
+    { bvid: 'BV1AHnB6NEhM', title: '《影之刃零》最终预告', author: '影之刃零', pic: 'https://i0.hdslb.com/bfs/archive/2fac0694cfde836d3d03db204b49e9d574e4f13f.jpg', stats: { like: 124559, reply: 22441, favorite: 25337 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-10-22 00:33:26
+// 最后更新: 2026-10-23 00:30:43
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
   ],
   fashion: [
-    { vid: '7698712392386293369', title: '#电梯拍照打卡 #随手拍的电梯穿搭', author: '皮蛋瘦肉粥😇😇', stats: { like: 36113, reply: 963, favorite: 5466 } },
+    { vid: '7699417979340313306', title: '淘🆀785768675👗好看 #江琼摇手势舞 #手势舞#甜妹#08 #KINDD星星满印大拉链外套@抖音小助手 @DOU', author: '芋棉只只', stats: { like: 16623, reply: 73, favorite: 2011 } },
+    { vid: '7697882320510308258', title: '#拉流最火图文 #高级穿搭  #女装搭配  #高流量穿搭分享 #拉流爆款穿搭图文@抖音小助手 @DOU+小助手 @抖加🔥', author: '用户2680953983859', stats: { like: 17004, reply: 15, favorite: 86 } },
   ],
   game: [
     { vid: '7697865733396695930', title: '只有傻子才打游戏嘞 #游戏人的精神状态', author: '果冻果', stats: { like: 3665, reply: 193, favorite: 9924 } },
   ],
   travel: [
-    { vid: '7697446045864709426', title: '翡翠鸽子蛋制作全过程！ #手工 #vlog #翡翠', author: '翡翠货主阿牛', stats: { like: 40256, reply: 2315, favorite: 4465 } },
-    { vid: '7698712392386293369', title: '#电梯拍照打卡 #随手拍的电梯穿搭', author: '皮蛋瘦肉粥😇😇', stats: { like: 36113, reply: 963, favorite: 5466 } },
-    { vid: '7699010236208778058', title: '第一次来成都的外国家庭，猜猜他们来自哪？ 第一次见面，一家四口来成都旅游。没想到孩子也要一边玩，一边做作业😂…#外国人在', author: '本本Ben', stats: { like: 5989, reply: 166, favorite: 315 } },
+    { vid: '7697214052884427899', title: '离奇失踪，恳请马来西亚、各界热心人士帮助 #范琴 #范琴回家 #范琴手机笫二天被多次打通 #范琴手机一个月内仍多次响应 ', author: '范琴回家', stats: { like: 11119, reply: 3113, favorite: 4488 } },
   ],
   general: [
-    { vid: '7697819901050332659', title: '30岁的一天 在夏威夷看到了火山喷发 和我最爱的妈妈和最好的朋友 人生清单✅💖 #夏威夷火山 #地球隐藏副本 #火山 #', author: '叶00', stats: { like: 2688271, reply: 40418, favorite: 1486295 } },
-    { vid: '7698829851806122170', title: 'Dr.刘一不留神咋摔了呢～@肖战 #小城良方开播 #小城良方 #肖战 #刘铮亮', author: '肖战工作室', stats: { like: 920525, reply: 49649, favorite: 96629 } },
-    { vid: '7699137553701604658', title: '愿以后的我们，做快乐的事，见快乐的人。 人生重在体验，生活贵在知足。我们终会明白，真正的幸福从不是追逐繁华，而是珍惜拥有', author: '每日早安', stats: { like: 28344, reply: 3474, favorite: 92977 } },
+    { vid: '7697495265423184229', title: '急什么！少不了你的 #剧剧抖有戏', author: '小田', stats: { like: 3649520, reply: 34935, favorite: 337618 } },
+    { vid: '7698949074356464562', title: '确认过眼神，你是我想吃的咪 生活索然无味，想要品尝同事美味 #碧峰峡 #豹猫 #动物园 #保护动物 #动物的迷惑行为', author: '一群狐猴', stats: { like: 374779, reply: 9955, favorite: 330038 } },
+    { vid: '7697122078554888866', title: '声音好听就算了，表情还这么可爱 #猫咪 #猫', author: '小院喵物语', stats: { like: 392208, reply: 5517, favorite: 165540 } },
   ],
 };
 
