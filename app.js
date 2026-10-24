@@ -2266,37 +2266,37 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-10-23 00:30:16
+// 最后更新: 2026-10-24 00:25:40
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1n7nF6WEco', title: '《三过车门而不入》', author: '伤心欲茄222', pic: 'https://i0.hdslb.com/bfs/archive/ff074f2db01b2dd745d01085ba749371f547a7c4.jpg', stats: { like: 206471, reply: 3301, favorite: 13137 } },
-    { bvid: 'BV1mgnP6yELh', title: '《南屏晚钟》来啦！', author: '李诺Noomi', pic: 'https://i1.hdslb.com/bfs/archive/6e7a970e4f679969853d80f8154b6ccb3d3a5b48.jpg', stats: { like: 158203, reply: 8689, favorite: 28332 } },
-    { bvid: 'BV1AHnB6NEhM', title: '《影之刃零》最终预告', author: '影之刃零', pic: 'https://i0.hdslb.com/bfs/archive/2fac0694cfde836d3d03db204b49e9d574e4f13f.jpg', stats: { like: 124559, reply: 22441, favorite: 25337 } },
+    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382214, reply: 1023, favorite: 39724 } },
+    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290905, reply: 808, favorite: 64860 } },
+    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267261, reply: 2325, favorite: 9367 } },
   ],
   fashion: [
-    { bvid: 'BV1n7nF6WEco', title: '《三过车门而不入》', author: '伤心欲茄222', pic: 'https://i0.hdslb.com/bfs/archive/ff074f2db01b2dd745d01085ba749371f547a7c4.jpg', stats: { like: 206471, reply: 3301, favorite: 13137 } },
-    { bvid: 'BV1mgnP6yELh', title: '《南屏晚钟》来啦！', author: '李诺Noomi', pic: 'https://i1.hdslb.com/bfs/archive/6e7a970e4f679969853d80f8154b6ccb3d3a5b48.jpg', stats: { like: 158203, reply: 8689, favorite: 28332 } },
-    { bvid: 'BV1AHnB6NEhM', title: '《影之刃零》最终预告', author: '影之刃零', pic: 'https://i0.hdslb.com/bfs/archive/2fac0694cfde836d3d03db204b49e9d574e4f13f.jpg', stats: { like: 124559, reply: 22441, favorite: 25337 } },
+    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222351, reply: 470, favorite: 33210 } },
+    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 91010, reply: 476, favorite: 26029 } },
+    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87307, reply: 304, favorite: 22496 } },
   ],
   game: [
-    { bvid: 'BV17K411T7xC', title: '情侣游戏｜摸摸看这是哪里？你真的了解我的身体吗？', author: '羊咩咩和丫吖吖', pic: '//i0.hdslb.com/bfs/archive/f4184f2a5c59d2dbec9fec5a2ba0adb79dd7786a.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV15qns62EAA', title: '铸剑有点绕3 小游戏', author: '黑色星暮的白昼', pic: '//i1.hdslb.com/bfs/archive/8264c003aa06b67e93f0e566383dd214c171bb92.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: '镜打野思路教程', author: '颐安教剪辑', pic: 'https://archive.biliimg.com/bfs/archive/c52ca09478a2aefe62b3e0bd22d97314a4ddc761.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 356328, reply: 2938, favorite: 759686 } },
+    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693992, reply: 4422, favorite: 129884 } },
+    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 518424, reply: 29233, favorite: 183661 } },
   ],
   travel: [
-    { bvid: 'BV1n7nF6WEco', title: '《三过车门而不入》', author: '伤心欲茄222', pic: 'https://i0.hdslb.com/bfs/archive/ff074f2db01b2dd745d01085ba749371f547a7c4.jpg', stats: { like: 206471, reply: 3301, favorite: 13137 } },
-    { bvid: 'BV1mgnP6yELh', title: '《南屏晚钟》来啦！', author: '李诺Noomi', pic: 'https://i1.hdslb.com/bfs/archive/6e7a970e4f679969853d80f8154b6ccb3d3a5b48.jpg', stats: { like: 158203, reply: 8689, favorite: 28332 } },
-    { bvid: 'BV1AHnB6NEhM', title: '《影之刃零》最终预告', author: '影之刃零', pic: 'https://i0.hdslb.com/bfs/archive/2fac0694cfde836d3d03db204b49e9d574e4f13f.jpg', stats: { like: 124559, reply: 22441, favorite: 25337 } },
+    { bvid: 'BV1bAnp6wEap', title: '当男摄和女摄相遇……', author: '摄影师乌鸦Jewey', pic: 'https://i1.hdslb.com/bfs/archive/3f314f74e1212551182f89c62720d3ca512a7644.jpg', stats: { like: 120546, reply: 1492, favorite: 19133 } },
+    { bvid: 'BV1mfn662EHb', title: '再鉴定几个洛克王国的精灵', author: '无穷小亮的科普日常', pic: 'https://i1.hdslb.com/bfs/archive/b63bc2e22df13e81a66d3423659a918f63a03153.jpg', stats: { like: 97297, reply: 2477, favorite: 8582 } },
+    { bvid: 'BV12inz6CE4z', title: '24岁美国乡下大学天才"讲师"：叛逆狂人的潇洒生活！', author: '街头小小小霸王', pic: 'https://i1.hdslb.com/bfs/archive/c1036b1a32e4f334ca7b4310d5fa4428fa293826.jpg', stats: { like: 29994, reply: 4304, favorite: 9030 } },
   ],
   general: [
-    { bvid: 'BV1n7nF6WEco', title: '《三过车门而不入》', author: '伤心欲茄222', pic: 'https://i0.hdslb.com/bfs/archive/ff074f2db01b2dd745d01085ba749371f547a7c4.jpg', stats: { like: 206471, reply: 3301, favorite: 13137 } },
-    { bvid: 'BV1mgnP6yELh', title: '《南屏晚钟》来啦！', author: '李诺Noomi', pic: 'https://i1.hdslb.com/bfs/archive/6e7a970e4f679969853d80f8154b6ccb3d3a5b48.jpg', stats: { like: 158203, reply: 8689, favorite: 28332 } },
-    { bvid: 'BV1AHnB6NEhM', title: '《影之刃零》最终预告', author: '影之刃零', pic: 'https://i0.hdslb.com/bfs/archive/2fac0694cfde836d3d03db204b49e9d574e4f13f.jpg', stats: { like: 124559, reply: 22441, favorite: 25337 } },
+    { bvid: 'BV1rFnc69EFU', title: '鼻塞疏通教程', author: '农民老杨_Shandong', pic: 'https://i1.hdslb.com/bfs/archive/916d55f4dcce220f5883a043e1c394260c95c91f.jpg', stats: { like: 248025, reply: 3737, favorite: 334871 } },
+    { bvid: 'BV1xrnz6gEVD', title: '折1万次，会坏吗？iPhone Duo深度评测', author: '影视飓风', pic: 'https://i0.hdslb.com/bfs/archive/ccacc1c956715cf06db7a29b634c3c269654acea.jpg', stats: { like: 347220, reply: 42642, favorite: 69427 } },
+    { bvid: 'BV1nonu6mEqe', title: '🐧大学不同专业的期末状态🐧', author: '吃撑的皮卡丘y', pic: 'https://i0.hdslb.com/bfs/archive/1c65d0c8a522f28a6966383752a812a0371cd865.jpg', stats: { like: 353085, reply: 7769, favorite: 68601 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-10-23 00:30:43
+// 最后更新: 2026-10-24 00:26:04
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
@@ -2312,9 +2312,9 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7697214052884427899', title: '离奇失踪，恳请马来西亚、各界热心人士帮助 #范琴 #范琴回家 #范琴手机笫二天被多次打通 #范琴手机一个月内仍多次响应 ', author: '范琴回家', stats: { like: 11119, reply: 3113, favorite: 4488 } },
   ],
   general: [
-    { vid: '7697495265423184229', title: '急什么！少不了你的 #剧剧抖有戏', author: '小田', stats: { like: 3649520, reply: 34935, favorite: 337618 } },
-    { vid: '7698949074356464562', title: '确认过眼神，你是我想吃的咪 生活索然无味，想要品尝同事美味 #碧峰峡 #豹猫 #动物园 #保护动物 #动物的迷惑行为', author: '一群狐猴', stats: { like: 374779, reply: 9955, favorite: 330038 } },
-    { vid: '7697122078554888866', title: '声音好听就算了，表情还这么可爱 #猫咪 #猫', author: '小院喵物语', stats: { like: 392208, reply: 5517, favorite: 165540 } },
+    { vid: '7698447078497783074', title: '因为方便面便宜所以有了见面的钱 #emo #忧郁', author: '眼镜超（汽修二班）', stats: { like: 2687763, reply: 49096, favorite: 2657801 } },
+    { vid: '7697486203117224867', title: '当一群体育生 布置婚房时.. #小小学弟 #体育生', author: '小小学弟曾枭瀛', stats: { like: 2162970, reply: 13661, favorite: 168686 } },
+    { vid: '7697582839126523833', title: '和我最最最爱的老师一起！ #想回到你身边 #转场 #h3R3', author: '沐梓能（发疯版）', stats: { like: 550402, reply: 4109, favorite: 17359 } },
   ],
 };
 
