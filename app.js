@@ -2266,44 +2266,43 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-10-24 00:25:40
+// 最后更新: 2026-10-25 00:09:20
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382214, reply: 1023, favorite: 39724 } },
-    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290905, reply: 808, favorite: 64860 } },
-    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267261, reply: 2325, favorite: 9367 } },
+    { bvid: 'BV1U3n46GEzY', title: '《绝区零》先导演示丨挽昼', author: '绝区零', pic: 'https://i2.hdslb.com/bfs/archive/b08dd70bdc097968dd8318bc65b3e2eafc2f2c27.jpg', stats: { like: 581777, reply: 39292, favorite: 358036 } },
+    { bvid: 'BV1oTnW67E4n', title: '11天，我们干掉祸害20多年的传销头目！', author: '温柔JUNZ', pic: 'https://i0.hdslb.com/bfs/archive/eb7350387aefed92e5045057162d1b32b85fc74f.jpg', stats: { like: 290460, reply: 3620, favorite: 35659 } },
+    { bvid: 'BV14Enb6LEDe', title: '人工耳蜗里的声音，到底是什么样的？', author: '亿点点不一样', pic: 'https://i0.hdslb.com/bfs/archive/87f06529220d95eba6316614124a1732983fa14d.jpg', stats: { like: 254358, reply: 3470, favorite: 47261 } },
   ],
   fashion: [
-    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222351, reply: 470, favorite: 33210 } },
-    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 91010, reply: 476, favorite: 26029 } },
-    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87307, reply: 304, favorite: 22496 } },
+    { bvid: 'BV1kAnz6KEnm', title: '这期我教你“秋冬怎么穿得有质感”？10套任何男生都可以抄的秋冬穿搭 0-20度都能适配！秋冬穿搭｜男生穿搭｜通勤穿搭｜穿搭分享｜一周穿搭', author: '痴五安chammy', pic: '//i1.hdslb.com/bfs/archive/518801ef0a81dd2c8d28c18b025ba9585dc207eb.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1yXHK62EKE', title: '不搞叠穿，纯过日子的衣服合集！', author: '大肥圆子-测评号', pic: '//i2.hdslb.com/bfs/archive/6888e2626d4a7d8ab2d357d08fd32db609cb682d.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: '', title: '穿搭入门课：普通人找到自己风格的完整方法', author: '简笙认知局', pic: 'https://i0.hdslb.com/bfs/album/9b870c9fb6df8d8a978c9fd95a50ce94512268557.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   game: [
-    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 356328, reply: 2938, favorite: 759686 } },
-    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 693992, reply: 4422, favorite: 129884 } },
-    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 518424, reply: 29233, favorite: 183661 } },
+    { bvid: 'BV1jYnB6oEsn', title: '包塘模拟器，包了鱼塘不会亏吧？', author: '小黄蜂游戏解说', pic: '//i0.hdslb.com/bfs/archive/467f81864d56945a4a429e53ac1bed00e8a7ee41.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1TKHM6oEiY', title: '『转生为成人游戏魔法探险家』第5话', author: 'KAYGEZ', pic: '//i0.hdslb.com/bfs/archive/16cb118ba3247b14061172c03cd09fca581edac9.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV11gn16REzZ', title: '我要在游戏里面玩平板电脑！ROBLOX', author: '麟麟七的游戏日常', pic: '//i1.hdslb.com/bfs/archive/1a39bdba3708adee6fe6f72073da1b2d06c85416.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   travel: [
-    { bvid: 'BV1bAnp6wEap', title: '当男摄和女摄相遇……', author: '摄影师乌鸦Jewey', pic: 'https://i1.hdslb.com/bfs/archive/3f314f74e1212551182f89c62720d3ca512a7644.jpg', stats: { like: 120546, reply: 1492, favorite: 19133 } },
-    { bvid: 'BV1mfn662EHb', title: '再鉴定几个洛克王国的精灵', author: '无穷小亮的科普日常', pic: 'https://i1.hdslb.com/bfs/archive/b63bc2e22df13e81a66d3423659a918f63a03153.jpg', stats: { like: 97297, reply: 2477, favorite: 8582 } },
-    { bvid: 'BV12inz6CE4z', title: '24岁美国乡下大学天才"讲师"：叛逆狂人的潇洒生活！', author: '街头小小小霸王', pic: 'https://i1.hdslb.com/bfs/archive/c1036b1a32e4f334ca7b4310d5fa4428fa293826.jpg', stats: { like: 29994, reply: 4304, favorite: 9030 } },
+    { bvid: 'BV1U3n46GEzY', title: '《绝区零》先导演示丨挽昼', author: '绝区零', pic: 'https://i2.hdslb.com/bfs/archive/b08dd70bdc097968dd8318bc65b3e2eafc2f2c27.jpg', stats: { like: 581777, reply: 39292, favorite: 358036 } },
+    { bvid: 'BV1oTnW67E4n', title: '11天，我们干掉祸害20多年的传销头目！', author: '温柔JUNZ', pic: 'https://i0.hdslb.com/bfs/archive/eb7350387aefed92e5045057162d1b32b85fc74f.jpg', stats: { like: 290460, reply: 3620, favorite: 35659 } },
+    { bvid: 'BV14Enb6LEDe', title: '人工耳蜗里的声音，到底是什么样的？', author: '亿点点不一样', pic: 'https://i0.hdslb.com/bfs/archive/87f06529220d95eba6316614124a1732983fa14d.jpg', stats: { like: 254358, reply: 3470, favorite: 47261 } },
   ],
   general: [
-    { bvid: 'BV1rFnc69EFU', title: '鼻塞疏通教程', author: '农民老杨_Shandong', pic: 'https://i1.hdslb.com/bfs/archive/916d55f4dcce220f5883a043e1c394260c95c91f.jpg', stats: { like: 248025, reply: 3737, favorite: 334871 } },
-    { bvid: 'BV1xrnz6gEVD', title: '折1万次，会坏吗？iPhone Duo深度评测', author: '影视飓风', pic: 'https://i0.hdslb.com/bfs/archive/ccacc1c956715cf06db7a29b634c3c269654acea.jpg', stats: { like: 347220, reply: 42642, favorite: 69427 } },
-    { bvid: 'BV1nonu6mEqe', title: '🐧大学不同专业的期末状态🐧', author: '吃撑的皮卡丘y', pic: 'https://i0.hdslb.com/bfs/archive/1c65d0c8a522f28a6966383752a812a0371cd865.jpg', stats: { like: 353085, reply: 7769, favorite: 68601 } },
+    { bvid: 'BV1U3n46GEzY', title: '《绝区零》先导演示丨挽昼', author: '绝区零', pic: 'https://i2.hdslb.com/bfs/archive/b08dd70bdc097968dd8318bc65b3e2eafc2f2c27.jpg', stats: { like: 581777, reply: 39292, favorite: 358036 } },
+    { bvid: 'BV1oTnW67E4n', title: '11天，我们干掉祸害20多年的传销头目！', author: '温柔JUNZ', pic: 'https://i0.hdslb.com/bfs/archive/eb7350387aefed92e5045057162d1b32b85fc74f.jpg', stats: { like: 290460, reply: 3620, favorite: 35659 } },
+    { bvid: 'BV14Enb6LEDe', title: '人工耳蜗里的声音，到底是什么样的？', author: '亿点点不一样', pic: 'https://i0.hdslb.com/bfs/archive/87f06529220d95eba6316614124a1732983fa14d.jpg', stats: { like: 254358, reply: 3470, favorite: 47261 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-10-24 00:26:04
+// 最后更新: 2026-10-25 00:09:43
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
   ],
   fashion: [
-    { vid: '7699417979340313306', title: '淘🆀785768675👗好看 #江琼摇手势舞 #手势舞#甜妹#08 #KINDD星星满印大拉链外套@抖音小助手 @DOU', author: '芋棉只只', stats: { like: 16623, reply: 73, favorite: 2011 } },
-    { vid: '7697882320510308258', title: '#拉流最火图文 #高级穿搭  #女装搭配  #高流量穿搭分享 #拉流爆款穿搭图文@抖音小助手 @DOU+小助手 @抖加🔥', author: '用户2680953983859', stats: { like: 17004, reply: 15, favorite: 86 } },
+    { vid: '7699764182145803968', title: '#印花工艺 #服装印花工艺 #纯手工印花工艺 #丝网印刷', author: '网印晨哥（收徒）', stats: { like: 215, reply: 2, favorite: 4 } },
   ],
   game: [
     { vid: '7697865733396695930', title: '只有傻子才打游戏嘞 #游戏人的精神状态', author: '果冻果', stats: { like: 3665, reply: 193, favorite: 9924 } },
@@ -2312,9 +2311,9 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7697214052884427899', title: '离奇失踪，恳请马来西亚、各界热心人士帮助 #范琴 #范琴回家 #范琴手机笫二天被多次打通 #范琴手机一个月内仍多次响应 ', author: '范琴回家', stats: { like: 11119, reply: 3113, favorite: 4488 } },
   ],
   general: [
-    { vid: '7698447078497783074', title: '因为方便面便宜所以有了见面的钱 #emo #忧郁', author: '眼镜超（汽修二班）', stats: { like: 2687763, reply: 49096, favorite: 2657801 } },
-    { vid: '7697486203117224867', title: '当一群体育生 布置婚房时.. #小小学弟 #体育生', author: '小小学弟曾枭瀛', stats: { like: 2162970, reply: 13661, favorite: 168686 } },
-    { vid: '7697582839126523833', title: '和我最最最爱的老师一起！ #想回到你身边 #转场 #h3R3', author: '沐梓能（发疯版）', stats: { like: 550402, reply: 4109, favorite: 17359 } },
+    { vid: '7700178206066608889', title: '希望以后再次闪耀时，看到 还是会热泪盈眶！#追一种很新的光 #烟花 #无人机烟花秀 #第一视角 #视觉震撼', author: '烟花大玩家', stats: { like: 1057438, reply: 22527, favorite: 913726 } },
+    { vid: '7699088174379421544', title: '要抱抱！#hellobaby要抱抱 #江琼摇 #氛围感', author: '脆脆鲨', stats: { like: 857110, reply: 4601, favorite: 73826 } },
+    { vid: '7698038917546877819', title: '出来玩儿吃饭吃的很好就是闹个不停必须我吃一口她也要吃一口😂#海洋光谱号#夏予初', author: '灿二哥', stats: { like: 399287, reply: 3608, favorite: 57004 } },
   ],
 };
 
