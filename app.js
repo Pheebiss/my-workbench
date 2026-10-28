@@ -2266,37 +2266,36 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-10-27 01:20:52
+// 最后更新: 2026-10-28 01:04:58
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1kZHK6VEgZ', title: '马尔芙小姐，我能请你共舞一曲吗？｜PV', author: 'Foyege弗曳哥', pic: 'https://i1.hdslb.com/bfs/archive/1220c3798e5c8d87af8395268c483b7be6a4ef6e.jpg', stats: { like: 179700, reply: 19179, favorite: 61221 } },
-    { bvid: 'BV1c5HK6CEPu', title: '双人抬棺', author: 'Z贤者', pic: 'https://i1.hdslb.com/bfs/archive/58b11f4ac80a6f6626e55ff98bde57ef1b1284d4.jpg', stats: { like: 166274, reply: 3219, favorite: 33691 } },
-    { bvid: 'BV14cHP6yEYj', title: '消防车路权大还是校车路权更大？', author: '改车大全', pic: 'https://i1.hdslb.com/bfs/archive/c6d8a71f66e5bf8312c7b1581b11ba5b5e3b9bb9.jpg', stats: { like: 154865, reply: 8866, favorite: 17488 } },
+    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382215, reply: 1024, favorite: 39716 } },
+    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290930, reply: 809, favorite: 64862 } },
+    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267260, reply: 2325, favorite: 9366 } },
   ],
   fashion: [
-    { bvid: 'BV1UBn86nEz7', title: '今天开始，请你投资自己！9套秋冬男生穿搭｜外套｜秋季穿搭｜裤子｜羽绒服', author: '我是路十六', pic: '//i1.hdslb.com/bfs/archive/7a0ee8d5156d760df95a8bf12c874901df1e4126.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1kAnz6KEnm', title: '这期我教你“秋冬怎么穿得有质感”？10套任何男生都可以抄的秋冬穿搭 0-20度都能适配！秋冬穿搭｜男生穿搭｜通勤穿搭｜穿搭分享｜一周穿搭', author: '痴五安chammy', pic: '//i1.hdslb.com/bfs/archive/518801ef0a81dd2c8d28c18b025ba9585dc207eb.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: '《你天生的基因穿搭风格·精讲基础课》', author: 'KK白生', pic: 'https://archive.biliimg.com/bfs/archive/2e166fe84ee405e34ae91cf77f0002528b883867.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222371, reply: 470, favorite: 33210 } },
+    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 91016, reply: 476, favorite: 26034 } },
+    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87307, reply: 304, favorite: 22489 } },
   ],
   game: [
-    { bvid: 'BV1kZHK6VEgZ', title: '马尔芙小姐，我能请你共舞一曲吗？｜PV', author: 'Foyege弗曳哥', pic: 'https://i1.hdslb.com/bfs/archive/1220c3798e5c8d87af8395268c483b7be6a4ef6e.jpg', stats: { like: 179700, reply: 19179, favorite: 61221 } },
-    { bvid: 'BV1c5HK6CEPu', title: '双人抬棺', author: 'Z贤者', pic: 'https://i1.hdslb.com/bfs/archive/58b11f4ac80a6f6626e55ff98bde57ef1b1284d4.jpg', stats: { like: 166274, reply: 3219, favorite: 33691 } },
-    { bvid: 'BV14cHP6yEYj', title: '消防车路权大还是校车路权更大？', author: '改车大全', pic: 'https://i1.hdslb.com/bfs/archive/c6d8a71f66e5bf8312c7b1581b11ba5b5e3b9bb9.jpg', stats: { like: 154865, reply: 8866, favorite: 17488 } },
+    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 356593, reply: 2969, favorite: 759932 } },
+    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 694036, reply: 4453, favorite: 129891 } },
+    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 518532, reply: 29291, favorite: 183706 } },
   ],
   travel: [
-    { bvid: 'BV1kZHK6VEgZ', title: '马尔芙小姐，我能请你共舞一曲吗？｜PV', author: 'Foyege弗曳哥', pic: 'https://i1.hdslb.com/bfs/archive/1220c3798e5c8d87af8395268c483b7be6a4ef6e.jpg', stats: { like: 179700, reply: 19179, favorite: 61221 } },
-    { bvid: 'BV1c5HK6CEPu', title: '双人抬棺', author: 'Z贤者', pic: 'https://i1.hdslb.com/bfs/archive/58b11f4ac80a6f6626e55ff98bde57ef1b1284d4.jpg', stats: { like: 166274, reply: 3219, favorite: 33691 } },
-    { bvid: 'BV14cHP6yEYj', title: '消防车路权大还是校车路权更大？', author: '改车大全', pic: 'https://i1.hdslb.com/bfs/archive/c6d8a71f66e5bf8312c7b1581b11ba5b5e3b9bb9.jpg', stats: { like: 154865, reply: 8866, favorite: 17488 } },
+    { bvid: 'BV12qnt6VEM1', title: '人性、欲望与奇观，自驾拉斯维加斯，现实夜之城什么样？', author: '超Carry的柴西', pic: 'https://i2.hdslb.com/bfs/archive/65c7b43fb6fdd34cfc122c76fd9e90ccf4c5401d.jpg', stats: { like: 237002, reply: 5215, favorite: 65963 } },
+    { bvid: 'BV1ZjHV6sEfv', title: '贵州真是旅游宝藏，贵州人嘴真严！', author: '蓝战非OvO', pic: 'https://i1.hdslb.com/bfs/archive/9763249d7acabf7a24c5f32d89cb249f4cf68962.jpg', stats: { like: 63157, reply: 2352, favorite: 4790 } },
   ],
   general: [
-    { bvid: 'BV1kZHK6VEgZ', title: '马尔芙小姐，我能请你共舞一曲吗？｜PV', author: 'Foyege弗曳哥', pic: 'https://i1.hdslb.com/bfs/archive/1220c3798e5c8d87af8395268c483b7be6a4ef6e.jpg', stats: { like: 179700, reply: 19179, favorite: 61221 } },
-    { bvid: 'BV1c5HK6CEPu', title: '双人抬棺', author: 'Z贤者', pic: 'https://i1.hdslb.com/bfs/archive/58b11f4ac80a6f6626e55ff98bde57ef1b1284d4.jpg', stats: { like: 166274, reply: 3219, favorite: 33691 } },
-    { bvid: 'BV14cHP6yEYj', title: '消防车路权大还是校车路权更大？', author: '改车大全', pic: 'https://i1.hdslb.com/bfs/archive/c6d8a71f66e5bf8312c7b1581b11ba5b5e3b9bb9.jpg', stats: { like: 154865, reply: 8866, favorite: 17488 } },
+    { bvid: 'BV1U3n46GEzY', title: '《绝区零》先导演示丨挽昼', author: '绝区零', pic: 'https://i2.hdslb.com/bfs/archive/b08dd70bdc097968dd8318bc65b3e2eafc2f2c27.jpg', stats: { like: 744198, reply: 50752, favorite: 443805 } },
+    { bvid: 'BV1w2Hw6KE1j', title: '写了全国所有省份的love me！', author: '西柚甜瓜', pic: 'https://i2.hdslb.com/bfs/archive/f1d952d55688049f5e74a18819b92696d7433bd4.jpg', stats: { like: 585931, reply: 10631, favorite: 214365 } },
+    { bvid: 'BV1yVn16XEz7', title: '《话术博弈》如何优雅的套出对方的真心话？', author: '站在外面的Q', pic: 'https://i1.hdslb.com/bfs/archive/1c28ff35bb30e5bf2d06eab00e870c1c791e5542.jpg', stats: { like: 266509, reply: 2357, favorite: 227898 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-10-27 01:21:17
+// 最后更新: 2026-10-28 01:05:21
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
@@ -2312,9 +2311,9 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7700927058134789331', title: '🏠vlog｜给两位全职游戏人当网管是什么体验 又是一个熬穿的深夜#vlog日常 #厨房日记#网管 #三角洲行动 #三角洲', author: '周露水的生活日记📔', stats: { like: 39771, reply: 778, favorite: 2290 } },
   ],
   general: [
-    { vid: '7700548094387145994', title: '今年小王又要搞什么东西？ #2026王者荣耀共创之夜', author: 'AG超玩会梦泪', stats: { like: 674720, reply: 5375, favorite: 143918 } },
-    { vid: '7698751724115423717', title: '太凶猛了也#夜遇猛兽', author: 'Linda', stats: { like: 411347, reply: 2269, favorite: 164558 } },
-    { vid: '7700453132375469673', title: '当小狗生气时 突然亲它一口结果…#柯基 #柯基小短腿 #柯基柯基 #狗狗 #萌宠出道计划', author: '抱抱的日记本', stats: { like: 279607, reply: 1881, favorite: 74290 } },
+    { vid: '7700269135109269440', title: '根本就没有这样的转 我是原创', author: '下雨', stats: { like: 8660433, reply: 41786, favorite: 4204917 } },
+    { vid: '7699513424795028772', title: '带猫去到世界尽头，北极格陵兰岛 #创作阶梯计划 #抖音精选app#万物可爱计划', author: '海棠HaiTang', stats: { like: 2798222, reply: 26656, favorite: 607405 } },
+    { vid: '7700582574406576249', title: '要抱抱#经纬线', author: '一只邪恶的栗子', stats: { like: 657230, reply: 1323, favorite: 47600 } },
   ],
 };
 
