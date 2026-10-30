@@ -2266,37 +2266,35 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-10-29 01:40:24
+// 最后更新: 2026-10-30 01:47:27
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1hk5k6yE1z', title: '超详细全流程步骤拆解！日常全妆教程（新老手皆宜版）', author: '姜乘澜', pic: '//i1.hdslb.com/bfs/archive/844d18e571fa51fcaf5cbec859530c5d831b9363.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1iU4y1L7G2', title: '【化妆入门课】0基础化妆变美逆袭课！易上手|化妆技巧|化妆教程|系统课|手把手教化妆|毕业变美指南', author: 'JSMN-Me', pic: '//i1.hdslb.com/bfs/archive/13f3dbf71ada18ba13be81fe20814b6d117f2d7a.png', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: '中国古典妆造：从入门到精通（线上视频课）', author: '华服志', pic: 'https://archive.biliimg.com/bfs/archive/7b363d0f2cd137ed6960e8c785462f96906bf322.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382214, reply: 1024, favorite: 39712 } },
+    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290933, reply: 810, favorite: 64859 } },
+    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267260, reply: 2325, favorite: 9365 } },
   ],
   fashion: [
-    { bvid: 'BV1mdxN68E7F', title: '被人买凶杀死的自媒体人徽剑【热点详解01】', author: '温柔JUNZ', pic: 'https://i0.hdslb.com/bfs/archive/f0babfb014186b67e5f612e82b489757749fd726.jpg', stats: { like: 371399, reply: 12272, favorite: 45841 } },
-    { bvid: 'BV1kMxM6FECM', title: '旗舰手机芯片大横评：苹果高通发哥玄戒谁最强？', author: '极客湾Geekerwan', pic: 'https://i1.hdslb.com/bfs/archive/a5504c58614fd9d4890ab2fa11d50b49dd303fcc.jpg', stats: { like: 254327, reply: 37987, favorite: 88996 } },
-    { bvid: 'BV16VxM6dEeb', title: '可观测宇宙最可爱的古风大肥鱼', author: 'VKmich16', pic: 'https://i1.hdslb.com/bfs/archive/f1a5e16be8bb9547fbc76d8842180cff5565075a.jpg', stats: { like: 181088, reply: 3196, favorite: 22130 } },
+    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222377, reply: 470, favorite: 33206 } },
+    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 91018, reply: 476, favorite: 26037 } },
+    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87307, reply: 304, favorite: 22489 } },
   ],
   game: [
-    { bvid: 'BV1mdxN68E7F', title: '被人买凶杀死的自媒体人徽剑【热点详解01】', author: '温柔JUNZ', pic: 'https://i0.hdslb.com/bfs/archive/f0babfb014186b67e5f612e82b489757749fd726.jpg', stats: { like: 371399, reply: 12272, favorite: 45841 } },
-    { bvid: 'BV1kMxM6FECM', title: '旗舰手机芯片大横评：苹果高通发哥玄戒谁最强？', author: '极客湾Geekerwan', pic: 'https://i1.hdslb.com/bfs/archive/a5504c58614fd9d4890ab2fa11d50b49dd303fcc.jpg', stats: { like: 254327, reply: 37987, favorite: 88996 } },
-    { bvid: 'BV16VxM6dEeb', title: '可观测宇宙最可爱的古风大肥鱼', author: 'VKmich16', pic: 'https://i1.hdslb.com/bfs/archive/f1a5e16be8bb9547fbc76d8842180cff5565075a.jpg', stats: { like: 181088, reply: 3196, favorite: 22130 } },
+    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 356714, reply: 2980, favorite: 760085 } },
+    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 694048, reply: 4457, favorite: 129882 } },
+    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 518569, reply: 29300, favorite: 183722 } },
   ],
   travel: [
-    { bvid: 'BV1RhnF6CE6f', title: '以前带床去旅行，现在只能带拐去旅行了', author: '床哥乡村美食记', pic: '//i0.hdslb.com/bfs/archive/e2b5de7e9f7b1953387bae36ba3de6579ec70916.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: 'BV1CYnd6SEU5', title: '跟我在淄博大吃特吃！做旅行计划、吃蛤蜊鸡、插花｜芽腿vlog258', author: '芽腿', pic: '//i0.hdslb.com/bfs/archive/9548efe707f4557fc31cb9d88ecffa8a9ede107a.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
-    { bvid: '', title: '毛大王沉浸式生活旅行实用口语（四合一）', author: 'Arlis毛大王', pic: 'https://archive.biliimg.com/bfs/archive/bbb50460dffaaf1524193cbb61dda43b50f58c1a.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1rLxM6sEPk', title: '挑战穿轮滑鞋全程爬武功山登顶后在滑下来', author: '爱健身小庞', pic: 'https://i1.hdslb.com/bfs/archive/d06b74956e48562b8eb8dd68084be48bd62e40ae.jpg', stats: { like: 122331, reply: 3599, favorite: 7107 } },
   ],
   general: [
-    { bvid: 'BV1mdxN68E7F', title: '被人买凶杀死的自媒体人徽剑【热点详解01】', author: '温柔JUNZ', pic: 'https://i0.hdslb.com/bfs/archive/f0babfb014186b67e5f612e82b489757749fd726.jpg', stats: { like: 371399, reply: 12272, favorite: 45841 } },
-    { bvid: 'BV1kMxM6FECM', title: '旗舰手机芯片大横评：苹果高通发哥玄戒谁最强？', author: '极客湾Geekerwan', pic: 'https://i1.hdslb.com/bfs/archive/a5504c58614fd9d4890ab2fa11d50b49dd303fcc.jpg', stats: { like: 254327, reply: 37987, favorite: 88996 } },
-    { bvid: 'BV16VxM6dEeb', title: '可观测宇宙最可爱的古风大肥鱼', author: 'VKmich16', pic: 'https://i1.hdslb.com/bfs/archive/f1a5e16be8bb9547fbc76d8842180cff5565075a.jpg', stats: { like: 181088, reply: 3196, favorite: 22130 } },
+    { bvid: 'BV1mdxN68E7F', title: '被人买凶杀死的自媒体人徽剑【热点详解01】', author: '温柔JUNZ', pic: 'https://i0.hdslb.com/bfs/archive/f0babfb014186b67e5f612e82b489757749fd726.jpg', stats: { like: 468914, reply: 15266, favorite: 57886 } },
+    { bvid: 'BV1kMxM6FECM', title: '旗舰手机芯片大横评：苹果高通发哥玄戒谁最强？', author: '极客湾Geekerwan', pic: 'https://i1.hdslb.com/bfs/archive/a5504c58614fd9d4890ab2fa11d50b49dd303fcc.jpg', stats: { like: 286625, reply: 41811, favorite: 99070 } },
+    { bvid: 'BV1kZHK6VEgZ', title: '马尔芙小姐，我能请你共舞一曲吗？｜PV', author: 'Foyege弗曳哥', pic: 'https://i1.hdslb.com/bfs/archive/1220c3798e5c8d87af8395268c483b7be6a4ef6e.jpg', stats: { like: 283075, reply: 32911, favorite: 104601 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-10-29 01:40:49
+// 最后更新: 2026-10-30 01:47:52
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7679624885492420233', title: '女生睡前试试这4个动作越睡越美，太好睡了～之前发的睡前四个动作爆了，好多姐妹说做了睡得好香，真好，这次继续分享  #健康', author: '金莹在家动起来', stats: { like: 11897, reply: 179, favorite: 11371 } },
@@ -2309,12 +2307,12 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7700927058134789331', title: '🏠vlog｜给两位全职游戏人当网管是什么体验 又是一个熬穿的深夜#vlog日常 #厨房日记#网管 #三角洲行动 #三角洲', author: '周露水的生活日记📔', stats: { like: 39771, reply: 778, favorite: 2290 } },
   ],
   travel: [
-    { vid: '7700927058134789331', title: '🏠vlog｜给两位全职游戏人当网管是什么体验 又是一个熬穿的深夜#vlog日常 #厨房日记#网管 #三角洲行动 #三角洲', author: '周露水的生活日记📔', stats: { like: 39771, reply: 778, favorite: 2290 } },
+    { vid: '7702103899075669413', title: '《明天会更好的，不是吗》 #明天会更好 嘴角要上扬  #减脂计划与脂肪死磕到底 #减肥称体重 #体重记录分享 #减肥打卡', author: '@孙1️⃣雯（27岁版）', stats: { like: 1291, reply: 406, favorite: 314 } },
   ],
   general: [
-    { vid: '7700507340823657615', title: '#路遇小猫 #熊蜂咪 小咪面壁思过前的准备工作还知道收尾巴的规矩猫', author: '耶～', stats: { like: 1762795, reply: 8526, favorite: 843890 } },
-    { vid: '7701646879113428731', title: '剧情纯属真实 #万宁与晚安', author: '万宁叔-', stats: { like: 532003, reply: 6974, favorite: 237657 } },
-    { vid: '7701634738008262266', title: '猫猫我呀，也喜欢和消防员叔叔玩。#肩上的猫', author: '韩进财🎾', stats: { like: 142134, reply: 4087, favorite: 59913 } },
+    { vid: '7701728265522697585', title: '我一开始还以为对面是云☁️，第一次真切感受到巨物带来的强烈压迫感 #巨物恐惧症 #大山压迫感', author: '杰叔叔（大山白天画面正在整理）', stats: { like: 1854862, reply: 37215, favorite: 854338 } },
+    { vid: '7701253986132697003', title: '你也听说过我的故事？#搞笑 #校园故事系列 #内容过于真实 #万万想不到 #沙雕', author: '李达华', stats: { like: 425295, reply: 4348, favorite: 246492 } },
+    { vid: '7701957086120751835', title: '能谈这么多年真是有原因的#恋爱技巧', author: '十一日记', stats: { like: 72433, reply: 4431, favorite: 112743 } },
   ],
 };
 
