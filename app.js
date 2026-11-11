@@ -2266,37 +2266,37 @@ const VIDEO_CATEGORIES = [
 ];
 
 // B站兜底数据（由 GitHub Actions 每日自动更新，真实排行榜视频，每类3个，随机展示1个，均可播放）
-// 最后更新: 2026-11-10 04:00:58
+// 最后更新: 2026-11-11 01:48:00
 const FALLBACK_BILI_VIDEOS = {
   beauty: [
-    { bvid: 'BV1EjoXYwECL', title: '“请宿主做好准备”', author: 'Doki蟹泥泥', pic: 'https://i2.hdslb.com/bfs/archive/0492e08433ed30dae978dcfdbbbc656b3f949ccf.jpg', stats: { like: 382214, reply: 1024, favorite: 39689 } },
-    { bvid: 'BV1gwXrYMELR', title: '【小马宝莉｜海妖三姐妹】Abracadabra', author: 'llSHEEP-羊ll', pic: 'https://i1.hdslb.com/bfs/archive/41249f7252d92d08bcc74557315064cd397b249a.jpg', stats: { like: 290982, reply: 811, favorite: 64843 } },
-    { bvid: 'BV13uQrYzEMW', title: '眼睛不好请捐给有需要的人', author: '幺玖伍195', pic: 'https://i0.hdslb.com/bfs/archive/efea293810ad4f06305b0122050efd441167b656.jpg', stats: { like: 267258, reply: 2325, favorite: 9356 } },
+    { bvid: 'BV1hk5k6yE1z', title: '超详细全流程步骤拆解！日常全妆教程（新老手皆宜版）', author: '姜乘澜', pic: '//i1.hdslb.com/bfs/archive/844d18e571fa51fcaf5cbec859530c5d831b9363.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV12Z5v6nEdb', title: '化出韩味！掌握韩妆精髓 速通版', author: '姜乘澜', pic: '//i0.hdslb.com/bfs/archive/35af3d8a97f9032950e0fade5d8eae6ad11492d5.jpg', stats: { like: 0, reply: 0, favorite: 0 } },
+    { bvid: 'BV1iU4y1L7G2', title: '【化妆入门课】0基础化妆变美逆袭课！易上手|化妆技巧|化妆教程|系统课|手把手教化妆|毕业变美指南', author: 'JSMN-Me', pic: '//i1.hdslb.com/bfs/archive/13f3dbf71ada18ba13be81fe20814b6d117f2d7a.png', stats: { like: 0, reply: 0, favorite: 0 } },
   ],
   fashion: [
-    { bvid: 'BV1oWXNYjEr8', title: '意想不到的转场也是被我拍上了…', author: '白昼小熊', pic: 'https://i1.hdslb.com/bfs/archive/ee69586f135f37b0539b0da3f1ec96b42640c3a9.jpg', stats: { like: 222427, reply: 470, favorite: 33200 } },
-    { bvid: 'BV1UsoWYAEDX', title: '可露丽风？昭和冷漠萝莉？直井怜REI穿搭灵感2.0来了！', author: 'the_Adrianaloh', pic: 'https://i1.hdslb.com/bfs/archive/369ed9ae8c6d0a1c99db5e2b940404dbf0f97d0f.jpg', stats: { like: 91028, reply: 476, favorite: 26042 } },
-    { bvid: 'BV1pEZhY5EsD', title: '「水水」猫猫先起跳再说！', author: '彼岸的水坑-', pic: 'https://i2.hdslb.com/bfs/archive/650c8d6d5237c811fd39e875c545c2786f8cfd8e.jpg', stats: { like: 87307, reply: 304, favorite: 22474 } },
+    { bvid: 'BV1WEWs66EBP', title: '选举大败特朗普和马斯克这下惨了', author: '燕三嘤嘤嘤', pic: 'https://i2.hdslb.com/bfs/archive/c0be5b731d4162fd8652a221d41a623606d8ae79.jpg', stats: { like: 143686, reply: 5635, favorite: 25073 } },
+    { bvid: 'BV1B7xS6NEw2', title: '78分钟硬科幻AI电影《孤鲸》，华语科幻星云奖最佳短篇小说改编', author: '野生锅导演', pic: 'https://i0.hdslb.com/bfs/archive/de72a0e84b0223b5a255b36d5ec0e62b01f5a985.jpg', stats: { like: 57350, reply: 5184, favorite: 76885 } },
+    { bvid: 'BV1eNW76KEdJ', title: '当杀手和律师都以为对方是同行', author: '小草律师呀', pic: 'https://i0.hdslb.com/bfs/archive/9a4cc38bb27ff481bf8fb8829ba91f2b8925f89c.jpg', stats: { like: 128337, reply: 804, favorite: 8381 } },
   ],
   game: [
-    { bvid: 'BV1GyZYYNErW', title: '我的世界克苏鲁全集：一口气看完', author: '这名玩家', pic: 'https://i1.hdslb.com/bfs/archive/1aa8b3a330458604faf74604d29cf3520983644c.jpg', stats: { like: 357471, reply: 3052, favorite: 760841 } },
-    { bvid: 'BV1eqZJYaESc', title: '“我花了5年一个人做的独立像素游戏4月17日就要上线啦！”', author: '换影循迹官方', pic: 'https://i2.hdslb.com/bfs/archive/622e3d9a5d3dd5bbe81eaf137a5adacf5597d432.jpg', stats: { like: 694139, reply: 4515, favorite: 129874 } },
-    { bvid: 'BV16io9YTEqH', title: '《崩坏：星穹铁道》动画短片：「那安息的长夜」', author: '崩坏星穹铁道', pic: 'https://i2.hdslb.com/bfs/archive/e1cf64a913adfc4f5270eb8d433fef3fa8ccc6ea.jpg', stats: { like: 518822, reply: 29384, favorite: 183825 } },
+    { bvid: 'BV1WEWs66EBP', title: '选举大败特朗普和马斯克这下惨了', author: '燕三嘤嘤嘤', pic: 'https://i2.hdslb.com/bfs/archive/c0be5b731d4162fd8652a221d41a623606d8ae79.jpg', stats: { like: 143686, reply: 5635, favorite: 25073 } },
+    { bvid: 'BV1B7xS6NEw2', title: '78分钟硬科幻AI电影《孤鲸》，华语科幻星云奖最佳短篇小说改编', author: '野生锅导演', pic: 'https://i0.hdslb.com/bfs/archive/de72a0e84b0223b5a255b36d5ec0e62b01f5a985.jpg', stats: { like: 57350, reply: 5184, favorite: 76885 } },
+    { bvid: 'BV1eNW76KEdJ', title: '当杀手和律师都以为对方是同行', author: '小草律师呀', pic: 'https://i0.hdslb.com/bfs/archive/9a4cc38bb27ff481bf8fb8829ba91f2b8925f89c.jpg', stats: { like: 128337, reply: 804, favorite: 8381 } },
   ],
   travel: [
-    { bvid: 'BV1cr476pETN', title: '全球最肥胖 VS 全球最健康！热量相差100倍！一日三餐吃什么？', author: 'HOLA小测佬', pic: 'https://i2.hdslb.com/bfs/archive/4dec530f03e55a9b4ec165e9833dd9670eae43c8.jpg', stats: { like: 111216, reply: 2031, favorite: 42771 } },
-    { bvid: 'BV1pAxf6iE3C', title: '坐穿行大凉山的绿皮慢火车，寻访西南腹地的移民钢铁之城', author: '赖导AboutLai', pic: 'https://i1.hdslb.com/bfs/archive/0e34005813370e4f4e983012bfd2fe8db0832407.jpg', stats: { like: 74321, reply: 3763, favorite: 26846 } },
-    { bvid: 'BV1MA4z6ZEme', title: '5个人一台车，随机出发！结果...【出发吧少年 03】', author: '力元君', pic: 'https://i1.hdslb.com/bfs/archive/1c628384cd4c01fe147309807ccac5498501a459.jpg', stats: { like: 57582, reply: 1638, favorite: 15068 } },
+    { bvid: 'BV1WEWs66EBP', title: '选举大败特朗普和马斯克这下惨了', author: '燕三嘤嘤嘤', pic: 'https://i2.hdslb.com/bfs/archive/c0be5b731d4162fd8652a221d41a623606d8ae79.jpg', stats: { like: 143686, reply: 5635, favorite: 25073 } },
+    { bvid: 'BV1B7xS6NEw2', title: '78分钟硬科幻AI电影《孤鲸》，华语科幻星云奖最佳短篇小说改编', author: '野生锅导演', pic: 'https://i0.hdslb.com/bfs/archive/de72a0e84b0223b5a255b36d5ec0e62b01f5a985.jpg', stats: { like: 57350, reply: 5184, favorite: 76885 } },
+    { bvid: 'BV1eNW76KEdJ', title: '当杀手和律师都以为对方是同行', author: '小草律师呀', pic: 'https://i0.hdslb.com/bfs/archive/9a4cc38bb27ff481bf8fb8829ba91f2b8925f89c.jpg', stats: { like: 128337, reply: 804, favorite: 8381 } },
   ],
   general: [
-    { bvid: 'BV1LM4L6TE3V', title: '星河流动', author: '牛排大王mc', pic: 'https://i0.hdslb.com/bfs/archive/a93c4a0ae77a2c8767fe16073d3fd2e005cffcb9.jpg', stats: { like: 632294, reply: 5867, favorite: 112131 } },
-    { bvid: 'BV1mv4Y6rESW', title: '近十几年的梗都在这里了', author: '怠惰的一休', pic: 'https://i1.hdslb.com/bfs/archive/7a8449a206881e89b3dac64b49f677e25d6160e0.jpg', stats: { like: 474734, reply: 11627, favorite: 156604 } },
-    { bvid: 'BV1MsxC6KE4n', title: '“动漫可能没看过，但是梗一个不落p2”', author: '漫剪laug', pic: 'https://i1.hdslb.com/bfs/archive/d6ccb27f921f5034f65fd2afb6da1f86dfcd9155.jpg', stats: { like: 371087, reply: 5103, favorite: 116307 } },
+    { bvid: 'BV1WEWs66EBP', title: '选举大败特朗普和马斯克这下惨了', author: '燕三嘤嘤嘤', pic: 'https://i2.hdslb.com/bfs/archive/c0be5b731d4162fd8652a221d41a623606d8ae79.jpg', stats: { like: 143686, reply: 5635, favorite: 25073 } },
+    { bvid: 'BV1B7xS6NEw2', title: '78分钟硬科幻AI电影《孤鲸》，华语科幻星云奖最佳短篇小说改编', author: '野生锅导演', pic: 'https://i0.hdslb.com/bfs/archive/de72a0e84b0223b5a255b36d5ec0e62b01f5a985.jpg', stats: { like: 57350, reply: 5184, favorite: 76885 } },
+    { bvid: 'BV1eNW76KEdJ', title: '当杀手和律师都以为对方是同行', author: '小草律师呀', pic: 'https://i0.hdslb.com/bfs/archive/9a4cc38bb27ff481bf8fb8829ba91f2b8925f89c.jpg', stats: { like: 128337, reply: 804, favorite: 8381 } },
   ],
 };
 
 // 抖音兜底数据（由 GitHub Actions 每日自动更新，真实热门视频，每类3个，随机展示1个）
-// 最后更新: 2026-11-10 04:01:22
+// 最后更新: 2026-11-11 01:48:21
 const FALLBACK_DOUYIN_VIDEOS = {
   beauty: [
     { vid: '7702380278093820578', title: '《大姨的衣柜》 #女孩穿搭  #模特 #单身 #备孕 #美妆', author: '于小惠', stats: { like: 281880, reply: 7885, favorite: 94106 } },
@@ -2312,9 +2312,9 @@ const FALLBACK_DOUYIN_VIDEOS = {
     { vid: '7705758663826551433', title: '东北人的奇特出行方式#100种艺术生活', author: '程娜娜', stats: { like: 60186, reply: 3089, favorite: 156848 } },
   ],
   general: [
-    { vid: '7704498465602890367', title: '只能说算你小子有情有义#是佑佑哥哥 #内容过于真实', author: '佑佑哥哥', stats: { like: 237074, reply: 32080, favorite: 607525 } },
-    { vid: '7706140295129706617', title: '我猜酱多了 #路人视角', author: '有格调的表哥', stats: { like: 36051, reply: 2757, favorite: 298050 } },
-    { vid: '7705013664784806281', title: '最美的画面，不过如此#胖橘和爷爷', author: '金墩墩', stats: { like: 524581, reply: 10156, favorite: 93358 } },
+    { vid: '7704231714008108328', title: '最大的岛是什么岛啊？#西安华夏城 #华夏城俏灵儿 #npc', author: 'sSea', stats: { like: 30841, reply: 36555, favorite: 918 } },
+    { vid: '7706455595587457203', title: '自己选的媳妇，含泪也要嫌弃。#监控下的一幕 #夫妻日常搞笑 #买衣服 #换车', author: '图爸', stats: { like: 43351, reply: 1339, favorite: 46247 } },
+    { vid: '7705698060017913832', title: '刷到两个15岁的小孩坐绿皮火车去打工，共情了，原来15岁这么小啊，看到十几年以前的自己.那时候还以为自己很会装，其实现在', author: '壮壮先生', stats: { like: 49698, reply: 4254, favorite: 36743 } },
   ],
 };
 
